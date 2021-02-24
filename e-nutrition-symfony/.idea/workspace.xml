@@ -19,13 +19,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af2f5b5a-299b-420a-a204-9e462c063af6" name="Default Changelist" comment="" />
+    <list default="true" id="af2f5b5a-299b-420a-a204-9e462c063af6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/migrations/Version20210222213159.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Evaluation.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/EvaluationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -138,12 +143,15 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1onFZMjmF2XgGJgNWWlAfLiYY8d" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -158,6 +166,9 @@
       <option name="presentableId" value="Default" />
       <updated>1613914504419</updated>
       <workItem from="1613914506321" duration="932000" />
+      <workItem from="1613944999861" duration="632000" />
+      <workItem from="1613982004392" duration="1332000" />
+      <workItem from="1614028744679" duration="1029000" />
     </task>
     <servers />
   </component>
@@ -176,18 +187,7 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="129" y="55" width="1219" height="619" key="MergeDialog" timestamp="1614081769793">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="129" y="55" width="1219" height="619" key="MergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1614081769793" />
-    <state x="321" y="125" key="MultipleFileMergeDialog" timestamp="1614081769799">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="321" y="125" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1614081769799" />
-    <state x="500" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1614081894436">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="500" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1614081894436" />
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
