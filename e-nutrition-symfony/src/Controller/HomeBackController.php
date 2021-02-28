@@ -9,11 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeBackController extends AbstractController
 {
     /**
-     * @Route("/home/back", name="home_back")
+     * @Route("indexback", name="home_back")
      */
     public function index(): Response
     {
-        return $this->render('Back/home_back/index.html.twig', [
+        return $this->render('back/home_back/index.html.twig', [
             'controller_name' => 'HomeBackController',
         ]);
     }

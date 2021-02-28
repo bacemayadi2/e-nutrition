@@ -19,13 +19,179 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="293166ae-44c1-4cd4-b82b-71c59933fe15" name="Default Changelist" comment="classdiagram">
-      <change beforePath="$PROJECT_DIR$/doc/diagrames2.mdj" beforeDir="false" afterPath="$PROJECT_DIR$/doc/diagrames2.mdj" afterDir="false" />
+    <list default="true" id="293166ae-44c1-4cd4-b82b-71c59933fe15" name="Default Changelist" comment="templates">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_02_2021_21_36_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_02_2021_21_36__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/.idea/shelf/Uncommitted_changes_before_Update_at_22_02_2021_22_40_[Default_Changelist]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/.idea/shelf/Uncommitted_changes_before_Update_at_22_02_2021_22_40__Default_Changelist_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/back/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/back/fonts/css.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/back/fonts/font-awesome/css/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/back/fonts/font-awesome/css/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/back/fonts/font-awesome/css/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/back/fonts/font-awesome/css/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/back/fonts/font-awesome/css/simple-line-icons.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/back/fonts/simple-line-icons/simple-line-icons.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/back/images/ico/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/cdn-cgi/apps/body/4o300efCt-CXoq1JEC-sVReFz48.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/css/fonts.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/fonts/MaterialIcons-Regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/fonts/fl-great-icon-set.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/fonts/material-design.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-01-1920x1019.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-01-1920x900.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-02-970x800.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-03-1920x620.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-04-1920x900.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-05-1920x900.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-06-1920x900.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-07-1920x1019.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-08-1920x1019.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-09-1920x900.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-10-1920x900.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-11-1920x900.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-12-1920x900.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-13-1920x900.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-14-1920x900.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-15-1920x900.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-16-1920x900.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/backgrounds/background-17-1920x900.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/banner-01-350x500.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-01-571x234.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-02-571x234.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-03-370x260.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-04-370x260.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-05-370x260.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-06-370x230.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-06-570x355.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-06-770x480.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-07-370x230.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-07-570x355.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-07-770x480.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-08-370x230.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-08-570x355.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-08-770x480.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-09-370x230.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-09-570x355.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-09-770x480.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-10-80x80.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-11-80x80.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-12-80x80.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-13-370x230.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/blog/post-14-370x230.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/gmap_marker.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/icon-01-12x17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/logo-134x42.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/logo-white-160x51.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/offers/box-offer-01-640x459.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/offers/box-offer-02-640x459.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/offers/box-offer-03-640x459.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/offers/box-offer-04-960x459.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/offers/box-offer-05-960x459.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/blog-post-01-770x480.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/checkout-01-63x40.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/checkout-02-59x40.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/checkout-03-62x40.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/checkout-04-62x40.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/coaching-01-370x278.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/events-01-390x289.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/events-02-390x289.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/events-03-390x289.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/fitness-01-770x450.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/health-coaching-philosophy-01-470x540.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/health-coaching-philosophy-02-570x350.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/home-01-570x350.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/massage-01-370x230.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/massage-02-370x230.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/massage-03-370x230.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/massage-04-370x230.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/my-philosophy-01-370x260.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/my-philosophy-02-370x260.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/my-philosophy-03-370x260.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/personal-training-01-770x450.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/pilates-01-370x230.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/pilates-02-370x230.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/praise-01-269x278.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/praise-02-269x278.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/resources-01-270x278.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/resources-02-270x278.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/resources-03-270x278.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/resources-04-270x278.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/typography-01-470x278.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/typography-02-370x278.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/work-with-me-01-370x260.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/work-with-me-02-370x260.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/work-with-me-03-370x260.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/work-with-me-04-570x234.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/work-with-me-05-570x234.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/pages/workshops-01-270x278.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/partners/partner-01-96x21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/partners/partner-02-101x20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/partners/partner-03-133x29.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/partners/partner-04-148x19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/partners/partner-05-133x35.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/partners/partner-06-130x34.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/partners/partner-07-119x26.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/partners/partner-08-127x31.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/partners/partner-09-154x20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/partners/partner-10-140x41.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/preloader.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/shop/product-01-229x152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/shop/product-02-227x152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/shop/product-03-152x152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/shop/product-04-208x152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/shop/product-05-199x152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/shop/product-06-153x152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/shop/product-07-217x152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/shop/product-08-199x152.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/shop/product-09-47x46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/shop/product-10-47x46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/shop/product-11-47x46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/shop/product-12-285x285.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/shop/product-13-47x46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/shop/product-14-47x46.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/users/user-alan-smith-70x71.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/users/user-jessica-priston-151x151.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/users/user-jina-green-172x172.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/users/user-joanna-smith-550x530.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/users/user-john-doe-70x71.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/users/user-lola-jordon-172x172.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/users/user-mark-johnson-151x151.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/users/user-mila-moa-70x71.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/users/user-olivia-grosh-151x151.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/users/user-olivia-grosh-70x71.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/users/user-rita-jefferson-172x172.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/users/user-rita-jefferson-70x71.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/images/users/user-sam-kromstain-151x151.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/js/core.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/js/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/front/video/video.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/src/Controller/HomeFrontController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/templates/front/base.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/e-nutrition-symfony/templates/front/home_front/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/back/robusta/pixinvent.com/bootstrap-admin-template/robust/app-assets/fonts/simple-line-icons/simple-line-icons.min.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e-nutrition-symfony/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/e-nutrition-symfony/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e-nutrition-symfony/public/back/fonts/font-awesome/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/e-nutrition-symfony/public/back/fonts/font-awesome/css/font-awesome.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e-nutrition-symfony/src/Controller/HomeBackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/e-nutrition-symfony/src/Controller/HomeBackController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e-nutrition-symfony/templates/Back/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/e-nutrition-symfony/templates/Back/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e-nutrition-symfony/templates/Back/home_back/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/e-nutrition-symfony/templates/Back/home_back/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/e-nutrition-symfony/templates/Back/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/e-nutrition-symfony/composer.json</pharConfigPath>
@@ -162,6 +328,9 @@
       <workItem from="1614198566877" duration="2388000" />
       <workItem from="1614251434764" duration="2800000" />
       <workItem from="1614326579926" duration="647000" />
+      <workItem from="1614330834922" duration="1213000" />
+      <workItem from="1614423915850" duration="1579000" />
+      <workItem from="1614511768796" duration="3597000" />
     </task>
     <task id="LOCAL-00001" summary="classdiagram">
       <created>1614199088933</created>
@@ -205,7 +374,21 @@
       <option name="project" value="LOCAL" />
       <updated>1614326614864</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="classdiagram">
+      <created>1614330844211</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1614330844211</updated>
+    </task>
+    <task id="LOCAL-00008" summary="template">
+      <created>1614513310717</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1614513310717</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,25 +407,49 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="classdiagram" />
-    <option name="LAST_COMMIT_MESSAGE" value="classdiagram" />
+    <MESSAGE value="templates" />
+    <MESSAGE value="template" />
+    <option name="LAST_COMMIT_MESSAGE" value="template" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1614201938312">
+    <state x="747" y="312" key="#TODO" timestamp="1614513275324">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1614201938312" />
+    <state x="747" y="312" key="#TODO/0.0.1920.1040@0.0.1920.1040" timestamp="1614513275324" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1614513363958">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1614513363958" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1614423924972">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1614423924971" />
     <state x="184" y="85" key="MergeDialog" timestamp="1614199016218">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="184" y="85" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1614199016218" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1614326619545">
+    <state x="807" y="432" key="VCS.ChangelistChooser" timestamp="1614513051554">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1614326619545" />
-    <state x="777" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1614326582653">
+    <state x="807" y="432" key="VCS.ChangelistChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1614513051554" />
+    <state x="846" y="434" key="VCS.EditChangelistDialog" timestamp="1614513095658">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="777" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1614326582653" />
+    <state x="846" y="434" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1614513095658" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1614513790902">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1614513790902" />
+    <state x="799" y="253" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog" timestamp="1614509403372">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="799" y="253" key="com.intellij.openapi.vcs.changes.SpecificFilesViewDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1614509403372" />
+    <state x="777" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1614529489301">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="777" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1614529489301" />
   </component>
 </project>
