@@ -1,0 +1,521 @@
+<div class="members-list grid-container">            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/elated-keller/"><img alt='' src='https://secure.gravatar.com/avatar/e22c8af3706578ce9aa8280550eac522?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/e22c8af3706578ce9aa8280550eac522?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/elated-keller/"
+                               class="name">Elated keller</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">0 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">1</span>
+								<span class="text">points</span> -->
+								<span class="count">1</span> point                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="1" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/andrei/"><img alt='' src='https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-80x80.jpg' class='avatar avatar-80 photo' /></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/andrei/"
+                               class="name">Andrei</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">5 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">250</span>
+								<span class="text">points</span> -->
+								<span class="count">250</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="2" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			<div class="clear"></div>            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/anthha462/"><img alt='' src='https://secure.gravatar.com/avatar/24b1f514e04c1628327f7972e0799705?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/24b1f514e04c1628327f7972e0799705?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/anthha462/"
+                               class="name">Anthony Harris</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">1 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">50</span>
+								<span class="text">points</span> -->
+								<span class="count">50</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="3" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/georpe97/"><img alt='' src='https://secure.gravatar.com/avatar/0921e675ca54fabfafb1a01a02631b09?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/0921e675ca54fabfafb1a01a02631b09?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/georpe97/"
+                               class="name">George Perez</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">2 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">100</span>
+								<span class="text">points</span> -->
+								<span class="count">100</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="4" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			<div class="clear"></div>            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/keviha649/"><img alt='' src='https://secure.gravatar.com/avatar/2fa22f1cc9eae4a2872a2d49453051be?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/2fa22f1cc9eae4a2872a2d49453051be?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/keviha649/"
+                               class="name">Kevin Harris</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">1 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">50</span>
+								<span class="text">points</span> -->
+								<span class="count">50</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="5" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/danial598/"><img alt='' src='https://secure.gravatar.com/avatar/9366ab1d405afcaabb1f50e8ef339fcd?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/9366ab1d405afcaabb1f50e8ef339fcd?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/danial598/"
+                               class="name">Daniel Allen</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">2 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">100</span>
+								<span class="text">points</span> -->
+								<span class="count">100</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="6" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			<div class="clear"></div>            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/jasosc569/"><img alt='' src='https://secure.gravatar.com/avatar/71bebd1cbd59ff32cbb5b3651d309cae?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/71bebd1cbd59ff32cbb5b3651d309cae?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/jasosc569/"
+                               class="name">Jason Scott</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">2 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">100</span>
+								<span class="text">points</span> -->
+								<span class="count">100</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="7" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/markta356/"><img alt='' src='https://secure.gravatar.com/avatar/62a0ca8df36bf8a8e4a376abee8e341d?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/62a0ca8df36bf8a8e4a376abee8e341d?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/markta356/"
+                               class="name">Mark Taylor</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">3 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">150</span>
+								<span class="text">points</span> -->
+								<span class="count">150</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="8" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			<div class="clear"></div>            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/briagr960/"><img alt='' src='https://secure.gravatar.com/avatar/055bbb879df685c87e4262bb56a65afc?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/055bbb879df685c87e4262bb56a65afc?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/briagr960/"
+                               class="name">Brian Green</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">5 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">250</span>
+								<span class="text">points</span> -->
+								<span class="count">250</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="9" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/danida415/"><img alt='' src='https://secure.gravatar.com/avatar/c48126a06aba487f94907616bae8787b?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/c48126a06aba487f94907616bae8787b?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/danida415/"
+                               class="name">Daniel Davis</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">1 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">50</span>
+								<span class="text">points</span> -->
+								<span class="count">50</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="10" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			<div class="clear"></div>            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/stevwr516/"><img alt='' src='https://secure.gravatar.com/avatar/d50c60874b3f58976c63194966ca527e?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/d50c60874b3f58976c63194966ca527e?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/stevwr516/"
+                               class="name">Steven Wright</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">1 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">50</span>
+								<span class="text">points</span> -->
+								<span class="count">50</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="11" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/georev170/"><img alt='' src='https://secure.gravatar.com/avatar/55cfca070ad8b32a11f5a31eea712061?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/55cfca070ad8b32a11f5a31eea712061?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/georev170/"
+                               class="name">George Evans</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">1 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">50</span>
+								<span class="text">points</span> -->
+								<span class="count">50</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="12" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			<div class="clear"></div>            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/markba607/"><img alt='' src='https://secure.gravatar.com/avatar/3349c260f79fe7d64511fa06732881e9?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/3349c260f79fe7d64511fa06732881e9?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/markba607/"
+                               class="name">Mark Baker</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">1 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">50</span>
+								<span class="text">points</span> -->
+								<span class="count">50</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="13" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/kennca893/"><img alt='' src='https://secure.gravatar.com/avatar/43bc1b506fc402e3dfc7eda1a97f120f?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/43bc1b506fc402e3dfc7eda1a97f120f?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/kennca893/"
+                               class="name">Kenneth Carter</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">1 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">50</span>
+								<span class="text">points</span> -->
+								<span class="count">50</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="14" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">1 follower</a>
+                    </div>
+                </div>
+            </div>
+			<div class="clear"></div>            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/jeffth129/"><img alt='' src='https://secure.gravatar.com/avatar/46a5fa29ed300e0efc89f9a862630b5e?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/46a5fa29ed300e0efc89f9a862630b5e?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/jeffth129/"
+                               class="name">Jeff Thomas</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">2 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">100</span>
+								<span class="text">points</span> -->
+								<span class="count">100</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="15" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/jeffpe30/"><img alt='' src='https://secure.gravatar.com/avatar/d7e01749fa9b76d7b761b8501f2b912d?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/d7e01749fa9b76d7b761b8501f2b912d?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/jeffpe30/"
+                               class="name">Jeff Perez</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">1 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">50</span>
+								<span class="text">points</span> -->
+								<span class="count">50</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="16" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			<div class="clear"></div>            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/georwa683/"><img alt='' src='https://secure.gravatar.com/avatar/d7eb49682f871df9468af82654e8e9eb?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/d7eb49682f871df9468af82654e8e9eb?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/georwa683/"
+                               class="name">George Walker</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">1 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">50</span>
+								<span class="text">points</span> -->
+								<span class="count">50</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="17" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/patrcl87/"><img alt='' src='https://secure.gravatar.com/avatar/26d8ddc2ad7b624f2afddd53a170013d?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/26d8ddc2ad7b624f2afddd53a170013d?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/patrcl87/"
+                               class="name">Patricia Clark</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">0 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">1</span>
+								<span class="text">points</span> -->
+								<span class="count">1</span> point                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="18" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			<div class="clear"></div>            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/michba366/"><img alt='' src='https://secure.gravatar.com/avatar/e8789f4594659a68e2f38bb9c0fec281?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/e8789f4594659a68e2f38bb9c0fec281?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/michba366/"
+                               class="name">Michelle Baker</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">1 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">50</span>
+								<span class="text">points</span> -->
+								<span class="count">50</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="19" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			            <div class="grid desk-6">
+                <div class="member clearfix">
+                    <div class="user-avatar">
+                        <a href="https://gustos.w3.style/author/ruthle355/"><img alt='' src='https://secure.gravatar.com/avatar/35ca23999e513839304e53b171513b3c?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/35ca23999e513839304e53b171513b3c?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/></a>
+                    </div>
+                    <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                        <div class="title clearfix">
+                            <a href="https://gustos.w3.style/author/ruthle355/"
+                               class="name">Ruth Lee</a>
+							                        </div>
+                        <div class="info">
+                            <div class="info-item">1 recipes</div>
+                            <div class="info-item user-reputation">
+                                <!-- <span class="count">50</span>
+								<span class="text">points</span> -->
+								<span class="count">50</span> points                            </div>
+                        </div>
+                    </div>
+                    <div class="user-follow grid desk-5 mob-6 omega clearfix">
+						<a href="#" class="follow-user button primary not-allowed" data-theme="red"data-id="20" title="Please log in to follow this user.">
+				<i class="fa fa-plus"></i> <span class="text">Follow</span>
+			</a><br>
+                        <a href="#" class="followers-count">0 followers</a>
+                    </div>
+                </div>
+            </div>
+			<div class="clear"></div></div> <!-- .members-list --><div class="button-block center members-pagination"><span class="button primary current small">1</span><a class="button nobg primary small" href="/wp-json/wp/v2/pages/7?pag=2">2</a><a class="button nobg primary small" href="/wp-json/wp/v2/pages/7?pag=3">3</a><a class="button nobg primary small" href="/wp-json/wp/v2/pages/7?pag=4">4</a><a class="button nobg primary small" href="/wp-json/wp/v2/pages/7?pag=5">&hellip;</a><a class="button nobg primary small" href="/wp-json/wp/v2/pages/7?pag=8">8</a><a class="button nobg primary small" href="/wp-json/wp/v2/pages/7?pag=9">9</a></div>{"id":7,"date":"2020-06-06T09:19:01","date_gmt":"2020-06-06T09:19:01","guid":{"rendered":"https:\/\/gustos.w3.style\/members\/"},"modified":"2020-06-06T09:19:01","modified_gmt":"2020-06-06T09:19:01","slug":"members","status":"publish","type":"page","link":"https:\/\/gustos.w3.style\/members\/","title":{"rendered":"Members"},"content":{"rendered":"\n","protected":false},"excerpt":{"rendered":"","protected":false},"author":1,"featured_media":0,"parent":0,"menu_order":0,"comment_status":"closed","ping_status":"closed","template":"","meta":[],"_links":{"self":[{"href":"https:\/\/gustos.w3.style\/wp-json\/wp\/v2\/pages\/7"}],"collection":[{"href":"https:\/\/gustos.w3.style\/wp-json\/wp\/v2\/pages"}],"about":[{"href":"https:\/\/gustos.w3.style\/wp-json\/wp\/v2\/types\/page"}],"author":[{"embeddable":true,"href":"https:\/\/gustos.w3.style\/wp-json\/wp\/v2\/users\/1"}],"replies":[{"embeddable":true,"href":"https:\/\/gustos.w3.style\/wp-json\/wp\/v2\/comments?post=7"}],"version-history":[{"count":0,"href":"https:\/\/gustos.w3.style\/wp-json\/wp\/v2\/pages\/7\/revisions"}],"wp:attachment":[{"href":"https:\/\/gustos.w3.style\/wp-json\/wp\/v2\/media?parent=7"}],"curies":[{"name":"wp","href":"https:\/\/api.w.org\/{rel}","templated":true}]}}
