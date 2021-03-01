@@ -1,0 +1,163 @@
+{% extends 'front/base.html.twig' %}
+{% block Content %}
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <title>Crevette A La Marseillaise &#8211; Gustos</title> -->
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<script type="text/javascript">
+    window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/gustos.w3.style\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.5.3"}};
+    !function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+
+<!--
+	╔═╗╦ ╦╔═╗╔╦╗╔═╗╔═╗  ╦ ╦╔═╗
+	║ ╦║ ║╚═╗ ║ ║ ║╚═╗  ║║║╠═╝
+	╚═╝╚═╝╚═╝ ╩ ╚═╝╚═╝  ╚╩╝╩
+	http://bit.ly/get-gustos
+-->
+
+<style type="text/css">
+    img.wp-smiley,
+    img.emoji {
+        display: inline !important;
+        border: none !important;
+        box-shadow: none !important;
+        height: 1em !important;
+        width: 1em !important;
+        margin: 0 .07em !important;
+        vertical-align: -0.1em !important;
+        background: none !important;
+        padding: 0 !important;
+    }
+</style>
+<link rel='stylesheet' id='wp-block-library-css'  href='front_otherpage/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wc-block-vendors-style-css'  href='front_otherpage/plugins/woocommerce/packages/woocommerce-blocks/build/vendors-style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='wc-block-style-css'  href='front_otherpage/plugins/woocommerce/packages/woocommerce-blocks/build/style.css' type='text/css' media='all' />
+<link rel='stylesheet' id='submit-feedback-main-css-css'  href='front_otherpage/plugins/submit-feedback/assets/main.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='woocommerce-layout-css'  href='front_otherpage/plugins/woocommerce/assets/css/woocommerce-layout.css' type='text/css' media='all' />
+<link rel='stylesheet' id='woocommerce-smallscreen-css'  href='front_otherpage/plugins/woocommerce/assets/css/woocommerce-smallscreen.css' type='text/css' media='only screen and (max-width: 768px)' />
+<link rel='stylesheet' id='woocommerce-general-css'  href='front_otherpage/plugins/woocommerce/assets/css/woocommerce.css' type='text/css' media='all' />
+<style id='woocommerce-inline-inline-css' type='text/css'>
+    .woocommerce form .form-row .required { visibility: visible; }
+</style>
+<link rel='stylesheet' id='zerowp-social-profiles-styles-css'  href='front_otherpage/plugins/zerowp-social-profiles/assets/css/styles.css' type='text/css' media='all' />
+<link rel='stylesheet' id='gustos-lightslider-css'  href='front_otherpage/themes/gustos/assets/lightslider/css/lightslider.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='gustos-slim-select-css'  href='front_otherpage/themes/gustos/assets//slim-select/slimselect.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='ztip-css'  href='front_otherpage/themes/gustos/assets/modules/ztip/ztip.css' type='text/css' media='all' />
+<link rel='stylesheet' id='accordionjs-css'  href='front_otherpage/themes/gustos/assets/modules/accordionjs/accordion.css' type='text/css' media='all' />
+<link rel='stylesheet' id='gustos-root-vars-css'  href='front_otherpage/themes/gustos/assets/root.css' type='text/css' media='all' />
+<link rel='stylesheet' id='gustos-stylesheet-css'  href='front_otherpage/themes/gustos/style.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='gustos-wp-override-css'  href='front_otherpage/themes/gustos/wp.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='front_otherpage/themes/gustos/assets/modules/font-awesome/css/font-awesome.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='heading-google-font-css'  href='//fonts.googleapis.com/css?family=Imprima&#038;ver=5.5.3' type='text/css' media='all' />
+<script type='text/javascript' src='front_otherpage/js/plupload/moxie.min.js' id='moxiejs-js'></script>
+<script type='text/javascript' src='front_otherpage/js/plupload/plupload.min.js' id='plupload-js'></script>
+<script type='text/javascript' src='front_otherpage/js/jquery/jquery.js' id='jquery-core-js'></script>
+<link rel="https://api.w.org/" href="front_otherpage/" /><link rel="alternate" type="application/json" href="front_otherpage/wp/v2/smk_recipes/185" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://gustos.w3.style/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="front_otherpage/wlwmanifest.xml" />
+<link rel='prev' title='Magic Bars' href='' />
+<link rel='next' title='Mint Ricotta Stuffed Shells' href='' />
+<meta name="generator" content="Gustos 2.10.7" />
+<script type='application/ld+json'>{"@context":"http:\/\/schema.org\/","@type":"Recipe","mainEntityOfPage":"https:\/\/gustos.w3.style\/recipes\/crevette-a-la-marseillaise\/","name":"Crevette A La Marseillaise","datePublished":"2016-05-15","image":{"@type":"ImageObject","url":"https:\/\/gustos.w3.style\/wp-content\/uploads\/2016\/08\/foodiesfeed.com_cooking-shrimps-with-spinach-outside.jpg","height":800,"width":1200},"totalTime":"PT13M","recipeIngredient":["Butter - 1\/2 Tablespoons","Olive Oil - 2 Teaspoons","Chopped Onion - 1 Cups","Sugar - 2 Teaspoons","Garlic - 50 Grams","Cayenne - 150 Grams","Black Pepper - 1\/4 Teaspoons","Mushrooms - 0.5 Kilograms"],"author":{"@type":"Person","name":""},"recipeInstructions":"<strong>1)<\/strong> Quisque in ornare mollis urna, a pharetra lectus bibendum et. Aenean sodales cursus nulla, faucibus tempor nibh porta id. Pellentesque non nibh eros. Nunc lectus lacus, interdum et consequat et, varius sit amet ipsum. Fusce convallis, lorem sit amet bibendum accumsan, consectetur adipisicing nec mattis dui nisi a lacus. Fusce non nisl pretium tellus eleifend tincidunt id id lorem. In hac habitasse platea dictumst. Pellentesque orci libero, fringilla et ultrices ut, cursus eu ipsum. Aenean bibendum dui quis pellentesque dictum. Cras aliquet risus id nisi feugiat vulputate.\n\n<strong>2)<\/strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut <a href=\"#\">labore et dolore<\/a> a ut magna aliqua. Ut enim ad <strong>minim veniam<\/strong>, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do est tempor incididunt ut <em>labore et dolore magna ex est aliqua<\/em>. Ut enim ad minim veniam, quis <del>nostrud<\/del> exercitation ullamco laboris. Phasellus ornare sem quis dui aliquet facilisis. Sed ipsum eros, ultricies at turpis eu, mattis dictum risus.\n\n<strong>3)<\/strong> Donec id egestas eros. Aliquam eget vestibulum mauris, sed lacinia ante. Aliquam pellentesque tellus mattis mi venenatis, eget lacinia purus interdum. Etiam sed auctor neque, <a href=\"#\">eget sodales<\/a> purus. Aliquam vulputate commodo erat, et accumsan libero viverra vitae. Phasellus ornare sem quis dui aliquet facilisis. Sed ipsum eros, ultricies at turpis eu, mattis dictum risus. Quisque tristique, mi ac euismod scelerisque, neque erat pharetra metus, a malesuada ligula ipsum eu dui. Praesent dapibus interdum magna.\n<ul>\n \t<li>Love and desire are the spirit\u2019s wings to great deeds.<\/li>\n \t<li>Grace is the beauty of form under the influence of freedom.<\/li>\n \t<li>The truth is on the march and nothing will stop it.<\/li>\n<\/ul>\n<strong>4)<\/strong> Quisque tristique, mi ac euismod scelerisque, neque erat pharetra metus, a malesuada ligula ipsum eu dui. Praesent dapibus interdum magna. Nullam in orci porttitor, faucibus orci eget, varius arcu. Sed nec elit tempus, pellentesque quam lobortis, vehicula orci. Suspendisse ac hendrerit mauris, vitae pulvinar tortor.","description":"1) Quisque in ornare mollis urna, a pharetra lectus bibendum et. Aenean sodales cursus nulla, faucibus tempor nibh porta id. Pellentesque non nibh eros. Nunc lectus lacus, interdum et consequat et, varius sit amet ipsum. Fusce convallis, lorem sit amet bibendum accumsan, consectetur adipisicing nec mattis dui nisi a lacus....","recipeYield":"1 servings","nutrition":{"@type":"NutritionInformation","calories":"1039 kcal","fatContent":"1 g","carbohydrateContent":"133 g","proteinContent":"42 g","cholesterolContent":"216 mg","sodiumContent":"1788 mg"},"video":{"embedUrl":"https:\/\/www.youtube.com\/watch?v=s4BPAyljKrw"},"recipeCategory":"Soup","recipeCuisine":"Romanian","keywords":"Middle Eastern"}</script>
+<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+<link rel="icon" href="front_otherpage/uploads/2016/08/cropped-logo-32x32.png" sizes="32x32" />
+<link rel="icon" href="front_otherpage/uploads/2016/08/cropped-logo-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="front_otherpage/uploads/2016/08/cropped-logo-180x180.png" />
+<meta name="msapplication-TileImage" content="front_otherpage/uploads/2016/08/cropped-logo-270x270.png" />
+<style>:root{--color-accent: #706fd3;--color-accent-lighter: #8685fd;--color-accent-darker: #5958a8;--color-link: #706fd3;--width-layout: 1340px;--width-sidebar: 300px;--background-body: #eee;--background-body--full: #eee  repeat scroll;--background-body--size: auto;--font-family-body: Arial, "Helvetica Neue", Helvetica, sans-serif;--font-family-heading: "Imprima", Helvetica, Arial, sans-serif;--background-color-header: #2c2c54;--color-header-text: #fff;--color-header-link: #fff;--background-color-submenu: #2c2c54}</style></head>
+
+
+
+
+        <!--
+        // ===================================^__^=================================== //
+           Content
+        // ===================================^__^=================================== //
+        -->
+
+    {% block Content2 %}
+    {% endblock %}
+
+        <div class="smk-theme-login-block-back-shadow"></div><div class="smk-theme-login-block"><div class="smk-theme-login-block-type">
+            <span class="type-login active">Log In</span><span class="type-register">Register</span><span class="type-recover">Lost Password</span>
+        </div><div class="smk-theme-login-block-close"><i class="fa fa-close"></i></div><form class="smk-theme-login-form" method="post" action="https://gustos.w3.style/recipes/crevette-a-la-marseillaise/"><div class="form-message-response"></div><div class="form-row fr-log-y fr-reg-y">
+                <div class="form-label">Username</div>
+                <input type="text" name="username" class="fullwidth" />
+            </div><div class="form-row fr-log-y fr-reg-y">
+                <div class="form-label">Password</div>
+                <input type="password" name="password" class="fullwidth" />
+            </div><div class="form-row fr-log-y">
+                <label><input type="checkbox" name="remember" value="forever" checked="checked" /> Remember me</label>
+            </div><div class="form-row fr-reg-y">
+                <div class="form-label">Confirm Password</div>
+                <input type="password" name="confirm_password" class="fullwidth" />
+            </div><div class="form-row fr-reg-y">
+                <div class="form-label">Email</div>
+                <input type="text" name="email" class="fullwidth" />
+            </div><div class="form-row fr-reg-y">
+                <label><input type="checkbox" name="terms" value="1" checked="checked" />I accept <a href="#">terms and conditions</a>.</label>
+            </div><div class="form-row fr-rec-y">
+                <div class="form-label">Username or email</div>
+                <input type="text" name="username_or_email" class="fullwidth" />
+            </div><div><input type="submit" name="submit" class="button primary smk-theme-login-form-button" value="Submit" /></div><input type="hidden" name="formtype" class="smk-login-form-type" value="log" /></form></div><div class="smk-theme-floating-search"><div class="smk-recipes-search clearfix"><form name="smk-recipes-search" method="get" action="https://gustos.w3.style/recipes/"><div class="smk-recipes-search-row search_"><div class="r-search-label">Search keyword</div><div class="r-search-field"><input type="text" name="search_" value="" class="smk-field smk-field-search_ fullwidth" placeholder="Keyword"></div></div><div class="smk-recipes-search-row category_ half"><div class="r-search-label">Category</div><div class="r-search-field"><select name="category_" class="smk-field smk-field-category_"><option value="" selected='selected'> - Any category - </option>	<option class="level-0" value="appetizer"> Appetizer</option>
+                            <option class="level-0" value="breakfast"> Breakfast</option>
+                            <option class="level-0" value="dessert"> Dessert</option>
+                            <option class="level-0" value="dinner"> Dinner</option>
+                            <option class="level-0" value="salad"> Salad</option>
+                            <option class="level-0" value="side-dish"> Side Dish</option>
+                            <option class="level-0" value="soup"> Soup</option>
+                            <option class="level-0" value="stew"> Stew</option>
+                        </select></div></div><div class="smk-recipes-search-row ingredient_ half"><div class="r-search-label">Ingredient</div><div class="r-search-field"><select name="ingredient_" class="smk-field smk-field-ingredient_"><option value="" selected='selected'> - Any ingredient - </option><option value="black-pepper">Black Pepper</option><option value="butter">Butter</option><option value="cayenne">Cayenne</option><option value="chopped-onion">Chopped Onion</option><option value="garlic">Garlic</option><option value="mushrooms">Mushrooms</option><option value="olive-oil">Olive Oil</option><option value="sugar">Sugar</option></select></div></div><div class="smk-recipes-search-row difficulty_ half"><div class="r-search-label">Difficulty</div><div class="r-search-field"><select name="difficulty_" class="smk-field smk-field-difficulty_"><option value="" selected='selected'> - Any difficulty - </option><option value="easy">Easy</option><option value="moderate">Moderate</option><option value="hard">Hard</option></select></div></div><div class="smk-recipes-search-row tags_"><div class="r-search-label">Prefered tags</div><div class="r-search-field"><input type="text" name="tags_" value="" class="smk-field smk-field-tags_ fullwidth"><div class="description">Enter one or more tags, separated by a comma(,)</div></div></div><div class="smk-recipes-search-row submitted_"><div class="r-search-label">Submitted</div><div class="r-search-field"><select name="submitted_" class="smk-field smk-field-submitted_"><option value="" selected='selected'> - Any date - </option><option value="last_year">In the last year</option><option value="last_6_months">In the last 6 months</option><option value="last_3_months">In the last 3 months</option><option value="last_month">In the last month</option><option value="last_week">In the last week</option><option value="last_day">In the last day</option></select></div></div><div class="smk-recipes-search-row other_settings"><div class="r-search-label">Other</div><div class="r-search-field"><label><input type="checkbox" name="only_with_photo_" value="1" class="smk-field smk-field-only_with_photo_" >Show recipes only with photo</label><label><input type="checkbox" name="only_featured_" value="1" class="smk-field smk-field-only_featured_" >Show only featured recipes</label><label><input type="checkbox" name="only_most_favorited_" value="1" class="smk-field smk-field-only_most_favorited_" >Show only most favorited recipes</label><label><input type="checkbox" name="only_most_liked_" value="1" class="smk-field smk-field-only_most_liked_" >Show only most liked recipes</label><label><input type="checkbox" name="only_most_viewed_" value="1" class="smk-field smk-field-only_most_viewed_" >Show only most viewed recipes</label></div></div><input type="hidden" name="per_page_" value="" style="display: none;"><input type="hidden" name="view" value="" style="display: none;"><div class="smk-recipes-search-row submittion_button"><div class="r-search-label">&nbsp;</div><div class="r-search-field"><button class="button primary">Search</button><a href="#" class="smk-theme-search-cancel">Cancel</a></div></div></form></div></div><div class="smk-recipe-search-overflow"></div>	<script type="text/javascript">
+        var c = document.body.className;
+        c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+        document.body.className = c;
+    </script>
+        <script type='text/javascript' id='submit-feedback-main-js-js-extra'>
+            /* <![CDATA[ */
+            var sfMain = {"ajaxUrl":"https:\/\/gustos.w3.style\/wp-admin\/admin-ajax.php"};
+            /* ]]> */
+        </script>
+        <script type='text/javascript' src='front_otherpage/plugins/submit-feedback/assets/main.min.js' id='submit-feedback-main-js-js'></script>
+        <script type='text/javascript' src='front_otherpage/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js' id='jquery-blockui-js'></script>
+        <script type='text/javascript' id='wc-add-to-cart-js-extra'>
+            /* <![CDATA[ */
+            var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/gustos.w3.style","is_cart":"","cart_redirect_after_add":"no"};
+            /* ]]> */
+        </script>
+        <script type='text/javascript' src='front_otherpage/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js' id='wc-add-to-cart-js'></script>
+        <script type='text/javascript' src='front_otherpage/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js' id='js-cookie-js'></script>
+        <script type='text/javascript' id='woocommerce-js-extra'>
+            /* <![CDATA[ */
+            var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+            /* ]]> */
+        </script>
+        <script type='text/javascript' src='front_otherpage/plugins/woocommerce/assets/js/frontend/woocommerce.min.js' id='woocommerce-js'></script>
+        <script type='text/javascript' id='wc-cart-fragments-js-extra'>
+            /* <![CDATA[ */
+            var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_0d7ba2042107fe82172fe24e4dfb342c","fragment_name":"wc_fragments_0d7ba2042107fe82172fe24e4dfb342c","request_timeout":"5000"};
+            /* ]]> */
+        </script>
+        <script type='text/javascript' src='front_otherpage/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js' id='wc-cart-fragments-js'></script>
+        <script type='text/javascript' src='front_otherpage/themes/gustos/assets/js/smk-menu.js' id='smk-menu-js'></script>
+        <script type='text/javascript' src='front_otherpage/themes/gustos/assets/js/rw-sidebar.js' id='rw-sidebar-js'></script>
+        <script type='text/javascript' src='front_otherpage/themes/gustos/assets/js/smk-visual-select.js' id='smk-visual-select-js'></script>
+        <script type='text/javascript' src='front_otherpage/themes/gustos/assets/lightslider/js/lightslider.min.js' id='gustos-lightslider-js'></script>
+        <script type='text/javascript' src='front_otherpage/themes/gustos/assets//slim-select/slimselect.min.js' id='gustos-slim-select-js'></script>
+        <script type='text/javascript' src='front_otherpage/themes/gustos/assets/js/owl.carousel.js' id='gustos-owl-carousel-js'></script>
+        <script type='text/javascript' src='front_otherpage/themes/gustos/assets/modules/fraction.js/fraction.min.js' id='fraction.js-js'></script>
+        <script type='text/javascript' src='front_otherpage/themes/gustos/assets/modules/jsuri/Uri.js' id='jsuri-js'></script>
+        <script type='text/javascript' src='front_otherpage/themes/gustos/assets/modules/ztip/ztip.min.js' id='ztip-js'></script>
+        <script type='text/javascript' src='front_otherpage/themes/gustos/assets/modules/accordionjs/accordion.min.js' id='accordionjs-js'></script>
+        <script type='text/javascript' id='gustos-scripts-js-extra'>
+            /* <![CDATA[ */
+            var themeAjax = {"ajax_url":"https:\/\/gustos.w3.style\/wp-admin\/admin-ajax.php","is_logged_in":"","includes_url":"https:\/\/gustos.w3.style\/wp-includes\/","msg100":"An unexpected error occurred.","msg101":"Please enter a message.","msg102":"Your message has been sent.","msg103":"Oops?!","login_msg100":"Oops?!","login_msg101":"Please enter the username","login_msg102":"Please enter the password","login_msg103":"Invalid username or password","login_msg104":"Success. Redirecting...","login_msg105":"Unknown error","login_msg106":"Please confirm the password","login_msg107":"Password does not match","login_msg108":"Please enter the email address","login_msg109":"Invalid email address","login_msg110":"Please enter the username or email","login_msg111":"Username already in use","login_msg112":"Email already in use","login_msg113":"You have successfully registered and logged in","login_msg114":"This email is not registered","login_msg115":"This username is not registered","login_msg116":"Please check your mail inbox","login_msg117":"Failed to send the recovery link","login_msg118":"You must accept terms and conditions.","login_msg119":"Please enter the the captcha form.","login_msg120":"Invalid captcha.","login_msg121":"Registration is disabled.","registration_redirect_url":"","login_redirect_url":"","demo_mode_submit":"Submission is disabled in demo mode.","submit_recipe":{"recipe_pending":"Your recipe has been submitted and is awaiting for moderation. An admin will review it and if all looks good it will be published as soon as possible.","view_your_recipe":"You can view your recipe here.","check_recipe_status":"You can check the recipe status here.","recipe_approved":"Your recipe has been submitted.","recipe_updated":"Your recipe has been updated.","your_recipe_id":"Your recipe ID is:","recipe_errors":"Validation errors occurred. Please confirm the fields and submit it again."},"confirm_recipe_delete":"Are you sure do you want to delete this recipe?","remove":"Remove","quick_search_more_chars":"Enter at least 2 characters.","following":"Following","follow":"Follow"};
+            var smkUploadersSettingsJS = {"smk_user_frontend_custom_user_avatar":{"title":"Avatar","description":"","class":"","field_type":"","row_class":"desk-12 both","row_style":"","label:add_new":"Add new","atts":false,"multiple":false,"force_show":true,"extensions":["jpg","jpeg","gif","png"],"max_file_size":"1500kb","uploader_size":"thumbnail","unique_id":"smk_user_frontend_custom_user_avatar"},"smk_single_recipe_user_images":{"title":"","description":"","class":"","field_type":"","row_class":"desk-12 both","row_style":"","label:add_new":"Add new","atts":false,"multiple":true,"force_show":false,"extensions":["jpg","jpeg","gif","png"],"max_file_size":"1500kb","uploader_size":"small-rounded","unique_id":"smk_single_recipe_user_images"},"recipes_form_featured_image":{"title":"Featured Image","description":"Please select some photos of this recipe. Minimum image size is 400px","class":"","field_type":"","row_class":"desk-12 both","row_style":"","label:add_new":"Add new","atts":false,"multiple":true,"force_show":false,"extensions":["jpg","jpeg","gif","png"],"max_file_size":"1500kb","uploader_size":"thumbnail","unique_id":"recipes_form_featured_image"}};
+            /* ]]> */
+        </script>
+        <script type='text/javascript' src='front_otherpage/themes/gustos/assets/js/scripts.js' id='gustos-scripts-js'></script>
+        <script type='text/javascript' src='front_otherpage/js/comment-reply.min.js' id='comment-reply-js'></script>
+        <script type='text/javascript' src='front_otherpage/js/wp-embed.min.js' id='wp-embed-js'></script>
+
+{%  endblock %}
