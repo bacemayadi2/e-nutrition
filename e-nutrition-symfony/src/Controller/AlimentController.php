@@ -13,7 +13,7 @@ class AlimentController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('front/aliment/ajouterAliement.html.twig', [
+        return $this->render('back/aliment/ajouterAliment.html.twig', [
             'controller_name' => 'AlimentController',
         ]);
     }
