@@ -13,7 +13,7 @@ class HomeBackController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('back/home_back/afficherFicheConsultation.html.twig', [
+        return $this->render('back/home_back/index.html.twig', [
             'controller_name' => 'HomeBackController',
         ]);
     }
