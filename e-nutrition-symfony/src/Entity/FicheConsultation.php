@@ -12,6 +12,7 @@ class FicheConsultation
 {
     /**
      * @ORM\Id
+     *
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
