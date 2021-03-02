@@ -32,9 +32,9 @@ class AlimentController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('studentAffiche');
         }
-        $categorie=$repo->findAll();
+       // $categorie=$repo->findAll();
         return $this->render("back/aliment/ajouterAliment.html.twig",
-            ['f'=> $form->createView()],['categorie'=>$categorie]);
+            ['f'=> $form->createView()]);
 
     }
 }

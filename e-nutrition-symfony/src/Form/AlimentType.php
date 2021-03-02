@@ -22,7 +22,7 @@ class AlimentType extends AbstractType
             ->add('codeABarre')
             ->add('categorieAliment',EntityType::class,[
                 'class'  => CategorieAliment::class,
-                    'choice_label'=>'name',
+                    'choice_label'=>'nomCategorie',
         ])
         ;
     }

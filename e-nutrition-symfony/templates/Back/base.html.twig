@@ -15,10 +15,13 @@
     <link href="back/fonts/css.css" rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
     <link rel="stylesheet" type="text/css" href="back/css/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="back/vendors/css/pickers/daterange/daterangepicker.css">
     <link rel="stylesheet" type="text/css" href="back/vendors/css/charts/jquery-jvectormap-2.0.3.css">
     <link rel="stylesheet" type="text/css" href="back/vendors/css/charts/morris.css">
     <link rel="stylesheet" type="text/css" href="back/vendors/css/extensions/unslider.css">
     <link rel="stylesheet" type="text/css" href="back/vendors/css/weather-icons/climacons.min.css">
+    <link rel="stylesheet" type="text/css" href="back/vendors/css/forms/selects/selectize.css">
+    <link rel="stylesheet" type="text/css" href="back/vendors/css/forms/selects/selectize.default.css">
     <!-- END VENDOR CSS-->
     <!-- BEGIN ROBUST CSS-->
     <link rel="stylesheet" type="text/css" href="back/css/app.min.css">
@@ -26,12 +29,16 @@
     <!-- BEGIN Page Level CSS-->
     <link rel="stylesheet" type="text/css" href="back/css/core/menu/menu-types/vertical-menu.min.css">
     <link rel="stylesheet" type="text/css" href="back/css/core/colors/palette-gradient.min.css">
-    <link rel="stylesheet" type="text/css" href="back/css/core/colors/palette-gradient.min.css">
+    <link rel="stylesheet" type="text/css" href="back/css/plugins/forms/wizard.min.css">
     <link rel="stylesheet" type="text/css" href="back/css/plugins/calendars/clndr.min.css">
+    <link rel="stylesheet" type="text/css" href="back/css/plugins/pickers/daterange/daterange.min.css">
     <link rel="stylesheet" type="text/css" href="back/fonts/meteocons/style.min.css">
+    <link rel="stylesheet" type="text/css" href="back/css/plugins/forms/selectize/selectize.min.css">
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="back/css/style.css">
+    {% block CustomCss%}
+        <!--    <link rel="stylesheet" type="text/css" href="back/css/style.css"> -->
+    {%  endblock %}
     <!-- END Custom CSS-->
 </head>
 <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="2-columns">
@@ -1272,25 +1279,6 @@
 </div>
 {% block Content %}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {% endblock %}
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 <div class="customizer border-left-blue-grey border-left-lighten-4 d-none d-xl-block"><a class="customizer-close" href="#"><i class="ft-x font-medium-3"></i></a><a class="customizer-toggle bg-danger box-shadow-3" href="#"><i class="ft-settings font-medium-3 spinner white"></i></a><div class="customizer-content p-2 ps-container ps-theme-dark" data-ps-id="135922a6-ce0b-d859-ac81-747482bcbcd3">
@@ -1658,6 +1646,10 @@
 <script src="back/vendors/js/vendors.min.js"></script>
 <!-- BEGIN VENDOR JS-->
 <!-- BEGIN PAGE VENDOR JS-->
+<script src="back/vendors/js/forms/select/selectize.min.js"></script>
+<script src="back/js/core/libraries/jquery_ui/jquery-ui.min.js"></script>
+<script src="back/vendors/js/forms/validation/jquery.validate.min.js"></script>
+<script src="back/vendors/js/forms/repeater/jquery.repeater.min.js"></script>
 <script src="back/vendors/js/charts/raphael-min.js"></script>
 <script src="back/vendors/js/charts/morris.min.js"></script>
 <script src="back/vendors/js/charts/chart.min.js"></script>
@@ -1668,6 +1660,11 @@
 <script src="back/vendors/js/extensions/clndr.min.js"></script>
 <script src="back/vendors/js/charts/echarts/echarts.js"></script>
 <script src="back/vendors/js/extensions/unslider-min.js"></script>
+<script src="back/vendors/js/extensions/jquery.steps.min.js"></script>
+<script src="back/vendors/js/pickers/dateTime/moment-with-locales.min.js"></script>
+<script src="back/vendors/js/pickers/daterange/daterangepicker.js"></script>
+
+
 <!-- END PAGE VENDOR JS-->
 <!-- BEGIN ROBUST JS-->
 <script src="back/js/core/app-menu.min.js"></script>
@@ -1675,9 +1672,13 @@
 <script src="back/js/scripts/customizer.min.js"></script>
 <!-- END ROBUST JS-->
 <!-- BEGIN PAGE LEVEL JS-->
-<script src="back/js/scripts/pages/dashboard-ecommerce.min.js"></script>
+
+<script src="back/js/scripts/forms/wizard-steps.min.js"></script>
+<script src="back/js/scripts/forms/select/form-selectize.min.js"></script>
+<script src="back/js/scripts/forms/form-repeater.min.js"></script>
 <!-- END PAGE LEVEL JS-->
 </body>
+
 
 <!-- Mirrored from pixinvent.com/bootstrap-admin-template/robust/html/ltr/vertical-menu-template/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 28 Feb 2021 09:34:23 GMT -->
 </html>
