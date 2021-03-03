@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=NourritureRepository::class)
+ * @ORM\InheritanceType("JOINED")
  */
 class Nourriture
 {
@@ -15,32 +16,32 @@ class Nourriture
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    Protected $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    Protected $nom;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $lipides;
+    Protected $lipides;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $glucides;
+    Protected $glucides;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $proteines;
+    Protected $proteines;
 
     /**
      * @ORM\Column(type="float")
      */
-    private $poid;
+    Protected $poid;
 
     public function getId(): ?int
     {

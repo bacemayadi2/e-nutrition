@@ -1,0 +1,66 @@
+
+{% extends 'back/base.html.twig' %}
+{% block Content %}
+    <div class="app-content content">
+        <div class="content-wrapper">
+
+            <div class="content-body"><!-- Basic Tables start -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Les fiches consultations</h4>
+                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="bg-primary white">
+                                        <tr>
+                                            <th>id</th>
+                                            <th>nom</th>
+                                            <th>categorieAlimen </th>
+                                            <th>Poid(m)</th>
+                                            <th>proteines</th>
+                                            <th>glucides</th>
+                                            <th>lipides</th>
+                                            <th>calories</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr {% for f in aliments %} >
+                                            <td>{{ f.getId() }}</td>
+                                            <td> {{ f.nom }}</td>
+                                            <td> {{ f.categorieToString() }} </td>
+                                            <td>{{ f.poid }}</td>
+                                            <td>{{ f.proteines }}</td>
+                                            <td>{{ f.glucides }}</td>
+                                            <td>{{ f.lipides }}</td>
+                                            <td>{{   f.calculerCalorie()  }}</td>
+                                            <td>
+                                                <a href="{{ path('supprimerAliment',{'id':f.id }) }}" > Delete </a>
+                                            </td>
+                                        </tr {% endfor %}>
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
