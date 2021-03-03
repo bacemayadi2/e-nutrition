@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Aliment;
+use App\Entity\CategorieAliment;
 use App\Form\AlimentType;
 use App\Repository\CategorieAlimentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,15 +27,31 @@ class AlimentController extends AbstractController
         $form->add("Ajouter",SubmitType::class);
         $form->handleRequest($request);//gere requette envoyer par l'utlisateur
 
-        if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted() ){
+
+            $forms = $form->getData();
+            dump([$forms])  ;
+
             $em=$this->getDoctrine()->getManager();
+            //$forms = iterator_to_array($form);
+            //dump([$form])  ;
+
+          // $categories = $forms['categorieAliment']->getData(); ;
+           // dump([$categories]);
+        //    foreach ($categories as $categorie)
+           //{
+          // dump([$categorie])  ;
+           //}
+
+
             $em->persist($aliment);
             $em->flush();
-            return $this->redirectToRoute('studentAffiche');
+         //   return $this->redirectToRoute('studentAffiche');
         }
-       // $categorie=$repo->findAll();
+        $categorie=$repo->findAll();
         return $this->render("back/aliment/ajouterAliment.html.twig",
-            ['f'=> $form->createView()]);
+            ['categorie' => $categorie , 'form'=> $form->createView() ]);
+
 
     }
 }

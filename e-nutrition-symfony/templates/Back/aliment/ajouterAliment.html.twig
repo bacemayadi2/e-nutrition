@@ -37,7 +37,6 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Form wizard with number tabs</h4>
                                 <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -48,58 +47,76 @@
                                     </ul>
                                 </div>
                             </div>
+
+
                             <div class="card-content collapse show">
                                 <div class="card-body">
-                                    <form action="#" class="number-tab-steps wizard-circle">
+                                  <!--  <form action="#" class="number-tab-steps wizard-circle"> -->
+                                        {{ form_start ( form, {'attr' : {'class': 'number-tab-steps wizard-circle'} }) }}
 
                                         <!-- Step 1 -->
                                         <h6>Step 1</h6>
                                         <fieldset>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="firstName1"> cnom :</label>
-                                                        <input type="text" class="form-control" id="firstName1" >
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div class="form-body">
+                                                <h4 class="form-section"><i class="ft-user"></i> ajoute aliment </h4>
+                                                <div class="row">
+                                                        <div class="form-group col-12 mb-2">
+                                                            <label for="firstName1"> nom :</label>
+                                                            {{ form_widget(form.nom, { 'attr': {'class': 'form-control'} + {'type' : 'text'} + {'name':'ajouter'}  }) }}
 
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <h5>choisire les categories </h5>
-                                                        <input type="text" class="input-selectize" value= "aa , bb">
-                                                    </div>
+                                                        </div>
                                                 </div>
-                                            </div>
+                                                <div class="row">
 
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="firstName1">code a barre :</label>
-                                                        <input type="text" class="form-control" id="firstName1" >
-                                                    </div>
+                                                        <div class="form-group col-12 mb-2">
+                                                            <h5>choisire les categories </h5>
+
+                                                            {{ form_widget(form.categorieAliment, { 'attr': {'class': 'input-selectize'} + {'value' :  "
+                                                                {{
+                                                                {% for k in categorie %}
+                                                                {% if not  loop.first  %}
+                                                                ,
+                                                                {% endif %}
+                                                                {{ k.nomCategorie }}
+                                                                {% endfor %}
+                                                                }} "
+
+
+                                                            } }) }}
+                                                        </div>
                                                 </div>
-                                            </div>
-                                            <div class="repeater-default">
-                                                <div data-repeater-list="car">
-                                                    <div data-repeater-item>
-                                                        <div class="row">
-                                                            <div class="form-group mb-1 col-sm-12 col-md-2">
-                                                                <label for="email-addr">image(optionel)</label>
-                                                                <input type="email" class="form-control" id="email-addr" placeholder="Enter email">
+
+                                                <div class="row">
+
+                                                        <div class="form-group col-12 mb-2">
+                                                            <label for="firstName1">code a barre :</label>
+                                                            {{ form_widget(form.codeABarre, { 'attr': {'class': 'form-control'} + {'type' : 'text'} }) }}
+
+                                                        </div>
+                                                </div>
+                                                <div class="repeater-default">
+                                                    <div data-repeater-list="car">
+                                                        <div data-repeater-item>
+                                                            <div class="row">
+                                                                <div class="form-group col-12 mb-2">
+                                                                    <label for="firstName1">images(optionel)</label>
+                                                                    <br>
+                                                                    <label id="projectinput8" class="file center-block">
+                                                                        <input type="file" id="file">
+                                                                        <span class="file-custom"></span>
+                                                                    </label>
+                                                                    <button type="button" class="btn btn-danger" data-repeater-delete> <i class="ft-x"></i> Delete</button>
+                                                                </div>
                                                             </div>
-                                                            <div class="form-group col-sm-12 col-md-2 text-center mt-2">
-                                                                <button type="button" class="btn btn-danger" data-repeater-delete> <i class="ft-x"></i> Delete</button>
-                                                            </div>
+
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="form-group overflow-hidden">
-                                                    <div class="col-12">
-                                                        <button data-repeater-create class="btn btn-primary">
-                                                            <i class="ft-plus"></i> Add
-                                                        </button>
+                                                    <div class="form-group overflow-hidden">
+                                                        <div class="col-12">
+                                                            <button data-repeater-create class="btn btn-primary">
+                                                                <i class="ft-plus"></i> Add
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -110,61 +127,40 @@
                                         <h6>Step 2</h6>
                                         <fieldset>
 
-                                            <div class="row">
+                                            <div class="form-body">
+                                                <h4 class="form-section"><i class="ft-user"></i>   aliment nutrition values</h4>
+                                                <div class="row">
+                                                    <div class="form-group col-12 mb-2">
+                                                        <label for="projectinput5">Poids</label>
+                                                        {{ form_widget(form.poid, { 'attr': {'class': 'form-control'} + {'type' : 'text'} }) }}
 
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="meetingName1">Name of Meeting :</label>
-                                                        <input type="text" class="form-control" id="meetingName1" >
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="meetingLocation1">Location :</label>
-                                                        <input type="text" class="form-control" id="meetingLocation1" >
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="participants1">Names of Participants</label>
-                                                        <textarea name="participants" id="participants1" rows="4" class="form-control"></textarea>
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-6 mb-2">
+                                                        <label for="projectinput1">lipides</label>
+                                                        {{ form_widget(form.lipides, { 'attr': {'class': 'form-control'} + {'type' : 'text'} }) }}
+                                                    </div>
+                                                    <div class="form-group col-md-6 mb-2">
+                                                        <label for="projectinput2">proteine </label>
+                                                        {{ form_widget(form.proteines, { 'attr': {'class': 'form-control'} + {'type' : 'text'} }) }}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-6 mb-2">
+                                                        <label for="projectinput2">glucide </label>
+                                                        {{ form_widget(form.glucides, { 'attr': {'class': 'form-control'} + {'type' : 'text'} }) }}
 
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="decisions1">Decisions Reached</label>
-                                                        <textarea name="decisions" id="decisions1" rows="4" class="form-control"></textarea>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label>Agenda Items :</label>
-                                                        <div class="c-inputs-stacked">
-                                                            <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" name="agenda1" class="custom-control-input" id="item11">
-                                                                <label class="custom-control-label" for="item11">1st item</label>
-                                                            </div>
-                                                            <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" name="agenda1" class="custom-control-input" id="item12">
-                                                                <label class="custom-control-label" for="item12">2nd item</label>
-                                                            </div>
-                                                            <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" name="agenda1" class="custom-control-input" id="item13">
-                                                                <label class="custom-control-label" for="item13">3rd item</label>
-                                                            </div>
-                                                            <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" name="agenda1" class="custom-control-input" id="item14">
-                                                                <label class="custom-control-label" for="item14">4th item</label>
-                                                            </div>
-                                                            <div class="custom-control custom-checkbox">
-                                                                <input type="checkbox" name="agenda1" class="custom-control-input" id="item15">
-                                                                <label class="custom-control-label" for="item15">5th item</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
                                                 </div>
 
                                             </div>
-
                                         </fieldset>
-                                    </form>
+
+
+                                        {{ form_end(form) }}
+
                                 </div>
                             </div>
                         </div>
@@ -174,7 +170,6 @@
 
     </div>
 </div>
-
 
 <!-- ////////////////////////////////////////////////////////////////////////////-->
 

@@ -23,7 +23,6 @@ class FicheConsultationController extends AbstractController
      * @param FicheConsultationRepository $repository
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("afficherFicheConsultation",name="ficheAffiche")
-
      */
 
     public function Affiche(FicheConsultationRepository $repository)
