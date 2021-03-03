@@ -2,11 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\UtilisateurRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
+ * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class Utilisateur
 {
@@ -19,6 +20,7 @@ class Utilisateur
 
     /**
      * @ORM\Column(type="string", length=255)
+     * Assert\NotBlank(message="Name is required")
      */
     private $nom;
 
@@ -39,6 +41,8 @@ class Utilisateur
 
     /**
      * @ORM\Column(type="string", length=30)
+     *Assert\NotBlank(message="E-mail is required")
+     * Assert\Email(message="E-mail is not valid")
      */
     private $email;
 

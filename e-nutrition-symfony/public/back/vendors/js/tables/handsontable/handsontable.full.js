@@ -34317,7 +34317,7 @@ function normalizeLanguageCode(languageCode) {
 }
 
 /**
- * Set proper start language code. User may set language code which is not proper.
+ * Set proper start language code. Utilisateur may set language code which is not proper.
  *
  * @param {Object} settings Settings object.
  * @param {String} languageCode Language code for specific language i.e. 'en-US', 'pt-BR', 'de-DE'.
