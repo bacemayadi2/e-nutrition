@@ -32,6 +32,21 @@ class Utilisateur
      */
     private $sexe;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateNaiss;
+
+    /**
+     * @ORM\Column(type="string", length=30)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $tel;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +84,42 @@ class Utilisateur
     public function setSexe(string $sexe): self
     {
         $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    public function getDateNaiss(): ?\DateTimeInterface
+    {
+        return $this->dateNaiss;
+    }
+
+    public function setDateNaiss(\DateTimeInterface $dateNaiss): self
+    {
+        $this->dateNaiss = $dateNaiss;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getTel(): ?string
+    {
+        return $this->tel;
+    }
+
+    public function setTel(string $tel): self
+    {
+        $this->tel = $tel;
 
         return $this;
     }
