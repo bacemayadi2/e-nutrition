@@ -17,4 +17,14 @@ class HomeFrontController extends AbstractController
             'controller_name' => 'HomeFrontController',
         ]);
     }
+
+    /**
+     * @Route("indexotherpage", name="home_front")
+     */
+    public function index2(): Response
+    {
+        return $this->render('front/test.html.twig', [
+            'controller_name' => 'HomeFrontController',
+        ]);
+    }
 }

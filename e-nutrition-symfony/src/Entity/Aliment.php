@@ -6,22 +6,19 @@ use App\Repository\AlimentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use PhpParser\Node\Scalar\String_;
 
 /**
  * @ORM\Entity(repositoryClass=AlimentRepository::class)
  */
 class Aliment extends Nourriture
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
+
     private $codeABarre;
 
     /**
@@ -29,15 +26,13 @@ class Aliment extends Nourriture
      */
     private $categorieAliment;
 
+
+
     public function __construct()
     {
         $this->categorieAliment = new ArrayCollection();
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getCodeABarre(): ?string
     {
@@ -59,6 +54,21 @@ class Aliment extends Nourriture
         return $this->categorieAliment;
     }
 
+    public function  categorieToString(): string
+    {
+        $s="";
+        $first=true;
+        foreach ($this->categorieAliment as $c)
+        {
+         if  ($first == false)
+             $s= $s .  " , " ;
+         $s= $s . $c ;
+         $first=false;
+        }
+
+        return $s;
+    }
+
     public function addCategorieAliment(CategorieAliment $categorieAliment): self
     {
         if (!$this->categorieAliment->contains($categorieAliment)) {
@@ -74,4 +84,11 @@ class Aliment extends Nourriture
 
         return $this;
     }
+
+public function calculerCalorie() :float
+{
+    return $this->getGlucides()*4 +$this->getLipides() *9 + $this->getProteines()*9;
+}
+
+
 }

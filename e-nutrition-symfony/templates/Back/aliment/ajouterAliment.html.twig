@@ -68,10 +68,10 @@
                                                 </div>
                                                 <div class="row">
 
-                                                        <div class="form-group col-12 mb-2">
-                                                            <h5>choisire les categories </h5>
 
-                                                            {{ form_widget(form.categorieAliment, { 'attr': {'class': 'input-selectize'} + {'value' :  "
+                                                    <div class="form-group col-8 mb-2">
+                                                        <h5>choisire les categories </h5>
+                                                    {{ form_widget(form.categorieAliment, { 'attr': {'class': 'selectize-multiple'} + {'value' :  "
                                                                 {{
                                                                 {% for k in categorie %}
                                                                 {% if not  loop.first  %}
@@ -80,10 +80,9 @@
                                                                 {{ k.nomCategorie }}
                                                                 {% endfor %}
                                                                 }} "
+                                                    } }) }}
+                                                    </div>
 
-
-                                                            } }) }}
-                                                        </div>
                                                 </div>
 
                                                 <div class="row">
