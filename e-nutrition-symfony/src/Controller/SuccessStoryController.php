@@ -13,7 +13,7 @@ class SuccessStoryController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('success_story/index.html.twig', [
+        return $this->render('success_story/afficherMedicament.html.twig', [
             'controller_name' => 'SuccessStoryController',
         ]);
     }

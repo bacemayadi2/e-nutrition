@@ -17,7 +17,7 @@ class RendezVousController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('rendez_vous/index.html.twig', [
+        return $this->render('rendez_vous/afficherMedicament.html.twig', [
             'controller_name' => 'RendezVousController',
         ]);
 
