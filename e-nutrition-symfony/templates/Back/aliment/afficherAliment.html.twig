@@ -26,7 +26,6 @@
                                     <table class="table">
                                         <thead class="bg-primary white">
                                         <tr>
-                                            <th>id</th>
                                             <th>nom</th>
                                             <th>categorieAlimen </th>
                                             <th>Poid(m)</th>
@@ -34,11 +33,12 @@
                                             <th>glucides</th>
                                             <th>lipides</th>
                                             <th>calories</th>
+                                            <th>supprimer modifier </th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr {% for f in aliments %} >
-                                            <td>{{ f.getId() }}</td>
                                             <td> {{ f.nom }}</td>
                                             <td> {{ f.categorieToString() }} </td>
                                             <td>{{ f.poid }}</td>
@@ -47,7 +47,14 @@
                                             <td>{{ f.lipides }}</td>
                                             <td>{{   f.calculerCalorie()  }}</td>
                                             <td>
-                                                <a href="{{ path('supprimerAliment',{'id':f.id }) }}" > Delete </a>
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <div style="text-align: center;">
+                                                        <a href="{{ path('supprimerAliment',{'id':f.id }) }}"><button type="button" class="btn btn-primary">supprimer</button>
+                                                    </div>
+                                                    <div style="text-align: center;">
+                                                        <a href="{{ path('modifierAliment',{'id':f.id }) }}">  <button type="button" class="btn btn-success">modifier</button>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr {% endfor %}>
 

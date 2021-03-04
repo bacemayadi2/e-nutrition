@@ -23,27 +23,48 @@ class AlimentController extends AbstractController
      */
     public function ajoute(Request $request, CategorieAlimentRepository $repo)
     {
-
         $aliment =new Aliment();
-    //    $s =new String_() ;
-
-
         $form =$this->createForm(AlimentType::class,$aliment);
         $form->add("Ajouter",SubmitType::class);
         $form->handleRequest($request);//gere requette envoyer par l'utlisateur
 
-        if($form->isSubmitted() ){
-            dump($form)  ;
-
+        if($form->isSubmitted() && $form->isValid()){
             $em=$this->getDoctrine()->getManager();
-
-
-
             $em->persist($aliment);
             $em->flush();
            return $this->redirectToRoute('afficherAliment');
         }
         $categorie=$repo->findAll();
+        return $this->render("back/aliment/ajouterAliment.html.twig",
+            [ 'categorie' => $categorie , 'form'=> $form->createView(), ]);
+    }
+
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @Route ("modifieraliment/{id}",name="modifierAliment")
+     */
+    public function modifier(Request $request, CategorieAlimentRepository $repoCategorie, $id,AlimentRepository $repoAliment)
+    {
+
+        $aliment =$repoAliment->find($id);
+        //    $s =new String_() ;
+
+
+        $form =$this->createForm(AlimentType::class,$aliment);
+        $form->add("modifier",SubmitType::class);
+        $form->handleRequest($request);//gere requette envoyer par l'utlisateur
+
+        if($form->isSubmitted() && $form->isValid()){
+
+            $em=$this->getDoctrine()->getManager();
+            $em->flush();
+            return $this->redirectToRoute('afficherAliment');
+        }
+        $categorie=$repoCategorie->findAll();
+        dump($aliment);
         return $this->render("back/aliment/ajouterAliment.html.twig",
             [ 'categorie' => $categorie , 'form'=> $form->createView(), ]);
 
