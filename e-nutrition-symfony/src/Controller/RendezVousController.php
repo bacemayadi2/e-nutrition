@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\RendezVous;
+use App\Form\RendezVousType;
 use App\Repository\RendezVousRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class RendezVousController extends AbstractController
 {
     /**
@@ -41,5 +44,26 @@ class RendezVousController extends AbstractController
         $em->remove($rendezVous);
         $em->flush();
         return $this->redirectToRoute('rendez_vous');
+    }
+    /**
+     * @Route("CreateRendezvous", name="rdv")
+     */
+    function CreateRendezVous(Request $request)
+    {
+        $user = new RendezVous();
+        $form = $this->createForm(RendezVousType::class, $user);
+        $form->add("Ajouter", SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            dump($form);
+            //return $this->redirectToRoute('CreateUser');
+        }
+        return $this->render('rendez_vous/rendezVous.html.twig ' ,['form'=>$form->createView()]);
     }
 }

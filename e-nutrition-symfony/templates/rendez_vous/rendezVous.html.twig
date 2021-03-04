@@ -1,18 +1,36 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'front/base.html.twig' %}
+{% block Content %}
 
-{{ rendezVous.id }}
+    <div align="center" >
+        {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+        <br>
+
+        <div class="col-sm-6 offset-top-10 inset-sm-left-7">
+            <div class="form-wrap">
+                <table class="form-wrap">
+                    <tr>
+                        <td>{{ form_label(form.date, "date") }} </td>
+                        <td>{{ form_widget(form.date, {'attr': {'style': 'width: 250px'}}) }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ form_label(form.description, "description") }}</td>
+                        <td>{{ form_widget(form.description, {'attr': {'style': 'width: 250px'}}) }}</td>
+                    </tr>
+
+                </table>
+            </div>
+
+        </div>
 
 
-</body>
-</html>
+
+
+        {{ form_widget(form.Ajouter) }}
+
+        {{ form_end(form) }}
+
+
+    </div>
+{% endblock%}
 
 

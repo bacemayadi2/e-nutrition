@@ -1,0 +1,45 @@
+{% extends 'front/base.html.twig' %}
+{% block Content %}
+<div class="row justify-content-sm-center offset-top-20">
+    <div class="col-md-8 col-lg-6">
+        <!-- RD Mailform-->
+        <form class="rd-mailform text-left" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+            <div class="row justify-content-sm-center">
+                <div class="col-sm-6 inset-sm-right-7">
+                    <div class="form-wrap">
+                        <label class="form-label" for="forms-contact-us-first-name">First name</label>
+                        <input class="form-input" id="forms-contact-us-first-name" type="text" name="name" data-constraints="@Required">
+                    </div>
+                </div>
+                <div class="col-sm-6 offset-top-10 offset-xs-top-0 inset-sm-left-7">
+                    <div class="form-wrap">
+                        <label class="form-label" for="forms-contact-us-last-name">Last name</label>
+                        <input class="form-input" id="forms-contact-us-last-name" type="text" name="name" data-constraints="@Required">
+                    </div>
+                </div>
+                <div class="col-sm-6 offset-top-10 inset-sm-right-7">
+                    <div class="form-wrap">
+                        <label class="form-label" for="forms-contact-us-email">Email</label>
+                        <input class="form-input" id="forms-contact-us-email" type="email" name="email" data-constraints="@Email @Required">
+                    </div>
+                </div>
+                <div class="col-sm-6 offset-top-10 inset-sm-left-7">
+                    <div class="form-wrap">
+                        <label class="form-label" for="forms-contact-us-phone">Phone</label>
+                        <input class="form-input" id="forms-contact-us-phone" type="text" name="phone" data-constraints="@Numeric @Required">
+                    </div>
+                </div>
+                <div class="col-sm-12 offset-top-10 text-center text-xl-left">
+                    <div class="form-wrap">
+                        <label class="form-label" for="forms-contact-us-message">Message</label>
+                        <textarea class="form-input" id="forms-contact-us-message" name="message" data-constraints="@Required"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-lg-right offset-top-10">
+                <button class="btn btn-primary" type="submit">Send a message</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock%}
