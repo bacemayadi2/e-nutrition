@@ -2,9 +2,7 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/e-nutrition-symfony/src" isTestSource="false" packagePrefix="App\" />
-      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/e-nutrition-symfony/tests" isTestSource="true" packagePrefix="App\Tests\" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/doctrine/annotations" />
@@ -107,6 +105,8 @@
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/twig/extra-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/twig/twig" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/e-nutrition-java" />
+      <excludeFolder url="file://$MODULE_DIR$/e-nutrition-mobile" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
