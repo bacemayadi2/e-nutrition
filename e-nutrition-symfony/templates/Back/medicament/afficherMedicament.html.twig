@@ -1,10 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
+{% extends 'back/base.html.twig' %}
+{% block Content %}
+    <div class="app-content content">
+        <div class="content-wrapper">
+
+            <div class="content-body"><!-- Basic Tables start -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Ordonance</h4>
+                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="bg-primary white">
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nom du médicament </th>
+                                            <th>Quantité</th>
+                                            <th>Durée de consommation</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr {% for m in medicament %} >
+
+                                            <td> {{ m.id }}</td>
+                                            <td>{{ m.nom }}</td>
+                                            <td>{{ m.quantité }}</td>
+                                            <td>{{ f. }}</td>
+                                            <td>{{ f.apetit }}</td>
+                                            <td>{{ f.description }}</td>
+                                            <td> <a href="{{ path('deleteF',{'id':f.id}) }}">Delete</a></td>
+                                            <td> <a href="{{ path('updateF',{'id':f.id}) }}">Modifier</a></td>
+
+                                        </tr {% endfor %}>
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
