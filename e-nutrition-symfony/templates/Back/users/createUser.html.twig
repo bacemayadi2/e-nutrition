@@ -11,27 +11,27 @@
             <table class="form-wrap">
                 <tr>
                     <td>{{ form_label(form.nom, "Nom") }} </td>
-                    <td>{{ form_widget(form.nom) }}</td>
+                    <td>{{ form_widget(form.nom, {'attr': {'style': 'width: 250px'}}) }}</td>
                 </tr>
                 <tr>
                     <td>{{ form_label(form.prenom, "Prenom") }}</td>
-                    <td>{{ form_widget(form.prenom) }}</td>
+                    <td>{{ form_widget(form.prenom, {'attr': {'style': 'width: 250px'}}) }}</td>
                 </tr>
                 <tr>
                     <td>{{ form_label(form.sexe, "Sexe") }}</td>
-                    <td> {{ form_widget(form.sexe) }}</td>
+                    <td> {{ form_widget(form.sexe, {'attr': {'style': 'width: 250px'}}) }}</td>
                 </tr>
                 <tr>
                     <td>{{ form_label(form.dateNaiss, "Date de naissance") }}</td>
-                    <td>{{ form_widget(form.dateNaiss) }}</td>
+                    <td>{{ form_widget(form.dateNaiss, {'attr': {'style': 'width: 250px'}}) }}</td>
                 </tr>
                 <tr>
                     <td>{{ form_label(form.email, "E-Mail") }}</td>
-                    <td>{{ form_widget(form.email) }}</td>
+                    <td>{{ form_widget(form.email, {'attr': {'style': 'width: 250px'}}) }}</td>
                 </tr>
                 <tr>
                     <td>{{ form_label(form.tel, "Numéro de téléphone") }}</td>
-                    <td>{{ form_widget(form.tel) }}</td>
+                    <td>{{ form_widget(form.tel, {'attr': {'style': 'width: 250px'}})  }}</td>
                 </tr>
             </table>
         </div>
