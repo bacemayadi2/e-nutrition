@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Plat;
+use App\Form\PlatType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,19 +17,18 @@ class PlatController extends AbstractController
     public function ajouterPlat(Request $request): Response
     {
         $plat =new Plat();
-        $form =$this->createForm(AlimentType::class,$aliment);
+        $form =$this->createForm(PlatType::class,$plat);
         $form->add("Ajouter",SubmitType::class);
         $form->handleRequest($request);//gere requette envoyer par l'utlisateur
 
         if($form->isSubmitted() && $form->isValid()){
             $em=$this->getDoctrine()->getManager();
-            $em->persist($aliment);
+            $em->persist($plat);
             $em->flush();
             return $this->redirectToRoute('afficherAliment');
         }
-        $categorie=$repo->findAll();
         return $this->render("back/aliment/ajouterAliment.html.twig",
-            [ 'categorie' => $categorie , 'form'=> $form->createView(), ]);
+            [  'form'=> $form->createView(), ]);
     }
 
 
