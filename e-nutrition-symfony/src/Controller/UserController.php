@@ -25,12 +25,12 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/student/AfficheStudent", name="AfficheStudent")
+     * @Route("/admin/DisplayUsers", name="DisplayUsers")
      */
-    public function AfficheStudent(UserRepository $repo)
+    public function DisplayUsers(UserRepository $repo)
     {
         $users = $repo->findAll();
-        return $this->render("back/DisplayUsers.html.twig",['users'=>$users]);
+        return $this->render("back/users/DisplayUsers.html.twig",['users'=>$users]);
     }
 
     /**
@@ -55,9 +55,9 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("DeleteUser/{id}", name="DeleteUser")
+     * @Route("/admin/DeleteUser/{id}", name="DeleteUser")
      */
-    function DeleteStudent(UserRepository  $repo, $id)
+    function DeleteUser(UserRepository  $repo, $id)
     {
         $user = $repo->find($id);
         $em = $this->getDoctrine()->getManager();

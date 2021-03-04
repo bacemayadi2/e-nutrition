@@ -1,0 +1,25 @@
+{% extends 'back/base.html.twig' %}
+{% block Content %}
+    <br>
+    <table border="1" cellpadding="50" align="center">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Sexe</th>
+            <th>Date Naissance</th>
+            <th>E-Mail</th>
+            <th>Numéro de téléphone</th>
+        </tr>
+        <tr {% for s in users %}>
+            <td>{{ s.id }}</td>
+            <td>{{ s.nom }}</td>
+            <td>{{ s.prenom }}</td>
+            <td>{{ s.sexe }}</td>
+            <td>{{ s.dateNaiss|date('d-m-Y') }}</td>
+            <td>{{ s.email }}</td>
+            <td>{{ s.tel }}</td>
+            <td><a href="{{ path('DeleteUser', {'id':s.id}) }}" >Delete</a></td>
+        </tr {% endfor %}>
+    </table>
+{% endblock%}
