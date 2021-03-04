@@ -32,6 +32,11 @@ class EtapeDePreparation
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Plat::class, inversedBy="etapeDePreparation")
+     */
+    private $plat;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class EtapeDePreparation
     public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getPlat(): ?Plat
+    {
+        return $this->plat;
+    }
+
+    public function setPlat(?Plat $plat): self
+    {
+        $this->plat = $plat;
 
         return $this;
     }

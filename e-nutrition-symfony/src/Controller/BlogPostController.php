@@ -20,7 +20,7 @@ class BlogPostController extends AbstractController
      */
     public function index(BlogPostRepository $blogPostRepository): Response
     {
-        return $this->render('blog_post/index.html.twig', [
+        return $this->render('blog_post/ajouterplat.html.twig', [
             'blog_posts' => $blogPostRepository->findAll(),
         ]);
     }

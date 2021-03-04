@@ -20,7 +20,7 @@ class MesureController extends AbstractController
      */
     public function index(MesureRepository $mesureRepository): Response
     {
-        return $this->render('mesure/index.html.twig', [
+        return $this->render('mesure/ajouterplat.html.twig', [
             'mesures' => $mesureRepository->findAll(),
         ]);
     }
