@@ -17,40 +17,40 @@ class Utilisateur
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * Assert\NotBlank(message="Name is required")
      */
-    private $nom;
+    protected $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $prenom;
+    protected $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $sexe;
+    protected $sexe;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $dateNaiss;
+    protected $dateNaiss;
 
     /**
      * @ORM\Column(type="string", length=30)
      *Assert\NotBlank(message="E-mail is required")
      * Assert\Email(message="E-mail is not valid")
      */
-    private $email;
+    protected $email;
 
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private $tel;
+    protected $tel;
 
     public function getId(): ?int
     {
