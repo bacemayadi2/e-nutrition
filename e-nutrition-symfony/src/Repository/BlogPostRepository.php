@@ -20,7 +20,7 @@ class BlogPostRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return BlogPost [] Returns an array of BlogPost objects
+    //  * @return BlogPost[] Returns an array of BlogPost objects
     //  */
     /*
     public function findByExampleField($value)
