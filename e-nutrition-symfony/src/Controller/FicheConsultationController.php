@@ -2,10 +2,14 @@
 
 namespace App\Controller;
 
+use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\FicheConsultationRepository;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use App\Form\FicheConsultationType;
 use App\Entity\FicheConsultation;
 class FicheConsultationController extends AbstractController
 {
@@ -25,15 +29,81 @@ class FicheConsultationController extends AbstractController
      * @Route("afficherFicheConsultation",name="ficheAffiche")
      */
 
-    public function Affiche(FicheConsultationRepository $repository)
+    public function AfficheFiche(FicheConsultationRepository $repository)
     {
 
         $ficheConsultation=$repository->findAll();
         return $this->render('Back/fiche_consultation/afficherFicheConsultation.html.twig',
         ['ficheConsultation'=>$ficheConsultation]);
-
-
     }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @route("ajouterFicheConsultation",name="ficheAjout")
+     */
+   public function AjoutF(Request $request){
+   $ficheConsultation=new FicheConsultation();
+   $form=$this->createForm(FicheConsultationType::class,$ficheConsultation);
+   $form->add('Ajouter',SubmitType::class);
+   $form->handleRequest($request);
+   if($form->isSubmitted() && $form->isValid()){
+
+       $em=$this->getDoctrine()->getManager();
+       $em->persist($ficheConsultation);
+       $em->flush();
+       return $this->redirectToRoute('afficherFicheConsultation');
+
+   }
+return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig',[
+    'form'=>$form->createView()
+    ]);
+   }
+
+    /**
+     * @route("supprimerFicheConsultation/{id}", name="deleteF")
+     */
+
+   public function Delete($id,FicheConsultationRepository $repository){
+       $ficheConsultation=$repository->find($id);
+       $em=$this->getDoctrine()->getManager();
+       $em->remove($ficheConsultation);
+       $em->flush();
+       return $this->redirectToRoute('ficheAffiche');
+   }
+
+
+
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @route("updateFicheConsultation/{id}", name="updateF")
+     */
+
+ function Update(FicheConsultationRepository $repository,$id,Request $request){
+     $ficheConsultation=$repository->find($id);
+     $form=$this->createForm(FicheConsultationType::class,$ficheConsultation);
+     $form->add('Update',SubmitType::class);
+     $form->handleRequest($request);
+     if($form->isSubmitted()&&$form->isValid()){
+
+       $em=$this->getDoctrine()->getManager();
+       $em->flush();
+       return $this->redirectToRoute('ficheAffiche');
+     }
+
+     return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig',
+     [
+         'form'=>$form->createView()
+     ]);
+
+ }
+
+
+
+
 
 
 }
