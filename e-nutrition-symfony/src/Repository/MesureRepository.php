@@ -20,7 +20,7 @@ class MesureRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Mesure[] Returns an array of Mesure objects
+    //  * @return Mesure [] Returns an array of Mesure objects
     //  */
     /*
     public function findByExampleField($value)
