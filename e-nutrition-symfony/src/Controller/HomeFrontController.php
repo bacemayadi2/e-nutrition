@@ -19,7 +19,7 @@ class HomeFrontController extends AbstractController
     }
 
     /**
-     * @Route("indexotherpage", name="home_front")
+     * @Route("indexotherpage", name="home_front2")
      */
     public function index2(): Response
     {
