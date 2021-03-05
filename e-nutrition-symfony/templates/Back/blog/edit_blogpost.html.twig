@@ -1,0 +1,94 @@
+{% extends 'back/base.html.twig' %}
+{% block Content %}
+
+
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+                <h3 class="content-header-title mb-0 d-inline-block">Circle Style</h3>
+                <div class="row breadcrumbs-top d-inline-block">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index-2.html">Home</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="#">Page</a>
+                            </li>
+                            <li class="breadcrumb-item active">Form Wizard Circle Steps
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="content-header-right col-md-4 col-12">
+                <div class="btn-group float-md-right">
+                    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"><i class="icon-settings mr-1"></i>Action
+                    </button>
+                    <div class="dropdown-menu arrow"><a class="dropdown-item" href="#"><i
+                                    class="fa fa-calendar mr-1"></i> Calender</a><a class="dropdown-item" href="#"><i
+                                    class="fa fa-cart-plus mr-1"></i> Cart</a><a class="dropdown-item" href="#"><i
+                                    class="fa fa-life-ring mr-1"></i> Support</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="fa fa-cog mr-1"></i> Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body"><!-- Form wizard with number tabs section start -->
+            <section id="number-tabs">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="card-content collapse show">
+                                {{ form_start(form,
+                                    {'attr':
+                                        {
+                                            'action' : action
+                                        }
+                                    })
+                                }}
+                                <div class="card-body mb-5">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Titre</span>
+                                        </div>
+                                        {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                                    </div>
+
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Contenu</span>
+                                        </div>
+                                        {{ form_widget(form.body, {'attr': {'rows': '10'}}) }}
+                                    </div>
+
+                                    <button type="submit" class="btn btn-success float-right">Envoyer</button>
+                                </div>
+                                {{ form_end(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+
+    {% endblock %}
+
+

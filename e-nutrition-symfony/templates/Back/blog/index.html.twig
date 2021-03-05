@@ -1,0 +1,123 @@
+{% extends 'back/base.html.twig' %}
+{% block Content %}
+
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+                <h3 class="content-header-title mb-0 d-inline-block">Circle Style</h3>
+                <div class="row breadcrumbs-top d-inline-block">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index-2.html">Home</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="#">Page</a>
+                            </li>
+                            <li class="breadcrumb-item active">Form Wizard Circle Steps
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="content-header-right col-md-4 col-12">
+                <div class="btn-group float-md-right">
+                    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"><i class="icon-settings mr-1"></i>Action
+                    </button>
+                    <div class="dropdown-menu arrow"><a class="dropdown-item" href="#"><i
+                                    class="fa fa-calendar mr-1"></i> Calender</a><a class="dropdown-item" href="#"><i
+                                    class="fa fa-cart-plus mr-1"></i> Cart</a><a class="dropdown-item" href="#"><i
+                                    class="fa fa-life-ring mr-1"></i> Support</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="fa fa-cog mr-1"></i> Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body"><!-- Form wizard with number tabs section start -->
+            <section id="number-tabs">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!----------------------------------------------------->
+                            <div class="card-content collapse show" style="height: 100%">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col" style="width: 12%">Date</th>
+                                                    <th scope="col" style="width: 27%">Titre</th>
+                                                    <th scope="col" style="width: 41%">Extrait contenu</th>
+                                                    <th scope="col" style="width: 20%; text-align: center;">Actions</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for blog_post in blog_posts %}
+                                                    <tr>
+                                                        <td>{{ blog_post.date.date|date("Y-m-d") }}</td>
+                                                        <td>{{ blog_post.title }}</td>
+                                                        <td>{{ blog_post.body|length > 50 ? blog_post.body|slice(0, 50) ~ '...' : blog_post.body }}</td>
+                                                        <td style="text-align: center;">
+                                                            <a class="btn btn-success"
+                                                               href="{{ url("blog_post_show", { 'id': blog_post.id }) }}">
+                                                                <i class="far fa-eye"></i></a>
+
+                                                            <a class="btn btn-primary"
+                                                               href="{{ url("blog_post_edit", { 'id': blog_post.id }) }}">
+                                                                <i class="far fa-edit"></i></a>
+
+                                                            <a class="btn btn-danger" onclick="return confirm('Voulez-vous supprimer cette publication?');"
+                                                               href="{{ url("blog_post_delete", { 'id': blog_post.id }) }}">
+                                                                <i class="far fa-trash-alt"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!----------------------------------------------------->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <style>
+                .container {
+                    padding: 2rem 0rem;
+                }
+
+                h4 {
+                    margin: 2rem 0rem 1rem;
+                }
+
+                .table-image {
+
+                td, th {
+                    vertical-align: middle;
+                }
+
+                }
+            </style>
+        </div>
+    </div>
+
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+
+    {% endblock %}
+
+
