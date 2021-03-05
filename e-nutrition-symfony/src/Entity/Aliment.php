@@ -26,11 +26,17 @@ class Aliment extends Nourriture
      */
     private $categorieAliment;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Composition::class, mappedBy="aliments")
+     */
+    private $compositions;
+
 
 
     public function __construct()
     {
         $this->categorieAliment = new ArrayCollection();
+        $this->compositions = new ArrayCollection();
     }
 
 
@@ -88,6 +94,36 @@ class Aliment extends Nourriture
 public function calculerCalorie() :float
 {
     return $this->getGlucides()*4 +$this->getLipides() *9 + $this->getProteines()*9;
+}
+
+/**
+ * @return Collection|Composition[]
+ */
+public function getCompositions(): Collection
+{
+    return $this->compositions;
+}
+
+public function addComposition(Composition $composition): self
+{
+    if (!$this->compositions->contains($composition)) {
+        $this->compositions[] = $composition;
+        $composition->setAliments($this);
+    }
+
+    return $this;
+}
+
+public function removeComposition(Composition $composition): self
+{
+    if ($this->compositions->removeElement($composition)) {
+        // set the owning side to null (unless already changed)
+        if ($composition->getAliments() === $this) {
+            $composition->setAliments(null);
+        }
+    }
+
+    return $this;
 }
 
 

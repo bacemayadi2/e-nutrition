@@ -58,7 +58,7 @@
                                     <h6>Step 1</h6>
                                     <fieldset>
                                         <div class="form-body">
-                                            <h4 class="form-section"><i class="ft-user"></i> ajoute aliment </h4>
+                                            <h4 class="form-section"><i class="ft-user"></i> ajoute plat </h4>
                                             <div class="row">
                                                 <div class="form-group col-12 mb-2">
                                                     <label for="firstName1"> nom :</label>
@@ -66,33 +66,18 @@
 
                                                 </div>
                                             </div>
-                                            <div class="row">
 
 
-                                                <div class="form-group col-8 mb-2">
-                                                    <h5>choisire les categories </h5>
-                                                    {{ form_widget(form.categorieAliment, { 'attr': {'class': 'selectize-multiple'} + {'value' :  "
-                                                                {{
-                                                                {% for k in categorie %}
-                                                                {% if not  loop.first  %}
-                                                                ,
-                                                                {% endif %}
-                                                                {{ k.nomCategorie }}
-                                                                {% endfor %}
-                                                                }} "
-                                                    } }) }}
-                                                </div>
-
-                                            </div>
-
-                                            <div class="row">
-
-                                                <div class="form-group col-12 mb-2">
-                                                    <label for="firstName1">code a barre :</label>
-                                                    {{ form_widget(form.codeABarre, { 'attr': {'class': 'form-control'} + {'type' : 'text'} }) }}
+                                                <div class="form-group ">
+                                                    <label  for="timesheetinput7">description</label>
+                                                        <div class="position-relative has-icon-left">
+                                                            {{ form_widget(form.description, { 'attr': {'class': 'form-control'} + {'type' : 'text'} + {'name':'ajouter'}+ {'rows': '8' } }) }}
+                                                            <div class="form-control-position">
+                                                                <i class="ft-file"></i>
+                                                            </div>
+                                                        </div>
 
                                                 </div>
-                                            </div>
                                             <div class="repeater-default">
                                                 <div data-repeater-list="car">
                                                     <div data-repeater-item>
@@ -118,44 +103,99 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </fieldset>
-
-
                                     <!-- Step 2 -->
                                     <h6>Step 2</h6>
                                     <fieldset>
 
+                                        <div class="repeater-default">
+                                            <div data-repeater-list="car">
+                                                <div data-repeater-item>
+                                                    <div class="row">
+                                                        <div class="form-group col-12 mb-2">
+                                                            <div class="row">
+
+
+                                                                <div class="form-group col-8 mb-2">
+                                                                    <h5>choisire aliment </h5>
+                                                                    {{ form_widget(form.compostions , { 'attr': {'class': 'selectize-multiple'} + {'value' :  "
+                                                                {{
+                                                                {% for k in alimentss %}
+                                                                {% if not  loop.first  %}
+                                                                ,
+                                                                {% endif %}
+                                                                {{ k.nom }}
+                                                                {% endfor %}
+                                                                }} "
+                                                                    } }) }}
+                                                                </div>
+
+                                                                <fieldset class="form-group">
+                                                                    <h5>quantie(en gramme) </h5>
+                                                                    <input type="number" class="form-control" id="number" value="43">
+                                                                </fieldset>
+                                                            </div>
+
+                                                            <button type="button" class="btn btn-danger" data-repeater-delete> <i class="ft-x"></i> Delete</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group overflow-hidden">
+                                                <div class="col-12">
+                                                    <button data-repeater-create class="btn btn-primary">
+                                                        <i class="ft-plus"></i> Add
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+
+
+                                    <!-- Step 2 -->
+                                    <h6>Step 3</h6>
+                                    <fieldset>
+
                                         <div class="form-body">
-                                            <h4 class="form-section"><i class="ft-user"></i>   aliment nutrition values</h4>
-                                            <div class="row">
-                                                <div class="form-group col-12 mb-2">
-                                                    <label for="projectinput5">Poids</label>
-                                                    {{ form_widget(form.poid, { 'attr': {'class': 'form-control'} + {'type' : 'text'} }) }}
+                                            <h4 class="form-section"><i class="ft-user"></i>   plat  etape de Preparations</h4>
+                                            <div class="repeater-default">
+                                                <div data-repeater-list="form">
+                                                    <div data-repeater-item>
+                                                        <div class="row">
+                                                            <label  for="timesheetinput7">descirption etape Preparations:</label>
+                                                            <div class="form-group col-12 mb-2">
+                                                                {{ form_widget(form.etapeDePreparation, { 'attr': {'class': 'form-control'} + {'name' : 'description'} + {'placeholder':'description'}+ {'rows': '8' } }) }}
 
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group col-md-6 mb-2">
-                                                    <label for="projectinput1">lipides</label>
-                                                    {{ form_widget(form.lipides, { 'attr': {'class': 'form-control'} + {'type' : 'text'} }) }}
-                                                </div>
-                                                <div class="form-group col-md-6 mb-2">
-                                                    <label for="projectinput2">proteine </label>
-                                                    {{ form_widget(form.proteines, { 'attr': {'class': 'form-control'} + {'type' : 'text'} }) }}
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="form-group col-md-6 mb-2">
-                                                    <label for="projectinput2">glucide </label>
-                                                    {{ form_widget(form.glucides, { 'attr': {'class': 'form-control'} + {'type' : 'text'} }) }}
+                                                                <textarea rows="5" class="form-control" name="description" placeholder="description"></textarea>
+                                                            </div>
+                                                            <label  for="timesheetinput7">durée en minute de l'etapes:</label>
 
-                                                </div>
+                                                            <div class="form-group col-md-2 mb-2">
+                                                                <input type="text" class="form-control" placeholder="durée en minute" name="durée">
+                                                            </div>
+                                                            <button type="button" class="btn btn-danger" data-repeater-delete> <i class="ft-x"></i> Delete</button>
 
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group overflow-hidden">
+                                                    <div class="col-12">
+                                                        <button data-repeater-create class="btn btn-primary">
+                                                            <i class="ft-plus"></i> Add
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
                                     </fieldset>
+
 
 
                                     {{ form_end(form) }}
@@ -168,6 +208,17 @@
             </section>
 
         </div>
+    </div>
+    <div class="form-group" dir="rtl">
+        <h5>RTL Select field Selectize</h5>
+        <p>Add <code>.selectize-rtl-select</code> class supports RTL to select </p>
+        <select class="selectize-rtl-select">
+            <option value="" selected>Select a person...</option>
+            <option value="4">Thomas Edison</option>
+            <option value="1">Nikola</option>
+            <option value="3">Nikola Tesla</option>
+            <option value="5">Arnold Schwarzenegger</option>
+        </select>
     </div>
 
     <!-- ////////////////////////////////////////////////////////////////////////////-->

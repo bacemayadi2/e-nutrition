@@ -29,9 +29,15 @@ class Plat extends Nourriture
      */
     private $etapeDePreparation;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Composition::class, mappedBy="plat")
+     */
+    private $compostions;
+
     public function __construct()
     {
         $this->etapeDePreparation = new ArrayCollection();
+        $this->compostions = new ArrayCollection();
     }
 
 
@@ -87,6 +93,36 @@ class Plat extends Nourriture
             // set the owning side to null (unless already changed)
             if ($etapeDePreparation->getPlat() === $this) {
                 $etapeDePreparation->setPlat(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Composition[]
+     */
+    public function getCompostions(): Collection
+    {
+        return $this->compostions;
+    }
+
+    public function addCompostion(Composition $compostion): self
+    {
+        if (!$this->compostions->contains($compostion)) {
+            $this->compostions[] = $compostion;
+            $compostion->setPlat($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCompostion(Composition $compostion): self
+    {
+        if ($this->compostions->removeElement($compostion)) {
+            // set the owning side to null (unless already changed)
+            if ($compostion->getPlat() === $this) {
+                $compostion->setPlat(null);
             }
         }
 
