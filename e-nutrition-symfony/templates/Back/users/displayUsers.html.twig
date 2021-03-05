@@ -1,6 +1,10 @@
 {% extends 'back/base.html.twig' %}
 {% block Content %}
+
     <br>
+    <h1>Liste des utilisateurs</h1>
+    <br>
+
     <table border="1" cellpadding="50" align="center">
         <tr>
             <th>Id</th>
@@ -19,6 +23,7 @@
             <td>{{ u.dateNaiss|date('d-m-Y') }}</td>
             <td>{{ u.email }}</td>
             <td>{{ u.tel }}</td>
+            <td><a href="{{ path('UpdateUser', {'id':u.id}) }}" >Update</a></td>
             <td><a href="{{ path('DeleteUser', {'id':u.id}) }}" >Delete</a></td>
         </tr {% endfor %}>
     </table>

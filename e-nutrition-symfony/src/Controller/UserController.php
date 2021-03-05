@@ -55,6 +55,28 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("UpdateUser/{id}", name="UpdateUser")
+     */
+    function UpdateStudent(UserRepository  $repo, Request $request, $id)
+    {
+        $user = $repo->find($id);
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->add("Valider", SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+
+            $em->flush();
+            return $this->redirectToRoute('DisplayUsers');
+        }
+        return $this->render('back/users/updateUser.html.twig', ['form'=>$form->createView()]);
+    }
+
+    /**
      * @Route("/admin/DeleteUser/{id}", name="DeleteUser")
      */
     function DeleteUser(UserRepository  $repo, $id)

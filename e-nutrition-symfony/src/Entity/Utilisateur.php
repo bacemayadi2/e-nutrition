@@ -17,40 +17,45 @@ class Utilisateur
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    protected $id;
+    private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * Assert\NotBlank(message="Name is required")
      */
-    protected $nom;
+    private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $prenom;
+    private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    protected $sexe;
+    private $sexe;
 
     /**
      * @ORM\Column(type="date")
      */
-    protected $dateNaiss;
+    private $dateNaiss;
 
     /**
      * @ORM\Column(type="string", length=30)
      *Assert\NotBlank(message="E-mail is required")
      * Assert\Email(message="E-mail is not valid")
      */
-    protected $email;
+    private $email;
 
     /**
      * @ORM\Column(type="string", length=20)
      */
-    protected $tel;
+    private $tel;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $typeCompte;
 
     public function getId(): ?int
     {
@@ -125,6 +130,18 @@ class Utilisateur
     public function setTel(string $tel): self
     {
         $this->tel = $tel;
+
+        return $this;
+    }
+
+    public function getTypeCompte(): ?string
+    {
+        return $this->typeCompte;
+    }
+
+    public function setTypeCompte(string $typeCompte): self
+    {
+        $this->typeCompte = $typeCompte;
 
         return $this;
     }

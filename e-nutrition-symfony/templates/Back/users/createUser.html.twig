@@ -1,14 +1,18 @@
 {% extends 'back/base.html.twig' %}
+
 {% block Content %}
-
-
 <div align="center" >
     {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
-<br>
 
-    <div class="col-sm-6 offset-top-10 inset-sm-left-7">
-        <div class="form-wrap">
+    <br>
+    <h1>Créer Compte</h1>
+    <br>
+
             <table class="form-wrap">
+                <tr>
+                    <td>{{ form_label(form.typeCompte, "Type Compte") }} </td>
+                    <td>{{ form_widget(form.typeCompte, {'attr': {'style': 'width: 250px'}}) }}</td>
+                </tr>
                 <tr>
                     <td>{{ form_label(form.nom, "Nom") }} </td>
                     <td>{{ form_widget(form.nom, {'attr': {'style': 'width: 250px'}}) }}</td>
@@ -34,15 +38,12 @@
                     <td>{{ form_widget(form.tel, {'attr': {'style': 'width: 250px'}})  }}</td>
                 </tr>
             </table>
-        </div>
-
-    </div>
 
 
 
 
-        {{ form_widget(form.Ajouter) }}
 
+        {{ form_widget(form.Ajouter, {'attr':{'class':'btn btn-primary'}}) }}
 
         {{ form_errors(form.nom) }}
         {{ form_errors(form.prenom) }}
