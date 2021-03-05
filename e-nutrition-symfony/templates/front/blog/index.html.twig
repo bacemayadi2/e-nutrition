@@ -57,7 +57,7 @@
                                 {% if truncate %}
                                     <p>{{ blog_post.body|slice(0, 500) ~ '...' }}</p>
                                 {% else %}
-                                    <p>{{ blog_post.body }}</p>
+                                    <p>{{ blog_post.body|trans|nl2br }}</p>
                                     <p></p>
                                     <a href="{{ url("blog_post_index") }}">Précédant</a>
                                 {% endif %}
