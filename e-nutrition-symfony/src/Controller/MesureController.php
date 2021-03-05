@@ -20,7 +20,7 @@ class MesureController extends AbstractController
      */
     public function index(MesureRepository $mesureRepository): Response
     {
-        return $this->render('mesure/ajouterplat.html.twig', [
+        return $this->render('back/mesure/index.html.twig', [
             'mesures' => $mesureRepository->findAll(),
         ]);
     }
@@ -36,27 +36,31 @@ class MesureController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $mesure->setDateMesure(new \DateTime());
             $entityManager->persist($mesure);
             $entityManager->flush();
 
             return $this->redirectToRoute('mesure_index');
         }
 
-        return $this->render('mesure/new.html.twig', [
+        return $this->render('back/mesure/edit_mesure.html.twig', [
             'mesure' => $mesure,
             'form' => $form->createView(),
+            'action' => $this->generateUrl("mesure_new")
         ]);
     }
 
     /**
      * @Route("/{id}", name="mesure_show", methods={"GET"})
      */
+    /*
     public function show(Mesure $mesure): Response
     {
         return $this->render('mesure/show.html.twig', [
             'mesure' => $mesure,
         ]);
     }
+    */
 
     /**
      * @Route("/{id}/edit", name="mesure_edit", methods={"GET","POST"})
@@ -72,10 +76,11 @@ class MesureController extends AbstractController
             return $this->redirectToRoute('mesure_index');
         }
 
-        return $this->render('mesure/edit.html.twig', [
+        return $this->render('back/mesure/edit_mesure.html.twig', [
             'mesure' => $mesure,
             'form' => $form->createView(),
-        ]);
+            'action' => $this->generateUrl("mesure_edit", ["id"=>$mesure->getId()]) ]
+        );
     }
 
     /**

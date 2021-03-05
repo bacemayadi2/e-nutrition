@@ -13,9 +13,7 @@ class Mesure1Type extends AbstractType
     {
         $builder
             ->add('Taille')
-            ->add('poids')
-            ->add('dateMesure')
-        ;
+            ->add('poids');
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta content="description" name="description">
+    <meta name="google" content="notranslate"/>
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <title>Blog</title>
+
+    <link href="{{ asset('front/css/main.blog.css') }}" rel="stylesheet">
+</head>
+
+<body class="">
+
+<!-- Add your content of header -->
+<div class="background-color-layer"
+     style="background-image: url('https://www.livingproofnyc.com/wp-content/themes/livingproof/assets/img/nutrition-programs-background.jpg')"
+></div>
+<main class="content-wrapper">
+    <header class="white-text-container section-container">
+        <div class="text-center">
+            <h1>Blog</h1>
+            <p>e-nurtition projet</p>
+            <p>
+                <a class="fa-icon fa-icon-2x" href="https://facebook.com/" title="">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="fa-icon fa-icon-2x" href="https://twitter.com/" title="">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a class="fa-icon fa-icon-2x" href="https://www.linkedin.com/" title="">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+            </p>
+        </div>
+    </header>
+
+    <!-- Add your site or app content here -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                {% for blog_post in blog_posts %}
+                    <div class="card">
+                        <div class="card-block">
+                            <h2>
+                                <a href="{{ url("blog_post_show", {"id": blog_post.getId()}) }}">{{ blog_post.title }}</a>
+                            </h2>
+                            <h6>{{ blog_post.date.date|date("Y-m-d") }}</h6>
+                            <div>
+                                {% if truncate %}
+                                    <p>{{ blog_post.body|slice(0, 500) ~ '...' }}</p>
+                                {% else %}
+                                    <p>{{ blog_post.body|trans|nl2br }}</p>
+                                    <p></p>
+                                    <a href="{{ url("blog_post_index") }}">Précédant</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+</main>
+<footer class="footer-container white-text-container text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p>©All right reserved. Design Sabrine Dachraoui</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" {{ asset('front/css/main.blog.js') }}></script>
+</body>
+
+</html>

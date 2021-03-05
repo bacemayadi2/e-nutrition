@@ -74,7 +74,7 @@ class Mesure
     }
 
     public function calculerIMC(){
-        return ($this->Taille * ($this->poids ** 2));
+        return round(($this->poids / ($this->Taille ** 2)), 2);
     }
 
     public function poidsIdeal(){

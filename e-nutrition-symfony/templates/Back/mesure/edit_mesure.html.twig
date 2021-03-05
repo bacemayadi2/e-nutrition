@@ -1,0 +1,116 @@
+{% extends 'back/base.html.twig' %}
+{% block Content %}
+
+
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
+                <h3 class="content-header-title mb-0 d-inline-block">Saisir vos mesures</h3>
+                <div class="row breadcrumbs-top d-inline-block">
+                    <div class="breadcrumb-wrapper col-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="{{ url("mesure_index") }}">Mesures</a>
+                            </li>
+                            <li class="breadcrumb-item active">Saisir vos mesures
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+            <div class="content-header-right col-md-4 col-12">
+                <div class="btn-group float-md-right">
+                    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"><i class="icon-settings mr-1"></i>Action
+                    </button>
+                    <div class="dropdown-menu arrow"><a class="dropdown-item" href="#"><i
+                                    class="fa fa-calendar mr-1"></i> Calender</a><a class="dropdown-item"
+                                                                                    href="#"><i
+                                    class="fa fa-cart-plus mr-1"></i> Cart</a><a class="dropdown-item" href="#"><i
+                                    class="fa fa-life-ring mr-1"></i> Support</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="fa fa-cog mr-1"></i> Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-body"><!-- Form wizard with number tabs section start -->
+            <section id="number-tabs">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="card-content collapse show mt-3 mb-6 mr-3 ml-3">
+                                <div>
+                                    {{ form_start(form,
+                                        {'attr': {'action' : action }}) }}
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            {{ form_widget(form.Taille, {'attr': {'class': 'form-control', 'placeholder': "Taille"}}) }}
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            {{ form_widget(form.poids, {'attr': {'class': 'form-control', 'placeholder': "Poids"}}) }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="alert alert-light" id="bmi" role="alert" style="margin-right: auto; margin-left: auto;">
+                                            Votre IMC apparaitra ici.
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-success float-right mb-4 mt-2">Envoyer</button>
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                            <script>
+                                const height = document.querySelector("#mesure1_Taille")
+                                const weight = document.querySelector("#mesure1_poids")
+                                height.addEventListener('input',bmi_handler);
+                                weight.addEventListener('input',bmi_handler);
+
+                                function bmi_handler()
+                                {
+                                    h=height.value
+                                    w=weight.value
+                                    index = w/(h*h);
+                                    index=index.toFixed(2)
+                                    if (index < 18.5) {
+                                        bmi.innerHTML="sous-poids - IMC : " + index
+                                        bmi.setAttribute("class","alert alert-secondary")
+                                    } else if (index < 25) {
+                                        bmi.innerHTML="poids normal - IMC : "+ index
+                                        bmi.setAttribute("class","alert alert-success")
+                                    } else if (index < 30) {
+                                        bmi.innerHTML="sur-poids - IMC : " + index
+                                        bmi.setAttribute("class","alert alert-warning")
+                                    } else {
+                                        bmi.innerHTML="obèse - IMC : " + index
+                                        bmi.setAttribute("class","alert alert-danger")
+                                    }
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+
+    {% endblock %}
+
+

@@ -20,8 +20,21 @@ class BlogPostController extends AbstractController
      */
     public function index(BlogPostRepository $blogPostRepository): Response
     {
-        return $this->render('blog_post/ajouterplat.html.twig', [
-            'blog_posts' => $blogPostRepository->findAll(),
+        $blogPosts = $blogPostRepository->findAll();
+        return $this->render('front/blog/index.html.twig', [
+            'blog_posts' => $blogPosts,
+            'truncate' => true
+        ]);
+    }
+
+    /**
+     * @Route("/admin/show_all", name="blog_post_index_admin", methods={"GET"})
+     */
+    public function back_index(BlogPostRepository $blogPostRepository): Response
+    {
+        $blogPosts = $blogPostRepository->findAll();
+        return $this->render('back/blog/index.html.twig', [
+            'blog_posts' => $blogPosts,
         ]);
     }
 
@@ -32,19 +45,22 @@ class BlogPostController extends AbstractController
     {
         $blogPost = new BlogPost();
         $form = $this->createForm(BlogPostType::class, $blogPost);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $blogPost->setDate(new \DateTime());
             $entityManager->persist($blogPost);
             $entityManager->flush();
 
             return $this->redirectToRoute('blog_post_index');
         }
 
-        return $this->render('blog_post/new.html.twig', [
+        return $this->render("back/blog/edit_blogpost.html.twig", [
             'blog_post' => $blogPost,
             'form' => $form->createView(),
+            'action' => $this->generateUrl("blog_post_new")
         ]);
     }
 
@@ -53,8 +69,9 @@ class BlogPostController extends AbstractController
      */
     public function show(BlogPost $blogPost): Response
     {
-        return $this->render('blog_post/show.html.twig', [
-            'blog_post' => $blogPost,
+        return $this->render('front/blog/index.html.twig', [
+            'blog_posts' => [$blogPost],
+            'truncate' => false
         ]);
     }
 
@@ -68,27 +85,27 @@ class BlogPostController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('blog_post_index');
+            return $this->redirectToRoute('blog_post_index_admin');
         }
 
-        return $this->render('blog_post/edit.html.twig', [
+        return $this->render('back/blog/edit_blogpost.html.twig', [
             'blog_post' => $blogPost,
             'form' => $form->createView(),
+            'action' => $this->generateUrl("blog_post_edit", ['id' => $blogPost->getId()])
         ]);
     }
 
     /**
-     * @Route("/{id}", name="blog_post_delete", methods={"DELETE"})
+     * @Route("/{id}/delete", name="blog_post_delete", methods={"GET"})
      */
     public function delete(Request $request, BlogPost $blogPost): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$blogPost->getId(), $request->request->get('_token'))) {
+        //if ($this->isCsrfTokenValid('delete'.$blogPost->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($blogPost);
             $entityManager->flush();
-        }
+        //}
 
-        return $this->redirectToRoute('blog_post_index');
+        return $this->redirectToRoute('blog_post_index_admin');
     }
 }
