@@ -52,7 +52,7 @@ class FicheConsultationController extends AbstractController
        $em=$this->getDoctrine()->getManager();
        $em->persist($ficheConsultation);
        $em->flush();
-       return $this->redirectToRoute('afficherFicheConsultation');
+       return $this->redirectToRoute('ficheAffiche');
 
    }
 return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig',[

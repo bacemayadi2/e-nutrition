@@ -37,12 +37,11 @@
 
                                             <td> {{ m.id }}</td>
                                             <td>{{ m.nom }}</td>
-                                            <td>{{ m.quantité }}</td>
-                                            <td>{{ f. }}</td>
-                                            <td>{{ f.apetit }}</td>
-                                            <td>{{ f.description }}</td>
-                                            <td> <a href="{{ path('deleteF',{'id':f.id}) }}">Delete</a></td>
-                                            <td> <a href="{{ path('updateF',{'id':f.id}) }}">Modifier</a></td>
+                                            <td>{{ m.quantite}}</td>
+                                            <td>{{ m.duree }}</td>
+
+                                            <td> <a href="{{ path('deleteM',{'id':m.id}) }}">Delete</a></td>
+
 
                                         </tr {% endfor %}>
 
@@ -57,5 +56,5 @@
             </div>
         </div>
     </div>
-    </div>
+
 {% endblock %}
