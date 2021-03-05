@@ -2,10 +2,50 @@
 
 {% block Content %}
 
-    <br>
-    <h1>Modifier Compte</h1>
-    <br>
-    <div align="center">
-        {{ form(form) }}
+    <div align="center" >
+        <br>
+        <h1>Modifier Compte</h1>
+        <br>
+        {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+            <table class="form-wrap">
+                <tr>
+                    <td>{{ form_label(form.typeCompte, "Type Compte") }} </td>
+                    <td>{{ form_widget(form.typeCompte, {'attr': {'style': 'width: 250px'}}) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.nom, "Nom") }} </td>
+                    <td>{{ form_widget(form.nom, {'attr': {'style': 'width: 250px'}}) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.prenom, "Prenom") }}</td>
+                    <td>{{ form_widget(form.prenom, {'attr': {'style': 'width: 250px'}}) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.sexe, "Sexe") }}</td>
+                    <td> {{ form_widget(form.sexe, {'attr': {'style': 'width: 250px'}}) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.dateNaiss, "Date de naissance") }}</td>
+                    <td>{{ form_widget(form.dateNaiss, {'attr': {'style': 'width: 250px'}}) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.email, "E-Mail") }}</td>
+                    <td>{{ form_widget(form.email, {'attr': {'style': 'width: 250px'}}) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.tel, "Numéro de téléphone") }}</td>
+                    <td>{{ form_widget(form.tel, {'attr': {'style': 'width: 250px'}})  }}</td>
+                </tr>
+            </table>
+
+            {{ form_widget(form.Valider, {'attr':{'class':'btn btn-primary'}}) }}
+
+            {{ form_errors(form.nom) }}
+            {{ form_errors(form.prenom) }}
+            {{ form_errors(form.sexe) }}
+            {{ form_errors(form.dateNaiss) }}
+            {{ form_errors(form.email) }}
+            {{ form_errors(form.tel) }}
+        {{ form_end(form) }}
     </div>
 {% endblock%}

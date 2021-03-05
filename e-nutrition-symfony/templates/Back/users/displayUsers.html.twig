@@ -4,10 +4,13 @@
     <br>
     <h1>Liste des utilisateurs</h1>
     <br>
-
-    <table border="1" cellpadding="50" align="center">
+    <div class="card-content collapse show">
+    <div class="table-responsive">
+    <table border="1" cellpadding="50" align="center" class="table">
+        <thead class="bg-primary white">
         <tr>
             <th>Id</th>
+            <th>Type Compte</th>
             <th>Nom</th>
             <th>Prenom</th>
             <th>Sexe</th>
@@ -15,8 +18,10 @@
             <th>E-Mail</th>
             <th>Numéro de téléphone</th>
         </tr>
+        </thead>
         <tr {% for u in users %}>
             <td>{{ u.id }}</td>
+            <td>{{ u.typeCompte }}</td>
             <td>{{ u.nom }}</td>
             <td>{{ u.prenom }}</td>
             <td>{{ u.sexe }}</td>
@@ -27,4 +32,6 @@
             <td><a href="{{ path('DeleteUser', {'id':u.id}) }}" >Delete</a></td>
         </tr {% endfor %}>
     </table>
+    </div>
+    </div>
 {% endblock%}
