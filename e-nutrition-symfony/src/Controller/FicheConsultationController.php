@@ -26,7 +26,7 @@ class FicheConsultationController extends AbstractController
     /**
      * @param FicheConsultationRepository $repository
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("afficherFicheConsultation",name="ficheAffiche")
+     * @Route("afficherFicheConsultation",name="afficherFicheConsultation")
      */
 
     public function AfficheFiche(FicheConsultationRepository $repository)
@@ -42,23 +42,26 @@ class FicheConsultationController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      * @route("ajouterFicheConsultation",name="ficheAjout")
      */
-   public function AjoutF(Request $request){
+
+   public function AjouteFiche(Request $request)
+   {
    $ficheConsultation=new FicheConsultation();
    $form=$this->createForm(FicheConsultationType::class,$ficheConsultation);
    $form->add('Ajouter',SubmitType::class);
    $form->handleRequest($request);
-   if($form->isSubmitted() && $form->isValid()){
+   if($form->isSubmitted() ){
 
        $em=$this->getDoctrine()->getManager();
        $em->persist($ficheConsultation);
        $em->flush();
-       return $this->redirectToRoute('ficheAffiche');
+       return $this->redirectToRoute('afficherFicheConsultation');
 
    }
 return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig',[
     'form'=>$form->createView()
     ]);
    }
+
 
     /**
      * @route("supprimerFicheConsultation/{id}", name="deleteF")
@@ -69,7 +72,7 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
        $em=$this->getDoctrine()->getManager();
        $em->remove($ficheConsultation);
        $em->flush();
-       return $this->redirectToRoute('ficheAffiche');
+       return $this->redirectToRoute('afficherFicheConsultation');
    }
 
 
@@ -91,7 +94,7 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
 
        $em=$this->getDoctrine()->getManager();
        $em->flush();
-       return $this->redirectToRoute('ficheAffiche');
+       return $this->redirectToRoute('afficherFicheConsultation');
      }
 
      return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig',
