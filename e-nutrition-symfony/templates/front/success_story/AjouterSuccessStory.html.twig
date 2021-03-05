@@ -1,9 +1,23 @@
 {% extends 'front/base.html.twig' %}
 {% block Content %}
+
+    <section class="section section-height-800 parallax-container context-dark bg-gray-darkest text-xl-left" data-parallax-img="front/images/backgrounds/background-01-1920x900.jpg">
+        <div class="parallax-content">
+            <div class="bg-overlay-black">
+                <div class="container section-30 section-md-95 section-lg-top-120 section-lg-bottom-150">
+                    <div class="d-none d-lg-block" >
+                            <center>                        <h1>Ecrivez Votre Histoire</h1>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <div class="row justify-content-sm-center offset-top-20">
     <div class="col-md-8 col-lg-6">
         <!-- RD Mailform-->
-        <form class="rd-mailform text-left" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+        {{ form_start(form, {'attr':{'novalidate':'novalidate'}+{ 'class':'rd-mailform text-left'} }) }}
+
             <div class="row justify-content-sm-center">
                 <div class="col-sm-6 inset-sm-right-7">
                     <div class="form-wrap">
@@ -39,7 +53,7 @@
             <div class="text-center text-lg-right offset-top-10">
                 <button class="btn btn-primary" type="submit">Send a message</button>
             </div>
-        </form>
+        {{ form_end(form) }}
     </div>
 </div>
 {% endblock%}

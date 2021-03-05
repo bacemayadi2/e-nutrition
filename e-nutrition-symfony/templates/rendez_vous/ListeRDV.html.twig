@@ -1,0 +1,50 @@
+{% extends 'front/base.html.twig' %}
+
+
+{% block Content %}
+    <br>
+    <h1 align="center">Liste des RendezVous</h1>
+    <br>
+
+    <div class="app-content content">
+    <div class="content-wrapper">
+
+    <div class="content-body"><!-- Basic Tables start -->
+    <div class="row">
+    <div class="col-12">
+    <div class="card">
+    <div class="card-header">
+        <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+        <div class="heading-elements">
+            <ul class="list-inline mb-0">
+                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                <li><a data-action="close"><i class="ft-x"></i></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card-content collapse show">
+    <div class="table-responsive">
+    <table border="1" cellpadding="50" align="center">
+        <tr>
+            <th>Date</th>
+            <th>Description</th>
+
+        </tr>
+        <tr {% for u in rendezVous %}>
+            <td>{{ u.date|date('d-m-Y')  }}</td>
+            <td>{{ u.description }}</td>
+            <td><a href="{{ path('delete', {'id':u.id}) }}" >Delete</a></td>
+        </tr {% endfor %}>
+    </table>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock%}
