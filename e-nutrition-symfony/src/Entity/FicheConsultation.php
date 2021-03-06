@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FicheConsultationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,7 +14,6 @@ class FicheConsultation
 {
     /**
      * @ORM\Id
-     *
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
@@ -52,6 +53,16 @@ class FicheConsultation
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $Description;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Medicament::class, mappedBy="fiche")
+     */
+    private $medicaments;
+
+    public function __construct()
+    {
+        $this->medicaments = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -138,6 +149,36 @@ class FicheConsultation
     public function setDescription(?string $Description): self
     {
         $this->Description = $Description;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Medicament[]
+     */
+    public function getMedicaments(): Collection
+    {
+        return $this->medicaments;
+    }
+
+    public function addMedicament(Medicament $medicament): self
+    {
+        if (!$this->medicaments->contains($medicament)) {
+            $this->medicaments[] = $medicament;
+            $medicament->setFiche($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMedicament(Medicament $medicament): self
+    {
+        if ($this->medicaments->removeElement($medicament)) {
+            // set the owning side to null (unless already changed)
+            if ($medicament->getFiche() === $this) {
+                $medicament->setFiche(null);
+            }
+        }
 
         return $this;
     }

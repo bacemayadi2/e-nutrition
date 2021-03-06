@@ -57,9 +57,8 @@ class FicheConsultationController extends AbstractController
        return $this->redirectToRoute('afficherFicheConsultation');
 
    }
-return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig',[
-    'form'=>$form->createView()
-    ]);
+return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig',
+    ['medicament' => $medicament ,'form'=>$form->createView()]);
    }
 
 
@@ -98,9 +97,7 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
      }
 
      return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig',
-     [
-         'form'=>$form->createView()
-     ]);
+     ['medicament' => $medicament,'form'=>$form->createView()]);
 
  }
 

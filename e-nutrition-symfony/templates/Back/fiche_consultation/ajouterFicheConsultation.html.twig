@@ -110,6 +110,7 @@
                                         <!-- Step 2 -->
                                         <h6>Step 2</h6>
                                         <fieldset>
+                                            {{ form_end(form) }}
 
 
                                             <div class="card-content collapse show">
@@ -119,9 +120,9 @@
                                                             <div data-repeater-item>
                                                                 <form class="form row">
                                                                     <div class="form-group mb-1 col-sm-12 col-md-2">
-                                                                        <label for="email-addr">Nom du médicament</label>
+                                                                        <label for="email-addr"> médicament</label>
                                                                         <br>
-                                                                        <input type="email" class="form-control" id="email-addr" placeholder="nom du médicament">
+                                                                        <input type="email" class="form-control" id="email-addr" placeholder="médicament">
                                                                     </div>
                                                                     <div class="form-group mb-1 col-sm-12 col-md-2">
                                                                         <label for="pass">Quantité</label>
@@ -154,14 +155,13 @@
 
 
                                         </fieldset>
-                                        {{ form_end(form) }}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-
+          </div>
         </div>
     </div>
 
