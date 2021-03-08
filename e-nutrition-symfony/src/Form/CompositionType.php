@@ -4,7 +4,9 @@ namespace App\Form;
 
 use App\Entity\Composition;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,11 +16,7 @@ class CompositionType extends AbstractType
     {
         $builder
             ->add('poid')
-            ->add('aliments',CollectionType::class,[
-                'entry_type' => AlimentType::class,
-                'allow_add' => false,
-            ]  )
-        ;
+            ->add('aliments',Null, ['attr' => ['class'=> 'selectize-multiple']]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

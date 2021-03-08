@@ -7,7 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CategorieAlimentType extends AbstractType
+class
+CategorieAlimentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

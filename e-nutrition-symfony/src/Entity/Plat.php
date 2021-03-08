@@ -25,12 +25,12 @@ class Plat extends Nourriture
     private $nbrportion;
 
     /**
-     * @ORM\OneToMany(targetEntity=EtapeDePreparation::class, mappedBy="plat")
+     * @ORM\OneToMany(targetEntity=EtapeDePreparation::class, mappedBy="plat",cascade={"persist"})
      */
     private $etapeDePreparation;
 
     /**
-     * @ORM\OneToMany(targetEntity=Composition::class, mappedBy="plat")
+     * @ORM\OneToMany(targetEntity=Composition::class, mappedBy="plat", cascade={"persist"})
      */
     private $compostions;
 
@@ -80,6 +80,7 @@ class Plat extends Nourriture
     public function addEtapeDePreparation(EtapeDePreparation $etapeDePreparation): self
     {
         if (!$this->etapeDePreparation->contains($etapeDePreparation)) {
+            $etapeDePreparation->setOrdre(sizeof($this->etapeDePreparation));
             $this->etapeDePreparation[] = $etapeDePreparation;
             $etapeDePreparation->setPlat($this);
         }
@@ -128,4 +129,42 @@ class Plat extends Nourriture
 
         return $this;
     }
+    public function calculeLipides():self
+    {
+        $this->lipides=4;
+        return $this;
+    }
+    public function calculeGlucides():self
+    {
+        $this->glucides=4;
+        return $this;
+    }
+    public function calculeProteines():self
+    {
+        $this->proteines=4;
+        return $this;
+    }
+    public function calculePoids():self
+    {
+        $this->poid=4;
+        return $this;
+    }
+    public function calculeNutritiments():self
+    {
+        $this->calculeLipides();
+        $this->calculeGlucides();
+        $this->calculeProteines();
+        $this->calculePoids();
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
+    }
+
+
+
+
+
 }

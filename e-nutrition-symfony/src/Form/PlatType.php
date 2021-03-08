@@ -20,14 +20,24 @@ class PlatType extends AbstractType
             ->add('etapeDePreparation', CollectionType::class  ,[
             'entry_type' => EtapeDePreparationType::class,
                 'allow_add' => true,
+                'entry_options' => ['label' => false],
+                'allow_delete' => true,
+                'by_reference' => false,
+
+
             ])
             ->add('compostions',CollectionType::class ,[
             'entry_type' => CompositionType::class,
-            'allow_add' => false,
+            'allow_add' => true,
+                'entry_options' => ['label' => false],
+                'allow_delete' => true,
+                'by_reference' => false,
 
-    ] ) ;
-        ;
+
+            ] ) ;
+
     }
+
 
     public function configureOptions(OptionsResolver $resolver)
     {

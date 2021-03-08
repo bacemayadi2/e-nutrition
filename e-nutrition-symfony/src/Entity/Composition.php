@@ -23,7 +23,7 @@ class Composition
     private $poid;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Aliment::class, inversedBy="compositions")
+     * @ORM\ManyToOne(targetEntity=Aliment::class, inversedBy="compositions" , cascade={"persist"})
      */
     private $aliments;
 
@@ -73,5 +73,7 @@ class Composition
 
         return $this;
     }
+
+
 
 }

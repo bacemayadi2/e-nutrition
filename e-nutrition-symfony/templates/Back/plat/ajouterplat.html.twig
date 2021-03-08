@@ -1,7 +1,6 @@
 {% extends 'back/base.html.twig' %}
 {% block Content %}
-
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 
 
 <div class="app-content content">
@@ -77,6 +76,9 @@
                                                             </div>
                                                         </div>
 
+
+
+
                                                 </div>
                                             <div class="repeater-default">
                                                 <div data-repeater-list="car">
@@ -110,48 +112,30 @@
                                     <h6>Step 2</h6>
                                     <fieldset>
 
-                                        <div class="repeater-default">
-                                            <div data-repeater-list="car">
-                                                <div data-repeater-item>
-                                                    <div class="row">
-                                                        <div class="form-group col-12 mb-2">
-                                                            <div class="row">
+                                        <ul id="compostionss"
+                                            data-prototype="{{ form_widget(form.compostions.vars.prototype)|e }}"
+
+                                            data-widget-tags="{{ '<li></li>'|e }}"
+                                            data-widget-counter="{{ form.compostions|length }}">
 
 
-                                                                <div class="form-group col-8 mb-2">
-                                                                    <h5>choisire aliment </h5>
-                                                                    {{ form_widget(form.compostions , { 'attr': {'class': 'selectize-multiple'} + {'value' :  "
-                                                                {{
-                                                                {% for k in alimentss %}
-                                                                {% if not  loop.first  %}
-                                                                ,
-                                                                {% endif %}
-                                                                {{ k.nom }}
-                                                                {% endfor %}
-                                                                }} "
-                                                                    } }) }}
-                                                                </div>
+                                            {% for compostion in form.compostions %}
+                                                <li>
 
-                                                                <fieldset class="form-group">
-                                                                    <h5>quantie(en gramme) </h5>
-                                                                    <input type="number" class="form-control" id="number" value="43">
-                                                                </fieldset>
-                                                            </div>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
 
-                                                            <button type="button" class="btn btn-danger" data-repeater-delete> <i class="ft-x"></i> Delete</button>
-                                                        </div>
-                                                    </div>
 
-                                                </div>
-                                            </div>
-                                            <div class="form-group overflow-hidden">
-                                                <div class="col-12">
-                                                    <button data-repeater-create class="btn btn-primary">
-                                                        <i class="ft-plus"></i> Add
-                                                    </button>
-                                                </div>
-                                            </div>
+                                        <button type="button"
+                                                class="btn btn-primary add-another-collection-widget"
+                                                data-list-selector="#compostionss">ajouter un autre aliment</button>
+                                        <div class="form-group col-12 mb-2">
+                                            <label for="firstName1">  nombre de portions :</label>
+                                            {{ form_widget(form.nbrportion, { 'attr': {'class': 'form-control'} + {'type' : 'text'}   }) }}
+
                                         </div>
+
 
                                     </fieldset>
 
@@ -160,45 +144,72 @@
                                     <h6>Step 3</h6>
                                     <fieldset>
 
-                                        <div class="form-body">
-                                            <h4 class="form-section"><i class="ft-user"></i>   plat  etape de Preparations</h4>
-                                            <div class="repeater-default">
-                                                <div data-repeater-list="form">
-                                                    <div data-repeater-item>
-                                                        <div class="row">
-                                                            <label  for="timesheetinput7">descirption etape Preparations:</label>
-                                                            <div class="form-group col-12 mb-2">
-                                                                {{ form_widget(form.etapeDePreparation, { 'attr': {'class': 'form-control'} + {'name' : 'description'} + {'placeholder':'description'}+ {'rows': '8' } }) }}
+                                        <ul id="etapeDePreparations"
+                                            data-prototype="{{ form_widget(form.etapeDePreparation.vars.prototype)|e }}"
+                                            data-widget-tags="{{ '<li></li>'|e }}"
+                                            data-widget-counter="{{ form.etapeDePreparation|length }}">
+                                            {% for etape in form.etapeDePreparation %}
+                                                <li>
+                                                    <label  for="timesheetinput7">durée en minute de l'etapes:</label>
+                                                    {{ form_widget(etape.duree) }}
+                                                    <label  for="timesheetinput7">descirption etape Preparations:</label>
+                                                    {{ form_widget(etape.description) }}
 
-                                                                <textarea rows="5" class="form-control" name="description" placeholder="description"></textarea>
-                                                            </div>
-                                                            <label  for="timesheetinput7">durée en minute de l'etapes:</label>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
 
-                                                            <div class="form-group col-md-2 mb-2">
-                                                                <input type="text" class="form-control" placeholder="durée en minute" name="durée">
-                                                            </div>
-                                                            <button type="button" class="btn btn-danger" data-repeater-delete> <i class="ft-x"></i> Delete</button>
+                                        <button type="button"
+                                                class="btn btn-primary add-another-collection-widget"
+                                                data-list-selector="#etapeDePreparations">ajouter une autre etape</button>
 
-                                                        </div>
-
-
-                                                    </div>
-                                                </div>
-                                                <div class="form-group overflow-hidden">
-                                                    <div class="col-12">
-                                                        <button data-repeater-create class="btn btn-primary">
-                                                            <i class="ft-plus"></i> Add
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
                                     </fieldset>
 
 
 
+
                                     {{ form_end(form) }}
+                                    <script>
+                                        jQuery(document).ready(function () {
+                                            jQuery('.add-another-collection-widget').click(function (e) {
+                                                var list = jQuery(jQuery(this).attr('data-list-selector'));
+                                                // Try to find the counter of the list or use the length of the list
+                                                var counter = list.data('widget-counter') || list.children().length;
+
+                                                // grab the prototype template
+                                                var newWidget = list.attr('data-prototype');
+                                                // replace the "__name__" used in the id and name of the prototype
+                                                // with a number that's unique to your emails
+                                                // end name attribute looks like name="contact[emails][2]"
+                                                newWidget = newWidget.replace(/__name__/g, counter);
+                                                // Increase the counter
+                                                counter++;
+                                                // And store it, the length cannot be used if deleting widgets is allowed
+                                                list.data('widget-counter', counter);
+
+                                                // create a new list element and add it to the list
+                                                var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
+                                                newElem.appendTo(list);
+
+                                                addTagFormDeleteLink($(newElem));
+
+
+
+                                            });
+
+                                        });
+
+                                        function addTagFormDeleteLink($tagFormLi) {
+                                            var $removeFormButton = $('<button type="button" class="btn btn-danger">enlever</button>');
+                                            $tagFormLi.append($removeFormButton);
+
+                                            $removeFormButton.on('click', function(e) {
+                                                // remove the li for the tag form
+                                                $tagFormLi.remove();
+                                            });
+                                        }
+
+                                    </script>
 
                                 </div>
                             </div>

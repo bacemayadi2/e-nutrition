@@ -126,5 +126,9 @@ public function removeComposition(Composition $composition): self
     return $this;
 }
 
+    public function __toString() {
+        // to show the name of the Category in the select
+        return $this->getNom();
 
+    }
 }
