@@ -17,13 +17,15 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('typeCompte', ChoiceType::class, ['choices'  => ['Choisir votre type de compte'=> 0, 'Patient' => 1, 'Nutritionniste' => 2, 'Secrétaire' => 3]])
+            ->add('typeCompte', ChoiceType::class, ['choices'  => ['Choisir votre type de compte'=> 0, 'Patient' => 'Patient', 'Nutritionniste' => 'Nutritionniste', 'Secrétaire' => 'Secrétaire']])
             ->add('nom', TextType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre nom"]])
             ->add('prenom', TextType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre prenom"]])
-            ->add('sexe', TextType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre sexe"]])
+            ->add('sexe', ChoiceType::class, [ 'choices'=>[ 'Choisir votre sexe'=> 0, 'Homme'=> "Homme", 'Femme'=> 'Femme' ]])
             ->add('dateNaiss', DateType::class)
             ->add('email', EmailType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre adresse e-mail"]])
-            ->add('tel', TextType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre numéro de téléphone"]]);
+            ->add('tel', TextType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre numéro de téléphone"]])
+            ->add('ville', TextType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre ville"]])
+            ->add('adresse', TextType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre adresse"]]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
