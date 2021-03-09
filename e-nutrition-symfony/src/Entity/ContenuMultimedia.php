@@ -6,6 +6,7 @@ use App\Repository\ContenuMultimediaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Entity\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -25,7 +26,7 @@ class ContenuMultimedia
 
     /**
      * @Vich\UploadableField(mapping="multimedia", fileNameProperty="nomFile")
-     * @var File
+     * @var File|null
      */
     private $fileMultimedia;
 
@@ -33,7 +34,7 @@ class ContenuMultimedia
 
     /**
      * @ORM\Column(type="datetime")
-     *  @var \DateTime
+     *  @var \DateTimeInterface|null
      */
     private $updatedAt;
 
@@ -44,6 +45,7 @@ class ContenuMultimedia
 
     /**
      * @ORM\Column(type="string", length=1000)
+     *  @var string|null
      */
     private $nomFile;
 
@@ -100,16 +102,16 @@ class ContenuMultimedia
         return $this->nomFile;
     }
 
-    public function setFileMultimedia(File $image = null): self
+    public function setFileMultimedia(File $fileMultimedia = null): self
     {
-        $this->fileMultimedia = $image;
+        $this->fileMultimedia = $fileMultimedia;
 
         // VERY IMPORTANT:
         // It is required that at least one field changes if you are using Doctrine,
         // otherwise the event listeners won't be called and the file is lost
-        if ($image) {
+        if (null !== $fileMultimedia) {
             // if 'updatedAt' is not defined in your entity, use another property
-            $this->updatedAt = new \DateTime('now');
+            $this->updatedAt = new \DateTimeImmutable();
         }
     }
 
@@ -142,7 +144,7 @@ class ContenuMultimedia
 
         return $this;
     }
-    public function getFileMultimedia()
+    public function getFileMultimedia() : ?File
     {
         return $this->fileMultimedia;
     }

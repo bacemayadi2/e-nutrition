@@ -29,12 +29,12 @@ class PlatController extends AbstractController
 
 
         if($form->isSubmitted() && $form->isValid()){
-            $em=$this->getDoctrine()->getManager();
             $plat->calculeNutritiments();
             $em=$this->getDoctrine()->getManager();
-            $em->persist($plat);
-            $em->flush();
-            return $this->redirectToRoute('afficherplat');
+            dump($form);
+           // $em->persist($plat);
+          //  $em->flush();
+          //  return $this->redirectToRoute('afficherplat');
         }
         return $this->render("back/plat/ajouterplat.html.twig",
             [  'form' => $form->createView()]);

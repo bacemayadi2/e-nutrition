@@ -44,7 +44,6 @@ class PlatType extends AbstractType
                 'entry_options' => ['label' => false],
                 'allow_delete' => true,
                 'by_reference' => false,
-                'block_name' => 'etape',
 
 
 
