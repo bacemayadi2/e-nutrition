@@ -10,5 +10,20 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Secretaire extends Utilisateur
 {
+    /**
+     * @ORM\ManyToOne(targetEntity=Nutritionniste::class, inversedBy="secretaire")
+     */
+    private $nutritionniste;
 
+    public function getNutritionniste(): ?Nutritionniste
+    {
+        return $this->nutritionniste;
+    }
+
+    public function setNutritionniste(?Nutritionniste $nutritionniste): self
+    {
+        $this->nutritionniste = $nutritionniste;
+
+        return $this;
+    }
 }
