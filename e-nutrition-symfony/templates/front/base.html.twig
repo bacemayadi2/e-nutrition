@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <link rel="stylesheet" href="front/css/bootstrap.css">
-    <link rel="stylesheet" href="front/css/fonts.css">
-    <link rel="stylesheet" href="front/css/style.css">
+    <link rel="stylesheet" href="{{ asset('front/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/css/fonts.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
+    <link href="{{ asset('front/css/main.blog.css') }}" rel="stylesheet">
+
     <!--[if lt IE 10]>
-    <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="https://windows.microsoft.com/en-US/internet-explorer/"><img src="front/images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
-    <script src="front/js/html5shiv.min.js"></script>
+    <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="https://windows.microsoft.com/en-US/internet-explorer/"><img src="{{ asset('front/images/ie8-panel/warning_bar_0000_us.jpg')}}" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <script src="{{ asset('front/js/html5shiv.min.js')}}"></script>
+
     <![endif]-->
 </head>
 <body>
@@ -41,28 +44,28 @@
                     <meta name="keywords" content="admin template, robust admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
                     <meta name="author" content="PIXINVENT">
                     <title>Dashboard eCommerce - Robust - Responsive Bootstrap 4 Admin Dashboard Template for Web Application</title>
-                    <link rel="apple-touch-icon" href="back/images/ico/apple-icon-120.png">
+                    <link rel="apple-touch-icon" href="{{ asset('back/images/ico/apple-icon-120.png')}}">
                     <link rel="shortcut icon" type="image/x-icon" href="back/images/ico/favicon.ico">
-                    <link href="back/fonts/css.css" rel="stylesheet">
+                    <link href="{{ asset('back/fonts/css.css')}}" rel="stylesheet">
                     <!-- BEGIN VENDOR CSS-->
-                    <link rel="stylesheet" type="text/css" href="back/css/vendors.min.css">
-                    <link rel="stylesheet" type="text/css" href="back/vendors/css/charts/jquery-jvectormap-2.0.3.css">
-                    <link rel="stylesheet" type="text/css" href="back/vendors/css/charts/morris.css">
-                    <link rel="stylesheet" type="text/css" href="back/vendors/css/extensions/unslider.css">
-                    <link rel="stylesheet" type="text/css" href="back/vendors/css/weather-icons/climacons.min.css">
+                    <link rel="stylesheet" type="text/css" href="{{ asset('back/css/vendors.min.css')}}">
+                    <link rel="stylesheet" type="text/css" href="{{ asset('back/vendors/css/charts/jquery-jvectormap-2.0.3.css')}}">
+                    <link rel="stylesheet" type="text/css" href="{{ asset('back/vendors/css/charts/morris.css')}}">
+                    <link rel="stylesheet" type="text/css" href="{{ asset('back/vendors/css/extensions/unslider.css')}}">
+                    <link rel="stylesheet" type="text/css" href="{{ asset('back/vendors/css/weather-icons/climacons.min.css')}}">
                     <!-- END VENDOR CSS-->
                     <!-- BEGIN ROBUST CSS-->
-                    <link rel="stylesheet" type="text/css" href="back/css/app.min.css">
+                    <link rel="stylesheet" type="text/css" href="{{ asset('back/css/app.min.css')}}">
                     <!-- END ROBUST CSS-->
                     <!-- BEGIN Page Level CSS-->
-                    <link rel="stylesheet" type="text/css" href="back/css/core/menu/menu-types/vertical-menu.min.css">
-                    <link rel="stylesheet" type="text/css" href="back/css/core/colors/palette-gradient.min.css">
-                    <link rel="stylesheet" type="text/css" href="back/css/core/colors/palette-gradient.min.css">
-                    <link rel="stylesheet" type="text/css" href="back/css/plugins/calendars/clndr.min.css">
-                    <link rel="stylesheet" type="text/css" href="back/fonts/meteocons/style.min.css">
+                    <link rel="stylesheet" type="text/css" href="{{ asset('back/css/core/menu/menu-types/vertical-menu.min.css')}}">
+                    <link rel="stylesheet" type="text/css" href="{{ asset('back/css/core/colors/palette-gradient.min.css')}}">
+                    <link rel="stylesheet" type="text/css" href="{{ asset('back/css/core/colors/palette-gradient.min.css')}}">
+                    <link rel="stylesheet" type="text/css" href="{{ asset('back/css/plugins/calendars/clndr.min.css')}}">
+                    <link rel="stylesheet" type="text/css" href="{{ asset('back/fonts/meteocons/style.min.css')}}">
                     <!-- END Page Level CSS-->
                     <!-- BEGIN Custom CSS-->
-                    <link rel="stylesheet" type="text/css" href="back/css/style.css">
+                    <link rel="stylesheet" type="text/css" href="{{ asset('back/css/style.css')}}">
                     <!-- END Custom CSS-->
                     </head>
                     <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="2-columns">
@@ -133,7 +136,7 @@
                                                 </li>
                                                 <li class="scrollable-container media-list w-100"><a href="javascript:void(0)">
                                                         <div class="media">
-                                                            <div class="media-left"><span class="avatar avatar-sm avatar-online rounded-circle"><img src="back/images/portrait/small/avatar-s-19.png" alt="avatar"><i></i></span></div>
+                                                            <div class="media-left"><span class="avatar avatar-sm avatar-online rounded-circle"><img src="{{ asset('back/images/portrait/small/avatar-s-19.png')}}" alt="avatar"><i></i></span></div>
                                                             <div class="media-body">
                                                                 <h6 class="media-heading">Margaret Govan</h6>
                                                                 <p class="notification-text font-small-3 text-muted">I like your portfolio, let's start.</p><small>
@@ -141,7 +144,7 @@
                                                             </div>
                                                         </div></a><a href="javascript:void(0)">
                                                         <div class="media">
-                                                            <div class="media-left"><span class="avatar avatar-sm avatar-busy rounded-circle"><img src="back/images/portrait/small/avatar-s-2.png" alt="avatar"><i></i></span></div>
+                                                            <div class="media-left"><span class="avatar avatar-sm avatar-busy rounded-circle"><img src="{{ asset('back/images/portrait/small/avatar-s-2.png')}}" alt="avatar"><i></i></span></div>
                                                             <div class="media-body">
                                                                 <h6 class="media-heading">Bret Lezama</h6>
                                                                 <p class="notification-text font-small-3 text-muted">I have seen your work, there is</p><small>
@@ -149,7 +152,7 @@
                                                             </div>
                                                         </div></a><a href="javascript:void(0)">
                                                         <div class="media">
-                                                            <div class="media-left"><span class="avatar avatar-sm avatar-online rounded-circle"><img src="back/images/portrait/small/avatar-s-3.png" alt="avatar"><i></i></span></div>
+                                                            <div class="media-left"><span class="avatar avatar-sm avatar-online rounded-circle"><img src="{{ asset('back/images/portrait/small/avatar-s-3.png')}}" alt="avatar"><i></i></span></div>
                                                             <div class="media-body">
                                                                 <h6 class="media-heading">Carie Berra</h6>
                                                                 <p class="notification-text font-small-3 text-muted">Can we have call in this week ?</p><small>
@@ -157,7 +160,7 @@
                                                             </div>
                                                         </div></a><a href="javascript:void(0)">
                                                         <div class="media">
-                                                            <div class="media-left"><span class="avatar avatar-sm avatar-away rounded-circle"><img src="back/images/portrait/small/avatar-s-6.png" alt="avatar"><i></i></span></div>
+                                                            <div class="media-left"><span class="avatar avatar-sm avatar-away rounded-circle"><img src="{{ asset('back/images/portrait/small/avatar-s-6.png')}}" alt="avatar"><i></i></span></div>
                                                             <div class="media-body">
                                                                 <h6 class="media-heading">Eric Alsobrook</h6>
                                                                 <p class="notification-text font-small-3 text-muted">We have project party this saturday.</p><small>
@@ -167,7 +170,7 @@
                                                 <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all messages</a></li>
                                             </ul>
                                         </li>
-                                        <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar avatar-online"><img src="back/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span><span class="user-name">John Doe</span></a>
+                                        <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar avatar-online"><img src="{{ asset('back/images/portrait/small/avatar-s-1.png')}}" alt="avatar"><i></i></span><span class="user-name">John Doe</span></a>
                                             <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="user-profile.html"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="email-application.html"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="user-cards.html"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="chat-application.html"><i class="ft-message-square"></i> Chats</a>
                                                 <div class="dropdown-divider"></div><a class="dropdown-item" href="login-with-bg-image.html"><i class="ft-power"></i> Logout</a>
                                             </div>
@@ -288,8 +291,8 @@
 <!-- Global Mailform Output-->
 <div class="snackbars" id="form-output-global"></div>
 <!-- Java script-->
-<script src="front/js/core.min.js"></script>
-<script src="front/js/script.js"></script>
+<script src="{{ asset('front/js/core.min.js')}}"></script>
+<script src="{{ asset('front/js/script.js')}}"></script>
 
 <!--LIVEDEMO_00 -->
 
