@@ -48,7 +48,7 @@ class Nourriture
     /**
      * @ORM\OneToMany(targetEntity=TagNourriture::class, mappedBy="nourriture", cascade={"all"},orphanRemoval=true)
      */
-    private $tagNourriture;
+    protected $tagNourriture;
 
     public function __construct()
     {
@@ -138,6 +138,7 @@ class Nourriture
             $this->tagNourriture[] = $tagNourriture;
             $tagNourriture->setNourriture($this);
         }
+
 
         return $this;
     }

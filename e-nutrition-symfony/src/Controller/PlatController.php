@@ -32,9 +32,9 @@ class PlatController extends AbstractController
             $plat->calculeNutritiments();
             $em=$this->getDoctrine()->getManager();
             dump($form);
-           // $em->persist($plat);
-          //  $em->flush();
-          //  return $this->redirectToRoute('afficherplat');
+            $em->persist($plat);
+            $em->flush();
+           return $this->redirectToRoute('afficherplat');
         }
         return $this->render("back/plat/ajouterplat.html.twig",
             [  'form' => $form->createView()]);
@@ -92,17 +92,18 @@ class PlatController extends AbstractController
     /**
      * @param CompositionRepository $repoC
      * @param EtapeDePreparationRepository $repoE
+     * @param PlatRepository $repop
      * @Route ("afficherEtapeAliment/{id}",name="afficherEtapeAliment")
      */
-    public function afficherEtapeAliment(CompositionRepository $repoC,$id,EtapeDePreparationRepository $repoE)
+    public function afficherEtapeAliment(CompositionRepository $repoC,$id,EtapeDePreparationRepository $repoE,PlatRepository  $repop)
     {
 
         $compostions= $repoC->findBy(['plat' => $id]);
         $etapeDePreparartion= $repoE->findBy(['plat' => $id]);
-
+        $plat =$repop->find($id);
 
         return $this->render("back/plat/affichercompostionEtEtapes.html.twig",
-            ["compostions"=>$compostions,"etapeDePreparation"=>$etapeDePreparartion]
+            ["compostions"=>$compostions,"etapeDePreparation"=>$etapeDePreparartion,"plat"=>$plat]
 
 
         );

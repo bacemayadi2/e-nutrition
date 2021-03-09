@@ -36,8 +36,10 @@ class Plat extends Nourriture
 
     public function __construct()
     {
+        parent::__construct();
         $this->etapeDePreparation = new ArrayCollection();
         $this->compostions = new ArrayCollection();
+
     }
 
 

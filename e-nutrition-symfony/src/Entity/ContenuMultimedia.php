@@ -6,8 +6,9 @@ use App\Repository\ContenuMultimediaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Vich\UploaderBundle\Entity\File;
+use Symfony\Component\HttpFoundation\File\File ;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * @ORM\Entity(repositoryClass=ContenuMultimediaRepository::class)
@@ -102,7 +103,7 @@ class ContenuMultimedia
         return $this->nomFile;
     }
 
-    public function setFileMultimedia(File $fileMultimedia = null): self
+    public function setFileMultimedia(File $fileMultimedia = null): void
     {
         $this->fileMultimedia = $fileMultimedia;
 

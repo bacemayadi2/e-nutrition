@@ -33,7 +33,7 @@
                                             <th>glucides</th>
                                             <th>lipides</th>
                                             <th>calories(kcal)</th>
-                                            <th>aliments et etape</th>
+                                            <th>detail</th>
 
                                             <th>supprimer modifier </th>
 
@@ -41,6 +41,7 @@
                                         </thead>
                                         <tbody>
                                         <tr {% for f in plat %} >
+
                                             <td> {{ f.nom }}</td>
                                             <td> {{ f.description }} </td>
                                             <td>{{ f.nbrportion }}</td>
@@ -48,6 +49,8 @@
                                             <td>{{ f.glucides }}</td>
                                             <td>{{ f.lipides }}</td>
                                             <td>{{   f.calculerCalorie()  }}</td>
+
+
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <div style="text-align: center;">

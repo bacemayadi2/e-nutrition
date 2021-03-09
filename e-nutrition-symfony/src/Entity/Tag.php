@@ -37,7 +37,15 @@ class Tag
     public function setContenuMultimedia(?ContenuMultimedia $contenuMultimedia): self
     {
         $this->contenuMultimedia = $contenuMultimedia;
+        $contenuMultimedia->addTag($this);
 
         return $this;
     }
+
+    public function getUrl(): ?string
+    {
+       return 'multimedia/' . $this->getContenuMultimedia()->getNomFile();
+    }
+
+
 }
