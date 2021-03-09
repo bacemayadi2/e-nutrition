@@ -1,0 +1,122 @@
+
+{% extends 'back/base.html.twig' %}
+{% block Content %}
+    <div class="app-content content">
+        <div class="content-wrapper">
+            <div class="content-body"><!-- Basic Tables start -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Les etape</h4>
+                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="bg-primary white">
+                                        <tr>
+                                            <th>nom du plat </th>
+                                            <th>description</th>
+                                            <th>duree </th>
+                                            <th>supprimer modifier </th>
+
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr {% for e in etapeDePreparation %} >
+                                            <td> {{ e.plat.nom }} </td>
+                                            <td> {{ e.description }}</td>
+                                            <td> {{ e.duree }} </td>
+                                            <td>
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <div style="text-align: center;">
+                                                        <a href="{{ path('supprimerEtapeDePreparationRepositoryplat',{'id':e.id ,'idp':e.plat.id }) }}"><button type="button" class="btn btn-primary">supprimer</button>
+                                                    </div>
+                                                    <div style="text-align: center;">
+                                                        <a href="{{ path('modifierPlat',{'id':e.plat.id }) }}">  <button type="button" class="btn btn-success">modifier</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr {% endfor %}>
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-body"><!-- Basic Tables start -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Les aliments</h4>
+                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                        <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-content collapse show">
+
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class="bg-primary white">
+                                        <tr>
+                                            <th>nom</th>
+                                            <th>quantité (gramme) </th>
+                                            <th>calorie</th>
+                                            <th>supprimer modifier </th>
+
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr {% for f in compostions %} >
+                                            <td> {{ f.aliments.nom }}</td>
+                                            <td> {{ f.poid }} </td>
+                                            <td>{{   f.aliments.calculerCalorie()  }}</td>
+                                            <td>
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <div style="text-align: center;">
+                                                        <a href="{{ path('supprimerAlimentplat',{'id':f.id ,  'idp':f.plat.id  }) }}"><button type="button" class="btn btn-primary">supprimer</button>
+                                                    </div>
+                                                    <div style="text-align: center;">
+                                                        <a href="{{ path('modifierPlat',{'id':f.plat.id }) }}">  <button type="button" class="btn btn-success">modifier</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr {% endfor %}>
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

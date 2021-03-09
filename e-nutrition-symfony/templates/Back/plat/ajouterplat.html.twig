@@ -107,23 +107,63 @@
                                             </div>
 
                                         </div>
+                                        <ul id="image"
+                                            data-prototype="{{ form_widget(form.tagNourriture.vars.prototype)|e }}"
+
+                                            data-widget-tags="{{ '<li></li>'|e }}"
+                                            data-widget-counter="{{ form.tagNourriture|length }}"
+
+                                        >
+
+
+
+                                            {% for tagNourri in form.tagNourriture %}
+                                                <li>
+                                                    <
+                                                </li>
+                                            {% endfor %}
+
+                                        </ul>
+
+
+                                        <button type="button"
+                                                class="btn btn-primary add-another-collection-widget"
+                                                data-list-selector="#image">ajouter une autre image</button>
+
+
                                     </fieldset>
                                     <!-- Step 2 -->
                                     <h6>Step 2</h6>
                                     <fieldset>
 
+
                                         <ul id="compostionss"
                                             data-prototype="{{ form_widget(form.compostions.vars.prototype)|e }}"
 
                                             data-widget-tags="{{ '<li></li>'|e }}"
-                                            data-widget-counter="{{ form.compostions|length }}">
+                                            data-widget-counter="{{ form.compostions|length }}"
+
+                                        >
+
 
 
                                             {% for compostion in form.compostions %}
                                                 <li>
+                                                    <div class="form-group col-12 mb-2">
 
+
+                                                        <label  for="timesheetinput7">quantité en gramme) </label>
+                                                        {{ form_widget(compostion.poid) }}
+                                                    </div>
+                                                    <div class="form-group col-12 mb-2">
+
+                                                        <label  for="timesheetinput7">nom aliment </label>
+                                                        {{ form_widget(compostion.aliments, { 'attr': {'class': 'selectize-multiple'}  }) }}
+
+                                                    </div>
                                                 </li>
                                             {% endfor %}
+
                                         </ul>
 
 
@@ -135,8 +175,7 @@
                                             {{ form_widget(form.nbrportion, { 'attr': {'class': 'form-control'} + {'type' : 'text'}   }) }}
 
                                         </div>
-
-
+                                        
                                     </fieldset>
 
 
@@ -150,10 +189,17 @@
                                             data-widget-counter="{{ form.etapeDePreparation|length }}">
                                             {% for etape in form.etapeDePreparation %}
                                                 <li>
-                                                    <label  for="timesheetinput7">durée en minute de l'etapes:</label>
-                                                    {{ form_widget(etape.duree) }}
-                                                    <label  for="timesheetinput7">descirption etape Preparations:</label>
-                                                    {{ form_widget(etape.description) }}
+                                                    <div class="form-group col-12 mb-2">
+
+
+                                                        <label  for="timesheetinput7">durée en minute de l'etapes:</label>
+                                                        {{ form_widget(etape.duree) }}
+                                                    </div>
+                                                    <div class="form-group col-12 mb-2">
+
+                                                        <label  for="timesheetinput7">descirption etape Preparations:</label>
+                                                        {{ form_widget(etape.description) }}
+                                                    </div>
 
                                                 </li>
                                             {% endfor %}
@@ -163,11 +209,12 @@
                                                 class="btn btn-primary add-another-collection-widget"
                                                 data-list-selector="#etapeDePreparations">ajouter une autre etape</button>
 
+
+
+
+
+
                                     </fieldset>
-
-
-
-
                                     {{ form_end(form) }}
                                     <script>
                                         jQuery(document).ready(function () {

@@ -23,6 +23,8 @@ class PlatType extends AbstractType
                 'entry_options' => ['label' => false],
                 'allow_delete' => true,
                 'by_reference' => false,
+                'block_name' => 'etape',
+
 
 
             ])
@@ -32,9 +34,22 @@ class PlatType extends AbstractType
                 'entry_options' => ['label' => false],
                 'allow_delete' => true,
                 'by_reference' => false,
+                'block_name' => 'compo',
 
 
-            ] ) ;
+            ] )
+            ->add('tagNourriture', CollectionType::class  ,[
+                'entry_type' => TagNourritureType::class,
+                'allow_add' => true,
+                'entry_options' => ['label' => false],
+                'allow_delete' => true,
+                'by_reference' => false,
+                'block_name' => 'etape',
+
+
+
+            ]);
+
 
     }
 

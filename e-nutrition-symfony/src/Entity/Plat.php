@@ -25,12 +25,12 @@ class Plat extends Nourriture
     private $nbrportion;
 
     /**
-     * @ORM\OneToMany(targetEntity=EtapeDePreparation::class, mappedBy="plat",cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=EtapeDePreparation::class, mappedBy="plat",cascade={"all"},orphanRemoval=true)
      */
     private $etapeDePreparation;
 
     /**
-     * @ORM\OneToMany(targetEntity=Composition::class, mappedBy="plat", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Composition::class, mappedBy="plat", cascade={"all"},orphanRemoval=true)
      */
     private $compostions;
 
@@ -162,7 +162,20 @@ class Plat extends Nourriture
     {
         return $this->getNom();
     }
+    public function  alimentsToString(): string
+    {
+        $s="";
+        $first=true;
+        foreach ($this->compostions as $c)
+        {
+            if  ($first == false)
+                $s= $s .  " , " ;
+            $s= $s . $c->getAliments()->getNom() . ":" . $c->getPoid() . "gramme" ;
+            $first=false;
+        }
 
+        return $s;
+    }
 
 
 

@@ -6,6 +6,9 @@ use App\Entity\Composition;
 use App\Entity\Plat;
 use App\Form\PlatType;
 use App\Repository\AlimentRepository;
+use App\Repository\CompositionRepository;
+use App\Repository\EtapeDePreparationRepository;
+use App\Repository\PlatRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,12 +20,11 @@ class PlatController extends AbstractController
     /**
      * @Route("/ajouterplat", name="plat")
      */
-    public function ajouterPlat(Request $request,AlimentRepository $repo): Response
+    public function ajouterPlat(Request $request): Response
     {
-        $aliments =$repo->findAll();
         $plat =new Plat();
         $form =$this->createForm(PlatType::class,$plat);
-       // $form->add("Ajouter",SubmitType::class);
+        $form->add("Ajouter",SubmitType::class);
         $form->handleRequest($request);//gere requette envoyer par l'utlisateur
 
 
@@ -32,11 +34,80 @@ class PlatController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->persist($plat);
             $em->flush();
-           // return $this->redirectToRoute('afficherAliment');*/
+            return $this->redirectToRoute('afficherplat');
         }
         return $this->render("back/plat/ajouterplat.html.twig",
-            [  'form' => $form->createView(), 'alimentss' => $aliments]);
+            [  'form' => $form->createView()]);
     }
 
+    /**
+     * @param PlatRepository $repo
+     * @Route ("afficherplat",name="afficherplat")
+     */
+    public function afficher(PlatRepository $repo)
+    {
+        $plat=$repo->findAll();
+        return $this->render("back/plat/afficherplat.html.twig",
+            ["plat"=>$plat]
+
+        );
+    }
+
+    /**
+     * @param PlatRepository $repo
+     * @param $id
+     * @Route ("/supprimerplat/{id}",name="supprimerPlat")
+     */
+    function delete(PlatRepository $repo ,$id)
+    {
+        $em=$this->getDoctrine()->getManager()  ;
+        $plat=$repo->find($id);
+        $em->remove($plat);
+        $em->flush();
+        return $this->redirectToRoute('afficherplat');
+    }
+
+
+    /**
+     * @Route("/modifierPlat/{id}", name="modifierPlat")
+     */
+    public function modifierPlat(Request $request,PlatRepository $repo,$id): Response
+    {
+        $plat =$repo->find($id);
+        $form =$this->createForm(PlatType::class,$plat);
+        // $form->add("Ajouter",SubmitType::class);
+        $form->handleRequest($request);//gere requette envoyer par l'utlisateur
+
+
+        if($form->isSubmitted() && $form->isValid()){
+            $plat->calculeNutritiments();
+            $em=$this->getDoctrine()->getManager();
+            $em->flush();
+             return $this->redirectToRoute('afficherplat');
+        }
+        return $this->render("back/plat/ajouterplat.html.twig",
+            [  'form' => $form->createView()]);
+    }
+
+    /**
+     * @param CompositionRepository $repoC
+     * @param EtapeDePreparationRepository $repoE
+     * @Route ("afficherEtapeAliment/{id}",name="afficherEtapeAliment")
+     */
+    public function afficherEtapeAliment(CompositionRepository $repoC,$id,EtapeDePreparationRepository $repoE)
+    {
+
+        $compostions= $repoC->findBy(['plat' => $id]);
+        $etapeDePreparartion= $repoE->findBy(['plat' => $id]);
+
+
+        return $this->render("back/plat/affichercompostionEtEtapes.html.twig",
+            ["compostions"=>$compostions,"etapeDePreparation"=>$etapeDePreparartion]
+
+
+        );
+
+
+    }
 
 }

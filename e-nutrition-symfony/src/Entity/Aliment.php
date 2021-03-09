@@ -91,10 +91,6 @@ class Aliment extends Nourriture
         return $this;
     }
 
-public function calculerCalorie() :float
-{
-    return $this->getGlucides()*4 +$this->getLipides() *9 + $this->getProteines()*9;
-}
 
 /**
  * @return Collection|Composition[]

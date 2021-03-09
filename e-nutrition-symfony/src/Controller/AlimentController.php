@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class AlimentController extends AbstractController
 {
     /**
@@ -21,7 +22,7 @@ class AlimentController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      * @Route ("/ajouteraliment",name="ajouterAliment")
      */
-    public function ajoute(Request $request, CategorieAlimentRepository $repo)
+    public function ajoute(Request $request)
     {
         $aliment =new Aliment();
         $form =$this->createForm(AlimentType::class,$aliment);
@@ -34,9 +35,8 @@ class AlimentController extends AbstractController
             $em->flush();
            return $this->redirectToRoute('afficherAliment');
         }
-        $categorie=$repo->findAll();
         return $this->render("back/aliment/ajouterAliment.html.twig",
-            [ 'categorie' => $categorie , 'form'=> $form->createView(), ]);
+            [  'form'=> $form->createView(), ]);
     }
 
 
@@ -46,7 +46,7 @@ class AlimentController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      * @Route ("modifieraliment/{id}",name="modifierAliment")
      */
-    public function modifier(Request $request, CategorieAlimentRepository $repoCategorie, $id,AlimentRepository $repoAliment)
+    public function modifier(Request $request,  $id,AlimentRepository $repoAliment)
     {
 
         $aliment =$repoAliment->find($id);
@@ -63,10 +63,8 @@ class AlimentController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('afficherAliment');
         }
-        $categorie=$repoCategorie->findAll();
-        dump($aliment);
         return $this->render("back/aliment/ajouterAliment.html.twig",
-            [ 'categorie' => $categorie , 'form'=> $form->createView(), ]);
+            [  'form'=> $form->createView(), ]);
 
 
     }
@@ -83,6 +81,15 @@ class AlimentController extends AbstractController
         ["aliments"=>$aliments]
 
     );
+    }
+    /**
+     * @Route ("afficherAlimentfront",name="afficherAlimentfront")
+     */
+    public function afficherfront(AlimentRepository $repo)
+    {
+        return $this->render("front/aliment/afficherAliment.html.twig"
+
+        );
     }
 
     /**

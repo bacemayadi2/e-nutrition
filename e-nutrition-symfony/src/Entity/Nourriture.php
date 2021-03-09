@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\NourritureRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +44,16 @@ class Nourriture
      * @ORM\Column(type="float")
      */
     Protected $poid;
+
+    /**
+     * @ORM\OneToMany(targetEntity=TagNourriture::class, mappedBy="nourriture", cascade={"all"},orphanRemoval=true)
+     */
+    private $tagNourriture;
+
+    public function __construct()
+    {
+        $this->tagNourriture = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -107,4 +119,39 @@ class Nourriture
 
         return $this;
     }
+    public function calculerCalorie() :float
+    {
+        return $this->getGlucides()*4 +$this->getLipides() *9 + $this->getProteines()*9;
+    }
+
+    /**
+     * @return Collection|TagNourriture[]
+     */
+    public function getTagNourriture(): ? Collection
+    {
+        return $this->tagNourriture;
+    }
+
+    public function addTagNourriture(TagNourriture $tagNourriture): self
+    {
+        if (!$this->tagNourriture->contains($tagNourriture)) {
+            $this->tagNourriture[] = $tagNourriture;
+            $tagNourriture->setNourriture($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTagNourriture(TagNourriture $tagNourriture): self
+    {
+        if ($this->tagNourriture->removeElement($tagNourriture)) {
+            // set the owning side to null (unless already changed)
+            if ($tagNourriture->getNourriture() === $this) {
+                $tagNourriture->setNourriture(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

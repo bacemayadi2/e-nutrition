@@ -9,7 +9,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">les Aliments</h4>
+                                <h4 class="card-title">Les plates</h4>
                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -27,21 +27,23 @@
                                         <thead class="bg-primary white">
                                         <tr>
                                             <th>nom</th>
-                                            <th>categorieAlimen </th>
-                                            <th>Poid(g)</th>
+                                            <th>description </th>
+                                            <th>nbrportion(g)</th>
                                             <th>proteines</th>
                                             <th>glucides</th>
                                             <th>lipides</th>
                                             <th>calories(kcal)</th>
+                                            <th>aliments et etape</th>
+
                                             <th>supprimer modifier </th>
 
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr {% for f in aliments %} >
+                                        <tr {% for f in plat %} >
                                             <td> {{ f.nom }}</td>
-                                            <td> {{ f.categorieToString() }} </td>
-                                            <td>{{ f.poid }}</td>
+                                            <td> {{ f.description }} </td>
+                                            <td>{{ f.nbrportion }}</td>
                                             <td>{{ f.proteines }}</td>
                                             <td>{{ f.glucides }}</td>
                                             <td>{{ f.lipides }}</td>
@@ -49,10 +51,17 @@
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <div style="text-align: center;">
-                                                        <a href="{{ path('supprimerAliment',{'id':f.id }) }}"><button type="button" class="btn btn-primary">supprimer</button>
+                                                        <a href="{{ path('afficherEtapeAliment',{'id':f.id }) }}"><button type="button" class="btn btn-primary">afficher</button>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <div style="text-align: center;">
+                                                        <a href="{{ path('supprimerPlat',{'id':f.id }) }}"><button type="button" class="btn btn-primary">supprimer</button>
                                                     </div>
                                                     <div style="text-align: center;">
-                                                        <a href="{{ path('modifierAliment',{'id':f.id }) }}">  <button type="button" class="btn btn-success">modifier</button>
+                                                        <a href="{{ path('modifierPlat',{'id':f.id }) }}">  <button type="button" class="btn btn-success">modifier</button>
                                                     </div>
                                                 </div>
                                             </td>

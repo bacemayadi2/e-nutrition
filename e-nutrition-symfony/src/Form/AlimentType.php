@@ -23,6 +23,7 @@ class AlimentType extends AbstractType
             ->add('codeABarre')
             ->add('categorieAliment')
 
+
         ;
       /*  $builder->get('categorieAliment')
             ->addModelTransformer(new CallbackTransformer(
