@@ -1,7 +1,7 @@
 {% extends 'back/base.html.twig' %}
 {% block Content %}
 
-
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 
 <div class="app-content content">
     <div class="content-wrapper">
@@ -109,52 +109,73 @@
 
                                         <!-- Step 2 -->
                                         <h6>Step 2</h6>
-                                        <fieldset>
-                                            {{ form_end(form) }}
 
 
-                                            <div class="card-content collapse show">
-                                                <div class="card-body">
-                                                    <div class="repeater-default">
-                                                        <div data-repeater-list="car">
-                                                            <div data-repeater-item>
-                                                                <form class="form row">
-                                                                    <div class="form-group mb-1 col-sm-12 col-md-2">
-                                                                        <label for="email-addr"> médicament</label>
-                                                                        <br>
-                                                                        <input type="email" class="form-control" id="email-addr" placeholder="médicament">
-                                                                    </div>
-                                                                    <div class="form-group mb-1 col-sm-12 col-md-2">
-                                                                        <label for="pass">Quantité</label>
-                                                                        <br>
-                                                                        <input type="password" class="form-control" id="pass" placeholder="Quantité">
-                                                                    </div>
-                                                                    <div class="form-group mb-1 col-sm-12 col-md-2">
-                                                                        <label for="email-addr">Durée</label>
-                                                                        <br>
-                                                                        <input type="email" class="form-control" id="email-addr" placeholder="Durée">
-                                                                    </div>
 
-                                                                    <div class="form-group col-sm-12 col-md-2 text-center mt-2">
-                                                                        <button type="button" class="btn btn-danger" data-repeater-delete> <i class="ft-x"></i> Delete</button>
-                                                                    </div>
-                                                                </form>
-                                                                <hr>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group overflow-hidden">
-                                                            <div class="col-12">
-                                                                <button data-repeater-create class="btn btn-primary">
-                                                                    <i class="ft-plus"></i> Add
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <fieldset>
+
+                                                <ul id="mediacments"
+                                                    data-prototype="{{ form_widget(form.medicaments.vars.prototype)|e }}"
+                                                    data-widget-tags="{{ '<li></li>'|e }}"
+                                                    data-widget-counter="{{ form.medicaments|length }}">
+                                                    {% for medicament in form.medicaments %}
+                                                        <li>
+
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+
+                                                <button type="button"
+                                                        class="btn btn-primary add-another-collection-widget"
+                                                        data-list-selector="#mediacments">ajouter</button>
+
+                                            </fieldset>
 
 
-                                        </fieldset>
+
+
+                                    {{ form_end(form) }}
+                                    <script>
+                                        jQuery(document).ready(function () {
+                                            jQuery('.add-another-collection-widget').click(function (e) {
+                                                var list = jQuery(jQuery(this).attr('data-list-selector'));
+                                                // Try to find the counter of the list or use the length of the list
+                                                var counter = list.data('widget-counter') || list.children().length;
+
+                                                // grab the prototype template
+                                                var newWidget = list.attr('data-prototype');
+                                                // replace the "__name__" used in the id and name of the prototype
+                                                // with a number that's unique to your emails
+                                                // end name attribute looks like name="contact[emails][2]"
+                                                newWidget = newWidget.replace(/__name__/g, counter);
+                                                // Increase the counter
+                                                counter++;
+                                                // And store it, the length cannot be used if deleting widgets is allowed
+                                                list.data('widget-counter', counter);
+
+                                                // create a new list element and add it to the list
+                                                var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
+                                                newElem.appendTo(list);
+
+                                                addTagFormDeleteLink($(newElem));
+
+
+
+                                            });
+
+                                        });
+
+                                        function addTagFormDeleteLink($tagFormLi) {
+                                            var $removeFormButton = $('<button type="button" class="btn btn-danger">enlever</button>');
+                                            $tagFormLi.append($removeFormButton);
+
+                                            $removeFormButton.on('click', function(e) {
+                                                // remove the li for the tag form
+                                                $tagFormLi.remove();
+                                            });
+                                        }
+
+                                    </script>
                                 </div>
                             </div>
                         </div>

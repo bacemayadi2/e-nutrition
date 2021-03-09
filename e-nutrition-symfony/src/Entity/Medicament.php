@@ -23,7 +23,7 @@ class Medicament
     private $nom;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="string", length=255)
      */
     private $quantite;
 
@@ -31,6 +31,11 @@ class Medicament
      * @ORM\Column(type="string", length=255)
      */
     private $duree;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=FicheConsultation::class, inversedBy="medicaments")
+     */
+    private $fiche;
 
     public function getId(): ?int
     {
@@ -49,12 +54,12 @@ class Medicament
         return $this;
     }
 
-    public function getQuantite(): ?float
+    public function getQuantite(): ?string
     {
         return $this->quantite;
     }
 
-    public function setQuantite(float $quantite): self
+    public function setQuantite(string $quantite): self
     {
         $this->quantite = $quantite;
 
@@ -69,6 +74,18 @@ class Medicament
     public function setDuree(string $duree): self
     {
         $this->duree = $duree;
+
+        return $this;
+    }
+
+    public function getFiche(): ?FicheConsultation
+    {
+        return $this->fiche;
+    }
+
+    public function setFiche(?FicheConsultation $fiche): self
+    {
+        $this->fiche = $fiche;
 
         return $this;
     }

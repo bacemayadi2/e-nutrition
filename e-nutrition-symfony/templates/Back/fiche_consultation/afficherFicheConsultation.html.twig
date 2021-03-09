@@ -47,6 +47,7 @@
                                 <td>{{ f.symptome }}</td>
                                 <td>{{ f.apetit }}</td>
                                 <td>{{ f.description }}</td>
+                                <td> <a href="{{ path('afficherMedicament',{'id':f.id}) }}">Voir medicament</a></td>
                                 <td> <a href="{{ path('deleteF',{'id':f.id}) }}">Delete</a></td>
                                 <td> <a href="{{ path('updateF',{'id':f.id}) }}">Modifier</a></td>
 

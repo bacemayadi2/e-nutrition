@@ -1,0 +1,74 @@
+{% extends 'front/baseforotherpage.html.twig' %}
+
+{% block Content2 %}
+
+    <style>
+
+       .list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p{
+           text-align: left;
+       }
+
+
+
+
+    </style>
+    <section class="section section-height-800 parallax-container context-dark" data-parallax-img="front/images/backgrounds/background-15-1920x900.jpg">
+        <div class="parallax-content">
+            <div class="bg-overlay-gray-darken">
+                <div class="container section-95">
+                    <!-- Jumbotron Custom-->
+                    <div class="jumbotron-custom jumbotron-custom-variant-3">
+                        <h1>Vos fiches consultations</h1>
+                        <p class="text-big">Quels produits choisir, comment décrypter les étiquettes, quels additifs alimentaires faut-il éviter ? LaNutrition.fr vous guide dans les rayons et vous donne ses recommandations.<br class="d-none d-xl-inline-block"> you will see a totally different girl in the mirror!</p>
+                        <div class="group-xs offset-top-20 offset-lg-top-40"><a class="btn btn-primary" href="group-coaching.html">Read more</a><a class="btn btn-white-outline" href="contact-me.html">Book a program</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <div class="bg-overlay-black">
+                <div class="container section-30 section-md-95 section-lg-top-120 section-lg-bottom-150">
+
+                    <!-- List Inline-->
+                    {% for f in ficheConsultation %}
+
+                    <ul class="list-inline list-inline-dashed list-white text-big p offset-md-top-13">
+
+
+                        <div class="box-sm bg-default">
+                            <ul  align="left" class="list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p">
+                              <li><span   class="icon icon-xs material-icons-ico material-icons-event text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">Date de création:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="my-philosophy.html">{{ f.CreationDate|date('y-m-d')}}</a></li>
+                            </ul>
+                            <ul  align="right" class="list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p">
+                                <li><span  class="icon icon-xs material-icons-ico material-icons-person text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">By:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="my-philosophy.html">nutrisionniste x </a></li>
+                            </ul>
+
+                            <span class="text-big font-weight-bold text-primary offset-top-20 offset-md-top-30">Votre poids:   </span>{{ f.poids }} kg
+                            <br> <br>
+                            <span class="text-big font-weight-bold text-primary offset-top-20 offset-md-top-30">Votre taille:   </span>{{ f.taille }} mètres
+                            <br><br>
+                            <span class="text-big font-weight-bold text-primary offset-top-20 offset-md-top-30">Votre Imc:   </span>{{ f.imc }}
+
+
+
+
+
+                        </div>
+
+                    </ul>
+                        {% endfor %}
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+
+{% endblock %}

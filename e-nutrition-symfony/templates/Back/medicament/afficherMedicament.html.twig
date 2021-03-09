@@ -30,6 +30,7 @@
                                             <th>Nom du médicament </th>
                                             <th>Quantité</th>
                                             <th>Durée de consommation</th>
+                                            <th>id fiche consultation</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -39,6 +40,7 @@
                                             <td>{{ m.nom }}</td>
                                             <td>{{ m.quantite}}</td>
                                             <td>{{ m.duree }}</td>
+                                            <td>{{ m.fiche.id }}</td>
 
                                             <td> <a href="{{ path('deleteM',{'id':m.id}) }}">Delete</a></td>
 

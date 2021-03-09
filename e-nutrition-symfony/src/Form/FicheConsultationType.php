@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\FicheConsultation;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -19,6 +20,15 @@ class FicheConsultationType extends AbstractType
             ->add('Symptome',TextareaType::class)
             ->add('Apetit')
             ->add('Description',TextareaType::class)
+            ->add('medicaments',CollectionType::class,[
+                'entry_type' => MedicamentType::class,
+                'allow_add' => true,
+                'entry_options' => ['label' => false],
+                'allow_delete' => true,
+                'by_reference' => false,
+
+            ])
+
 
         ;
     }

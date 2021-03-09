@@ -55,7 +55,7 @@ class FicheConsultation
     private $Description;
 
     /**
-     * @ORM\OneToMany(targetEntity=Medicament::class, mappedBy="fiche")
+     * @ORM\OneToMany(targetEntity=Medicament::class, mappedBy="fiche",cascade={"all"},orphanRemoval=true)
      */
     private $medicaments;
 

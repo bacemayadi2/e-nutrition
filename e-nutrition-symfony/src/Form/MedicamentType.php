@@ -15,6 +15,8 @@ class MedicamentType extends AbstractType
             ->add('nom')
             ->add('quantite')
             ->add('duree')
+
+
         ;
     }
 

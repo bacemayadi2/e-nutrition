@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Repository\BlogPostRepository;
+use App\Repository\MedicamentRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,6 +16,24 @@ use App\Form\FicheConsultationType;
 use App\Entity\FicheConsultation;
 class FicheConsultationController extends AbstractController
 {
+    /**
+     * @param FicheConsultationRepository $repository
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("afficherFicheFront",name="afficherFicheFront")
+     */
+
+
+    public function AfficheFicheFront(FicheConsultationRepository $repository)
+    {
+        $ficheConsultation=$repository->findAll();
+        return $this->render('front/fiche_consultation/ficheAffiche.html.twig', [
+            'ficheConsultation' => $ficheConsultation]);
+
+    }
+
+
+
+
     /**
      * @Route("FicheConsultation", name="fiche_consultation")
      */
@@ -29,10 +50,16 @@ class FicheConsultationController extends AbstractController
      * @Route("afficherFicheConsultation",name="afficherFicheConsultation")
      */
 
-    public function AfficheFiche(FicheConsultationRepository $repository)
+    public function AfficheFiche(Request $request,PaginatorInterface $paginator,FicheConsultationRepository $repository)
     {
 
-        $ficheConsultation=$repository->findAll();
+        $donnees=$repository->findAll();
+        $ficheConsultation=$paginator->paginate(
+            $donnees,
+            /* query NOT result */
+            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+            3 /*limit per page*/
+        );
         return $this->render('Back/fiche_consultation/afficherFicheConsultation.html.twig',
         ['ficheConsultation'=>$ficheConsultation]);
     }
@@ -43,7 +70,7 @@ class FicheConsultationController extends AbstractController
      * @route("ajouterFicheConsultation",name="ficheAjout")
      */
 
-   public function AjouteFiche(Request $request)
+   public function AjouteFiche(Request $request,MedicamentRepository $repo)
    {
    $ficheConsultation=new FicheConsultation();
    $form=$this->createForm(FicheConsultationType::class,$ficheConsultation);
@@ -55,10 +82,10 @@ class FicheConsultationController extends AbstractController
        $em->persist($ficheConsultation);
        $em->flush();
        return $this->redirectToRoute('afficherFicheConsultation');
-
    }
+
 return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig',
-    ['medicament' => $medicament ,'form'=>$form->createView()]);
+    ['form'=>$form->createView()]);
    }
 
 
@@ -97,7 +124,7 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
      }
 
      return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig',
-     ['medicament' => $medicament,'form'=>$form->createView()]);
+     ['form'=>$form->createView()]);
 
  }
 
