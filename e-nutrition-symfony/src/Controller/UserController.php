@@ -9,7 +9,9 @@ use App\Form\UserType;
 use App\Repository\StudentRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,11 +40,20 @@ class UserController extends AbstractController
      */
     function CreateUser(Request $request)
     {
+
         $user = new Utilisateur();
+
         $form = $this->createForm(UserType::class, $user);
         $form->add("Ajouter", SubmitType::class);
 
+
+        //$form = $this->createFormBuilder()
+         //   ->add('typeCompte', ChoiceType::class, ['choices'  => ['Choisir votre type de compte'=> 0, 'Patient' => 'Patient', 'Nutritionniste' => 'Nutritionniste', 'Secrétaire' => 'Secrétaire']]);
+
         $form->handleRequest($request);
+
+
+
 
         if ($form->isSubmitted() && $form->isValid())
         {
@@ -51,13 +62,13 @@ class UserController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('CreateUser');
         }
-        return $this->render('back/users/createUser.html.twig', ['form'=>$form->createView()]);
+        return $this->render('front/users/createUser.html.twig', ['form'=>$form->createView()]);
     }
 
     /**
      * @Route("UpdateUser/{id}", name="UpdateUser")
      */
-    function UpdateStudent(UserRepository  $repo, Request $request, $id)
+    function UpdateUser(UserRepository  $repo, Request $request, $id)
     {
         $user = $repo->find($id);
 
@@ -73,7 +84,7 @@ class UserController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('DisplayUsers');
         }
-        return $this->render('back/users/updateUser.html.twig', ['form'=>$form->createView()]);
+        return $this->render('front/users/updateUser.html.twig', ['form'=>$form->createView()]);
     }
 
     /**
@@ -86,5 +97,15 @@ class UserController extends AbstractController
         $em->remove($user);
         $em->flush();
         return $this->redirectToRoute('DisplayUsers');
+    }
+
+    /**
+     * @Route("/SearchDoctor", name="SearchDoctor")
+     */
+    function SearchDoctor(Request $request, UserRepository $repo)
+    {
+        $input = $request->get('search'); // $input = $_POST['search']
+        $users = $repo->findBy(['nom' => $input]);
+        return $this->render('front/users/SearchDoctor.html.twig', ['users'=>$users]);
     }
 }

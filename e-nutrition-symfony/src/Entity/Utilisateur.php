@@ -21,34 +21,38 @@ class Utilisateur
 
     /**
      * @ORM\Column(type="string", length=255)
-     * Assert\NotBlank(message="Name is required")
+     * @Assert\NotBlank(message="Saisir votre nom svp !!!")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Saisir votre prénom svp !!!")
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Choisir votre sexe svp !!!")
      */
     private $sexe;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank(message="Saisir votre date de naissance svp !!!")
      */
     private $dateNaiss;
 
     /**
      * @ORM\Column(type="string", length=30)
-     *Assert\NotBlank(message="E-mail is required")
-     * Assert\Email(message="E-mail is not valid")
+     * @Assert\NotBlank(message="E-mail is required")
+     * @Assert\Email(message="Saisir votre E-mail svp !!!")
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank(message="Saisir votre numéro de téléphone svp !!!")
      */
     private $tel;
 
@@ -56,6 +60,18 @@ class Utilisateur
      * @ORM\Column(type="string", length=20)
      */
     private $typeCompte;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank(message="Saisir votre ville svp !!!")
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Saisir votre adresse svp !!!")
+     */
+    private $adresse;
 
     public function getId(): ?int
     {
@@ -142,6 +158,30 @@ class Utilisateur
     public function setTypeCompte(string $typeCompte): self
     {
         $this->typeCompte = $typeCompte;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }
