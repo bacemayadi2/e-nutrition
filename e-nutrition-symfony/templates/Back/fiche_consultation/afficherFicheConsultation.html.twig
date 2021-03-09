@@ -52,6 +52,7 @@
                                 <td> <a href="{{ path('updateF',{'id':f.id}) }}">Modifier</a></td>
 
                             </tr {% endfor %}>
+                            {{ knp_pagination_render(ficheConsultation) }}
 
                             </tbody>
 
