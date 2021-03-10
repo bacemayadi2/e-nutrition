@@ -138,8 +138,11 @@
 
 
                                 {% for tag in plat.TagNourriture() %}
+                                    {% if tag.isImage() %}
                                     <td>
-                                        <img src="{{ asset( tag.getUrl() )}}" alt="element 01" width="140" class="float-left"> </td>
+                                        <img src="{{ asset( tag.getUrl() )}}" alt="element 01" width="400" class="float-left">
+                                    </td>
+                                    {% endif %}
                                 {% endfor %}
 
                             </div>

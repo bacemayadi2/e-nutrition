@@ -1,0 +1,113 @@
+
+1)crée dans votreclass (ex:Nourriture) une nouvelle relation OneTOMany avec "TagNomVotreClasse"
+(
+php bin/console make:entity
+votreclass
+tagNomVotreClasse
+OneToMany
+)
+
+2)ajouter dans votreclass  a l'orm du "TagNomVotreClasse"   "cascade={"all"},orphanRemoval=true"
+
+example
+        /**
+         * @ORM\OneToMany(targetEntity=TagNourriture::class, mappedBy="nourriture", cascade={"all"},orphanRemoval=true)
+         */
+        protected $tagNourriture;
+
+
+
+A)pour l'upload des fichiers (ajouter) (peu import le type fichier )
+    1)ajouter a votre form du class (ex :PlatType) ces ligne en changent tagNomdevotretag
+
+                ->add('tagNomdevotretag', CollectionType::class  ,[
+                    'entry_type' => tagNomdevotretag::class,
+                    'allow_add' => true,
+                    'entry_options' => ['label' => false],
+                    'allow_delete' => true,
+                    'by_reference' => false,
+                ]);
+   2)ajouter dans votre twig  changent tagNomdevotretag
+    a)au tout  debut du fichier just aprés {% block Content %}
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+    b) l'emplacement ou vous voulez ajouter le button ajouter images
+           <ul id="fichier"
+                                                    data-prototype="{{ form_widget(form.tagNomdevotretag.vars.prototype)|e }}"
+
+                                                    data-widget-tags="{{ '<li></li>'|e }}"
+                                                    data-widget-counter="{{ form.tagNomdevotretag|length }}"
+
+                                                >
+
+
+
+                                                    {% for tag in form.tagNomdevotretag %}
+                                                        <li>
+
+                                                            <label  for="timesheetinput7">file) </label>
+                                                            {{ form_widget(tagcontenuMultimedia.fileMultimedia) }}
+                                                             <label  for="timesheetinput7">description) </label>
+                                                            {{ form_widget(tag.contenuMultimedia.description) }}
+                                                        </li>
+                                                    {% endfor %}
+
+           </ul>
+           <button type="button" class="btn btn-primary add-another-collection-widget" data-list-selector="#fichier">ajouter une  image</button>
+
+    c)ajouter le script comme il est a la fin de votre fichier twig
+
+        <script>
+            jQuery(document).ready(function () {
+                jQuery('.add-another-collection-widget').click(function (e) {
+                    var list = jQuery(jQuery(this).attr('data-list-selector'));
+                    // Try to find the counter of the list or use the length of the list
+                    var counter = list.data('widget-counter') || list.children().length;
+
+                    // grab the prototype template
+                    var newWidget = list.attr('data-prototype');
+                    // replace the "__name__" used in the id and name of the prototype
+                    // with a number that's unique to your emails
+                    // end name attribute looks like name="contact[emails][2]"
+                    newWidget = newWidget.replace(/__name__/g, counter);
+                    // Increase the counter
+                    counter++;
+                    // And store it, the length cannot be used if deleting widgets is allowed
+                    list.data('widget-counter', counter);
+
+                    // create a new list element and add it to the list
+                    var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
+                    newElem.appendTo(list);
+
+                    addTagFormDeleteLink($(newElem));
+
+
+
+                });
+
+            });
+
+            function addTagFormDeleteLink($tagFormLi) {
+                var $removeFormButton = $('<button type="button" class="btn btn-danger">enlever</button>');
+                $tagFormLi.append($removeFormButton);
+
+                $removeFormButton.on('click', function(e) {
+                    // remove the li for the tag form
+                    $tagFormLi.remove();
+                });
+            }
+
+        </script>
+
+
+
+
+B) pour l'affichage des image dans votre twig ajouter ( changer :tagNomdevotretag  et sNomDeVotreClass) width = taille image
+    {% for tag in NomDeVotreClass.tagNomdevotretag() %}
+        {% if tag.isImage() %}
+            <td>
+            <img src="{{ asset( tag.getUrl() )}}" alt="element 01" width="400" class="float-left">
+            </td>
+        {% endif %}
+    {% endfor %}
+

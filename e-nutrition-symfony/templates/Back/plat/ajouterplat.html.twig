@@ -83,7 +83,7 @@
 
 
                                         </div>
-                                        <ul id="image"
+                                        <ul id="fichier"
                                             data-prototype="{{ form_widget(form.tagNourriture.vars.prototype)|e }}"
 
                                             data-widget-tags="{{ '<li></li>'|e }}"
@@ -107,7 +107,7 @@
 
                                         <button type="button"
                                                 class="btn btn-primary add-another-collection-widget"
-                                                data-list-selector="#image">ajouter une autre image</button>
+                                                data-list-selector="#fichier">ajouter une  image</button>
 
 
                                     </fieldset>
@@ -195,47 +195,7 @@
 
                                     </fieldset>
                                     {{ form_end(form) }}
-                                    <script>
-                                        jQuery(document).ready(function () {
-                                            jQuery('.add-another-collection-widget').click(function (e) {
-                                                var list = jQuery(jQuery(this).attr('data-list-selector'));
-                                                // Try to find the counter of the list or use the length of the list
-                                                var counter = list.data('widget-counter') || list.children().length;
 
-                                                // grab the prototype template
-                                                var newWidget = list.attr('data-prototype');
-                                                // replace the "__name__" used in the id and name of the prototype
-                                                // with a number that's unique to your emails
-                                                // end name attribute looks like name="contact[emails][2]"
-                                                newWidget = newWidget.replace(/__name__/g, counter);
-                                                // Increase the counter
-                                                counter++;
-                                                // And store it, the length cannot be used if deleting widgets is allowed
-                                                list.data('widget-counter', counter);
-
-                                                // create a new list element and add it to the list
-                                                var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
-                                                newElem.appendTo(list);
-
-                                                addTagFormDeleteLink($(newElem));
-
-
-
-                                            });
-
-                                        });
-
-                                        function addTagFormDeleteLink($tagFormLi) {
-                                            var $removeFormButton = $('<button type="button" class="btn btn-danger">enlever</button>');
-                                            $tagFormLi.append($removeFormButton);
-
-                                            $removeFormButton.on('click', function(e) {
-                                                // remove the li for the tag form
-                                                $tagFormLi.remove();
-                                            });
-                                        }
-
-                                    </script>
 
                                 </div>
                             </div>
@@ -246,17 +206,47 @@
 
         </div>
     </div>
-    <div class="form-group" dir="rtl">
-        <h5>RTL Select field Selectize</h5>
-        <p>Add <code>.selectize-rtl-select</code> class supports RTL to select </p>
-        <select class="selectize-rtl-select">
-            <option value="" selected>Select a person...</option>
-            <option value="4">Thomas Edison</option>
-            <option value="1">Nikola</option>
-            <option value="3">Nikola Tesla</option>
-            <option value="5">Arnold Schwarzenegger</option>
-        </select>
-    </div>
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('.add-another-collection-widget').click(function (e) {
+                var list = jQuery(jQuery(this).attr('data-list-selector'));
+                // Try to find the counter of the list or use the length of the list
+                var counter = list.data('widget-counter') || list.children().length;
+
+                // grab the prototype template
+                var newWidget = list.attr('data-prototype');
+                // replace the "__name__" used in the id and name of the prototype
+                // with a number that's unique to your emails
+                // end name attribute looks like name="contact[emails][2]"
+                newWidget = newWidget.replace(/__name__/g, counter);
+                // Increase the counter
+                counter++;
+                // And store it, the length cannot be used if deleting widgets is allowed
+                list.data('widget-counter', counter);
+
+                // create a new list element and add it to the list
+                var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
+                newElem.appendTo(list);
+
+                addTagFormDeleteLink($(newElem));
+
+
+
+            });
+
+        });
+
+        function addTagFormDeleteLink($tagFormLi) {
+            var $removeFormButton = $('<button type="button" class="btn btn-danger">enlever</button>');
+            $tagFormLi.append($removeFormButton);
+
+            $removeFormButton.on('click', function(e) {
+                // remove the li for the tag form
+                $tagFormLi.remove();
+            });
+        }
+
+    </script>
 
     <!-- ////////////////////////////////////////////////////////////////////////////-->
 
