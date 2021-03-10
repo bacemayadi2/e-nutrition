@@ -2950,7 +2950,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF3/NR2lMBMD+s="
 							},
-							"name": "Role2"
+							"name": "Role2",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2987,7 +2988,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF3/NR2lMBMD+s="
 							},
-							"name": "Role6"
+							"name": "Role6",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2995,85 +2997,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF3/NR2lMBMD+s="
 							},
-							"name": "Role7"
-						}
-					]
-				},
-				{
-					"_type": "UMLCollaboration",
-					"_id": "AAAAAAF3/O+naWhrBvU=",
-					"_parent": {
-						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-					},
-					"name": "Collaboration2",
-					"ownedElements": [
-						{
-							"_type": "UMLInteraction",
-							"_id": "AAAAAAF3/O+naWhsR8o=",
-							"_parent": {
-								"$ref": "AAAAAAF3/O+naWhrBvU="
-							},
-							"name": "Interaction1",
-							"ownedElements": [
-								{
-									"_type": "UMLSequenceDiagram",
-									"_id": "AAAAAAF3/O+naWhtIqQ=",
-									"_parent": {
-										"$ref": "AAAAAAF3/O+naWhsR8o="
-									},
-									"name": "modifeir aliment",
-									"ownedViews": [
-										{
-											"_type": "UMLFrameView",
-											"_id": "AAAAAAF3/O+naWhum40=",
-											"_parent": {
-												"$ref": "AAAAAAF3/O+naWhtIqQ="
-											},
-											"model": {
-												"$ref": "AAAAAAF3/O+naWhtIqQ="
-											},
-											"subViews": [
-												{
-													"_type": "LabelView",
-													"_id": "AAAAAAF3/O+naWhvPLY=",
-													"_parent": {
-														"$ref": "AAAAAAF3/O+naWhum40="
-													},
-													"font": "Arial;13;0",
-													"left": 75.97900390625,
-													"top": 5,
-													"width": 92.75537109375,
-													"height": 13,
-													"text": "modifeir aliment"
-												},
-												{
-													"_type": "LabelView",
-													"_id": "AAAAAAF3/O+namhwzI8=",
-													"_parent": {
-														"$ref": "AAAAAAF3/O+naWhum40="
-													},
-													"font": "Arial;13;1",
-													"left": 10,
-													"top": 5,
-													"width": 60.97900390625,
-													"height": 13,
-													"text": "interaction"
-												}
-											],
-											"font": "Arial;13;0",
-											"left": 5,
-											"width": 695,
-											"height": 595,
-											"nameLabel": {
-												"$ref": "AAAAAAF3/O+naWhvPLY="
-											},
-											"frameTypeLabel": {
-												"$ref": "AAAAAAF3/O+namhwzI8="
-											}
-										}
-									]
-								}
-							]
+							"name": "Role7",
+							"type": ""
 						}
 					]
 				},

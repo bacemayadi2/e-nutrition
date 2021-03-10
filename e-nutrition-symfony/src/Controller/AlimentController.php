@@ -50,7 +50,7 @@ class AlimentController extends AbstractController
     {
 
         $aliment =$repoAliment->find($id);
-        //    $s =new String_() ;
+        //    $s =new String_() ;+
 
 
         $form =$this->createForm(AlimentType::class,$aliment);
