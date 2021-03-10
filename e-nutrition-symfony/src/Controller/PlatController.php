@@ -75,7 +75,7 @@ class PlatController extends AbstractController
     {
         $plat =$repo->find($id);
         $form =$this->createForm(PlatType::class,$plat);
-        // $form->add("Ajouter",SubmitType::class);
+        $form->add("Ajouter",SubmitType::class);
         $form->handleRequest($request);//gere requette envoyer par l'utlisateur
 
 

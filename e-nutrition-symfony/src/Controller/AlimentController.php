@@ -25,6 +25,7 @@ class AlimentController extends AbstractController
     public function ajoute(Request $request)
     {
         $aliment =new Aliment();
+        $aliment->setPoid(100);
         $form =$this->createForm(AlimentType::class,$aliment);
         $form->add("Ajouter",SubmitType::class);
         $form->handleRequest($request);//gere requette envoyer par l'utlisateur

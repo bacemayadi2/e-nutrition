@@ -137,11 +137,23 @@
 
 
 
-                                {% for tag in plat.TagNourriture() %}
+                                {% for tag in plat.TagNourriture %}
                                     {% if tag.isImage() %}
                                     <td>
                                         <img src="{{ asset( tag.getUrl() )}}" alt="element 01" width="400" class="float-left">
                                     </td>
+                                    {% endif %}
+                                {% endfor %}
+                                <div>
+
+                                {% for tag in plat.TagNourriture %}
+                                    {% if tag.isVideo() %}
+                                        <td>
+                                            <video width="400" height="240" controls>
+                                                <source src="{{ asset( tag.getUrl() )}}" type="video/{{ ( tag.getExtension )}}">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </td>
                                     {% endif %}
                                 {% endfor %}
 
