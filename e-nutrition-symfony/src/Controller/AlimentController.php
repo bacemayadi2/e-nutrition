@@ -83,6 +83,8 @@ class AlimentController extends AbstractController
 
     );
     }
+
+
     /**
      * @Route ("afficherAlimentfront",name="afficherAlimentfront")
      */

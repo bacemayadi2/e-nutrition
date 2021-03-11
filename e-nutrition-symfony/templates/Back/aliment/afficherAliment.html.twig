@@ -24,10 +24,21 @@
 
                                 <div class="table-responsive">
                                     <table class="table">
+                                        <tr>
+                                            <th><input type="text" id="searchnom" class="form-control" placeholder="Searchnom"></th>
+                                            <th><input type="text" id="searchcategorie" class="form-control" placeholder="Searchcategorie"></th>
+                                            <th><input type="text" id="searchpoid" class="form-control" placeholder="Searchpoid"></th>
+                                            <th><input type="text" id="searchproteines" class="form-control" placeholder="Searchnom"></th>
+                                            <th><input type="text" id="searchglucides" class="form-control" placeholder="Searchglucides"></th>
+                                            <th><input type="text" id="searchlipides" class="form-control" placeholder="Searchlipides"></th>
+                                            <th><input type="text" id="searchcalories" class="form-control" placeholder="Searchcalories"></th>
+                                            <th></th>
+                                        </tr>
                                         <thead class="bg-primary white">
+
                                         <tr>
                                             <th>nom</th>
-                                            <th>categorieAlimen </th>
+                                            <th>categorie Alimenyt </th>
                                             <th>Poid(g)</th>
                                             <th>proteines</th>
                                             <th>glucides</th>
@@ -37,6 +48,7 @@
 
                                         </tr>
                                         </thead>
+
                                         <tbody>
                                         <tr {% for f in aliments %} >
                                             <td> {{ f.nom }}</td>
