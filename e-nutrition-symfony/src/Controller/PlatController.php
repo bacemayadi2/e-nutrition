@@ -53,6 +53,21 @@ class PlatController extends AbstractController
         );
     }
 
+
+    /**
+     * @param PlatRepository $repo
+     * @Route ("afficherplatfront/{id}",name="afficherplatfront")
+     */
+    public function afficherfront(PlatRepository $repo,$id)
+    {
+        $plats=$repo->findAll();
+        $plat=$repo->find($id);
+        return $this->render("front/plat/afficherplat.html.twig",
+            ["plats"=>$plats,"plat"=>$plat]
+
+        );
+    }
+
     /**
      * @param PlatRepository $repo
      * @param $id

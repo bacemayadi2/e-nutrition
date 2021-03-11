@@ -16,7 +16,7 @@ class CompositionType extends AbstractType
     {
         $builder
             ->add('poid')
-            ->add('aliments',Null, ['attr' => ['class'=> 'selectize-multiple']]);
+            ->add('aliment',Null, ['attr' => ['class'=> 'selectize-multiple']]);
 
     }
 

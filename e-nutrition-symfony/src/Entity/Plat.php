@@ -6,6 +6,8 @@ use App\Repository\PlatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Null_;
+use PhpParser\Node\Scalar\String_;
 
 /**
  * @ORM\Entity(repositoryClass=PlatRepository::class)
@@ -148,7 +150,11 @@ class Plat extends Nourriture
     }
     public function calculePoids():self
     {
-        $this->poid=4;
+        $this->poid=0;
+        foreach ($this->compostions as $c)
+        {
+            $this->poid += $c->GetPoid();
+        }
         return $this;
     }
     public function calculeNutritiments():self
@@ -177,6 +183,17 @@ class Plat extends Nourriture
         }
 
         return $s;
+    }
+    public function getFirstImage():?string
+    {
+        foreach ($this->tagNourriture as $tag)
+        {
+            if ($tag->isImage())
+            {
+            return $tag->getUrl();
+            }
+        }
+        return null;
     }
 
 

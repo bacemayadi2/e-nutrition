@@ -25,7 +25,7 @@ class Composition
     /**
      * @ORM\ManyToOne(targetEntity=Aliment::class, inversedBy="compositions" , cascade={"all"})
      */
-    private $aliments;
+    private $aliment;
 
     /**
      * @ORM\ManyToOne(targetEntity=Plat::class, inversedBy="compostions")
@@ -50,14 +50,14 @@ class Composition
         return $this;
     }
 
-    public function getAliments(): ?Aliment
+    public function getAliment(): ?Aliment
     {
-        return $this->aliments;
+        return $this->aliment;
     }
 
-    public function setAliments(?Aliment $aliments): self
+    public function setAliment(?Aliment $aliment): self
     {
-        $this->aliments = $aliments;
+        $this->aliment = $aliment;
 
         return $this;
     }

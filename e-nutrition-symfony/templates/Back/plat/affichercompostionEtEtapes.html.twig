@@ -65,7 +65,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Les aliments</h4>
+                                <h4 class="card-title">Les aliment</h4>
                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -92,9 +92,9 @@
                                         </thead>
                                         <tbody>
                                         <tr {% for f in compostions %} >
-                                            <td> {{ f.aliments.nom }}</td>
+                                            <td> {{ f.aliment.nom }}</td>
                                             <td> {{ f.poid }} </td>
-                                            <td>{{   f.aliments.calculerCalorie()  }}</td>
+                                            <td>{{   f.aliment.calculerCalorie()  }}</td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <div style="text-align: center;">

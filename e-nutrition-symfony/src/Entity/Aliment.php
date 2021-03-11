@@ -104,7 +104,7 @@ public function addComposition(Composition $composition): self
 {
     if (!$this->compositions->contains($composition)) {
         $this->compositions[] = $composition;
-        $composition->setAliments($this);
+        $composition->setAliment($this);
     }
 
     return $this;
@@ -114,8 +114,8 @@ public function removeComposition(Composition $composition): self
 {
     if ($this->compositions->removeElement($composition)) {
         // set the owning side to null (unless already changed)
-        if ($composition->getAliments() === $this) {
-            $composition->setAliments(null);
+        if ($composition->getAliment() === $this) {
+            $composition->setAliment(null);
         }
     }
 
