@@ -61,7 +61,7 @@
                                         <li data-thumb="{{ asset( tag.getUrl() )}}"><img src="{{ asset( tag.getUrl() )}}" alt="" />  </li>
                                     {% endif %}
                                     {% if tag.isVideo() %}
-                                    <li data-thumb="{{ asset( tag.getthumbnail() )}}"><div class="entry-photo single-recipe-photo-cover"><iframe title="{{ asset( tag.getContenuMultimedia().getDescription()) }}" width="848" height="480" src="{{ asset( tag.getUrl() )}}" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></li>
+                                    <li data-thumb="{{ asset( tag.getthumbnail() )}}"><div class="entry-photo single-recipe-photo-cover"><iframe title="{{ asset( tag.getContenuMultimedia().getDescription()) }}" width="848" height="480" src="{{ asset( tag.getUrl() )}}" frameborder="1" allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></li>
                                     {% endif %}
                                 {% endfor %}
                             </ul>
