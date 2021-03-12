@@ -83,4 +83,15 @@ class CategorieAliment
         return $this->nomCategorie ;
 
     }
+
+    public function getNumberOfAliment(){
+        $i=0;
+        foreach ($this->aliments as $aliment)
+        {
+            $i++;
+        }
+        return $i;
+
+
+    }
 }

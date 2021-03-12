@@ -187,23 +187,22 @@
                     <div class="rd-navbar-nav-wrap">
                         <!-- RD Navbar Nav-->
                         <ul class="rd-navbar-nav">
-                            <li class="active"><a href="index.html">Home</a>
+                            <li class="active"><a href="{{ path('home_front') }}">Home</a>
                                 <!-- RD Navbar Dropdown-->
 
                             </li>
-                            <li><a href="health-philosophy.html">About me</a>
+                            <li><a href="{{ path('afficherplatfrontall') }}">Nutriton</a>
                                 <!-- RD Navbar Dropdown-->
                                 <ul class="rd-navbar-dropdown">
-                                    <li><a href="health-philosophy.html">Health Philosophy</a></li>
-                                    <li><a href="my-philosophy.html">My Philosophy</a></li>
-                                    <li><a href="press-and-tv.html">Press & tv</a></li>
+                                    <li><a href="{{ path('afficherplatfrontall') }}">tout les plat</a></li>
+                                    <li><a href="my-philosophy.html">Aliment (not implemented yet)</a></li>
                                 </ul>
                             </li>
-                            <li><a href="work-with-me.html">Work with me</a>
+                            <li><a href="{{ path('home_back') }}">backend</a>
                                 <!-- RD Navbar Dropdown-->
                                 <ul class="rd-navbar-dropdown">
-                                    <li><a href="group-coaching.html">Group Coaching</a></li>
-                                    <li><a href="welness.html">Wellness</a></li>
+{#                                    <li><a href="group-coaching.html">Group Coaching</a></li>#}
+{#                                    <li><a href="welness.html">Wellness</a></li>#}
                                 </ul>
                             </li>
                             <li><a href="events.html">Events</a></li>
