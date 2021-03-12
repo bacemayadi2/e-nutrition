@@ -223,7 +223,7 @@ class Plat extends Nourriture
     }
     public function calculerCalorieParPortion() :float
     {
-        return (($this->getGlucides()*4 +$this->getLipides() *9 + $this->getProteines()*9)/$this->nbrportion);
+        return         number_format((($this->getGlucides()*4 +$this->getLipides() *9 + $this->getProteines()*9)/$this->nbrportion),2);
     }
 
 

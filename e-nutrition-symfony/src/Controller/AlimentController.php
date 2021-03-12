@@ -63,7 +63,7 @@ class AlimentController extends AbstractController
 
 
         $form =$this->createForm(AlimentType::class,$aliment);
-        $form->add("modifier",SubmitType::class);
+       //$form->add("modifier",SubmitType::class);
         $form->handleRequest($request);//gere requette envoyer par l'utlisateur
 
         if($form->isSubmitted() && $form->isValid()){
