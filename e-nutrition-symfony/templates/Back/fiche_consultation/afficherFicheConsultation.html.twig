@@ -1,6 +1,18 @@
 
 {% extends 'back/base.html.twig' %}
 {% block Content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
     <div class="app-content content">
         <div class="content-wrapper">
 
@@ -10,6 +22,9 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Les fiches consultations</h4>
+
+
+
                     <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                     <div class="heading-elements">
                         <ul class="list-inline mb-0">
@@ -20,6 +35,7 @@
                         </ul>
                     </div>
                 </div>
+                <input id="myInput" class="form-control rounded" type="text" placeholder="Search.." >
                 <div class="card-content collapse show">
 
                     <div class="table-responsive">
@@ -36,7 +52,7 @@
                                 <th> Description</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody  id="myTable">
                             <tr {% for f in ficheConsultation %} >
 
                                 <td> {{ f.id }}</td>
@@ -50,9 +66,7 @@
                                 <td> <a href="{{ path('afficherMedicament',{'id':f.id}) }}">Voir medicament</a></td>
                                 <td> <a href="{{ path('deleteF',{'id':f.id}) }}">Delete</a></td>
                                 <td> <a href="{{ path('updateF',{'id':f.id}) }}">Modifier</a></td>
-                            </tr {% endfor %}>
-                            {{ knp_pagination_render(ficheConsultation) }}
-
+                          </tr {% endfor %}{{ knp_pagination_render(ficheConsultation) }}>
                             </tbody>
 
                             </table>
@@ -62,7 +76,18 @@
             </div>
         </div>
     </div>
+
+
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
 {% endblock %}
+
+

@@ -1,6 +1,16 @@
-
 {% extends 'back/base.html.twig' %}
 {% block Content %}
+
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
     <div class="app-content content">
         <div class="content-wrapper">
 
@@ -20,8 +30,8 @@
                                     </ul>
                                 </div>
                             </div>
+                            <input id="myInput" class="form-control rounded" type="text" placeholder="Search.." >
                             <div class="card-content collapse show">
-
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class="bg-primary white">
@@ -47,9 +57,11 @@
 
                                         </tr {% endfor %}>
 
+
                                         </tbody>
 
                                     </table>
+
                                 </div>
                             </div>
                         </div>

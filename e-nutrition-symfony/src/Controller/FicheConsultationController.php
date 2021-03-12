@@ -14,6 +14,8 @@ use App\Repository\FicheConsultationRepository;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Form\FicheConsultationType;
 use App\Entity\FicheConsultation;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 class FicheConsultationController extends AbstractController
 {
     /**
@@ -58,7 +60,7 @@ class FicheConsultationController extends AbstractController
             $donnees,
             /* query NOT result */
             $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
-            3 /*limit per page*/
+            7 /*limit per page*/
         );
         return $this->render('Back/fiche_consultation/afficherFicheConsultation.html.twig',
         ['ficheConsultation'=>$ficheConsultation]);
@@ -127,10 +129,6 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
      ['form'=>$form->createView()]);
 
  }
-
-
-
-
 
 
 }

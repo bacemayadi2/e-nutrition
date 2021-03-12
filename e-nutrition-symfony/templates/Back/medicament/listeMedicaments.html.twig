@@ -1,0 +1,33 @@
+
+
+{% block Content %}
+    <h1 align="center">Ordonnance</h1>
+
+                                    <table class="table">
+                                        <thead class="bg-primary white">
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nom du médicament </th>
+                                            <th>Quantité</th>
+                                            <th>Durée de consommation</th>
+                                            <th>id fiche consultation</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <tr {% for m in medicament %} >
+
+                                            <td> {{ m.id }}</td>
+                                            <td>{{ m.nom }}</td>
+                                            <td>{{ m.quantite}}</td>
+                                            <td>{{ m.duree }}</td>
+                                            <td>{{ m.fiche.id }}</td>
+                                        </tr {% endfor %}>
+                                        </tbody>
+                                    </table>
+
+
+
+
+
+{% endblock %}

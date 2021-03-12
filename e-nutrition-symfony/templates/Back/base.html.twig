@@ -45,6 +45,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     {%  endblock %}
+
     <!-- END Custom CSS-->
 </head>
 <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-col="2-columns">
@@ -1671,7 +1672,9 @@
 <script src="{{ asset('back/vendors/js/pickers/daterange/daterangepicker.js') }}"></script>
 <script src="{{ asset('back//vendors/js/forms/select/selectivity-full.min.js')}}"></script>
 <script src="{{ asset('back/vendors/js/forms/select/select2.full.min.js')}}"></script>
+{% block footer %}
 
+{% endblock %}
 
 
 <!-- END PAGE VENDOR JS-->
