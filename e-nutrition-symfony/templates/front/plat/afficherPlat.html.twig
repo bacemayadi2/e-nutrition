@@ -61,7 +61,10 @@
                                         <li data-thumb="{{ asset( tag.getUrl() )}}"><img src="{{ asset( tag.getUrl() )}}" alt="" />  </li>
                                     {% endif %}
                                     {% if tag.isVideo() %}
-                                    <li data-thumb="{{ asset( tag.getthumbnail() )}}"><div class="entry-photo single-recipe-photo-cover"><iframe title="{{ asset( tag.getContenuMultimedia().getDescription()) }}" width="848" height="480" src="{{ asset( tag.getUrl() )}}" frameborder="1" allow="accelerometer;  clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></li>
+                                    <li data-thumb="{{ asset( tag.getthumbnail() )}}"><div class="entry-photo single-recipe-photo-cover">
+                                            <iframe  title="{{ asset( tag.getContenuMultimedia().getDescription()) }}" width="870" height="520" src="{{ path('affichervideo',{ 'url':tag.getName , 'extension':tag.getExtension }) }}" frameborder="0" allow="accelerometer;   gyroscope; picture-in-picture" allowfullscreen>
+                                            </iframe></div></li>
+
                                     {% endif %}
                                 {% endfor %}
                             </ul>
@@ -283,5 +286,15 @@
 
         </div> <!-- .rw-inner -->
     </div> <!-- .rw-container -->
-
+<script> //disable auto play video
+    $(document).ready(function () {
+    var ownVideos = $("iframe");
+    $.each(ownVideos, function (i, video) {
+    var frameContent = $(video).contents().find('body').html();
+    if (frameContent) {
+    $(video).contents().find('body').html(frameContent.replace("autoplay", ""));
+    }
+    });
+    });
+</script>
 {% endblock %}
