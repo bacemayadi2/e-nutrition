@@ -9,33 +9,45 @@ use App\Repository\AlimentRepository;
 use App\Repository\CompositionRepository;
 use App\Repository\EtapeDePreparationRepository;
 use App\Repository\PlatRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Process\Process;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class PlatController extends AbstractController
 {
     /**
-     * @Route("/ajouterplat", name="plat")
+     * @Route("/ajouterplat", name="ajouterplat")
      */
     public function ajouterPlat(Request $request): Response
     {
         $plat =new Plat();
         $form =$this->createForm(PlatType::class,$plat);
-        $form->add("Ajouter",SubmitType::class);
         $form->handleRequest($request);//gere requette envoyer par l'utlisateur
 
 
         if($form->isSubmitted() && $form->isValid()){
             $plat->calculeNutritiments();
             $em=$this->getDoctrine()->getManager();
-            dump($form);
             $em->persist($plat);
+            $em->flush();
+
+            foreach ($plat->getTagNourriture() as $tag )
+            {
+                if ($tag->isVideo())
+                {
+                    $tag->getContenuMultimedia()->generatethumbnailtranscode480pmp4();
+                }
+            }
+
             $em->flush();
            return $this->redirectToRoute('afficherplat');
         }
+
         return $this->render("back/plat/ajouterplat.html.twig",
             [  'form' => $form->createView()]);
     }
@@ -44,9 +56,16 @@ class PlatController extends AbstractController
      * @param PlatRepository $repo
      * @Route ("afficherplat",name="afficherplat")
      */
-    public function afficher(PlatRepository $repo)
+    public function afficher(PlatRepository $repo,PaginatorInterface $paginator,Request $request)
     {
-        $plat=$repo->findAll();
+        $donnees=$repo->findAll();
+
+        $plat=$paginator->paginate(
+            $donnees,
+            /* query NOT result */
+            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+            7 /*limit per page*/
+        );
         return $this->render("back/plat/afficherplat.html.twig",
             ["plat"=>$plat]
 
@@ -58,12 +77,42 @@ class PlatController extends AbstractController
      * @param PlatRepository $repo
      * @Route ("afficherplatfront/{id}",name="afficherplatfront")
      */
-    public function afficherfront(PlatRepository $repo,$id)
+    public function afficherfront(PlatRepository $repo,$id,PaginatorInterface $paginator,Request $request)
     {
-        $plats=$repo->findAll();
+       // $plats=$repo->findAll();
+       // $plat=$repo->find($id);
+        $donnees=$repo->findAll();
         $plat=$repo->find($id);
+
+        $platss=$paginator->paginate(
+            $donnees,
+            /* query NOT result */
+            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+            7/*limit per page*/
+        );
         return $this->render("front/plat/afficherplat.html.twig",
-            ["plats"=>$plats,"plat"=>$plat]
+            ["platss"=>$platss,"plat"=>$plat]
+
+        );
+    }
+    /**
+     * @param PlatRepository $repo
+     * @Route ("afficherplatfrontall",name="afficherplatfrontall")
+     */
+    public function afficherfrontall(PlatRepository $repo,PaginatorInterface $paginator,Request $request)
+    {
+        // $plats=$repo->findAll();
+        // $plat=$repo->find($id);
+        $donnees=$repo->findAll();
+
+        $plats=$paginator->paginate(
+            $donnees,
+            /* query NOT result */
+            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+            7/*limit per page*/
+        );
+        return $this->render("front/plat/afficherallplat.html.twig",
+            ["plats"=>$plats]
 
         );
     }
@@ -90,13 +139,21 @@ class PlatController extends AbstractController
     {
         $plat =$repo->find($id);
         $form =$this->createForm(PlatType::class,$plat);
-        $form->add("Ajouter",SubmitType::class);
+      //  $form->add("Ajouter",SubmitType::class);
         $form->handleRequest($request);//gere requette envoyer par l'utlisateur
 
 
         if($form->isSubmitted() && $form->isValid()){
             $plat->calculeNutritiments();
             $em=$this->getDoctrine()->getManager();
+            $em->flush();
+            foreach ($plat->getTagNourriture() as $tag )
+            {
+                if ($tag->isVideo())
+                {
+                    $tag->getContenuMultimedia()->generatethumbnailtranscode480pmp4();
+                }
+            }
             $em->flush();
              return $this->redirectToRoute('afficherplat');
         }
@@ -123,6 +180,28 @@ class PlatController extends AbstractController
 
         );
 
+
+    }
+
+    /**
+     * @param PlatRepository $repository
+     * @Route ("rechercheplat",name="rechercheplat")
+     */
+    public function Recherche(PlatRepository $repository,Request $request,PaginatorInterface $paginator)
+    {
+
+        $name=$request->get('searchplat');
+        $donnees=$repository->findplatbyname($name);
+
+
+        $plats=$paginator->paginate(
+            $donnees,
+            /* query NOT result */
+            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+            7/*limit per page*/
+        );
+        return $this->render("front/plat/afficherallplat.html.twig",
+            ["plats"=>$plats]);
 
     }
 

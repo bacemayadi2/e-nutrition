@@ -1,6 +1,9 @@
 
 {% extends 'back/base.html.twig' %}
 {% block Content %}
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
     <div class="app-content content">
         <div class="content-wrapper">
 
@@ -20,26 +23,38 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="card-content collapse show">
 
+
+
+
+
+
+
+
+
+
+                            <div class="card-content collapse show">
+                                <form method="post" class="search-form" action="{{ path('rechercheAliment') }}">
+                                    <input type="text" class="search-field fullwidth" name="recherchealiment" placeholder="Type keyword and press enter" value="">
+                               </form>
                                 <div class="table-responsive">
                                     <table class="table">
-                                        <tr>
-                                            <th><input type="text" id="searchnom" class="form-control" placeholder="Searchnom"></th>
-                                            <th><input type="text" id="searchcategorie" class="form-control" placeholder="Searchcategorie"></th>
-                                            <th><input type="text" id="searchpoid" class="form-control" placeholder="Searchpoid"></th>
-                                            <th><input type="text" id="searchproteines" class="form-control" placeholder="Searchnom"></th>
-                                            <th><input type="text" id="searchglucides" class="form-control" placeholder="Searchglucides"></th>
-                                            <th><input type="text" id="searchlipides" class="form-control" placeholder="Searchlipides"></th>
-                                            <th><input type="text" id="searchcalories" class="form-control" placeholder="Searchcalories"></th>
-                                            <th></th>
-                                        </tr>
+{#                                        <tr>#}
+{#                                            <th><input type="text" id="searchnom" class="form-control" placeholder="Searchnom"></th>#}
+{#                                            <th><input type="text" id="searchcategorie" class="form-control" placeholder="Searchcategorie"></th>#}
+{#                                            <th><input type="text" id="searchpoid" class="form-control" placeholder="Searchpoid"></th>#}
+{#                                            <th><input type="text" id="searchproteines" class="form-control" placeholder="Searchnom"></th>#}
+{#                                            <th><input type="text" id="searchglucides" class="form-control" placeholder="Searchglucides"></th>#}
+{#                                            <th><input type="text" id="searchlipides" class="form-control" placeholder="Searchlipides"></th>#}
+{#                                            <th><input type="text" id="searchcalories" class="form-control" placeholder="Searchcalories"></th>#}
+{#                                            <th></th>#}
+{#                                        </tr>#}
                                         <thead class="bg-primary white">
 
                                         <tr>
                                             <th>nom</th>
-                                            <th>categorie Alimenyt </th>
-                                            <th>Poid(g)</th>
+                                            <th>categorie Aliment </th>
+                                            <th>unité de mesure(g/piece)</th>
                                             <th>proteines</th>
                                             <th>glucides</th>
                                             <th>lipides</th>
@@ -69,6 +84,11 @@
                                                 </div>
                                             </td>
                                         </tr {% endfor %}>
+                                        <tr>
+                                            <td><div style="text-align: left;">
+                                                <a href="{{ path('ajouterAliment') }}">  <button type="button" class="btn btn-success">ajouter aliment</button></td>
+                                            </div></tr>
+                                        {{ knp_pagination_render(aliment) }}
 
                                         </tbody>
 
@@ -82,4 +102,50 @@
         </div>
     </div>
     </div>
+
+    <script>
+        $( document ).ready(function() {
+            $("#recherchealiment").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = $(this).val();
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+
+                6
+
+                $.ajax({
+                    /* l’url est une chaine de caractères contenant l’adresse où la requête est
+                    envoyée */
+                    url : "{{ path('rechercheAliment') }}",
+                    /* La méthode utilisée pour transférer les données est GET */
+                    type : 'GET',
+                    /*Ici search value va prendre la chaine entrée par un utilisateur dans la
+                    zone de recherche et sera placée après l’url */
+                    data: {
+                        'searchValue' : value
+                    },
+                    /*Cette fonction permet de vider le contenu du tableau pour recevoir le
+                    nouveau contenu*/
+                    success : function(retour){
+                        if(retour){
+                            $('#t tbody#search').empty();
+                            $.each(JSON.parse(retour), function(i, obj) {
+                                $('#t tbody#all').hide();
+                                $('#t tbody#search').append('<tr><td> '+obj.id+'</td> <td> '+obj.nom+' </td>  <td> '+obj.categorieToString+' </td> <td> '+obj.poid+' </td>  <td> '+obj.proteines+' </td>  <td> '+obj.glucides+' </td>  <td> '+obj.lipides+' </td>  <td> '+obj.calculerCalorie+' </td>
+                                    <td>   <a href="supprimerAliment/'+obj.id+'"><button type="button" class="btn btn-primary">supprimer</button> </a>   <a href=" modifierAliment/'+obj.id+'"> <button type="button" class="btn btn-success">modifier</button> </a>  </td> </tr> );
+                            });
+                        }
+                        else
+                        {
+                            $('#t tbody#all').show();
+                            $('#t tbody#search').empty();
+                            $('#t tbody#search').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
 {% endblock %}

@@ -6,8 +6,13 @@ use App\Repository\ContenuMultimediaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use FFMpeg\Coordinate\Dimension;
+use FFMpeg\Coordinate\TimeCode;
+use FFMpeg\FFMpeg;
+use FFMpeg\Format\Video\X264;
 use Symfony\Component\HttpFoundation\File\File ;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use function Symfony\Component\String\u;
 
 
 /**
@@ -96,6 +101,7 @@ class ContenuMultimedia
     public function setNomFile($nomFile): void
     {
         $this->nomFile = $nomFile;
+
     }
 
     public function getNomFile(): ?string
@@ -114,7 +120,45 @@ class ContenuMultimedia
             // if 'updatedAt' is not defined in your entity, use another property
             $this->updatedAt = new \DateTimeImmutable();
         }
+
     }
+
+    public function generatethumbnailtranscode480pmp4():bool
+    {
+
+
+        $extension = u($this->nomFile)->split('.')[1];
+        $name = u($this->nomFile)->split('.')[0];
+        u('aeiou')->containsAny('a');
+        if (!(u($name)->containsAny("new"))) {
+            $logger = null;
+            $ffmpeg = FFMpeg::create(array(
+                'ffmpeg.binaries' => 'ffmpeg.exe',
+                'ffprobe.binaries' => 'ffprobe.exe',
+                'timeout' => 99999999, // The timeout for the underlying process
+                'ffmpeg.threads' => 20,   // The number of threads that FFMpeg should use
+            ), $logger);
+            $format = new X264();
+            $format->setAudioCodec("libmp3lame");
+            $video = $ffmpeg->open('multimedia/' . $this->nomFile);
+            $video
+                ->filters()
+                ->resize(new Dimension(848, 480));
+            $video
+                ->frame(TimeCode::fromSeconds(10))
+                ->save('multimedia/' . $name . 'new' . '.jpg');
+
+            $video
+                ->save($format, 'multimedia/' . $name . 'new' . '.mp4');
+
+            $this->setNomFile($name . 'new' . '.mp4');
+
+            return true;
+        }
+    return false;
+
+    }
+
 
     /**
      * @return Collection|Tag[]
@@ -149,4 +193,5 @@ class ContenuMultimedia
     {
         return $this->fileMultimedia;
     }
+
 }

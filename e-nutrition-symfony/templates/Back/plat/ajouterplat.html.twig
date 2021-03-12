@@ -81,6 +81,11 @@
 
                                                 </div>
 
+                                            <div class="form-group ">
+                                                <label for="firstName1">  nombre de portions :</label>
+                                                {{ form_widget(form.nbrportion, { 'attr': {'class': 'form-control'} + {'type' : 'text'}   }) }}
+
+                                            </div>
 
                                         </div>
                                         <ul id="fichier"
@@ -105,9 +110,10 @@
                                         </ul>
 
 
+
                                         <button type="button"
                                                 class="btn btn-primary add-another-collection-widget"
-                                                data-list-selector="#fichier">ajouter une  image</button>
+                                                data-list-selector="#fichier">multimedia +</button>
 
 
                                     </fieldset>
@@ -121,7 +127,6 @@
 
                                             data-widget-tags="{{ '<li></li>'|e }}"
                                             data-widget-counter="{{ form.compostions|length }}"
-
                                         >
 
 
@@ -148,13 +153,10 @@
 
                                         <button type="button"
                                                 class="btn btn-primary add-another-collection-widget"
-                                                data-list-selector="#compostionss">ajouter un autre aliment</button>
-                                        <div class="form-group col-12 mb-2">
-                                            <label for="firstName1">  nombre de portions :</label>
-                                            {{ form_widget(form.nbrportion, { 'attr': {'class': 'form-control'} + {'type' : 'text'}   }) }}
+                                                data-list-selector="#compostionss"> aliment +</button>
 
-                                        </div>
-                                        
+
+
                                     </fieldset>
 
 
@@ -186,10 +188,10 @@
 
                                         <button type="button"
                                                 class="btn btn-primary add-another-collection-widget"
-                                                data-list-selector="#etapeDePreparations">ajouter une autre etape</button>
+                                                data-list-selector="#etapeDePreparations">etape +</button>
 
 
-
+1
 
 
 
@@ -228,9 +230,11 @@
                 var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
                 newElem.appendTo(list);
 
+
                 addTagFormDeleteLink($(newElem));
+                /*! selectize.js - v0.12.6 | https://github.com/selectize/selectize.js | Apache License (v2) */
 
-
+                $('select').selectize();
 
             });
 

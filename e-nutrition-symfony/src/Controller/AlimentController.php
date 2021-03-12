@@ -7,12 +7,14 @@ use App\Entity\CategorieAliment;
 use App\Form\AlimentType;
 use App\Repository\AlimentRepository;
 use App\Repository\CategorieAlimentRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use phpDocumentor\Reflection\Types\String_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 
 class AlimentController extends AbstractController
@@ -27,11 +29,17 @@ class AlimentController extends AbstractController
         $aliment =new Aliment();
         $aliment->setPoid(100);
         $form =$this->createForm(AlimentType::class,$aliment);
-        $form->add("Ajouter",SubmitType::class);
+      //  $form->add("Ajouter",SubmitType::class);
         $form->handleRequest($request);//gere requette envoyer par l'utlisateur
-
+        if($form->isSubmitted())
+        dump($form);
+        foreach ($aliment->getCategorieAliment() as $c  )
+        {
+            dump ($c);
+        }
         if($form->isSubmitted() && $form->isValid()){
             $em=$this->getDoctrine()->getManager();
+
             $em->persist($aliment);
             $em->flush();
            return $this->redirectToRoute('afficherAliment');
@@ -74,12 +82,17 @@ class AlimentController extends AbstractController
      * @param AlimentRepository $repo
      * @Route ("afficherAliment",name="afficherAliment")
      */
-    public function afficher(AlimentRepository $repo)
+    public function afficher(AlimentRepository $repo,PaginatorInterface $paginator,Request $request)
     {
-    $aliments=$repo->findAll();
-    dump($aliments);
+        $donnees=$repo->findAll();
+    $aliment=$paginator->paginate(
+        $donnees,
+        /* query NOT result */
+        $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+        7 /*limit per page*/
+    );
     return $this->render("back/aliment/afficherAliment.html.twig",
-        ["aliments"=>$aliments]
+        ["aliment"=>$aliment]
 
     );
     }
@@ -108,5 +121,38 @@ class AlimentController extends AbstractController
         $em->remove($aliment);
         $em->flush();
         return $this->redirectToRoute('afficherAliment');
+    }
+    /**
+     * @param AlimentRepository $repository
+     * @Route ("rechercheAliment",name="rechercheAliment")
+     */
+    public function Recherche(AlimentRepository $repository,Request $request,PaginatorInterface $paginator,NormalizerInterface $normalizer)
+    {
+
+        $name=$request->get('recherchealiment');
+        $donnees=$repository->findalimentbyname($name);
+
+
+        $aliment=$paginator->paginate(
+            $donnees,
+            /* query NOT result */
+            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+            7/*limit per page*/
+        );
+        return $this->render("back/aliment/afficherAliment.html.twig",
+        ["aliment"=>$aliment] );
+
+//        $repository = $this->getDoctrine()->getRepository(Aliment::class);
+//        $name=$request->get('recherchealiment');
+//        $donnees=$repository->findalimentbyname($name);
+//        $aliment=$paginator->paginate(
+//            $donnees,
+//            /* query NOT result */
+//            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+//            7/*limit per page*/
+//        );
+//        $jsonContent = $normalizer->normalize($aliment, 'json',['groups'=>'$aliment']);
+//$retour=json_encode($jsonContent);
+//return new Response($retour);
     }
 }

@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\TagRepository;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Boolean;
+use phpDocumentor\Reflection\Types\Null_;
+use phpDocumentor\Reflection\Types\String_;
 use function Symfony\Component\String\u;
 
 /**
@@ -43,6 +45,17 @@ class Tag
 
         return $this;
     }
+    public function getName():?string
+    {
+        $url=$this->getContenuMultimedia()->getNomFile();
+        if ($url != null)
+        {
+            $extension =(u($url)->split('.'))[0];
+            return $extension;
+
+        }
+        return "null";
+    }
 
     public function getExtension():?string
     {
@@ -63,14 +76,20 @@ class Tag
     public function isImage():?bool
     {
         dump($this->getExtension());
-        return (in_array($this->getExtension() , ["jpg","png","png"]) );
+        return (in_array($this->getExtension() , ["jpg","png","JPG","PNG"]) );
 
     }
     public function isVideo():?bool
     {
-        return (in_array($this->getExtension() ,["mp4","mkv","mpg","avi"]));
+        return (in_array($this->getExtension() ,["mp4","mkv","mpg","avi","mov","MOV"]));
 
     }
+
+    public function getthumbnail():String
+    {
+    return ('multimedia/'.$this->getName().'.jpg');
+    }
+
 
 
 

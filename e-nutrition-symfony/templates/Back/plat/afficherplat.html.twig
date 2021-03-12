@@ -27,12 +27,12 @@
                                         <thead class="bg-primary white">
                                         <tr>
                                             <th>nom</th>
-                                            <th>description </th>
                                             <th>nbrportion(g)</th>
                                             <th>proteines</th>
                                             <th>glucides</th>
                                             <th>lipides</th>
-                                            <th>calories(kcal)</th>
+                                            <th>(kcal) par portion</th>
+                                            <th>durée preparation </th>
                                             <th>detail</th>
 
                                             <th>supprimer modifier </th>
@@ -43,12 +43,12 @@
                                         <tr {% for f in plat %} >
 
                                             <td> {{ f.nom }}</td>
-                                            <td> {{ f.description }} </td>
                                             <td>{{ f.nbrportion }}</td>
                                             <td>{{ f.proteines }}</td>
                                             <td>{{ f.glucides }}</td>
                                             <td>{{ f.lipides }}</td>
-                                            <td>{{   f.calculerCalorie()  }}</td>
+                                            <td>{{   f.calculerCalorieParPortion()  }}</td>
+                                            <td>{{ f.tempdeprepartion()}}</td>
 
 
                                             <td>
@@ -69,6 +69,12 @@
                                                 </div>
                                             </td>
                                         </tr {% endfor %}>
+                                        <tr>
+                                            <td><div style="text-align: left;">
+                                                    <a href="{{ path('ajouterplat') }}">  <button type="button" class="btn btn-success">ajouter plat</button></td>
+                                            </div></tr>
+                                        {{ knp_pagination_render(plat) }}
+
 
                                         </tbody>
 

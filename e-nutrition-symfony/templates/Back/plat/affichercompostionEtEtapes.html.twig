@@ -25,7 +25,6 @@
                                     <table class="table">
                                         <thead class="bg-primary white">
                                         <tr>
-                                            <th>nom du plat </th>
                                             <th>description</th>
                                             <th>duree </th>
                                             <th>supprimer modifier </th>
@@ -35,7 +34,6 @@
                                         </thead>
                                         <tbody>
                                         <tr {% for e in etapeDePreparation %} >
-                                            <td> {{ e.plat.nom }} </td>
                                             <td> {{ e.description }}</td>
                                             <td> {{ e.duree }} </td>
                                             <td>
@@ -144,16 +142,15 @@
                                     </td>
                                     {% endif %}
                                 {% endfor %}
-                                <div>
+
 
                                 {% for tag in plat.TagNourriture %}
                                     {% if tag.isVideo() %}
-                                        <td>
                                             <video width="400" height="240" controls>
                                                 <source src="{{ asset( tag.getUrl() )}}" type="video/{{ ( tag.getExtension )}}">
                                                 Your browser does not support the video tag.
                                             </video>
-                                        </td>
+
                                     {% endif %}
                                 {% endfor %}
 

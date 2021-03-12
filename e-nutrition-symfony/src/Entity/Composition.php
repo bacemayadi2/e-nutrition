@@ -23,7 +23,7 @@ class Composition
     private $poid;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Aliment::class, inversedBy="compositions" , cascade={"all"})
+     * @ORM\ManyToOne(targetEntity=Aliment::class, inversedBy="compositions" , cascade={"persist"})
      */
     private $aliment;
 
@@ -72,6 +72,10 @@ class Composition
         $this->plat = $plat;
 
         return $this;
+    }
+    public function calculerCalorieParpoid() :float
+    {
+        return (($this->getAliment()->calculerCalorie()/$this->getAliment()->getPoid())*$this->poid);
     }
 
 

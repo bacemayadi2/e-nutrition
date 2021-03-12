@@ -22,7 +22,7 @@ class Aliment extends Nourriture
     private $codeABarre;
 
     /**
-     * @ORM\ManyToMany(targetEntity=CategorieAliment::class, inversedBy="aliments")
+     * @ORM\ManyToMany(targetEntity=CategorieAliment::class, inversedBy="aliments",cascade={"persist"})
      */
     private $categorieAliment;
 
