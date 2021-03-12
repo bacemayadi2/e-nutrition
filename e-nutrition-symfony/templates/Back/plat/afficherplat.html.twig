@@ -61,18 +61,18 @@
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <div style="text-align: center;">
-                                                        <a href="{{ path('supprimerPlat',{'id':f.id }) }}"><button type="button" class="btn btn-primary">supprimer</button>
+                                                        <a href="{{ path('supprimerPlat',{'id':f.id }) }}"><button type="button" class="btn btn-primary">supprimer</button></a>
                                                     </div>
                                                     <div style="text-align: center;">
-                                                        <a href="{{ path('modifierPlat',{'id':f.id }) }}">  <button type="button" class="btn btn-success">modifier</button>
+                                                        <a href="{{ path('modifierPlat',{'id':f.id }) }}">  <button type="button" class="btn btn-success">modifier</button></a>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr {% endfor %}>
                                         <tr>
                                             <td><div style="text-align: left;">
-                                                    <a href="{{ path('ajouterplat') }}">  <button type="button" class="btn btn-success">ajouter plat</button></td>
-                                            </div></tr>
+                                                    <a href="{{ path('ajouterplat') }}">  <button type="button" class="btn btn-success">ajouter plat</button></a>
+                                                </div></td></tr>
                                         {{ knp_pagination_render(plat) }}
 
 
