@@ -10,6 +10,7 @@ use FFMpeg\Coordinate\Dimension;
 use FFMpeg\Coordinate\TimeCode;
 use FFMpeg\FFMpeg;
 use FFMpeg\Format\Video\X264;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\File ;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use function Symfony\Component\String\u;
@@ -151,7 +152,10 @@ class ContenuMultimedia
             $video
                 ->save($format, 'multimedia/' . $name . 'new' . '.mp4');
 
+            $fileSystem= new Filesystem();
+            $fileSystem->remove('multimedia/' . $this->getNomFile()); // remove old file
             $this->setNomFile($name . 'new' . '.mp4');
+
 
             return true;
         }
