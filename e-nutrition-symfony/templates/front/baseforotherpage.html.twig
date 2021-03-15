@@ -64,36 +64,20 @@
     {% endblock %}
 {% endblock %}
 {% block footerscript %}
-    <script type="text/javascript">
-        var c = document.body.className;
-        c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
-        document.body.className = c;
-    </script>
+
         <script type='text/javascript' id='submit-feedback-main-js-js-extra'>
             /* <![CDATA[ */
             var sfMain = {"ajaxUrl":"https:\/\/gustos.w3.style\/wp-admin\/admin-ajax.php"};
             /* ]]> */
         </script>
         <script type='text/javascript' src='{{ asset ('front_otherpage/plugins/submit-feedback/assets/main.min.js')}}' id='submit-feedback-main-js-js'></script>
-        <script type='text/javascript' src='{{ asset ('front_otherpage/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js')}}' id='jquery-blockui-js'></script>
         <script type='text/javascript' id='wc-add-to-cart-js-extra'>
             /* <![CDATA[ */
             var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"https:\/\/gustos.w3.style","is_cart":"","cart_redirect_after_add":"no"};
             /* ]]> */
         </script>
-        <script type='text/javascript' src='{{ asset ('front_otherpage/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js')}}' id='wc-add-to-cart-js'></script>
-        <script type='text/javascript' id='woocommerce-js-extra'>
-            /* <![CDATA[ */
-            var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
-            /* ]]> */
-        </script>
-        <script type='text/javascript' src='{{ asset ('front_otherpage/plugins/woocommerce/assets/js/frontend/woocommerce.min.js')}}' id='woocommerce-js'></script>
-        <script type='text/javascript' id='wc-cart-fragments-js-extra'>
-            /* <![CDATA[ */
-            var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"\/?wc-ajax=%%endpoint%%","cart_hash_key":"wc_cart_hash_0d7ba2042107fe82172fe24e4dfb342c","fragment_name":"wc_fragments_0d7ba2042107fe82172fe24e4dfb342c","request_timeout":"5000"};
-            /* ]]> */
-        </script>
-        <script type='text/javascript' src='{{ asset ('front_otherpage/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js')}}' id='wc-cart-fragments-js'></script>
+
+
         <script type='text/javascript' src='{{ asset ('front_otherpage/themes/gustos/assets/js/smk-menu.js')}}' id='smk-menu-js'></script>
         <script type='text/javascript' src='{{ asset ('front_otherpage/themes/gustos/assets/js/rw-sidebar.js')}}' id='rw-sidebar-js'></script>
         <script type='text/javascript' src='{{ asset ('front_otherpage/themes/gustos/assets/js/smk-visual-select.js')}}' id='smk-visual-select-js'></script>

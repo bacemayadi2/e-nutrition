@@ -76,7 +76,14 @@
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <div style="text-align: center;">
-                                                        <a href="{{ path('supprimerAliment',{'id':f.id }) }}"><button type="button" class="btn btn-primary">supprimer</button></a>
+                                                        {% if f.getnbrOFTimeUsed() > 0 %}
+                                                            <a href="#"><button type="button" class="btn btn-primary" Disabled>supprimer</button> </a>
+                                                        {% else %}
+                                                            <a href="{{ path('supprimerAliment',{'id':f.id }) }}"><button type="button" class="btn btn-primary">supprimer</button></a>
+
+                                                        {% endif %}
+                                                        <span class="badge badge-primary badge-pill float-right">{{f.getnbrOFTimeUsed() }}</span>
+
                                                     </div>
                                                     <div style="text-align: center;">
                                                         <a href="{{ path('modifierAliment',{'id':f.id }) }}">  <button type="button" class="btn btn-success">modifier</button></a>

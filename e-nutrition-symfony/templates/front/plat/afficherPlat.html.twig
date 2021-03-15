@@ -62,7 +62,7 @@
                                     {% endif %}
                                     {% if tag.isVideo() %}
                                     <li data-thumb="{{ asset( tag.getthumbnail() )}}"><div class="entry-photo single-recipe-photo-cover">
-                                            <iframe  title="{{ asset( tag.getContenuMultimedia().getDescription()) }}" width="870" height="520" src="{{ path('affichervideo',{ 'url':tag.getName , 'extension':tag.getExtension }) }}" frameborder="0" allow="accelerometer;   gyroscope; picture-in-picture" allowfullscreen>
+                                            <iframe  title="{{ asset( tag.getContenuMultimedia().getDescription()) }}" width="916" height="523" src="{{ path('affichervideo',{ 'url':tag.getName , 'extension':tag.getExtension }) }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                                             </iframe></div></li>
 
                                     {% endif %}
@@ -91,9 +91,12 @@
                                         <li><div class="mark-as-ok"><i class="fa fa-check"></i></div>
                                             <div class="ingredient" itemprop="ingredients">{{ composition.aliment.nom }}</div>
                                             <div class="ingredient-quantity"><div class="qt"><span class="servings-val" data-original-val="1/2" data-original-char="1/2">{{ composition.poid }}</span>
-                                                    gramme </div> </div>
-                                                <div class="qt-notes">{{ composition.calculerCalorieParpoid()}} kcal</div>
+                                                    gramme </div>
+                                                    <div class="qt-notes">{{ composition.calculerCalorieParpoid()}} kcal</div></div>
+                                        </li>
                                         {% endfor %}
+                                    </ul>
+
                                 </div>
 
 
@@ -286,15 +289,5 @@
 
         </div> <!-- .rw-inner -->
     </div> <!-- .rw-container -->
-<script> //disable auto play video
-    $(document).ready(function () {
-    var ownVideos = $("iframe");
-    $.each(ownVideos, function (i, video) {
-    var frameContent = $(video).contents().find('body').html();
-    if (frameContent) {
-    $(video).contents().find('body').html(frameContent.replace("autoplay", ""));
-    }
-    });
-    });
-</script>
+
 {% endblock %}
