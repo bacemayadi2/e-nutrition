@@ -52,9 +52,6 @@ class UserController extends AbstractController
 
         $form->handleRequest($request);
 
-
-
-
         if ($form->isSubmitted() && $form->isValid())
         {
             $em = $this->getDoctrine()->getManager();
@@ -104,8 +101,18 @@ class UserController extends AbstractController
      */
     function SearchDoctor(Request $request, UserRepository $repo)
     {
+        $searchBy = $request->get('searchChoice');
         $input = $request->get('search'); // $input = $_POST['search']
-        $users = $repo->findBy(['nom' => $input]);
+        $users = 0;
+        switch ($searchBy)
+        {
+            case "nom": $users = $repo->findBy(['nom' => $input]); break;
+            case "prenom": $users = $repo->findBy(['prenom' => $input]); break;
+            case "nom et prenom":  $users = $repo->findBy(['nom' => $input]); break;
+            case "ville": $users = $repo->findBy(['ville' => $input]); break;
+            default: echo "error !!!";
+        }
         return $this->render('front/users/SearchDoctor.html.twig', ['users'=>$users]);
     }
+
 }

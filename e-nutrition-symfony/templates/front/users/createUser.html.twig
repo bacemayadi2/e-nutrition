@@ -1,4 +1,4 @@
-{% extends 'back/base.html.twig' %}
+{% extends 'front/base.html.twig' %}
 
 {% block Content %}
 
@@ -10,50 +10,50 @@
                     <div class="card-content collapse show">
                         {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
 
-
                                 <br>
                                 <h1>Créer Compte</h1>
                                 <br>
-
+                                <div class="form-group col-10 mb-2">
                                 <table class="form-wrap">
                                     <tr>
                                         <td>{{ form_label(form.typeCompte, "Type Compte") }} </td>
-                                        <td>{{ form_widget(form.typeCompte, {'attr': {'style': 'width: 250px'}}) }}</td>
+                                        <td>{{ form_widget(form.typeCompte, {'attr': {'style': 'width: 300px'} + {'class':'form-control'}}) }}</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form_label(form.nom, "Nom") }} </td>
-                                        <td>{{ form_widget(form.nom, {'attr': {'style': 'width: 250px'}}) }}</td>
+                                        <td>{{ form_widget(form.nom, {'attr': {'style': 'width: 300px'} + {'class':'form-control'}}) }}</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form_label(form.prenom, "Prenom") }}</td>
-                                        <td>{{ form_widget(form.prenom, {'attr': {'style': 'width: 250px'}}) }}</td>
+                                        <td>{{ form_widget(form.prenom, {'attr': {'style': 'width: 300px'} + {'class':'form-control'}}) }}</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form_label(form.sexe, "Sexe") }}</td>
-                                        <td> {{ form_widget(form.sexe, {'attr': {'style': 'width: 250px'}}) }}</td>
+                                        <td> {{ form_widget(form.sexe, {'attr': {'style': 'width: 300px'} + {'class':'form-control'}}) }}</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form_label(form.dateNaiss, "Date de naissance") }}</td>
-                                        <td>{{ form_widget(form.dateNaiss, {'attr': {'style': 'width: 250px'}}) }}</td>
+                                        <td>{{ form_widget(form.dateNaiss, {'attr': {'style': 'width: 300px'} + {'class':'form-control'}}) }}</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form_label(form.email, "E-Mail") }}</td>
-                                        <td>{{ form_widget(form.email, {'attr': {'style': 'width: 250px'}}) }}</td>
+                                        <td>{{ form_widget(form.email, {'attr': {'style': 'width: 300px'} + {'class':'form-control'}}) }}</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form_label(form.tel, "Numéro de téléphone") }}</td>
-                                        <td>{{ form_widget(form.tel, {'attr': {'style': 'width: 250px'} } )  }}</td>
+                                        <td>{{ form_widget(form.tel, {'attr': {'style': 'width: 300px'} + {'class':'form-control'} } )  }}</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form_label(form.ville, "Ville") }} </td>
-                                        <td>{{ form_widget(form.ville, {'attr': {'style': 'width: 250px'}}) }}</td>
+                                        <td>{{ form_widget(form.ville, {'attr': {'style': 'width: 300px'} + {'class':'form-control'}}) }}</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form_label(form.adresse, "Adresse") }} </td>
-                                        <td>{{ form_widget(form.adresse, {'attr': {'style': 'width: 250px'}}) }}</td>
+                                        <td>{{ form_widget(form.adresse, {'attr': {'style': 'width: 300px'} + {'class':'form-control'}}) }}</td>
                                     </tr>
                                 </table>
-
+                        </div>
+                        <br>
 
                             {{ form_widget(form.Ajouter, {'attr':{'class':'btn btn-primary'}}) }}
 
@@ -63,6 +63,9 @@
                             {{ form_errors(form.dateNaiss) }}
                             {{ form_errors(form.email) }}
                             {{ form_errors(form.tel) }}
+                            {{ form_errors(form.ville) }}
+                            {{ form_errors(form.adresse) }}
+
                         {{ form_end(form) }}
                     </div>
                 </div>

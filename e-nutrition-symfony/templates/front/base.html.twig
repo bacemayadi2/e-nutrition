@@ -140,7 +140,10 @@
                                                 </li>
                                                 <li class="scrollable-container media-list w-100"><a href="javascript:void(0)">
                                                         <div class="media">
-                                                            <div class="media-left"><span class="avatar avatar-sm avatar-online rounded-circle"><img src="{{ asset('back/images/portrait/small/avatar-s-19.png')}}" alt="avatar"><i></i></span></div>
+                                                            <div class="media-left"><span class="avatar avatar-sm avatar-online rounded-circle">
+                                                                    <img src="{{ asset('back/images/portrait/small/avatar-s-19.png')}}" alt="avatar"><i></i></span>
+
+                                                            </div>
                                                             <div class="media-body">
                                                                 <h6 class="media-heading">Margaret Govan</h6>
                                                                 <p class="notification-text font-small-3 text-muted">I like your portfolio, let's start.</p><small>
@@ -174,9 +177,20 @@
                                                 <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center" href="javascript:void(0)">Read all messages</a></li>
                                             </ul>
                                         </li>
-                                        <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown"><span class="avatar avatar-online"><img src="{{ asset('back/images/portrait/small/avatar-s-1.png')}}" alt="avatar"><i></i></span><span class="user-name">John Doe</span></a>
-                                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="user-profile.html"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="email-application.html"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="user-cards.html"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="chat-application.html"><i class="ft-message-square"></i> Chats</a>
-                                                <div class="dropdown-divider"></div><a class="dropdown-item" href="login-with-bg-image.html"><i class="ft-power"></i> Logout</a>
+                                        <li class="dropdown dropdown-user nav-item">
+                                            <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                                                <span class="avatar avatar-online">
+                                                    <img src="{{ asset('back/images/portrait/small/avatar-s-1.png')}}" alt="avatar"><i></i>
+                                                </span><span class="user-name">John Doe</span>
+                                            </a>
+
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="user-profile.html"><i class="ft-user"></i> Mon Profil</a>
+                                                <a class="dropdown-item" href="email-application.html"><i class="ft-mail"></i> MInbox</a>
+                                                <a class="dropdown-item" href="user-cards.html"><i class="ft-check-square"></i> Task</a>
+                                                <a class="dropdown-item" href="chat-application.html"><i class="ft-message-square"></i> Chats</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="{{ path('logout')}}"><i class="ft-power"></i> Se déconnecter</a>
                                             </div>
                                         </li>
                                     </ul>
