@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 class TagNourriture extends Tag
 {
     /**
-     * @ORM\ManyToOne(targetEntity=Nourriture::class, inversedBy="tagNourriture",cascade={"all"})
+     * @ORM\ManyToOne(targetEntity=Nourriture::class, inversedBy="tagNourriture")
      * @ORM\JoinColumn(nullable=false)
      */
 

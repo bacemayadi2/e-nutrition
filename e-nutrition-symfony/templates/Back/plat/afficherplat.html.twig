@@ -1,6 +1,22 @@
 
 {% extends 'back/base.html.twig' %}
 {% block Content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+    $(document).ready(function(){
+
+        {% for message in app.flashes('notice') %}
+        alert("ajoute plat avec succes , la video disponible aprés traitement , \n dev note:   lance  dans un  terminal phpstorm la commande:  php bin/console messenger:consume  ");
+
+
+        {% endfor %}
+    });
+
+    </script>
+
+
+
     <div class="app-content content">
         <div class="content-wrapper">
 

@@ -10,8 +10,13 @@ parameters:
 services:
     # default configuration for services in *this* file
     _defaults:
+        bind:
+            # pass this value to any $projectDir argument for any service
+            # that's created in this file (including controller arguments)
+            $projectDir: '%kernel.project_dir%/public'
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -34,3 +39,6 @@ services:
     App\EventListener\MultimediaListener:
         tags:
             - { name: kernel.event_listener, event: vich_uploader.pre_remove }
+            - { name: kernel.event_listener, event: vich_uploader.post_upload}
+
+
