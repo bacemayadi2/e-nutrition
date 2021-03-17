@@ -1,6 +1,92 @@
 {% extends 'front/base.html.twig' %}
 {% block Content %}
-   {{ form(form)}}
+   <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+   <div align="center" >
+      {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+      <br>
+
+      <div class="col-sm-6 offset-top-10 inset-sm-left-7">
+         <div class="form-wrap">
+            <table class="form-wrap">
+               <tr >
+                  <td>{{ form_label(form.titre, "Titre") }} </td>
+                  <td>{{ form_widget(form.titre, {'attr': {'style': 'width: 250px'}}) }}</td>
+               </tr>
+               <tr>
+                  <td>{{ form_label(form.text, "Description") }}</td>
+                  <td>{{ form_widget(form.text, {'attr': {'style': "margin-top: 0px; margin-bottom: 0px; height: 211px;"}+{'class': 'form-input'}}) }}</td>
+               </tr>
+               <tr>
+               <label  for="timesheetinput7">photo avant le regime </label>
+               {{ form_widget(form.tagSucess.vars.prototype.contenuMultimedia.fileMultimedia)  }}
+
+               </tr>
+               <tr>
+
+                  <label  for="timesheetinput7">photo aprés le regime </label>
+                  {{ form_widget(form.tagSucess.vars.prototype.contenuMultimedia.fileMultimedia) }}
+
+               </tr>
+            </table>
+         </div>
+
+      </div>
+
+
+
+
+
+         <li>
+            <label  for="timesheetinput7">Video) </label>
+              {{ form_widget(form.tagSucess.vars.prototype.contenuMultimedia.fileMultimedia) }}
+
+         </li>
+
+
+   </ul>
+
+   <script>
+      jQuery(document).ready(function () {
+         jQuery('.add-another-collection-widget').click(function (e) {
+            var list = jQuery(jQuery(this).attr('data-list-selector'));
+            // Try to find the counter of the list or use the length of the list
+            var counter = list.data('widget-counter') || list.children().length;
+
+            // grab the prototype template
+            var newWidget = list.attr('data-prototype');
+            // replace the "__name__" used in the id and name of the prototype
+            // with a number that's unique to your emails
+            // end name attribute looks like name="contact[emails][2]"
+            newWidget = newWidget.replace(/__name__/g, counter);
+            // Increase the counter
+            counter++;
+            // And store it, the length cannot be used if deleting widgets is allowed
+            list.data('widget-counter', counter);
+
+            // create a new list element and add it to the list
+            var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
+            newElem.appendTo(list);
+
+            addTagFormDeleteLink($(newElem));
+
+
+
+         });
+
+      });
+
+      function addTagFormDeleteLink($tagFormLi) {
+         var $removeFormButton = $('<button type="button" class="btn btn-danger">enlever</button>');
+         $tagFormLi.append($removeFormButton);
+
+         $removeFormButton.on('click', function(e) {
+            // remove the li for the tag form
+            $tagFormLi.remove();
+         });
+      }
+
+   </script>
+
 
 
 
