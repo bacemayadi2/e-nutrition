@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -36,15 +37,19 @@ class PlatController extends AbstractController
             $em->persist($plat);
             $em->flush();
 
-            foreach ($plat->getTagNourriture() as $tag )
-            {
-                if ($tag->isVideo())
-                {
-                    $tag->getContenuMultimedia()->generatethumbnailtranscode480pmp4();
-                }
-            }
+//            foreach ($plat->getTagNourriture() as $tag )
+//            {
+//                if ($tag->isVideo())
+//                {
+//                    $tag->getContenuMultimedia()->generatethumbnailtranscode480pmp4();
+//                }
+//            }
 
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Your changes were saved!'
+            );
            return $this->redirectToRoute('afficherplat');
         }
 
@@ -147,14 +152,7 @@ class PlatController extends AbstractController
             $plat->calculeNutritiments();
             $em=$this->getDoctrine()->getManager();
             $em->flush();
-            foreach ($plat->getTagNourriture() as $tag )
-            {
-                if ($tag->isVideo())
-                {
-                    $tag->getContenuMultimedia()->generatethumbnailtranscode480pmp4();
-                }
-            }
-            $em->flush();
+
              return $this->redirectToRoute('afficherplat');
         }
         return $this->render("back/plat/ajouterplat.html.twig",
@@ -204,5 +202,6 @@ class PlatController extends AbstractController
             ["plats"=>$plats]);
 
     }
+
 
 }

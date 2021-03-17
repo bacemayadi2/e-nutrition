@@ -15,7 +15,6 @@ CategorieAlimentType extends AbstractType
     {
         $builder
             ->add('nomCategorie')
-            ->add("Ajouter",SubmitType::class);
 
         ;
     }

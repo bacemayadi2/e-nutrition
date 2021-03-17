@@ -45,13 +45,14 @@ class Tag
 
         return $this;
     }
+
     public function getName():?string
     {
         $url=$this->getContenuMultimedia()->getNomFile();
         if ($url != null)
         {
-            $extension =(u($url)->split('.'))[0];
-            return $extension;
+            $name =(u($url)->split('.'))[0];
+            return $name;
 
         }
         return "null";
@@ -75,7 +76,6 @@ class Tag
 
     public function isImage():?bool
     {
-        dump($this->getExtension());
         return (in_array($this->getExtension() , ["jpg","png","JPG","PNG"]) );
 
     }

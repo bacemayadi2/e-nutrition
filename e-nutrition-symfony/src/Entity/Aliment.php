@@ -27,7 +27,7 @@ class Aliment extends Nourriture
     private $categorieAliment;
 
     /**
-     * @ORM\OneToMany(targetEntity=Composition::class, mappedBy="aliments")
+     * @ORM\OneToMany(targetEntity=Composition::class, mappedBy="aliment")
      */
     private $compositions;
 
@@ -122,9 +122,22 @@ public function removeComposition(Composition $composition): self
     return $this;
 }
 
+public function  getnbrOFTimeUsed():float
+{
+    $j=0;
+    foreach ($this->getCompositions()  as $compo )
+    {
+        $j++;
+    }
+    return$j;
+}
+
+
     public function __toString() {
         // to show the name of the Category in the select
         return $this->getNom();
 
     }
+
+
 }

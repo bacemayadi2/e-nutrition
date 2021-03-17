@@ -1,0 +1,79 @@
+
+{% extends 'back/base.html.twig' %}
+{% block Content %}
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <div class="app-content content">
+        <div class="content-wrapper">
+
+            <div class="content-body"><!-- Basic Tables start -->
+                <section id="using-labels-badges">
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>With Labels and Badges</h4>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row match-height">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">categorie</h4>
+                                    <a class="heading-elements-toggle"><i class="ft-ellipsis-h font-medium-3"></i></a>
+                                    <div class="heading-elements">
+                                        <ul class="list-inline mb-0">
+                                            <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                            <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                            <li><a data-action="close"><i class="ft-x"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <div class= "card-body">
+                                        <p>liste de categorie</p>
+                                        <ul class="list-group">
+                                            {{ knp_pagination_render(categories) }}
+
+                                            {% for c in categories %}
+                                            <li class="list-group-item">
+                                                <span class="badge badge-primary badge-pill float-right">{{ c.getNumberOfAliment }}</span>
+                                                {{ c.nomCategorie }}
+
+                                                <div class="btn-group float-right" role="group" aria-label="Basic example">
+                                                    <div style="text-align: center;">
+                                                        {% if c.getNumberOfAliment > 0 %}
+                                                        <a href="#"><button type="button" class="btn btn-primary" Disabled>supprimer</button> </a>
+                                                        {% else %}
+                                                            <a href="{{ path('supprimerCategorie',{'id':c.id }) }}"><button type="button" class="btn btn-primary">supprimer</button> </a>
+                                                        {% endif %}
+                                                </div>
+                                                    <div style="text-align: center;">
+                                                        <a href="{{ path('modiferCategorie',{'id':c.id }) }}">  <button type="button" class="btn btn-success">modifier</button> </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            {% endfor %}
+
+                                                <li> <div style="text-align: left;">
+                                                        <a href="{{ path('ajouterCategorie') }}">  <button type="button" class="btn btn-success">ajouter categorie</button> </a>
+                                                    </div>
+                                                </li>
+
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+{% endblock %}

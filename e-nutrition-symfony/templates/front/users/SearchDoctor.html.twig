@@ -1,4 +1,4 @@
-{% extends 'back/base.html.twig' %}
+{% extends 'front/base.html.twig' %}
 {% block Content %}
 
     <br>
@@ -25,16 +25,20 @@
                             </div>
 
                             <div class="card-content collapse show">
-
                                 <div class="table-responsive">
 
-                                    <form name="f" action="{{ path('SearchDoctor') }}" class="">
+                                    <form name="f" action="{{ path('SearchDoctor') }}" >
                                         <div class="form-group col-10 mb-2">
-                                            <input type="text" placeholder="Search" name="search" class="form-control"><br>
+                                            Recherche par:
+                                            <select name="searchChoice" class="form-control">
+                                                <option >nom</option>
+                                                <option >prenom</option>
+                                                <option >nom et prenom</option>
+                                                <option >ville</option>
+                                            </select><br>
+                                            <input type="text" placeholder="Search" name="search" class="form-control" required><br>
                                             <input type="submit" value="Search" class="btn btn-primary">
                                         </div>
-
-
                                     </form>
                                     <br>
                                     <div class="col-11 mb-2">

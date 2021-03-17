@@ -21,7 +21,7 @@ A)pour l'upload des fichiers (ajouter) (peu import le type fichier )
     1)ajouter a votre form du class (ex :PlatType) ces ligne en changent tagNomdevotretag
 
                 ->add('tagNomdevotretag', CollectionType::class  ,[
-                    'entry_type' => tagNomdevotretag::class,
+                    'entry_type' => tagNomdevotretagtype::class,
                     'allow_add' => true,
                     'entry_options' => ['label' => false],
                     'allow_delete' => true,
