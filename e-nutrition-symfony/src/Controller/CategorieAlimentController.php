@@ -35,13 +35,13 @@ class CategorieAlimentController extends AbstractController
         $form->handleRequest($request);//gere requette envoyer par l'utlisateur
         if($form->isSubmitted())
 
-        if($form->isSubmitted() && $form->isValid()){
-            $em=$this->getDoctrine()->getManager();
+            if($form->isSubmitted() && $form->isValid()){
+                $em=$this->getDoctrine()->getManager();
 
-            $em->persist($categorie);
-            $em->flush();
-            return $this->redirectToRoute('afficherCategorie');
-        }
+                $em->persist($categorie);
+                $em->flush();
+                return $this->redirectToRoute('afficherCategorie');
+            }
         return $this->render("back/categorie_aliment/ajouterCategorie.html.twig",
             [  'form'=> $form->createView() ]);
     }

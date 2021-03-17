@@ -129,3 +129,21 @@ dans console php --ini  regarder la ligne:
 allez aux fichier php.ini changer :
     post_max_size = de 8 M a 200M
     upload_max_filesize = de 2M a  200M
+C) pour les video dans votre twig ajouter ( changer :tagNomdevotretag  et NomDeVotreClass) width = taille image
+    {% for tag in NomDeVotreClass.TagNourriture %}
+            {% if tag.isVideo() %}
+                <td>
+                      <video width="400" height="240" controls>
+                      <source src="{{ asset( tag.getUrl() )}}" type="video/{{ ( tag.getExtension )}}">
+                      Your browser does not support the video tag.
+                      </video>
+                </td>
+            {% endif %}
+    {% endfor %}
+
+pour ajouter des fichier plus  grand que 2 Mo tapez:
+dans console php --ini  regarder la ligne:
+    Loaded Configuration File:         C:\wamp64\bin\php\php7.2.33\php.ini
+allez aux fichier php.ini changer :
+    post_max_size = de 8 M a 200M
+    upload_max_filesize = de 2M a  200M

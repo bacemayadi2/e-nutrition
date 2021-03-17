@@ -205,7 +205,7 @@ class Plat extends Nourriture
         {
             if ($tag->isImage())
             {
-            return $tag->getUrl();
+                return $tag->getUrl();
             }
         }
         return null;
@@ -213,13 +213,13 @@ class Plat extends Nourriture
 
     public function tempdeprepartion():float
     {
-       $tempdeprepartion=0;
-       foreach ($this->etapeDePreparation as $e)
+        $tempdeprepartion=0;
+        foreach ($this->etapeDePreparation as $e)
         {
             $tempdeprepartion += $e->getDuree();
 
         }
-       return $tempdeprepartion;
+        return $tempdeprepartion;
     }
     public function calculerCalorieParPortion() :float
     {

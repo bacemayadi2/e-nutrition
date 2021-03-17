@@ -63,15 +63,15 @@ class Tag
         $url=$this->getContenuMultimedia()->getNomFile();
         if ($url != null)
         {
-       $extension =(u($url)->split('.'))[1];
-       return $extension;
+            $extension =(u($url)->split('.'))[1];
+            return $extension;
 
         }
         return "null";
     }
     public function getUrl(): ?string
     {
-       return 'multimedia/' . $this->getContenuMultimedia()->getNomFile();
+        return 'multimedia/' . $this->getContenuMultimedia()->getNomFile();
     }
 
     public function isImage():?bool
@@ -87,7 +87,7 @@ class Tag
 
     public function getthumbnail():String
     {
-    return ('multimedia/'.$this->getName().'.jpg');
+        return ('multimedia/'.$this->getName().'.jpg');
     }
 
 

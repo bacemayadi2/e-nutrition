@@ -2,72 +2,227 @@
 
 {% block Content2 %}
 
-    <style>
-
-       .list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p{
-           text-align: left;
-       }
-
-
-
-
-    </style>
-    <section class="section section-height-800 parallax-container context-dark" data-parallax-img="front/images/backgrounds/background-15-1920x900.jpg">
+    <section class="section section-height-800 parallax-container context-dark bg-gray-darkest text-xl-left" data-parallax-img="front/images/backgrounds/background-01-1920x900.jpg">
         <div class="parallax-content">
-            <div class="bg-overlay-gray-darken">
-                <div class="container section-95">
-                    <!-- Jumbotron Custom-->
-                    <div class="jumbotron-custom jumbotron-custom-variant-3">
+            <div class="bg-overlay-black">
+                <div class="container section-30 section-md-95 section-lg-top-120 section-lg-bottom-150">
+                    <div class="d-none d-lg-block">
                         <h1>Vos fiches consultations</h1>
-                        <p class="text-big">Quels produits choisir, comment décrypter les étiquettes, quels additifs alimentaires faut-il éviter ? LaNutrition.fr vous guide dans les rayons et vous donne ses recommandations.<br class="d-none d-xl-inline-block"> you will see a totally different girl in the mirror!</p>
-                        <div class="group-xs offset-top-20 offset-lg-top-40"><a class="btn btn-primary" href="group-coaching.html">Read more</a><a class="btn btn-white-outline" href="contact-me.html">Book a program</a></div>
                     </div>
+                    <!-- List Inline-->
+                    <ul class="list-inline list-inline-dashed list-white text-big p offset-md-top-13">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="blog-classic.html">Blog</a></li>
+                        <li>Blog Grid 3 Columns
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-            <div class="bg-overlay-black">
-                <div class="container section-30 section-md-95 section-lg-top-120 section-lg-bottom-150">
-
-                    <!-- List Inline-->
-                    {% for f in ficheConsultation %}
-
-                    <ul class="list-inline list-inline-dashed list-white text-big p offset-md-top-13">
-
-
-                        <div class="box-sm bg-default">
-                            <ul  align="left" class="list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p">
-                              <li><span   class="icon icon-xs material-icons-ico material-icons-event text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">Date de création:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="my-philosophy.html">{{ f.CreationDate|date('y-m-d')}}</a></li>
-                            </ul>
-                            <ul  align="right" class="list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p">
-                                <li><span  class="icon icon-xs material-icons-ico material-icons-person text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">By:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="my-philosophy.html">nutrisionniste x </a></li>
-                            </ul>
-
-                            <span class="text-big font-weight-bold text-primary offset-top-20 offset-md-top-30">Votre poids:   </span>{{ f.poids }} kg
-                            <br> <br>
-                            <span class="text-big font-weight-bold text-primary offset-top-20 offset-md-top-30">Votre taille:   </span>{{ f.taille }} mètres
-                            <br><br>
-                            <span class="text-big font-weight-bold text-primary offset-top-20 offset-md-top-30">Votre Imc:   </span>{{ f.imc }}
 
 
 
-
-
-                        </div>
-
-                    </ul>
-                        {% endfor %}
-
-
-
-
-
-
-
-
+    <main class="page-content">
+        <!-- Blog Grid 3 Columns-->
+        <section class="section-95 section-md-bottom-120 text-left">
+            <div class="container">
+                <div class="row justify-content-sm-center">
+                    <div class="col-md-6 col-lg-4">
+                        <!-- Post Classic-->
+                        <article class="post-masonry"><a class="thumbnail-classic" href="blog-post.html"><span class="thumbnail-classic-img-wrap"><img class="img-responsive center-block" src="front/images/blog/post-06-370x230.jpg" width="370" height="230" alt=""/></span></a>
+                            <div class="post-body">
+                                <div class="text-center"><span class="icon post-icon-absolute icon-circle fl-great-icon-set-ico fl-great-icon-set-pencil107 bg-default text-center"></span></div>
+                                <p class="post-title text-big font-weight-bold text-uppercase text-spacing-100"><a href="blog-post.html">how much sugar is it OK to eat?</a></p>
+                                <!-- List Inline-->
+                                <ul class="list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p">
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-event text-middle text-gray"></span><span class="text-middle inset-left-7 post-meta">January 15, 2018</span></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-person text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">By:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="my-philosophy.html">Rita Condon</a></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-question_answer text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">Comments:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="#">3</a></li>
+                                </ul>
+                                <p class="offset-top-20">Consuming too much energy – whether from fat or carbohydrates, including sugar – will make you gain weight. If left unchecked, this excess weight increases your risk of lifestyle-related diseases such as diabetes, heart disease and some cancers...</p>
+                                <div class="group-sm offset-top-30"><a class="btn btn-tag btn-primary-gray-outline" href="#">Sugar</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Diet</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Honey</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6 col-lg-4 offset-top-30 offset-sm-top-0">
+                        <!-- Post Classic-->
+                        <article class="post-masonry"><a class="thumbnail-classic" href="blog-post.html"><span class="thumbnail-classic-img-wrap"><img class="img-responsive center-block" src="front/images/blog/post-07-370x230.jpg" width="370" height="230" alt=""/></span></a>
+                            <div class="post-body">
+                                <div class="text-center"><span class="icon post-icon-absolute icon-circle fl-great-icon-set-ico fl-great-icon-set-pencil107 bg-default text-center"></span></div>
+                                <p class="post-title text-big font-weight-bold text-uppercase text-spacing-100"><a href="blog-post.html">We can avoid weight creep – here’s how</a></p>
+                                <!-- List Inline-->
+                                <ul class="list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p">
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-event text-middle text-gray"></span><span class="text-middle inset-left-7 post-meta">January 16, 2018</span></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-person text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">By:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="my-philosophy.html">Alan Smith</a></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-question_answer text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">Comments:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="#">2</a></li>
+                                </ul>
+                                <p class="offset-top-20">Many of us enter a new year reflecting on where we have been and our plans for the future. For some, this will mean acknowledging that a couple more kilos have crept on over the past year. Others will have health on their hit list for 2018; resolving to eat better and lose...</p>
+                                <div class="group-sm offset-top-30"><a class="btn btn-tag btn-primary-gray-outline" href="#">Kilo</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Lose</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Health</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6 col-lg-4 offset-top-30 offset-md-top-0">
+                        <!-- Post Classic-->
+                        <article class="post-masonry"><a class="thumbnail-classic" href="blog-post.html"><span class="thumbnail-classic-img-wrap"><img class="img-responsive center-block" src="front/images/blog/post-08-370x230.jpg" width="370" height="230" alt=""/></span></a>
+                            <div class="post-body">
+                                <div class="text-center"><span class="icon post-icon-absolute icon-circle fl-great-icon-set-ico fl-great-icon-set-video172 bg-default text-center"></span></div>
+                                <p class="post-title text-big font-weight-bold text-uppercase text-spacing-100"><a href="blog-post.html">detox diets cleanse your body</a></p>
+                                <!-- List Inline-->
+                                <ul class="list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p">
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-event text-middle text-gray"></span><span class="text-middle inset-left-7 post-meta">January 17, 2018</span></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-person text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">By:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="my-philosophy.html">Olivia Grosh</a></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-question_answer text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">Comments:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="#">2</a></li>
+                                </ul>
+                                <p class="offset-top-20">Detox diets make amazing promises of dramatic weight loss and more energy – all achieved by flushing toxins from the body. Toxins have very little to do with it; detox diets “work” because of the very severe dietary and energy restrictions they require someone to...</p>
+                                <div class="group-sm offset-top-30"><a class="btn btn-tag btn-primary-gray-outline" href="#">Detox</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Diet</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Energy</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6 col-lg-4 offset-top-30">
+                        <!-- Post Classic-->
+                        <article class="post-masonry"><a class="thumbnail-classic" href="blog-post.html"><span class="thumbnail-classic-img-wrap"><img class="img-responsive center-block" src="front/images/blog/post-09-370x230.jpg" width="370" height="230" alt=""/></span></a>
+                            <div class="post-body">
+                                <div class="text-center"><span class="icon post-icon-absolute icon-circle fl-great-icon-set-ico fl-great-icon-set-pencil107 bg-default text-center"></span></div>
+                                <p class="post-title text-big font-weight-bold text-uppercase text-spacing-100"><a href="blog-post.html">Permission from a Health Coach</a></p>
+                                <!-- List Inline-->
+                                <ul class="list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p">
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-event text-middle text-gray"></span><span class="text-middle inset-left-7 post-meta">January 18, 2018</span></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-person text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">By:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="my-philosophy.html">Sam Kromstain</a></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-question_answer text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">Comments:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="#">2</a></li>
+                                </ul>
+                                <p class="offset-top-20">Are you one of those people that hates being told what to do?  Like, if you’re told not to do something it’s only going to make you want to do it more and you’ll simultaneously get mega-peeved at the person for trying to put limitations on you? Because, uch! If so, we’re...</p>
+                                <div class="group-sm offset-top-30"><a class="btn btn-tag btn-primary-gray-outline" href="#">Permission</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Health</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Coach</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6 col-lg-4 offset-top-30">
+                        <!-- Post Classic-->
+                        <article class="post-masonry"><a class="thumbnail-classic" href="blog-post.html"><span class="thumbnail-classic-img-wrap"><img class="img-responsive center-block" src="front/images/blog/post-13-370x230.jpg" width="370" height="230" alt=""/></span></a>
+                            <div class="post-body">
+                                <div class="text-center"><span class="icon post-icon-absolute icon-circle fl-great-icon-set-ico fl-great-icon-set-pencil107 bg-default text-center"></span></div>
+                                <p class="post-title text-big font-weight-bold text-uppercase text-spacing-100"><a href="blog-post.html">5 sorts of teas that make you slim!</a></p>
+                                <!-- List Inline-->
+                                <ul class="list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p">
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-event text-middle text-gray"></span><span class="text-middle inset-left-7 post-meta">January 19, 2018</span></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-person text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">By:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="my-philosophy.html">Mark Johnson</a></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-question_answer text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">Comments:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="#">5</a></li>
+                                </ul>
+                                <p class="offset-top-20">The brew that energises can also help you lose weight. Here's how...It's widely known that just one cup of tea can prevent strokes, arthritis, tooth decay and even keep cancer at bay. While it's regarded as nature's tranquiliser for its soothing properties, the brew also has...</p>
+                                <div class="group-sm offset-top-30"><a class="btn btn-tag btn-primary-gray-outline" href="#">Sport</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Tea</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Slim</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6 col-lg-4 offset-top-30">
+                        <!-- Post Classic-->
+                        <article class="post-masonry"><a class="thumbnail-classic" href="blog-post.html"><span class="thumbnail-classic-img-wrap"><img class="img-responsive center-block" src="front/images/blog/post-14-370x230.jpg" width="370" height="230" alt=""/></span></a>
+                            <div class="post-body">
+                                <div class="text-center"><span class="icon post-icon-absolute icon-circle fl-great-icon-set-ico fl-great-icon-set-video172 bg-default text-center"></span></div>
+                                <p class="post-title text-big font-weight-bold text-uppercase text-spacing-100"><a href="blog-post.html">aim for fitness over fat loss for success</a></p>
+                                <!-- List Inline-->
+                                <ul class="list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p">
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-event text-middle text-gray"></span><span class="text-middle inset-left-7 post-meta">January 20, 2018</span></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-person text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">By:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="my-philosophy.html">Patrick Pool</a></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-question_answer text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">Comments:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="#">4</a></li>
+                                </ul>
+                                <p class="offset-top-20">Getting fit and losing weight are consistently among the top New Year’s resolutions, and January is the boom period for the billion-dollar gym industry. While any attempt to incorporate more exercise into our lives should be welcomed, it’s time to rethink the...</p>
+                                <div class="group-sm offset-top-30"><a class="btn btn-tag btn-primary-gray-outline" href="#">Fitness</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Success</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Industry</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="text-center offset-top-50 offset-md-top-115">
+                    <!-- Pagination Classic-->
+                    <nav>
+                        <ul class="pagination-classic">
+                            <li class="pagination-classic-prev"><a href="#">Prev</a></li>
+                            <li class="d-none d-sm-inline-block"><a href="#">1</a></li>
+                            <li class="d-none d-sm-inline-block"><a href="#">2</a></li>
+                            <li class="active"><a href="#">3</a></li>
+                            <li class="d-none d-md-inline-block"><a href="#">4</a></li>
+                            <li class="pagination-classic-next"><a href="#">Next</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
+        </section>
+        <!-- Contact Us-->
+        <section class="section-95 section-md-bottom-45 bg-gray-lighter">
+            <div class="container">
+                <div class="row justify-content-sm-center justify-content-lg-start text-lg-left">
+                    <div class="col-md-10 col-lg-3">
+                        <h6>Address</h6>
+                        <!-- Contact Info-->
+                        <address class="contact-info p offset-top-20">
+                            <p>4578 Marmora St, <br> Chicago D04 89GR.</p>
+                            <dl>
+                                <dt>Telephone:</dt>
+                                <dd><a class="text-gray-light link-decoration-none text-hover-primary" href="tel:#">1-800-1234-567</a></dd>
+                            </dl>
+                            <dl class="offset-top-10">
+                                <dt>E-mail:</dt>
+                                <dd><a class="link-decoration-none" href="mailto:#">mail@demolink.org</a></dd>
+                            </dl>
+                        </address>
+                    </div>
+                    <div class="col-md-10 col-lg-5 offset-top-40 offset-md-top-0">
+                        <h6>Get in touch</h6>
+                        <!-- RD Mailform-->
+                        <form class="rd-mailform text-left offset-top-20" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+                            <div class="row justify-content-sm-center">
+                                <div class="col-sm-6 inset-sm-right-7">
+                                    <div class="form-wrap">
+                                        <label class="form-label" for="contact-us-first-name">First name</label>
+                                        <input class="form-input" id="contact-us-first-name" type="text" name="name" data-constraints="@Required">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 offset-top-10 offset-xs-top-0 inset-sm-left-7">
+                                    <div class="form-wrap">
+                                        <label class="form-label" for="contact-us-last-name">Last name</label>
+                                        <input class="form-input" id="contact-us-last-name" type="text" name="name" data-constraints="@Required">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 offset-top-10 inset-sm-right-7">
+                                    <div class="form-wrap">
+                                        <label class="form-label" for="contact-us-email">Email</label>
+                                        <input class="form-input" id="contact-us-email" type="email" name="email" data-constraints="@Email @Required">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 offset-top-10 inset-sm-left-7">
+                                    <div class="form-wrap">
+                                        <label class="form-label" for="contact-us-phone">Phone</label>
+                                        <input class="form-input" id="contact-us-phone" type="text" name="phone" data-constraints="@Numeric @Required">
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 offset-top-10 text-center text-xl-left">
+                                    <div class="form-wrap">
+                                        <label class="form-label" for="contact-us-message">Message</label>
+                                        <textarea class="form-input" id="contact-us-message" name="message" data-constraints="@Required"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center text-lg-right offset-top-10">
+                                <button class="btn btn-primary" type="submit">Send a message</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-10 col-lg-3 offset-lg-1 offset-top-40 offset-md-top-0">
+                        <h6>Flickr</h6>
+                        <div class="group-xs flickr widget-flickrfeed offset-top-20" data-lightgallery="group" data-flickr-tags="tm61252"><a class="flickr-item" data-lightgallery="item" href="https://farm6.staticflickr.com/5802/29943773064_35b614b909_c.jpg" data-image_c="href" data-size="1000x780" data-type="flickr-item"><img width="87" height="83" data-title="alt" src="https://farm6.staticflickr.com/5802/29943773064_35b614b909_q.jpg" alt="Movies" data-image_q="src"></a><a class="flickr-item" data-lightgallery="item" href="https://farm6.staticflickr.com/5681/29943773084_315b1fbcd5_c.jpg" data-image_c="href" data-size="1000x780" data-type="flickr-item"><img width="87" height="83" data-title="alt" src="https://farm6.staticflickr.com/5681/29943773084_315b1fbcd5_q.jpg" alt="Sexy and fashionable couple in sunglasses. Vogue" data-image_q="src"></a><a class="flickr-item" data-lightgallery="item" href="https://farm6.staticflickr.com/5623/29943772684_2273107e5b_c.jpg" data-image_c="href" data-size="1000x780" data-type="flickr-item"><img width="87" height="83" data-title="alt" src="https://farm6.staticflickr.com/5623/29943772684_2273107e5b_q.jpg" alt="5" data-image_q="src"></a><a class="flickr-item" data-lightgallery="item" href="https://farm6.staticflickr.com/5334/29943772954_5df42932e2_c.jpg" data-image_c="href" data-size="1000x780" data-type="flickr-item"><img width="87" height="83" data-title="alt" src="https://farm6.staticflickr.com/5334/29943772954_5df42932e2_q.jpg" alt="traditional breakfast" data-image_q="src"></a><a class="flickr-item" data-lightgallery="item" href="https://farm6.staticflickr.com/5334/29943772954_5df42932e2_c.jpg" data-image_c="href" data-size="1000x780" data-type="flickr-item"><img width="87" height="83" data-title="alt" src="https://farm6.staticflickr.com/5334/29943772954_5df42932e2_q.jpg" alt="traditional breakfast" data-image_q="src"></a><a class="flickr-item" data-lightgallery="item" href="https://farm6.staticflickr.com/5334/29943772954_5df42932e2_c.jpg" data-image_c="href" data-size="1000x780" data-type="flickr-item"><img width="87" height="83" data-title="alt" src="https://farm6.staticflickr.com/5334/29943772954_5df42932e2_q.jpg" alt="traditional breakfast" data-image_q="src"></a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
 
 
 

@@ -59,9 +59,15 @@ class FicheConsultation
      */
     private $medicaments;
 
+    /**
+     * @ORM\OneToMany(targetEntity=TagFicheConsultation::class, mappedBy="ficheConsultation",cascade={"all"},orphanRemoval=true)
+     */
+    private $tagFicheConsultation;
+
     public function __construct()
     {
         $this->medicaments = new ArrayCollection();
+        $this->tagFicheConsultation = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -177,6 +183,36 @@ class FicheConsultation
             // set the owning side to null (unless already changed)
             if ($medicament->getFiche() === $this) {
                 $medicament->setFiche(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|TagFicheConsultation[]
+     */
+    public function getTagFicheConsultation(): Collection
+    {
+        return $this->tagFicheConsultation;
+    }
+
+    public function addTagFicheConsultation(TagFicheConsultation $tagFicheConsultation): self
+    {
+        if (!$this->tagFicheConsultation->contains($tagFicheConsultation)) {
+            $this->tagFicheConsultation[] = $tagFicheConsultation;
+            $tagFicheConsultation->setFicheConsultation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTagFicheConsultation(TagFicheConsultation $tagFicheConsultation): self
+    {
+        if ($this->tagFicheConsultation->removeElement($tagFicheConsultation)) {
+            // set the owning side to null (unless already changed)
+            if ($tagFicheConsultation->getFicheConsultation() === $this) {
+                $tagFicheConsultation->setFicheConsultation(null);
             }
         }
 

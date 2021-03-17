@@ -28,7 +28,13 @@ class FicheConsultationType extends AbstractType
                 'by_reference' => false,
 
             ])
-
+            ->add('tagFicheConsultation', CollectionType::class  ,[
+                'entry_type' => TagFicheConsultationType::class,
+                'allow_add' => true,
+                'entry_options' => ['label' => false],
+                'allow_delete' => true,
+                'by_reference' => false,
+            ]);
 
         ;
     }
