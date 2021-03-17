@@ -15,11 +15,23 @@ class RendezVousController extends AbstractController
     /**
      * @Route("/rendez_vous", name="rendez_vous")
      */
-    public function index(): Response
+    public function index(RendezVousRepository $rep)
     {
-        return $this->render('rendez_vous/afficherMedicament.html.twig', [
-            'controller_name' => 'RendezVousController',
-        ]);
+        $rendezs= $rep->findAll();
+        $rdv = [];
+        foreach($rendezs as $rendez){
+            $rdv[]=[
+                'id'=> $rendez->getId(),
+                'date'=> $rendez->getDate()->format('Y-m-d H:i:s'),
+                'description'=> $rendez->getDescription()
+            ];
+
+
+    }
+        $data = json_encode($rdv);
+        return $this->render('rendez_vous/calendar.html.twig', compact('data'));
+
+
 
     }
 
