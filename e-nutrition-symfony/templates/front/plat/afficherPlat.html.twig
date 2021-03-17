@@ -1,0 +1,287 @@
+{% extends 'front/baseforotherpage.html.twig' %}
+
+{% block Content2 %}
+
+    <!--
+	// ===================================^__^=================================== //
+	   Content
+	// ===================================^__^=================================== //
+	-->
+
+    <div class="rw-section rw-container right-sidebar">
+        <div class="rw-inner clearfix">
+
+            <!-- Sidebar -->
+            <div class="rw-column rw-sidebar">
+                <div class="the-sidebar">
+                    <aside class="widget widget_search"><form method="post" class="search-form" action="{{ path('rechercheplat') }}">
+                            <input type="text" class="search-field fullwidth" name="searchplat" placeholder="Type keyword and press enter" value="">
+                        </form>
+                    </aside><aside class="widget widget_recipes_list"><div class="widget-title"><h3>Recipes</h3></div><div class="widget-posts-list">
+
+                            <!-- Entry -->
+                            {% for p in platss %}
+
+                            <div class="post">
+                                <div class="entry-photo">
+                                    <img src="{{ asset( p.getFirstImage() )}}" alt="element 01"   height="50" class="float-left" /> 			</div>
+                                <div class="entry-title">
+                                    <a href="{{ path('afficherplatfront',{'id':p.id }) }}">{{ p.nom }}</a>
+                                </div>
+
+                            </div> <!-- .entry -->
+                            {% endfor %}
+
+
+                            {{ knp_pagination_render(platss) }}
+
+
+
+                        <div class="clear"></div><div class="clear"></div></aside>	</div> <!-- .the-sidebar -->
+            </div> <!-- .rw-sidebar -->
+            <!-- Main content -->
+            <div class="rw-column rw-content">
+
+                <div class="rw-row page-title single-recipe-page-title">
+                    <h1>{{ plat.nom }}</h1>
+                </div>
+
+
+                <div class="rw-row">
+
+
+                    <div id="post-185" class="entry style-columns clearfix post-185 smk_recipes type-smk_recipes status-publish has-post-thumbnail hentry recipe_cuisine-romanian recipe_tags-middle-eastern recipe_categories-soup recipe_ingredients-black-pepper recipe_ingredients-butter recipe_ingredients-cayenne recipe_ingredients-chopped-onion recipe_ingredients-garlic recipe_ingredients-mushrooms recipe_ingredients-olive-oil recipe_ingredients-sugar">
+
+
+                        <div id="recipe-picture" class="entry-photo single-recipe-photo-cover">
+
+                            <ul class="entry-recipe-slider">
+                                {% for tag in plat.TagNourriture %}
+                                    {% if tag.isImage() %}
+                                        <li data-thumb="{{ asset( tag.getUrl() )}}"><img src="{{ asset( tag.getUrl() )}}" alt="" />  </li>
+                                    {% endif %}
+                                    {% if tag.isVideo() %}
+                                    <li data-thumb="{{ asset( tag.getthumbnail() )}}"><div class="entry-photo single-recipe-photo-cover"><iframe title="{{ asset( tag.getContenuMultimedia().getDescription()) }}" width="848" height="480" src="{{ asset( tag.getUrl() )}}" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                            <div class="recipe-tools">
+{#                                <div data-post="185" data-settings="{&quot;tag&quot;:&quot;div&quot;,&quot;class&quot;:&quot;tool like smk_theme_tooltip&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Like&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;the-icon fa fa-thumbs-o-up\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Dislike&quot;,&quot;content_remove&quot;:&quot;&quot;,&quot;title_format&quot;:&quot;%text% (%count%)&quot;,&quot;title_not_logged&quot;:&quot;Please log in to like this post&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:false,&quot;echo&quot;:true}" data-act="like" data-l="0" title="Please log in to like this post" class="smk-mark-button tool like smk_theme_tooltip"><i class="the-icon fa fa-thumbs-o-up"></i></div><div data-post="185" data-settings="{&quot;tag&quot;:&quot;div&quot;,&quot;class&quot;:&quot;tool favorite smk_theme_tooltip&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Add to favorites&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;the-icon fa fa-heart-o\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Remove from favorites&quot;,&quot;content_remove&quot;:&quot;&quot;,&quot;title_format&quot;:&quot;%text% (%count%)&quot;,&quot;title_not_logged&quot;:&quot;Please log in to add this post to favorites&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:false,&quot;echo&quot;:true}" data-act="favorite" data-l="0" title="Please log in to add this post to favorites" class="smk-mark-button tool favorite smk_theme_tooltip"><i class="the-icon fa fa-heart-o"></i></div>                                                                                    <a href="/recipes/crevette-a-la-marseillaise/?print_recipe=1" rel="nofollow"#}
+{#                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          class="tool print"#}
+{#                             future print                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             title="Print (541)"><i class="the-icon fa fa-print"></i></a>#}
+                            </div>
+                        </div>
+
+
+                        <div id="recipe-content"
+                             class="entry-content meta-pos-right clearfix">
+
+                            <div class="recipe-content">
+
+
+
+
+                                <div class="single-recipe-ingredients">
+                                    <h3 class="recipe-headlines ingredients first">Ingredients:</h3>
+                                    <ul id="main-ingredients-list">
+                                        {% for composition in plat.compostions %}
+                                        <li><div class="mark-as-ok"><i class="fa fa-check"></i></div>
+                                            <div class="ingredient" itemprop="ingredients">{{ composition.aliment.nom }}</div>
+                                            <div class="ingredient-quantity"><div class="qt"><span class="servings-val" data-original-val="1/2" data-original-char="1/2">{{ composition.poid }}</span>
+                                                    gramme </div> </div>
+                                                <div class="qt-notes">{{ composition.calculerCalorieParpoid()}} kcal</div>
+                                        {% endfor %}
+                                </div>
+
+
+                                <h3 class="recipe-headlines preparation-mode">mode de Preparation :</h3>
+                                <div itemprop="recipeInstructions">
+                                    {% for etape in plat.etapeDePreparation %}
+                                    <p><strong>{{ etape.ordre +1 }})</strong> {{  etape.description }}</p>
+                                   {% endfor %}
+                                </div>
+
+
+
+
+
+
+
+                            </div>
+                            <div class="recipe-meta">
+                                <h3 class="recipe-headlines ingredients first"> valeur nutritif plat :</h3>
+
+                            </div>
+
+                            <div class="recipe-meta">
+                                <ul class="clearfix">
+
+
+
+                                    <li id="recipe-meta-date">
+                                        <i >Proteins</i>
+                                        <span>{{ plat.proteines }}</span>
+                                    </li>
+
+
+                                    <li><div><i >Glucides</i> <span>{{ plat.glucides }}</span></div></li>					<li>
+                                        <i > lipides</i>
+                                        <span> {{ plat.lipides }} </span>
+                                    </li>
+
+
+                                    <li><div><i >KCAL</i> <span>{{ plat.calculerCalorie()}}</span></div></li>
+
+
+                                    <li><div><i >KCAL/portion</i> <span>{{ plat.calculerCalorieParPortion() }}</span></div></li>
+
+
+
+
+                                </ul>
+
+
+                            </div>
+
+
+
+
+
+
+                        </div> <!-- .entry-content -->
+
+
+                        <div class="clear"></div>
+
+                    </div> <!-- .entry -->
+                    <div class="clear"></div>
+
+
+
+
+                </div> <!-- .rw-row -->
+
+{#                <div id="recipe-taxonomies" class="rw-row border-bottom clearfix"><div class="recipe-taxes"><span class="tax-title">Category:</span><span class="tax"><a href="https://gustos.w3.style/recipe-category/soup/" itemprop="recipeCategory">Soup</a></span></div><div class="recipe-taxes"><span class="tax-title">Tags:</span><span class="tax"><a href="https://gustos.w3.style/recipe-tag/middle-eastern/">Middle Eastern</a></span></div></div> <!-- .rw-row -->#}
+                <div id="recipe-related" class="rw-row subtle border-bottom clearfix">
+                    <div class="grid-container">
+
+                        <div class="grid desk-6">
+                            <h2 class="carousel-posts-heading">You may also like:</h2>
+                        </div>
+                        <div class="grid desk-6">
+                            <div class="carousel-posts-nav clearfix">
+                                <div class="carousel-posts-nav-next"><i class="fa fa-chevron-right"></i></div>
+                                <div class="carousel-posts-nav-prev"><i class="fa fa-chevron-left"></i></div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="carousel-posts clearfix">
+                            <!-- Entry -->
+                            {% for p in platss %}
+                            <div class="entry style-columns">
+                                <a href="{{ path('afficherplatfront',{'id':p.id }) }}"><div class="entry-photo">
+                                        <img src="{{ asset( p.getFirstImage() )}}" alt="element 01"   width="460" class="float-left"   /> </div></a>
+                                <div class="entry-title">
+                                    <a href="{{ path('afficherplatfront',{'id':p.id }) }}">{{ p.nom }}</a>									</div>
+                                <div class="entry-meta">
+                                    <span class="date">peut etré prét en {{ p.tempdeprepartion }} minute</span>
+                                </div>
+                                <div class="entry-content">
+                                    {{p.calculerCalorieParPortion }}	Kcal/portion						</div>
+                            </div> <!-- .entry -->
+                           {% endfor %}
+{#                            {{ knp_pagination_render(platss) }}#}
+
+                        </div> <!-- .carousel-posts -->
+
+                    </div>
+                </div> <!-- .rw-row -->
+                   <div id="all-post-comments">
+
+{#                    <div class="rw-row border-bottom clearfix">#}
+{#                        <h2>Comments: - 20</h2>#}
+{#                        <div id="comments" class="comments-area">#}
+{#                            <ul class="post-comments">    <li class="comment even thread-even depth-1 parent" id="comment-311">#}
+
+{#                                    <div class="comment-avatar">#}
+{#                                        <img alt='' src='https://secure.gravatar.com/avatar/cd383459d694c3b291b3899c57756733?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/cd383459d694c3b291b3899c57756733?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/>    </div>#}
+
+{#                                    <div class="content">#}
+{#                                        <div id="comment-inner-311">#}
+{#                                            <div class="comment-header">#}
+
+{#                                                John Clark                                <span class="comment-time">June 6, 2016</span>#}
+{#                                                <a rel='nofollow' class='comment-reply-link' href='https://gustos.w3.style/recipes/crevette-a-la-marseillaise/?replytocom=311#respond' data-commentid="311" data-postid="185" data-belowelement="comment-inner-311" data-respondelement="respond" data-replyto="Reply to John Clark" aria-label='Reply to John Clark'>Reply</a>#}
+{#                                                <div class="comment-vote">#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <p>Virtutibus igitur rectissime mihi videris et ad consuetudinem nostrae orationis vitia posuisse contraria. </p>#}
+{#                                            <p>Alia quaedam dicent, credo, magna antiquorum esse peccata, quae ille veri investigandi cupidus nullo modo ferre potuerit.</p>#}
+{#                                        </div>#}
+{#                                    </div>#}
+
+{#                                    <ul class="children">#}
+{#                                        <li class="comment odd alt depth-2" id="comment-328">#}
+
+{#                                            <div class="comment-avatar">#}
+{#                                                <img alt='' src='https://secure.gravatar.com/avatar/354a3ebc63d9641d4c62c66275f62f40?s=80&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/354a3ebc63d9641d4c62c66275f62f40?s=160&#038;d=mm&#038;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' loading='lazy'/>    </div>#}
+
+{#                                            <div class="content">#}
+{#                                                <div id="comment-inner-328">#}
+{#                                                    <div class="comment-header">#}
+
+{#                                                        Robert Thompson                                <span class="comment-time">August 9, 2016</span>#}
+{#                                                        <a rel='nofollow' class='comment-reply-link' href='https://gustos.w3.style/recipes/crevette-a-la-marseillaise/?replytocom=328#respond' data-commentid="328" data-postid="185" data-belowelement="comment-inner-328" data-respondelement="respond" data-replyto="Reply to Robert Thompson" aria-label='Reply to Robert Thompson'>Reply</a>#}
+{#                                                        <div class="comment-vote">#}
+{#                                                        </div>#}
+{#                                                    </div>#}
+{#                                                    <p>Epicurei num desistunt de isdem, de quibus et ab Epicuro scriptum est et ab antiquis, ad arbitrium suum scribere? Tum Quintus: Est plane, Piso, ut dicis, inquit.</p>#}
+{#                                                </div>#}
+{#                                            </div>#}
+
+{#                                        </li><!-- #comment-## -->#}
+{#                                    </ul><!-- .children -->#}
+{#                                </li><!-- #comment-## -->#}
+{#                                #}
+{#                            </ul>    </div><!-- #comments -->#}
+{#                    </div> <!-- .rw-row -->#}
+
+{#                    <div class="rw-row clearfix">#}
+{#                        <div id="respond" class="comment-respond">#}
+{#                            <a rel="nofollow" id="cancel-comment-reply-link" href="/recipes/crevette-a-la-marseillaise/#respond" style="display:none;">Cancel reply</a><form action="https://gustos.w3.style/wp-comments-post.php" method="post" id="commentform" class="comment-form">#}
+{#                                <div class="comment-form-comment">#}
+{#                                    <div class="form-label">Comment  <em class="text-red" title="Required">*</em></div>#}
+{#                                    <textarea id="comment" name="comment" required="true" class="normal"></textarea>#}
+{#                                </div><div class="clear"></div>#}
+{#                                <span class="comment-form-question"><i class="fa fa-question-circle fa-2x"></i></span>#}
+{#                                <div class="form-allowed-tags" style="display: none;">#}
+{#                                    <span class="ftg-title" style="display: none">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: </span> <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; </code> <code>&lt;abbr title=&quot;&quot;&gt; </code> <code>&lt;acronym title=&quot;&quot;&gt; </code> <code>&lt;b&gt; </code> <code>&lt;blockquote cite=&quot;&quot;&gt; </code> <code>&lt;cite&gt; </code> <code>&lt;code&gt; </code> <code>&lt;del datetime=&quot;&quot;&gt; </code> <code>&lt;em&gt; </code> <code>&lt;i&gt; </code> <code>&lt;q cite=&quot;&quot;&gt; </code> <code>&lt;s&gt; </code> <code>&lt;strike&gt; </code> <code>&lt;strong&gt; </code></code></div>#}
+{#                                <div>#}
+{#                                    <div class="form-label">Name  <em class="text-red" title="Required">*</em></div>#}
+{#                                    <input name="author" type="text" class="fullwidth" value="" required="true"/>#}
+{#                                </div>#}
+
+{#                                <div>#}
+{#                                    <div class="form-label">Email  <em class="text-red" title="Required">*</em></div>#}
+{#                                    <input name="email" type="text" class="fullwidth" value="" required="true"/>#}
+{#                                    <div class="form-description">Your email address will not be published</div>#}
+{#                                </div>#}
+
+{#                                <div>#}
+{#                                    <div class="form-label">Website</div>#}
+{#                                    <input name="url" type="text" class="fullwidth" value=""/>#}
+{#                                </div>#}
+{#                                <p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /> <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>#}
+{#                                <p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post comment" /> <input type='hidden' name='comment_post_ID' value='185' id='comment_post_ID' />#}
+{#                                    <input type='hidden' name='comment_parent' id='comment_parent' value='0' />#}
+{#                                </p></form>	</div><!-- #respond -->#}
+{#                    </div>#}
+                </div>
+
+
+            </div> <!-- .rw-content -->
+
+        </div> <!-- .rw-inner -->
+    </div> <!-- .rw-container -->
+
+{% endblock %}

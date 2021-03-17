@@ -18,6 +18,13 @@ class AlimentRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Aliment::class);
     }
+    public function findalimentbyname($nom){
+        return $this->createQueryBuilder('aliment')
+            ->where('aliment.nom LIKE :name')
+            ->setParameter('name', '%'.$nom.'%')
+            ->getQuery()
+            ->getResult();
+    }
 
     // /**
     //  * @return Aliment[] Returns an array of Aliment objects

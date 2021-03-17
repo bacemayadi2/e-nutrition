@@ -1,0 +1,109 @@
+{% extends 'front/baseforotherpage.html.twig' %}
+
+{% block Content2 %}
+    <!--
+ // ===================================^__^=================================== //
+    Content
+ // ===================================^__^=================================== //
+ -->
+
+    <div class="rw-section rw-container">
+        <div class="rw-inner clearfix">
+    <aside class="widget widget_search"><form method="post" class="search-form" action="{{ path('rechercheplat') }}">
+            <input type="text" class="search-field fullwidth" name="searchplat" placeholder="Type keyword and press enter" value="">
+        </form>
+    </aside>
+            <!-- Main content -->
+            <div class="rw-column rw-content">
+
+                <div class="rw-row page-title ">
+                    <h1>Recipes</h1>
+                </div>
+
+                <div class="rw-row">
+
+
+                    <div class="recipes-list clearfix">
+
+
+                        <!-- Entry -->
+
+                        {%  for plat in plats %}
+
+
+                        <div class="recipe-view-def clearfix">
+
+                            <div class="grid-container">
+
+                                <div class="entry-photo grid desk-3 mob-6 alpha">
+                                    <a {{ path('afficherplatfront',{'id':plat.id })}}"><div class="entry-photo"><div class="entry-micro-signs"></div><img src="{{ asset( plat.getFirstImage() ) }}" alt="{{  plat.nom }}" /></div></a>
+                                </div> <!-- desk-3 -->
+
+                                <div class="grid desk-2-5 mob-6 recipe-info-2">
+                                    <div class="recipe-info-2-inner">
+                                        <div class="info ingredients">
+                                            <span class="type">nbr portion</span>
+                                            <span class="value">{{ plat.nbrportion }}</span>
+                                        </div>
+                                        <div class="info category">
+                                            <span class="type">calorie/portion</span>
+                                            <span class="value-category">{{ plat.calculerCalorieParPortion() }}</span>						</div>
+
+                                        <div class="clear"></div>
+                                    </div> <!-- .recipe-info -->
+
+                                </div> <!-- desk-3 -->
+
+                                <div class="grid desk-6-5 omega">
+                                    <div class="recipe-main-info clearfix">
+
+                                        <div class="recipe-info">
+                                            <div class="entry-title">
+                                                <h2><a href="{{ path('afficherplatfront',{'id':plat.id })}}">{{  plat.nom }} </a></h2>
+                                            </div>
+                                            <div class="entry-controls minimal">
+
+{#						<span class="control-tip"><div class="post-rating-result" title="4 stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>#}
+{#					<meta itemprop="ratingValue" content="4.33" />#}
+{#					<meta itemprop="reviewCount" content="3" />#}
+{#				</div></span>#}
+{#                                                <div class="control"> <i class="fa fa-calendar"></i> </div><span class="control-tip">August 20, 2016</span>#}
+
+{#                                                <a data-post="179" data-settings="{&quot;tag&quot;:&quot;a&quot;,&quot;class&quot;:&quot;control entry-to-favorites&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Add to favorites&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;fa fa-heart-o\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Remove from favorites&quot;,&quot;content_remove&quot;:&quot;&lt;i class=\&quot;fa fa-heart\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_format&quot;:&quot;%text%&quot;,&quot;title_not_logged&quot;:&quot;Please log in to add this post to favorites&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:&quot;next&quot;,&quot;echo&quot;:true,&quot;total_in_title&quot;:false}" data-act="favorite" data-l="0" title="Please log in to add this post to favorites" href="#" class="smk-mark-button control entry-to-favorites"><i class="fa fa-heart-o"></i></a>						<span class="control-tip">28</span>#}
+
+{#                                                <a data-post="179" data-settings="{&quot;tag&quot;:&quot;a&quot;,&quot;class&quot;:&quot;control entry-like&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Like&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;fa fa-thumbs-o-up\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Dislike&quot;,&quot;content_remove&quot;:&quot;&lt;i class=\&quot;fa fa-thumbs-up\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_format&quot;:&quot;%text%&quot;,&quot;title_not_logged&quot;:&quot;Please log in to like this post&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:&quot;next&quot;,&quot;echo&quot;:true,&quot;total_in_title&quot;:false}" data-act="like" data-l="0" title="Please log in to like this post" href="#" class="smk-mark-button control entry-like"><i class="fa fa-thumbs-o-up"></i></a>						<span class="control-tip">29</span>#}
+
+{#                                                <span class="control entry-comments" title="Comments"> <i class="fa fa-comments"></i> </span>#}
+{#                                                <span class="control-tip">15 Comments</span>#}
+{#                                                <div class="control"> <i class="fa fa-bar-chart"></i> </div>#}
+{#                                                <span class="control-tip">3810 views</span>#}
+{#                                            </div>#}
+                                            <div class="entry-content">
+                                               {{ plat.description}}</div>
+{#                                            <div class="entry-info-author">#}
+{#                                                <a href="https://gustos.w3.style/author/danida415/">#}
+{#                                                    <img alt='' src='https://secure.gravatar.com/avatar/c48126a06aba487f94907616bae8787b?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/c48126a06aba487f94907616bae8787b?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' loading='lazy'/>						</a>#}
+{#                                                <div class="author-name"><a href="https://gustos.w3.style/author/danida415/" itemprop="author">Daniel Davis</a></div>#}
+{#                                                <div class="total-recipes">1 recipes</div>#}
+{#                                            </div>#}
+                                            </div> <!-- .recipe-info-2 -->
+                                        </div> <!-- .recipe-main-inf0 -->
+                                        <div class="clear"></div>
+                                    </div> <!-- .desk-6 -->
+
+                                </div> <!-- .grid-container -->
+
+                            </div> <!-- .entry -->
+
+                    {% endfor %}
+                    </div> <!-- .recipes-list -->
+                    <div class="recipes-pagination">
+
+                </div> <!-- .rw-row -->
+
+            </div>
+                    {{ knp_pagination_render(plats) }}
+
+        </div> <!-- .rw-inner -->
+    </div> <!-- .rw-container -->
+{% endblock %}

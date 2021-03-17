@@ -121,6 +121,7 @@ class Nourriture
     }
     public function calculerCalorie() :float
     {
+       // $number=number_format( $this->getGlucides()*4 +$this->getLipides() *9 + $this->getProteines()*9,2);
         return $this->getGlucides()*4 +$this->getLipides() *9 + $this->getProteines()*9;
     }
 

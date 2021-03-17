@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
 <head>
@@ -17,6 +18,8 @@
     <script src="{{ asset('front/js/html5shiv.min.js')}}"></script>
 
     <![endif]-->
+    {% block head %}
+    {% endblock %}
 </head>
 <body>
 <div class="preloader">
@@ -268,6 +271,7 @@
     </header>
 {% block Content %}
     {% endblock %}
+
     <!-- Page Footer-->
     <footer class="page-footer section-30 section-xs-15 bg-gray-lighter">
         <div class="container">
@@ -296,14 +300,7 @@
 
 <!--LIVEDEMO_00 -->
 
-<script type="front/text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-7078796-5']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'https://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();</script>
-
+{% block footerscript %}
+{% endblock %}
+</body>
 </html>

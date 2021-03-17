@@ -15,7 +15,7 @@ class EtapeDePreparationType extends AbstractType
     {
         $builder
             ->add('duree')
-            ->add('description' ,TextareaType::class,[ 'attr'=> ['class'=> 'form-control' ,'type' => 'text' , 'name'=>'ajouter', 'rows'=> '8' ] ] )
+            ->add('description' ,TextareaType::class,[ 'attr'=> ['class'=> 'form-control' ,'type' => 'text' , 'name'=>'ajouter', 'rows'=> '3' ] ] )
         ;
     }
 

@@ -25,7 +25,6 @@
                                     <table class="table">
                                         <thead class="bg-primary white">
                                         <tr>
-                                            <th>nom du plat </th>
                                             <th>description</th>
                                             <th>duree </th>
                                             <th>supprimer modifier </th>
@@ -35,7 +34,6 @@
                                         </thead>
                                         <tbody>
                                         <tr {% for e in etapeDePreparation %} >
-                                            <td> {{ e.plat.nom }} </td>
                                             <td> {{ e.description }}</td>
                                             <td> {{ e.duree }} </td>
                                             <td>
@@ -65,7 +63,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Les aliments</h4>
+                                <h4 class="card-title">Les aliment</h4>
                                 <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
                                 <div class="heading-elements">
                                     <ul class="list-inline mb-0">
@@ -92,9 +90,9 @@
                                         </thead>
                                         <tbody>
                                         <tr {% for f in compostions %} >
-                                            <td> {{ f.aliments.nom }}</td>
+                                            <td> {{ f.aliment.nom }}</td>
                                             <td> {{ f.poid }} </td>
-                                            <td>{{   f.aliments.calculerCalorie()  }}</td>
+                                            <td>{{   f.aliment.calculerCalorie()  }}</td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <div style="text-align: center;">
@@ -137,11 +135,22 @@
 
 
 
-                                {% for tag in plat.TagNourriture() %}
+                                {% for tag in plat.TagNourriture %}
                                     {% if tag.isImage() %}
                                     <td>
                                         <img src="{{ asset( tag.getUrl() )}}" alt="element 01" width="400" class="float-left">
                                     </td>
+                                    {% endif %}
+                                {% endfor %}
+
+
+                                {% for tag in plat.TagNourriture %}
+                                    {% if tag.isVideo() %}
+                                            <video width="400" height="240" controls>
+                                                <source src="{{ asset( tag.getUrl() )}}" type="video/{{ ( tag.getExtension )}}">
+                                                Your browser does not support the video tag.
+                                            </video>
+
                                     {% endif %}
                                 {% endfor %}
 

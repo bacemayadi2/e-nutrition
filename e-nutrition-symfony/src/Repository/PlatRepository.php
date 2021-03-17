@@ -19,6 +19,13 @@ class PlatRepository extends ServiceEntityRepository
         parent::__construct($registry, Plat::class);
     }
 
+    public function findplatbyname($nom){
+        return $this->createQueryBuilder('plat')
+            ->where('plat.nom LIKE :name')
+            ->setParameter('name', '%'.$nom.'%')
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Plat[] Returns an array of Plat objects
     //  */

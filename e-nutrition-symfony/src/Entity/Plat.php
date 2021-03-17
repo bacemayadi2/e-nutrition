@@ -6,6 +6,8 @@ use App\Repository\PlatRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Null_;
+use PhpParser\Node\Scalar\String_;
 
 /**
  * @ORM\Entity(repositoryClass=PlatRepository::class)
@@ -133,22 +135,41 @@ class Plat extends Nourriture
     }
     public function calculeLipides():self
     {
-        $this->lipides=4;
+        $this->lipides=0;
+        foreach ($this->compostions as $c)
+        {
+
+            $this->lipides +=(( $c->getAliment()->getLipides())/($c->getAliment()->getPoid()) ) * $c->getPoid();
+        }
         return $this;
     }
     public function calculeGlucides():self
     {
-        $this->glucides=4;
+        $this->glucides=0;
+        foreach ($this->compostions as $c)
+        {
+
+            $this->glucides +=(( $c->getAliment()->getGlucides())/($c->getAliment()->getPoid()) ) * $c->getPoid();
+        }
         return $this;
     }
     public function calculeProteines():self
     {
-        $this->proteines=4;
+        $this->proteines=0;
+        foreach ($this->compostions as $c)
+        {
+
+            $this->proteines +=(( $c->getAliment()->getProteines())/($c->getAliment()->getPoid()) ) * $c->getPoid();
+        }
         return $this;
     }
     public function calculePoids():self
     {
-        $this->poid=4;
+        $this->poid=0;
+        foreach ($this->compostions as $c)
+        {
+            $this->poid += $c->getPoid();
+        }
         return $this;
     }
     public function calculeNutritiments():self
@@ -178,8 +199,32 @@ class Plat extends Nourriture
 
         return $s;
     }
+    public function getFirstImage():?string
+    {
+        foreach ($this->tagNourriture as $tag)
+        {
+            if ($tag->isImage())
+            {
+            return $tag->getUrl();
+            }
+        }
+        return null;
+    }
 
+    public function tempdeprepartion():float
+    {
+       $tempdeprepartion=0;
+       foreach ($this->etapeDePreparation as $e)
+        {
+            $tempdeprepartion += $e->getDuree();
 
+        }
+       return $tempdeprepartion;
+    }
+    public function calculerCalorieParPortion() :float
+    {
+        return         number_format((($this->getGlucides()*4 +$this->getLipides() *9 + $this->getProteines()*9)/$this->nbrportion),2);
+    }
 
 
 }

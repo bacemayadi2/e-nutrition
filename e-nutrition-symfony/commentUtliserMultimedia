@@ -102,8 +102,8 @@ A)pour l'upload des fichiers (ajouter) (peu import le type fichier )
 
 
 
-B) pour l'affichage des image dans votre twig ajouter ( changer :tagNomdevotretag  et sNomDeVotreClass) width = taille image
-    {% for tag in NomDeVotreClass.tagNomdevotretag() %}
+B) pour l'affichage des image dans votre twig ajouter ( changer :tagNomdevotretag  et NomDeVotreClass) width = taille image
+    {% for tag in NomDeVotreClass.tagNomdevotretag %}
         {% if tag.isImage() %}
             <td>
             <img src="{{ asset( tag.getUrl() )}}" alt="element 01" width="400" class="float-left">
@@ -111,3 +111,21 @@ B) pour l'affichage des image dans votre twig ajouter ( changer :tagNomdevotreta
         {% endif %}
     {% endfor %}
 
+C) pour les video dans votre twig ajouter ( changer :tagNomdevotretag  et NomDeVotreClass) width = taille image
+    {% for tag in NomDeVotreClass.TagNourriture %}
+            {% if tag.isVideo() %}
+                <td>
+                      <video width="400" height="240" controls>
+                      <source src="{{ asset( tag.getUrl() )}}" type="video/{{ ( tag.getExtension )}}">
+                      Your browser does not support the video tag.
+                      </video>
+                </td>
+            {% endif %}
+    {% endfor %}
+
+pour ajouter des fichier plus  grand que 2 Mo tapez:
+dans console php --ini  regarder la ligne:
+    Loaded Configuration File:         C:\wamp64\bin\php\php7.2.33\php.ini
+allez aux fichier php.ini changer :
+    post_max_size = de 8 M a 200M
+    upload_max_filesize = de 2M a  200M
