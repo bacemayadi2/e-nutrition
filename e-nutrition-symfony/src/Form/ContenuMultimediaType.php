@@ -14,7 +14,6 @@ class ContenuMultimediaType extends AbstractType
     {
         $builder
             ->add('fileMultimedia' , VichFileType::class)
-            ->add('description')
         ;
     }
 
