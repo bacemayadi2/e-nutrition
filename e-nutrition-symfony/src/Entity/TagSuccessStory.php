@@ -10,5 +10,20 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class TagSuccessStory extends Tag
 {
+    /**
+     * @ORM\ManyToOne(targetEntity=SuccessStory::class, inversedBy="tagSucess")
+     */
+    private $successStory;
 
+    public function getSuccessStory(): ?SuccessStory
+    {
+        return $this->successStory;
+    }
+
+    public function setSuccessStory(?SuccessStory $successStory): self
+    {
+        $this->successStory = $successStory;
+
+        return $this;
+    }
 }
