@@ -97,7 +97,8 @@
                                                     </div>
                                                 </div>
                                                 <label  for="timesheetinput7">file) </label>
-                                                            {{ form_widget(form.tagFicheConsultation.vars.prototype.contenuMultimedia.fileMultimedia) }}
+{#                                                {%  tag in form.tagFicheConsultation %}#}
+                                                            {{ form_widget(form.tagFicheConsultation[0].contenuMultimedia.fileMultimedia) }}
 
                                             </div>
                                         </fieldset>

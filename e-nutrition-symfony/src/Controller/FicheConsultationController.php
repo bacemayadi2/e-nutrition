@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\TagFicheConsultation;
 use App\Repository\BlogPostRepository;
 use App\Repository\MedicamentRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -75,6 +76,8 @@ class FicheConsultationController extends AbstractController
    public function AjouteFiche(Request $request,MedicamentRepository $repo)
    {
    $ficheConsultation=new FicheConsultation();
+   $tagImage=new TagFicheConsultation();
+   $ficheConsultation->addTagFicheConsultation($tagImage);
    $form=$this->createForm(FicheConsultationType::class,$ficheConsultation);
    $form->add('Ajouter',SubmitType::class);
    $form->handleRequest($request);

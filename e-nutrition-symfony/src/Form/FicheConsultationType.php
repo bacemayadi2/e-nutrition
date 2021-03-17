@@ -30,10 +30,9 @@ class FicheConsultationType extends AbstractType
             ])
             ->add('tagFicheConsultation', CollectionType::class  ,[
                 'entry_type' => TagFicheConsultationType::class,
-                'allow_add' => true,
                 'entry_options' => ['label' => false],
-                'allow_delete' => true,
-                'by_reference' => false,
+
+
             ]);
 
         ;

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\FicheConsultationRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +32,7 @@ class MedicamentController extends AbstractController
      */
 
 
-    public function AfficheMedicament(Request $request,PaginatorInterface $paginator,$id,MedicamentRepository $repository)
+    public function AfficheMedicament(Request $request,PaginatorInterface $paginator,$id,MedicamentRepository $repository,FicheConsultationRepository $repoFiche)
     {
 
         $donnee=$repository->findBy(
@@ -43,9 +44,10 @@ class MedicamentController extends AbstractController
             $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
             7 /*limit per page*/
         );
+        $fiche=$repoFiche->find($id);
 
         return $this->render('Back/medicament/afficherMedicament.html.twig',
-            ['medicament'=>$medicament]);
+            ['medicament'=>$medicament,'fiche'=>$fiche]);
     }
 
 
