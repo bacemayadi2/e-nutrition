@@ -42,7 +42,7 @@
                         <table class="table">
                             <thead class="bg-primary white">
                             <tr>
-                                <th>Id</th>
+                                <th>nom du patient</th>
                                 <th>Date de création </th>
                                 <th>Poids(m)</th>
                                 <th>Taille</th>
@@ -55,14 +55,14 @@
                             <tbody  id="myTable">
                             <tr {% for f in ficheConsultation %} >
 
-                                <td> {{ f.id }}</td>
+                                <td> {{ f.patient.nom }}</td>
                                 <td> {{ f.CreationDate|date('y-m-d')}} </td>
                                 <td>{{ f.poids }}</td>
                                 <td>{{ f.taille }}</td>
-                                <td>{{ f.imc }}</td>
                                 <td>{{ f.symptome }}</td>
                                 <td>{{ f.apetit }}</td>
                                 <td>{{ f.description }}</td>
+                                <td>{{ f.calculerImc }}</td>
                                 <td> <a href="{{ path('afficherMedicament',{'id':f.id}) }}">Voir medicament</a></td>
                                 <td> <a href="{{ path('deleteF',{'id':f.id}) }}">Delete</a></td>
                                 <td> <a href="{{ path('updateF',{'id':f.id}) }}">Modifier</a></td>

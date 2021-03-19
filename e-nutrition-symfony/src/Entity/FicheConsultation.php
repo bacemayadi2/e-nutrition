@@ -34,10 +34,7 @@ class FicheConsultation
      */
     private $Taille;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $Imc;
+
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -63,6 +60,16 @@ class FicheConsultation
      * @ORM\OneToMany(targetEntity=TagFicheConsultation::class, mappedBy="ficheConsultation",cascade={"all"},orphanRemoval=true)
      */
     private $tagFicheConsultation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Patient::class, inversedBy="ficheConsultations")
+     */
+    private $patient;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Nutritionniste::class, inversedBy="ficheConsultations")
+     */
+    private $nutritionniste;
 
     public function __construct()
     {
@@ -111,17 +118,6 @@ class FicheConsultation
         return $this;
     }
 
-    public function getImc(): ?float
-    {
-        return $this->Imc;
-    }
-
-    public function setImc(float $Imc): self
-    {
-        $this->Imc = $Imc;
-
-        return $this;
-    }
 
     public function getSymptome(): ?string
     {
@@ -218,4 +214,38 @@ class FicheConsultation
 
         return $this;
     }
+
+    public function getPatient(): ?Patient
+    {
+        return $this->patient;
+    }
+
+    public function setPatient(?Patient $patient): self
+    {
+        $this->patient = $patient;
+
+        return $this;
+    }
+
+    public function getNutritionniste(): ?Nutritionniste
+    {
+        return $this->nutritionniste;
+    }
+
+    public function setNutritionniste(?Nutritionniste $nutritionniste): self
+    {
+        $this->nutritionniste = $nutritionniste;
+
+        return $this;
+    }
+
+
+    public function calculerImc() :float
+    {
+        return         number_format(($this->getTaille())/($this->getPoids()*$this->getPoids()),2);
+    }
+
+
+
+
 }

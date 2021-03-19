@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\TagFicheConsultation;
-use App\Repository\BlogPostRepository;
+
 use App\Repository\MedicamentRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use phpDocumentor\Reflection\Types\This;
@@ -33,7 +33,6 @@ class FicheConsultationController extends AbstractController
             'ficheConsultation' => $ficheConsultation]);
 
     }
-
 
 
 
@@ -79,9 +78,13 @@ class FicheConsultationController extends AbstractController
    $tagImage=new TagFicheConsultation();
    $ficheConsultation->addTagFicheConsultation($tagImage);
    $form=$this->createForm(FicheConsultationType::class,$ficheConsultation);
-   $form->add('Ajouter',SubmitType::class);
+  // $form->add('Ajouter',SubmitType::class);
    $form->handleRequest($request);
-   if($form->isSubmitted() ){
+       if($form->isSubmitted()) {
+           dump($form);
+           $ficheConsultation->getPatient();
+      }
+   if($form->isSubmitted()&& $form->isValid() ){
 
        $em=$this->getDoctrine()->getManager();
        $em->persist($ficheConsultation);
@@ -132,6 +135,7 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
      ['form'=>$form->createView()]);
 
  }
+
 
 
 }

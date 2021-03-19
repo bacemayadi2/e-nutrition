@@ -17,9 +17,15 @@ class Nutritionniste extends Utilisateur
      */
     private $secretaire;
 
+    /**
+     * @ORM\OneToMany(targetEntity=FicheConsultation::class, mappedBy="nutritionniste",cascade={"all"},orphanRemoval=true)
+     */
+    private $ficheConsultations;
+
     public function __construct()
     {
         $this->secretaire = new ArrayCollection();
+        $this->ficheConsultations = new ArrayCollection();
     }
 
     /**
@@ -46,6 +52,36 @@ class Nutritionniste extends Utilisateur
             // set the owning side to null (unless already changed)
             if ($secretaire->getNutritionniste() === $this) {
                 $secretaire->setNutritionniste(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|FicheConsultation[]
+     */
+    public function getFicheConsultations(): Collection
+    {
+        return $this->ficheConsultations;
+    }
+
+    public function addFicheConsultation(FicheConsultation $ficheConsultation): self
+    {
+        if (!$this->ficheConsultations->contains($ficheConsultation)) {
+            $this->ficheConsultations[] = $ficheConsultation;
+            $ficheConsultation->setNutritionniste($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFicheConsultation(FicheConsultation $ficheConsultation): self
+    {
+        if ($this->ficheConsultations->removeElement($ficheConsultation)) {
+            // set the owning side to null (unless already changed)
+            if ($ficheConsultation->getNutritionniste() === $this) {
+                $ficheConsultation->setNutritionniste(null);
             }
         }
 
