@@ -31,8 +31,25 @@ class SuccessStory
 
     /**
      * @ORM\OneToMany(targetEntity=TagSuccessStory::class, mappedBy="successStory", cascade={"all"},orphanRemoval=true)
-     */
+     *
     private $tagSucess;
+*/
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateCreation;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="listeImages")
+     */
+
+    private $listeImages;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $likeStory;
 
     public function __construct()
     {
@@ -70,7 +87,7 @@ class SuccessStory
 
     /**
      * @return Collection|TagSuccessStory[]
-     */
+     *
     public function getTagSucess(): Collection
     {
         return $this->tagSucess;
@@ -94,6 +111,42 @@ class SuccessStory
                 $tagSucess->setSuccessStory(null);
             }
         }
+
+        return $this;
+    }*/
+
+    public function getDateCreation(): ?\DateTimeInterface
+    {
+        return $this->dateCreation;
+    }
+
+    public function setDateCreation(?\DateTimeInterface $dateCreation): self
+    {
+        $this->dateCreation = $dateCreation;
+
+        return $this;
+    }
+
+    public function getListeImages(): ?image
+    {
+        return $this->listeImages;
+    }
+
+    public function setListeImages(?image $listeImages): self
+    {
+        $this->listeImages = $listeImages;
+
+        return $this;
+    }
+
+    public function getLikeStory(): ?int
+    {
+        return $this->likeStory;
+    }
+
+    public function setLikeStory(?int $likeStory): self
+    {
+        $this->likeStory = $likeStory;
 
         return $this;
     }
