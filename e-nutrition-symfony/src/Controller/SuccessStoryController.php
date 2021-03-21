@@ -33,6 +33,8 @@ class SuccessStoryController extends AbstractController
     function CreateSuccess(Request $request)
     {
         $Success = new SuccessStory();
+        /*$time = new \DateTime();
+        $Success->setDateCreation($time);*/
         $form = $this->createForm(SuccessStoryType::class, $Success);
         $form->add("Ajouter", SubmitType::class);
 
