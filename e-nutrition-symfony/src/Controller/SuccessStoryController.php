@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\RendezVous;
 use App\Entity\SuccessStory;
+use App\Entity\TagSuccessStory;
 use App\Form\RendezVousType;
 use App\Form\SuccessStoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,10 +34,17 @@ class SuccessStoryController extends AbstractController
     function CreateSuccess(Request $request)
     {
         $Success = new SuccessStory();
-        /*$time = new \DateTime();
-        $Success->setDateCreation($time);*/
+        $time = new \DateTime();
+        $Success->setDateCreation($time);
+        $image1 = new TagSuccessStory();
+        $image2 = new TagSuccessStory();
+        $video = new TagSuccessStory();
+        $Success ->addTagSucess($image1);
+        $Success ->addTagSucess($image2);
+        $Success ->addTagSucess($video);
         $form = $this->createForm(SuccessStoryType::class, $Success);
         $form->add("Ajouter", SubmitType::class);
+
 
         $form->handleRequest($request);
 

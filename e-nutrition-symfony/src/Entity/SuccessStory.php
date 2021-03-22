@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass=SuccessStoryRepository::class)
  */
@@ -31,20 +32,14 @@ class SuccessStory
 
     /**
      * @ORM\OneToMany(targetEntity=TagSuccessStory::class, mappedBy="successStory", cascade={"all"},orphanRemoval=true)
-     *
+     */
     private $tagSucess;
-*/
+
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $dateCreation;
 
-
-    /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="listeImages")
-     */
-
-    private $listeImages;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -87,7 +82,7 @@ class SuccessStory
 
     /**
      * @return Collection|TagSuccessStory[]
-     *
+     */
     public function getTagSucess(): Collection
     {
         return $this->tagSucess;
@@ -113,7 +108,7 @@ class SuccessStory
         }
 
         return $this;
-    }*/
+    }
 
     public function getDateCreation(): ?\DateTimeInterface
     {
@@ -127,17 +122,9 @@ class SuccessStory
         return $this;
     }
 
-    public function getListeImages(): ?image
-    {
-        return $this->listeImages;
-    }
 
-    public function setListeImages(?image $listeImages): self
-    {
-        $this->listeImages = $listeImages;
 
-        return $this;
-    }
+
 
     public function getLikeStory(): ?int
     {
