@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\SuccessStory;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,9 +16,9 @@ class SuccessStoryType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('text')
+            ->add('text' , TextareaType::class )
 
-            ->add('likeStory')
+
             ->add('tagSucess' , CollectionType::class , [
         'entry_type'=> TagSuccessStoryType::class,
             ])

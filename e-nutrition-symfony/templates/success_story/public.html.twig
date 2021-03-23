@@ -1,0 +1,60 @@
+{% extends 'front/base.html.twig' %}
+{% block Content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+
+            {% for message in app.flashes('notice') %}
+            alert("ajoute successStory avec succes , la video disponible aprés traitement , \n dev note:   lance  dans un  terminal phpstorm la commande:  php bin/console messenger:consume  ");
+
+
+            {% endfor %}
+        });
+
+    </script>
+    <!-- Page Content-->
+    <main class="page-content">
+        <div id="fb-root"></div>
+        <!-- Blog Classic-->
+        <section class="section-95 section-md-bottom-120 text-left">
+            <div class="container">
+                <div class="row justify-content-sm-center">
+                    <div class="">
+                        {% for post in Success %}
+                        <!-- Post Classic-->
+                        <article class="post-classic"><table> <tr><td><a class="thumbnail-zoom" href="{{ path('postSuccess',{'id':post.id }) }}"><span class="thumbnail-zoom-img-wrap">
+                                                <img class="img-responsive center-block" src="{{post.tagSucess[0].getUrl()}}" width="770"  alt=""/></span></a></td>
+                                    <td><a class="thumbnail-zoom" href="{{ path('postSuccess',{'id':post.id }) }}"><span class="thumbnail-zoom-img-wrap"><img class="img-responsive center-block" src="{{post.tagSucess[1].getUrl()}}" width="770"  alt=""/></span></a></td></tr></table>
+                            <div class="post-body">
+                                <p class="post-title text-big font-weight-bold text-uppercase text-spacing-100 offset-top-20"><a href="{{ path('postSuccess',{'id':post.id }) }}">{{ post.titre }}</a></p>
+                                <!-- List Inline-->
+                                <ul class="list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p">
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-event text-middle text-gray"></span><span class="text-middle inset-left-7 post-meta">{{post.dateCreation | date('d-m-Y')}}</span></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-person text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">By:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="my-philosophy.html">Atallah Abdelhamid</a></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-question_answer text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">Comments:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="#">3</a></li>
+                                </ul>
+                                <p class="offset-top-20">{{ post.text }}</p>
+
+                            </div>
+                        </article>
+                        {% endfor %}
+
+
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock%}

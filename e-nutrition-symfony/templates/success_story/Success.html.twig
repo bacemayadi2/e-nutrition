@@ -1,20 +1,22 @@
 {% extends 'front/base.html.twig' %}
 {% block Content %}
-   <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+
+   {{ form_start(form) }}
    <div align="center" >
-      {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+
       <br>
 
       <div class="col-sm-6 offset-top-10 inset-sm-left-7">
          <div class="form-wrap">
             <table class="form-wrap">
-               <tr >
+               <tr align="center" >
                   <td>{{ form_label(form.titre, "Titre") }} </td>
                   <td>{{ form_widget(form.titre, {'attr': {'style': 'width: 250px'}}) }}</td>
                </tr>
                <tr>
                   <td>{{ form_label(form.text, "Description") }}</td>
-                  <td>{{ form_widget(form.text, {'attr': {'style': "margin-top: 0px; margin-bottom: 0px; height: 211px;"}+{'class': 'form-input'}}) }}</td>
+                  <td>{{ form_widget(form.text, {'attr': {'style': "margin-top: 0px; margin-bottom: 0px; height: 211px;"}+{'class': 'form-input'}+{'cols':'100'}})}}</td>
                </tr>
 
 
@@ -34,7 +36,9 @@
 
 
       {{ form_widget(form.Ajouter) }}
+
    </div>
+   {{ form_end(form) }}
 
 
 

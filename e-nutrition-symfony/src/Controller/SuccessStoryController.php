@@ -7,6 +7,8 @@ use App\Entity\SuccessStory;
 use App\Entity\TagSuccessStory;
 use App\Form\RendezVousType;
 use App\Form\SuccessStoryType;
+use App\Repository\SuccessStoryRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -53,9 +55,81 @@ class SuccessStoryController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($Success);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Your changes were saved!'
+            );
 
-            return $this->redirectToRoute('aff');
+            return $this->redirectToRoute('Pub');
         }
         return $this->render('success_story/Success.html.twig ' ,['form'=>$form->createView()]);
     }
+
+
+    /**
+     * @param SuccessStoryRepository $repository
+     * @return Response
+     * @Route("Success", name="Pub")
+     */
+    public function AfficherSuccess(SuccessStoryRepository $repository ){
+
+        //$repo= $this->getDoctrine()->getRepository(RendezVous::class   );
+        $Success=$repository->findAll();
+
+        return $this->render('success_story/public.html.twig', [
+            'controller_name' => 'SuccessStoryController',
+            'Success' => $Success,
+        ]);
+    }
+    /**
+     * @param SuccessStoryRepository $repository
+     * @return Response
+     * @Route("detpost/{id}", name="postSuccess")
+     */
+    public function AfficherPostSuccess(SuccessStoryRepository $repository , $id ){
+
+        //$repo= $this->getDoctrine()->getRepository(RendezVous::class   );
+        $Success=$repository->find($id);
+
+        return $this->render('success_story/detpost.html.twig', [
+            'controller_name' => 'SuccessStoryController',
+            'Success' => $Success,
+        ]);
+    }
+    /**
+     * @param SuccessStoryRepository $repository
+     * @return Response
+     * @Route("SuccessBack", name="PubBack")
+     */
+    public function AfficherSuccessBack(PaginatorInterface $paginator , SuccessStoryRepository $repository , Request $request ){
+
+        //$repo= $this->getDoctrine()->getRepository(RendezVous::class   );
+        $donnees=$repository->findAll();
+        $Success=$paginator->paginate(
+            $donnees,
+            /* query NOT result */
+            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+            7 /*limit per page*/
+        );
+
+        return $this->render('back/SuccessStory/SuccessAdmin.html.twig', [
+            'controller_name' => 'SuccessStoryController',
+            'Success' => $Success,
+        ]);
+    }
+
+    /**
+     * @param $id
+     * @param SuccessStoryRepository $repository
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route("deleteSuccess/{id}", name="deleteSuccess")
+     */
+    public function Delete($id , SuccessStoryRepository $repository){
+        $Success=$repository->find($id);
+        $em=$this->getDoctrine()->getManager();
+        $em->remove($Success);
+        $em->flush();
+        return $this->redirectToRoute('Pub');
+    }
+
 }
