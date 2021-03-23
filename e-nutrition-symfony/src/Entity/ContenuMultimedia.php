@@ -33,7 +33,7 @@ class ContenuMultimedia
 
 
     /**
-     * @Vich\UploadableField(mapping="multimedia", fileNameProperty="nomFile")
+     * @Vich\UploadableField(mapping="multimedia", fileNameProperty="nomFile" ,nullable=true)
      * @var File|null
      */
     private $fileMultimedia;
