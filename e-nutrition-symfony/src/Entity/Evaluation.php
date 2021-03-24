@@ -27,6 +27,21 @@ class Evaluation
      */
     private $note;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Nutritionniste::class, inversedBy="evaluations")
+     */
+    private $nutritionniste;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Patient::class, inversedBy="evaluations")
+     */
+    private $patient;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $created_at;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +67,42 @@ class Evaluation
     public function setNote(?int $note): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    public function getNutritionniste(): ?Nutritionniste
+    {
+        return $this->nutritionniste;
+    }
+
+    public function setNutritionniste(?Nutritionniste $nutritionniste): self
+    {
+        $this->nutritionniste = $nutritionniste;
+
+        return $this;
+    }
+
+    public function getPatient(): ?Patient
+    {
+        return $this->patient;
+    }
+
+    public function setPatient(?Patient $patient): self
+    {
+        $this->patient = $patient;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $created_at): self
+    {
+        $this->created_at = $created_at;
 
         return $this;
     }

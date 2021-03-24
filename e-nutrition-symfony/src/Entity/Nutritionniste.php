@@ -22,10 +22,16 @@ class Nutritionniste extends Utilisateur
      */
     private $ficheConsultations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Evaluation::class, mappedBy="nutritionniste")
+     */
+    private $evaluations;
+
     public function __construct()
     {
         $this->secretaire = new ArrayCollection();
         $this->ficheConsultations = new ArrayCollection();
+        $this->evaluations = new ArrayCollection();
     }
 
     /**
@@ -82,6 +88,36 @@ class Nutritionniste extends Utilisateur
             // set the owning side to null (unless already changed)
             if ($ficheConsultation->getNutritionniste() === $this) {
                 $ficheConsultation->setNutritionniste(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Evaluation[]
+     */
+    public function getEvaluations(): Collection
+    {
+        return $this->evaluations;
+    }
+
+    public function addEvaluation(Evaluation $evaluation): self
+    {
+        if (!$this->evaluations->contains($evaluation)) {
+            $this->evaluations[] = $evaluation;
+            $evaluation->setNutritionniste($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvaluation(Evaluation $evaluation): self
+    {
+        if ($this->evaluations->removeElement($evaluation)) {
+            // set the owning side to null (unless already changed)
+            if ($evaluation->getNutritionniste() === $this) {
+                $evaluation->setNutritionniste(null);
             }
         }
 

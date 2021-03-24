@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\FicheConsultation;
+use App\Entity\Patient;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -47,6 +48,23 @@ class FicheConsultationRepository extends ServiceEntityRepository
         ;
     }
     */
+/*
+ * @return void
+ */
+public function countByDate(){
+$query=$this->createQueryBuilder('d')
+    ->select('SUBSTRING(d.CreationDate,1,7) as CreationDate,COUNT(d) as count')
+
+    ->groupBy('CreationDate')
+    ;
+return $query->getQuery()->getResult();
+
+}
+
+
+
+
+
 
 
 }

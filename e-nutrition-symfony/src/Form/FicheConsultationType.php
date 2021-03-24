@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\FicheConsultation;
 use App\Entity\Patient;
+use App\Entity\Nutritionniste;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -16,6 +17,12 @@ class FicheConsultationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('CreationDate',DateType::class)
+            ->add('nutritionniste',EntityType::class,[
+                'class' => Nutritionniste::class,
+                'choice_label' => 'nom',
+                'multiple' => false,
+
+            ])
             ->add('patient',EntityType::class,[
                 'class' => Patient::class,
                 'choice_label' => 'nom',

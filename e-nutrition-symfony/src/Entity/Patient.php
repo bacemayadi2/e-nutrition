@@ -22,9 +22,15 @@ class Patient extends Utilisateur
      */
     private $ficheConsultations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Evaluation::class, mappedBy="patient")
+     */
+    private $evaluations;
+
     public function __construct()
     {
         $this->ficheConsultations = new ArrayCollection();
+        $this->evaluations = new ArrayCollection();
     }
 
     public function getStyleDeVie(): ?string
@@ -67,4 +73,43 @@ class Patient extends Utilisateur
 
         return $this;
     }
+
+    /**
+     * @return Collection|Evaluation[]
+     */
+    public function getEvaluations(): Collection
+    {
+        return $this->evaluations;
+    }
+
+    public function addEvaluation(Evaluation $evaluation): self
+    {
+        if (!$this->evaluations->contains($evaluation)) {
+            $this->evaluations[] = $evaluation;
+            $evaluation->setPatient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvaluation(Evaluation $evaluation): self
+    {
+        if ($this->evaluations->removeElement($evaluation)) {
+            // set the owning side to null (unless already changed)
+            if ($evaluation->getPatient() === $this) {
+                $evaluation->setPatient(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+
+
+
+
+
+
+
 }

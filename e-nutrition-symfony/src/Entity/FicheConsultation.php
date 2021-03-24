@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\FicheConsultationRepository;
+use App\Repository\PatientRepository;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Array_;
 
 /**
  * @ORM\Entity(repositoryClass=FicheConsultationRepository::class)
@@ -245,6 +248,15 @@ class FicheConsultation
         return         number_format(($this->getTaille())/($this->getPoids()*$this->getPoids()),2);
     }
 
+    public function  getnbrOFTimeUsed():float
+    {
+        $j=0;
+        foreach ($this->getPatient() ->getFicheConsultations() as $ficheConsultation )
+        {
+            $j++;
+        }
+        return$j;
+    }
 
 
 

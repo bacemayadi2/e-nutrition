@@ -1,0 +1,63 @@
+{% extends 'back/base.html.twig' %}
+ {% block CustomCss%}
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous" />
+ {% endblock %}
+
+{% block Content %}
+<div class="app-content content">
+    <div class="content-wrapper">
+               <div class="content-body"><!-- Basic Tables start -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Statistiques</h4>
+
+
+    <canvas id="ficheConsultation" width="400" height="100"></canvas>
+        {{ dump() }}
+    </div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+{% endblock %}
+{% block Javascripts %}
+
+  <script>
+
+let ficheConsultation=document.querySelector("#ficheConsultation")
+let annGraph=new Chart(ficheConsultation,{
+type:"line",
+    data:{
+     labels:{{ dates|raw }},
+     datasets:[{
+
+       label:"Nombre des consultations par mois",
+         data:{{ ficheConsultationCount|raw }},
+         fill: true,
+         borderColor: "#afc82a",
+
+         backgroundColor: "#afc82a",
+         pointBackgroundColor: "#afc82a",
+         pointBorderColor: "#afc82a",
+         pointHoverBackgroundColor: "#afc82a",
+         pointHoverBorderColor: "#afc82a",
+
+
+     }]
+    }
+
+})
+
+
+  </script>
+
+
+
+
+
+
+
+{% endblock %}

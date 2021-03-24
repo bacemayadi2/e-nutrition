@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\TagFicheConsultation;
 
 use App\Repository\MedicamentRepository;
+use App\Repository\PatientRepository;
+use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -82,6 +84,7 @@ class FicheConsultationController extends AbstractController
    $form->handleRequest($request);
        if($form->isSubmitted()) {
            dump($form);
+           $ficheConsultation->getNutritionniste();
            $ficheConsultation->getPatient();
       }
    if($form->isSubmitted()&& $form->isValid() ){
@@ -133,9 +136,36 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
 
      return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig',
      ['form'=>$form->createView()]);
-
  }
 
+    /**
+     * @Route("/stats",name="stats")
+     */
+    public function statistique(PatientRepository $repository,FicheConsultationRepository $repo){
+//on va chercher le nombre des consultations par date
+        $ficheConsultations=$repo->countByDate();
+        $dates=[];
+        $patients=$repository->find(18);
+
+        $ficheConsultationCount=[];
+
+//on démonte les données pour les séparer tel qu'attendu par CharJs
+
+        foreach ($ficheConsultations as $ficheConsultation){
+
+            $dates[]=$ficheConsultation['CreationDate'];
+            $ficheConsultationCount[]=$ficheConsultation['count'];
+
+        }
+
+
+        $ficheConsultationCount[]=count($patients->getFicheConsultations());
+        return $this->render('Back/fiche_consultation/stats.html.twig',[
+
+            'ficheConsultationCount'=>json_encode($ficheConsultationCount),
+'dates'=>json_encode($dates),
+        ]);
+    }
 
 
 }
