@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Patient;
 use App\Entity\Student;
-use App\Entity\Utilisateur;
+use App\Form\PatientType;
 use App\Form\StudentType;
 use App\Form\UserType;
 use App\Repository\StudentRepository;
@@ -27,6 +28,14 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/profileUser", name="profileUser")
+     */
+    public function profileUser(): Response
+    {
+        return $this->render('front/users/profileUser.html.twig', ['controller_name' => 'UserController',]);
+    }
+
+    /**
      * @Route("/admin/DisplayUsers", name="DisplayUsers")
      */
     public function DisplayUsers(UserRepository $repo)
@@ -40,15 +49,12 @@ class UserController extends AbstractController
      */
     function CreateUser(Request $request)
     {
+        $choice = $request->get('typeCompte');
+        $user = new Patient();
 
-        $user = new Utilisateur();
-
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(PatientType::class, $user);
+//        $form = $this->createForm(UserType::class, $user);
         $form->add("Ajouter", SubmitType::class);
-
-
-        //$form = $this->createFormBuilder()
-         //   ->add('typeCompte', ChoiceType::class, ['choices'  => ['Choisir votre type de compte'=> 0, 'Patient' => 'Patient', 'Nutritionniste' => 'Nutritionniste', 'Secrétaire' => 'Secrétaire']]);
 
         $form->handleRequest($request);
 
@@ -106,7 +112,7 @@ class UserController extends AbstractController
         $users = 0;
         switch ($searchBy)
         {
-            case "nom": $users = $repo->findBy(['nom' => $input]); break;
+            case "nom": $users = $repo->findBy(['typeCompte' => $input]); break;
             case "prenom": $users = $repo->findBy(['prenom' => $input]); break;
             case "nom et prenom":  $users = $repo->findBy(['nom' => $input]); break;
             case "ville": $users = $repo->findBy(['ville' => $input]); break;
@@ -114,5 +120,6 @@ class UserController extends AbstractController
         }
         return $this->render('front/users/SearchDoctor.html.twig', ['users'=>$users]);
     }
+
 
 }

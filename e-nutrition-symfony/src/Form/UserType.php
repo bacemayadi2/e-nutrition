@@ -25,6 +25,7 @@ class UserType extends AbstractType
             ->add('email', EmailType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre adresse e-mail"]])
             ->add('tel', TextType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre numéro de téléphone"]])
             ->add('ville', TextType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre ville"]])
+            ->add('adresse', TextType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre adresse"]])
             ->add('adresse', TextType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre adresse"]]);
     }
 
