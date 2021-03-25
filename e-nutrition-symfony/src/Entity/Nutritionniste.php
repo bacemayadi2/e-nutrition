@@ -123,4 +123,5 @@ class Nutritionniste extends Utilisateur
 
         return $this;
     }
+
 }

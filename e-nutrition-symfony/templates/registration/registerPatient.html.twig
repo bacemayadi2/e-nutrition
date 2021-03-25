@@ -14,7 +14,7 @@
                             {{ form_start(registrationForm, {'attr':{'novalidate':'novalidate'}}) }}
 
                             <br>
-                            <h1>Créer Compte</h1>
+                            <h1>Créer Compte Patient</h1>
                             <br>
                             <div class="form-group col-10 mb-2">
                                 <table class="form-wrap">
@@ -53,6 +53,10 @@
                                     <tr>
                                         <td>{{ form_label(registrationForm.adresse, "Adresse: ") }} </td>
                                         <td>{{ form_widget(registrationForm.adresse, {'attr': {'style': 'width: 300px'} + {'class':'form-control'}}) }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ form_label(registrationForm.styleDeVie, "Style De Vie: ") }} </td>
+                                        <td>{{ form_widget(registrationForm.styleDeVie, {'attr': {'style': 'width: 300px'} + {'class':'form-control'}}) }}</td>
                                     </tr>
                                     <tr>
                                         <td>{{ form_label(registrationForm.plainPassword, "Mot de passe: ") }} </td>

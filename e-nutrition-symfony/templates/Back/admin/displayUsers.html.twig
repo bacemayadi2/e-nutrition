@@ -41,6 +41,7 @@
                             <th>Date Naissance</th>
                             <th>E-Mail</th>
                             <th>Numéro de téléphone</th>
+                            <th>Roles</th>
                         </tr>
                     </thead>
                     <tr {% for u in users %}>
@@ -52,6 +53,9 @@
                         <td>{{ u.dateNaiss|date('d-m-Y') }}</td>
                         <td>{{ u.email }}</td>
                         <td>{{ u.tel }}</td>
+                        <td {% for role in u.roles %}>
+                            {{ role }}
+                        </td {% endfor %}>
                         <td><div class="btn-group"> <a href="{{ path('UpdateUser', {'id':u.id}) }}" ><button type="button" class="btn btn-primary">Modifier</button> </a></div></td>
                         <td><div class="btn-group"> <a href="{{ path('DeleteUser', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Supprimer</button></a></div></td>
                     </tr {% endfor %}>

@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Nutritionniste;
 use App\Entity\Patient;
 use App\Entity\Student;
+use App\Form\NutritionnisteType;
 use App\Form\PatientType;
 use App\Form\StudentType;
 use App\Form\UserType;
@@ -50,9 +52,9 @@ class UserController extends AbstractController
     function CreateUser(Request $request)
     {
         $choice = $request->get('typeCompte');
-        $user = new Patient();
+        $user = new Nutritionniste();
 
-        $form = $this->createForm(PatientType::class, $user);
+        $form = $this->createForm(NutritionnisteType::class, $user);
 //        $form = $this->createForm(UserType::class, $user);
         $form->add("Ajouter", SubmitType::class);
 

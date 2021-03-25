@@ -22,13 +22,12 @@ security:
                     - App\Security\LoginFormAuthenticator
             form_login:
                 always_use_default_target_path: false
-                default_target_path: http://127.0.0.1:8000/
+                default_target_path: /profileUser
                 failure_path: http://127.0.0.1:8000/
             logout:
                 path: app_logout
                 # where to redirect after logout
                 target: /login
-
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
@@ -40,4 +39,4 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/user, roles: ROLE_USER }

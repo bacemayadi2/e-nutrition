@@ -1,0 +1,40 @@
+{% extends 'front/base.html.twig' %}
+
+{% block Content %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <div class="content-body">
+        <section id="number-tabs">
+            <div class="row">
+                <div class="col-12">
+                    <div align="center" class="card">
+                        <div class="card-content collapse show">
+                            {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+
+                                <br>
+                                <h1>Créer Compte</h1>
+                                <br>
+                                <div class="form-group col-10 mb-2">
+                                    <table class="form-wrap">
+                                        <tr>
+                                            <td>{{ form_label(form.typeCompte, "Type Compte: ") }} </td>
+                                            <td>{{ form_widget(form.typeCompte, {'attr': {'style': 'width: 500px'} }) }}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <br>
+
+                                <td>{{ form_widget(form.Suivant, {'attr':{'class':'btn btn-primary'}}) }}</td>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+
+
+
