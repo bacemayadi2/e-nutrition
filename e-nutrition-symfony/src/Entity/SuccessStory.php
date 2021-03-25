@@ -46,9 +46,15 @@ class SuccessStory
      */
     private $likeStory;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="success", orphanRemoval=true)
+     */
+    private $comments;
+
     public function __construct()
     {
         $this->tagSucess = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -134,6 +140,36 @@ class SuccessStory
     public function setLikeStory(?int $likeStory): self
     {
         $this->likeStory = $likeStory;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comments[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comments $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setSuccess($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comments $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getSuccess() === $this) {
+                $comment->setSuccess(null);
+            }
+        }
 
         return $this;
     }
