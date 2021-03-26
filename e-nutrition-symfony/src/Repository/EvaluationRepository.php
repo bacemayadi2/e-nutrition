@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Evaluation;
+use App\Entity\Nutritionniste;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * @method Evaluation|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,4 +49,20 @@ class EvaluationRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+
+
+    public function Average($n)
+    {
+        $liste= $this->findBy(['nutritionniste'=>$n]);
+        $nbrRow=0;
+        $total=0;
+        foreach ($liste as $row){
+            $nbrRow++;
+            $total+=$row->getNote();
+        }
+        $avg=$total/$nbrRow;
+        return $avg;
+    }
 }

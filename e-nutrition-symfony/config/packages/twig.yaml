@@ -3,3 +3,5 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     exception_controller: null
+    paths:
+        '%kernel.project_dir%/vendor/blackknight467/star-rating-bundle/blackknight467/StarRatingBundle/Resources/views': StarRatingBundle

@@ -2,13 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Evaluation;
 use App\Entity\Nutritionniste;
 use App\Entity\Patient;
 use App\Entity\Student;
+use App\Form\EvaluationType;
 use App\Form\NutritionnisteType;
 use App\Form\PatientType;
 use App\Form\StudentType;
 use App\Form\UserType;
+use App\Repository\EvaluationRepository;
+use App\Repository\NutritionnisteRepository;
+use App\Repository\PatientRepository;
 use App\Repository\StudentRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -121,6 +126,39 @@ class UserController extends AbstractController
             default: echo "error !!!";
         }
         return $this->render('front/users/SearchDoctor.html.twig', ['users'=>$users]);
+    }
+
+
+    /**
+     * @Route("/profileMedecin/{id}", name="profileMedecin")
+     */
+    function addEvaluation(Request $request, NutritionnisteRepository $repo,PatientRepository $patrepo,$id,EvaluationRepository $evRep):Response
+    {
+        $evaluation=new Evaluation();
+
+        $form = $this->createForm(EvaluationType::class, $evaluation);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $evaluation->setCreatedAt(new \DateTime('now'));
+            $patient=$patrepo->find($this->getUser());
+            $evaluation->setPatient($patient);
+
+            $nutri=$repo->find($id);
+            $evaluation->setNutritionniste($nutri);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($evaluation);
+            $em->flush();
+
+            return $this->redirectToRoute('profileMedecin', array(
+                'id' => $id));
+        }
+        $medecin=$repo->findBy(['id' => $id]);
+        $avg=$evRep->Average($medecin);
+        return $this->render('front/users/profilMedecin.html.twig', ['medecin' => $medecin,'form'=>$form->createView(),'avg'=>$avg]);
+
     }
 
 

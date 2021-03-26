@@ -1,17 +1,7 @@
 
 {% extends 'back/base.html.twig' %}
 {% block Content %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
+
 
     <div class="app-content content">
         <div class="content-wrapper">
@@ -35,7 +25,7 @@
                         </ul>
                     </div>
                 </div>
-                <input id="myInput" class="form-control rounded" type="text" placeholder="Search.." >
+                <input id="search" class="form-control rounded" type="text" placeholder="Search.." >
                 <div class="card-content collapse show">
 
                     <div class="table-responsive">
@@ -43,6 +33,7 @@
                             <thead class="bg-primary white">
                             <tr>
                                 <th>nom du patient</th>
+                                <th>nom du nutritionniste</th>
                                 <th>Date de création </th>
                                 <th>Poids(m)</th>
                                 <th>Taille</th>
@@ -54,10 +45,14 @@
                             </tr>
                             </thead>
                             <tbody  id="myTable">
+
+
+                            </tbody>
+                            <tbody>
                             <tr {% for f in ficheConsultation %} >
 
                                 <td> {{ f.patient.nom }}</td>
-
+                                <td> {{ f.nutritionniste.nom }}</td>
                                 <td> {{ f.CreationDate|date('y-m-d')}} </td>
                                 <td>{{ f.poids }}</td>
                                 <td>{{ f.taille }}</td>
@@ -70,7 +65,8 @@
                                 <td> <a href="{{ path('afficherMedicament',{'id':f.id}) }}">Voir medicament</a></td>
                                 <td> <a href="{{ path('deleteF',{'id':f.id}) }}">Delete</a></td>
                                 <td> <a href="{{ path('updateF',{'id':f.id}) }}">Modifier</a></td>
-                          </tr {% endfor %}{{ knp_pagination_render(ficheConsultation) }}>
+                          </tr {% endfor %}
+                                  {{ knp_pagination_render(ficheConsultation) }}>
                             </tbody>
 
                             </table>
@@ -88,7 +84,108 @@
 
 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+            $("#search").keyup(function() {
+                var minlength = 0;
+                var that = this;
+                var value = $(this).val();
+                var entitySelector = $("#myTable").html('');
+                if (value.length >= minlength ) {
+                    if (searchRequest != null)
+                        searchRequest.abort();
+                    searchRequest = $.ajax({
+                        type: "POST",
+                        url: "{{ path('SearchFiche') }}",
+                        data: {
+                            'q' : value
+                        },
+                        dataType: "text",
+                        success: function(msg){
+                            //we need to check if the value is the same
+
+                            if (value===$(that).val()) {
+                                var result = JSON.parse(msg);
+                                $.each(result, function(key, arr) {
+                                    $.each(arr, function(id, value) {
+                                        if (key === 'entities') {
+                                            if (id !== 'error') {
+                                                entitySelector.append(
+                                                    '<tr><td>'+value[0]+'</td>' +
+                                                    '<td>'+value[1]+'</td>'+
+                                                    '<td>'+value[2]+'</td>'+
+                                                    '<td>'+value[3]+'</td>'+
+                                                    '<td>'+value[4]+'</td>'+
+                                                    '<td>'+value[5]+'</td>'+
+                                                    '<td><a href="afficherMedicament/'+id+'">Voir medicament</a></td><tr>'
+
+                                                );
+                                            } else {
+                                                entitySelector.append('<div class="errorLi">'+value+'</div>');
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            var searchRequest = null;
+
+            var minlength = 0;
+            var that = this;
+            var value = $(this).val();
+            var entitySelector = $("#myTable").html('');
+            if (value.length >= minlength ) {
+                if (searchRequest != null)
+                    searchRequest.abort();
+                searchRequest = $.ajax({
+                    type: "POST",
+                    url: "{{ path('SearchFiche') }}",
+                    data: {
+                        'q' : value
+                    },
+                    dataType: "text",
+                    success: function(msg){
+                        //we need to check if the value is the same
+
+                        if (value===$(that).val()) {
+                            var result = JSON.parse(msg);
+                            $.each(result, function(key, arr) {
+                                $.each(arr, function(id, value) {
+                                    if (key === 'entities') {
+                                        if (id !== 'error') {
+                                            entitySelector.append(
+                                                '<tr><td>'+value[0]+'</td>' +
+                                                '<td>'+value[1]+'</td>'+
+                                                '<td>'+value[2]+'</td>'+
+                                                '<td>'+value[3]+'</td>'+
+                                                '<td>'+value[4]+'</td>'+
+                                                '<td>'+value[5]+'</td>'+
+                                                '<td><a href="afficherMedicament/'+id+'">Voir medicament</a></td><tr>'
+
+                                            );
+                                        } else {
+                                            entitySelector.append('<div class="errorLi">'+value+'</div>');
+                                        }
+                                    }
+                                });
+                            });
+                        }
+                    }
+                });
+            }
+
+        });
+    </script>
 
 
 

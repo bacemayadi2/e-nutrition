@@ -167,5 +167,51 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
         ]);
     }
 
+    /**
+     * @Route("/SearchFich", name="SearchFich")
+     */
+    function SearchDoctor(Request $request, FicheConsultationRepository $repo)
+    {
+        $searchBy = $request->get('searchChoice');
+        $input = $request->get('search'); // $input = $_POST['search']
+        $users = 0;
+        switch ($searchBy)
+        {
+            case "nom": $users = $repo->findBy(['typeCompte' => $input]); break;
+            case "prenom": $users = $repo->findBy(['prenom' => $input]); break;
+            case "nom et prenom":  $users = $repo->findBy(['nom' => $input]); break;
+            case "ville": $users = $repo->findBy(['ville' => $input]); break;
+            default: echo "error !!!";
+        }
+        return $this->render('front/users/SearchDoctor.html.twig', ['users'=>$users]);
+    }
+
+    /**
+     * @Route("/SearchFiche", name="SearchFiche")
+     */
+    public function search(Request $request,FicheConsultationRepository $repo)
+    {
+        $requestString = $request->get('q');
+
+        $entities =  $repo->findEntitiesByString($requestString);
+
+        if(!$entities) {
+            $result['entities']['error'] = "Aucune fiche trouvée";
+        } else {
+            $result['entities'] = $this->getRealEntities($entities);
+        }
+
+        return new Response(json_encode($result));
+    }
+
+    public function getRealEntities($fiches){
+
+        foreach ($fiches as $f){
+            $realEntities[$f->getId()] = [$f->getPatient()->getNom(),$f->getNutritionniste()->getNom(),$f->getCreationDate(),$f->getPoids(),$f->getTaille(),$f->getDescription()];
+        }
+
+        return $realEntities;
+    }
+
 
 }

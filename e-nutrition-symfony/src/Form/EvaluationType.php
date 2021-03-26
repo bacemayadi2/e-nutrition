@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Evaluation;
+use blackknight467\StarRatingBundle\Form\RatingType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -15,10 +16,9 @@ class EvaluationType extends AbstractType
     {
         $builder
             ->add('commentaire',TextareaType::class)
-            ->add('note')
-            ->add('created_at')
-            ->add('nutritionniste')
-            ->add('patient')
+            ->add('note',RatingType::class,[
+                'stars'=>5,
+            ])
             ->add('envoyer',SubmitType::class)
         ;
 

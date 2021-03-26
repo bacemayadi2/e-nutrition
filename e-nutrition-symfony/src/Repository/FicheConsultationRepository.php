@@ -62,6 +62,20 @@ return $query->getQuery()->getResult();
 }
 
 
+    /**
+     * @return FicheConsultation[] Returns an array of FicheConsultation objects
+     */
+
+    public function findEntitiesByString($value)
+    {
+        return $this->createQueryBuilder('f')
+            ->where('f.Symptome like :v')
+            ->setParameter('v', '%'.$value.'%')
+            ->orderBy('f.CreationDate', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 
 

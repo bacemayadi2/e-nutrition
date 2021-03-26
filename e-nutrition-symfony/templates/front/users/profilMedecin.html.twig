@@ -66,23 +66,23 @@
         <style>:root{--color-accent: #706fd3;--color-accent-lighter: #8685fd;--color-accent-darker: #5958a8;--color-link: #706fd3;--width-layout: 1340px;--width-sidebar: 300px;--background-body: #eee;--background-body--full: #eee  repeat scroll;--background-body--size: auto;--font-family-body: Arial, "Helvetica Neue", Helvetica, sans-serif;--font-family-heading: "Imprima", Helvetica, Arial, sans-serif;--background-color-header: #2c2c54;--color-header-text: #fff;--color-header-link: #fff;--background-color-submenu: #2c2c54}</style></head>
     <body class="archive author author-andrei author-2 theme-gustos woocommerce-no-js">
     <section id="rw-layout" class="rw-layout full-width-layout">
-
+        {% for  m in medecin %}
 
         <div class="rw-container rw-section">
             <div class="rw-inner clearfix">
 
                 <!-- Main content -->
                 <div class="rw-column rw-content">
-<!-- Nom et prénom_______________________________________________________________________________________________________________________________________-->
+                    <!-- Nom et prénom_______________________________________________________________________________________________________________________________________-->
 
                     <div class="rw-row page-title">
                         <div class="grid-container">
-                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                    <h1>Nom et Prénom : {{ app.user.nom }} {{ app.user.prenom }}</h1>
-                                {% endif %}
+
+                                <h1>Nom et Prénom : {{ m.nom }} {{ m.prenom }}</h1>
+
                         </div>
                     </div>
-<!-- image_______________________________________________________________________________________________________________________________________-->
+                    <!-- image_______________________________________________________________________________________________________________________________________-->
                     <div class="rw-row subtle">
                         <div class="grid-container">
                             <div class="grid desk-3">
@@ -100,52 +100,59 @@
                                             <li>
                                                 <i class="the-icon fa fa-cutlery"></i>
                                                 <span class="the-label">
-                                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                                        <p><b>E-mail:</b> {{ app.user.email }}</p>
-                                                    {% endif %}
+
+                                                        <p><b>E-mail:</b> {{ m.email }}</p>
+
                                                 </span>
 
                                             <li>
                                                 <i class="the-icon fa fa-history"></i>
                                                 <span class="the-label">
-                                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                                        <p><b>Tel:</b> {{ app.user.tel }}</p>
-                                                    {% endif %}
+
+                                                        <p><b>Tel:</b> {{ m.tel }}</p>
+
                                                 </span>
                                             </li>
 
                                             <li>
                                                 <i class="the-icon fa fa-child"></i>
                                                 <span class="the-label">
-                                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                                        <p><b>Sexe:</b> {{ app.user.sexe }}</p>
-                                                    {% endif %}
+
+                                                        <p><b>Sexe:</b> {{ m.sexe }}</p>
+
                                                 </span>
                                             </li>
 
                                             <li>
                                                 <i class="the-icon fa fa-eye"></i>
                                                 <span class="the-label">
-                                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                                        <p><b>Date de naissance:</b> {{ app.user.dateNaiss|date('d-m-Y') }}</p>
-                                                    {% endif %}
+                                                        <p><b>Date de naissance:</b> {{ m.dateNaiss|date('d-m-Y') }}</p>
+
                                                 </span>
                                             </li>
 
                                             <li>
                                                 <i class="the-icon fa fa-eye"></i>
                                                 <span class="the-label">
-                                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                                        <p><b>Ville:</b> {{ app.user.ville }}</p>
-                                                    {% endif %}
+
+                                                        <p><b>Ville:</b> {{ m.ville }}</p>
+
                                                 </span>
                                             </li>
                                             <li>
                                                 <i class="the-icon fa fa-eye"></i>
                                                 <span class="the-label">
-                                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                                        <p><b>Adresse:</b> {{ app.user.adresse }}</p>
-                                                    {% endif %}
+
+                                                        <p><b>Adresse:</b> {{ m.adresse }}</p>
+
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <i class="the-icon fa fa-eye"></i>
+                                                <span class="the-label">
+
+                                                        <p><b>Note:</b> {{ avg }}/5</p>
+
                                                 </span>
                                             </li>
                                         </ul>
@@ -156,7 +163,8 @@
 
                         </div> <!-- .grid-container -->
                     </div> <!-- .rw-row -->
-            </div> <!-- .rw-inner -->
+                </div> <!-- .rw-inner -->
+
             </div> <!-- .rw-container -->
 
             <div class="rw-row subtle border-bottom profile-main-menu-block">
@@ -164,7 +172,7 @@
                     <div class="grid desk-12">
                         <div class="profile-main-menu">
                             <ul>
-                                <li><a href="https://gustos.w3.style/author/andrei/?profile-summary=activity"><span class="title">Activity</span></a></li><li><a href="https://gustos.w3.style/author/andrei/?profile-summary=recipes"><span class="title">Recipes</span><span class="count">5</span></a></li><li><a href="https://gustos.w3.style/author/andrei/?profile-summary=favorites"><span class="title">Favorites</span><span class="count">0</span></a></li><li><a href="https://gustos.w3.style/author/andrei/?profile-summary=likes"><span class="title">Likes</span><span class="count">0</span></a></li><li class="active"><a href="https://gustos.w3.style/author/andrei/?profile-summary=comments"><span class="title">Comments</span><span class="count">9</span></a></li>                                        </ul>
+                                <li><a href="https://gustos.w3.style/author/andrei/?profile-summary=activity"><span class="title">Activity</span></a></li><li><a href="https://gustos.w3.style/author/andrei/?profile-summary=recipes"><span class="title">Recipes</span><span class="count">5</span></a></li><li><a href="https://gustos.w3.style/author/andrei/?profile-summary=favorites"><span class="title">Favorites</span><span class="count">0</span></a></li><li><a href="https://gustos.w3.style/author/andrei/?profile-summary=likes"><span class="title">Likes</span><span class="count">0</span></a></li><li class="active"><a href="https://gustos.w3.style/author/andrei/?profile-summary=comments"><span class="title">Comments</span><span class="count">{{ m.evaluations | length  }}</span></a></li>                                        </ul>
                         </div>
                     </div>
                 </div> <!-- .grid-container -->
@@ -173,23 +181,7 @@
 
             <div class="rw-row profile-summary-tab">
                 <div class="profile-comments-list">
-                    <div class="comment clearfix">
-                        <div class="comment-photo">
-                            <a href="#"><img alt="" src="https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-50x50.jpg" class="avatar avatar-50 photo"></a>
-                        </div>
-                        <div class="comment-text">
-                            <div class="comment-head clearfix">
-										<span class="comment-title">
-											<strong>Andrei</strong>
-											commented on                                            <a href="https://gustos.w3.style/recipes/perfect-burger-recipe/">Perfect Burger Recipe</a>
-										</span>
-                                <span class="comment-date">30 November 2016, 13:36</span>
-                            </div>
-                            <div class="text">Excellent recipe. I always wanted to learn how to prepare ...</div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-
+                    {%  for c in m.evaluations %}
 
                     <div class="comment clearfix">
                         <div class="comment-photo">
@@ -197,147 +189,32 @@
                         </div>
                         <div class="comment-text">
                             <div class="comment-head clearfix">
-										<span class="comment-title">
-											<strong>Andrei</strong>
-											commented on                                            <a href="https://gustos.w3.style/recipes/dutch-baby/">Dutch Baby</a>
-										</span>
-                                <span class="comment-date">29 August 2016, 17:15</span>
+
+                                <span class="comment-date">!!</span>
                             </div>
-                            <div class="text">Missing some ingredients.</div>
+                            <div class="text">{{ c.commentaire }}</div>
                         </div>
                     </div>
                     <div class="clear"></div>
+                    {% endfor %}
 
-
-                    <div class="comment clearfix">
-                        <div class="comment-photo">
-                            <a href="#"><img alt="" src="https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-50x50.jpg" class="avatar avatar-50 photo"></a>
+                    {{ form_start(form) }}
+                        <div class="form-group">
+                        {{ form_widget(form.commentaire) }}
                         </div>
-                        <div class="comment-text">
-                            <div class="comment-head clearfix">
-										<span class="comment-title">
-											<strong>Andrei</strong>
-											commented on                                            <a href="https://gustos.w3.style/recipes/magic-bars-2/">Magic Bars</a>
-										</span>
-                                <span class="comment-date">29 August 2016, 17:14</span>
-                            </div>
-                            <div class="text">Delicious. This recipe is one of my favorites. 4 stars from me. Not 5 because instructions are a bit confusing.</div>
+                        <div class="form-group">
+                            {{ form_widget(form.note) }}
                         </div>
-                    </div>
-                    <div class="clear"></div>
-
-
-                    <div class="comment clearfix">
-                        <div class="comment-photo">
-                            <a href="#"><img alt="" src="https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-50x50.jpg" class="avatar avatar-50 photo"></a>
+                        <div class="form-group">
+                            {{ form_widget(form.envoyer) }}
                         </div>
-                        <div class="comment-text">
-                            <div class="comment-head clearfix">
-										<span class="comment-title">
-											<strong>Andrei</strong>
-											commented on                                            <a href="https://gustos.w3.style/recipes/simple-cheese-omelette/">Simple Cheese Omelette</a>
-										</span>
-                                <span class="comment-date">29 August 2016, 17:14</span>
-                            </div>
-                            <div class="text">Delicious. This recipe is one of my favorites. 4 stars from me. Not 5 because instructions are a bit confusing.</div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
 
+                    {{ form_end(form) }}
 
-                    <div class="comment clearfix">
-                        <div class="comment-photo">
-                            <a href="#"><img alt="" src="https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-50x50.jpg" class="avatar avatar-50 photo"></a>
-                        </div>
-                        <div class="comment-text">
-                            <div class="comment-head clearfix">
-										<span class="comment-title">
-											<strong>Andrei</strong>
-											commented on                                            <a href="https://gustos.w3.style/recipes/pork-steak-with-mushrooms/">Pork Steak with Mushrooms</a>
-										</span>
-                                <span class="comment-date">29 August 2016, 17:12</span>
-                            </div>
-                            <div class="text">Delicious. This recipe is one of my favorites.5 stars from me.</div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-
-
-                    <div class="comment clearfix">
-                        <div class="comment-photo">
-                            <a href="#"><img alt="" src="https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-50x50.jpg" class="avatar avatar-50 photo"></a>
-                        </div>
-                        <div class="comment-text">
-                            <div class="comment-head clearfix">
-										<span class="comment-title">
-											<strong></strong>
-											commented on                                            <a href="https://gustos.w3.style/2016/04/05/nothing-is-more-beautiful-than-the-loveliness-of-the-woods-before-sunrise/">Nothing is more beautiful than the loveliness of the woods before sunrise.</a>
-										</span>
-                                <span class="comment-date">19 August 2016, 22:28</span>
-                            </div>
-                            <div class="text">
-
-                                Nec vero pietas adversus deos nec quanta iis gratia debeatur sine explicatione naturae intellegi potest.</div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-
-
-                    <div class="comment clearfix">
-                        <div class="comment-photo">
-                            <a href="#"><img alt="" src="https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-50x50.jpg" class="avatar avatar-50 photo"></a>
-                        </div>
-                        <div class="comment-text">
-                            <div class="comment-head clearfix">
-										<span class="comment-title">
-											<strong></strong>
-											commented on                                            <a href="https://gustos.w3.style/2016/07/23/in-a-gentle-way-you-can-shake-the-world/">In a gentle way, you can shake the world.</a>
-										</span>
-                                <span class="comment-date">16 August 2016, 18:21</span>
-                            </div>
-                            <div class="text">Nam si beatus umquam fuisset, beatam vitam usque ad illum a Cyro extructum rogum pertulisset. Duo enim genera quae erant, fecit tria.</div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-
-
-                    <div class="comment clearfix">
-                        <div class="comment-photo">
-                            <a href="#"><img alt="" src="https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-50x50.jpg" class="avatar avatar-50 photo"></a>
-                        </div>
-                        <div class="comment-text">
-                            <div class="comment-head clearfix">
-										<span class="comment-title">
-											<strong></strong>
-											commented on                                            <a href="https://gustos.w3.style/2016/02/28/what-makes-the-desert-beautiful-is-that-somewhere-it-hides-a-well/">What makes the desert beautiful is that somewhere it hides a well.</a>
-										</span>
-                                <span class="comment-date">21 July 2016, 07:56</span>
-                            </div>
-                            <div class="text">Ratio ista, quam defendis, praecepta, quae didicisti, quae probas, funditus evertunt amicitiam, quamvis eam Epicurus, ut facit, in caelum efferat laudibus. Refert tamen, quo modo.</div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-
-
-                    <div class="comment clearfix">
-                        <div class="comment-photo">
-                            <a href="#"><img alt="" src="https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-50x50.jpg" class="avatar avatar-50 photo"></a>
-                        </div>
-                        <div class="comment-text">
-                            <div class="comment-head clearfix">
-										<span class="comment-title">
-											<strong></strong>
-											commented on                                            <a href="https://gustos.w3.style/2016/02/28/what-makes-the-desert-beautiful-is-that-somewhere-it-hides-a-well/">What makes the desert beautiful is that somewhere it hides a well.</a>
-										</span>
-                                <span class="comment-date">14 June 2016, 21:14</span>
-                            </div>
-                            <div class="text">Ergo opifex plus sibi proponet ad formarum quam civis excellens ad factorum pulchritudinem? Quod si ita est, sequitur id ipsum, quod te velle video, omnes semper beatos esse sapientes.</div>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
 
                 </div>
-                <div class="clear"></div>                        </div>
+                <div class="clear"></div>
+            </div>
 
             <div id="rw-footer" class="rw-section rw-footer">
                 <div class="rw-inner clearfix">
@@ -349,6 +226,7 @@
 
             </div>
         </div>
+        {% endfor %}
     </section><!-- .rw-layout -->
 
 
