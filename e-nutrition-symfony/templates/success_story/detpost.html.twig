@@ -51,89 +51,39 @@
                     <div class="offset-top-60 offset-md-top-100">
                         <h2 class="text-center">3 comments</h2>
                         <!-- Box Comment-->
+                        {% for comment in comments  %}
                         <div class="unit align-items-sm-center align-items-xl-start unit-xs flex-sm-row unit-spacing-md box-comment offset-top-34">
                             <div class="unit-left">
-                                <div class="offset-lg-top-13"><img class="rounded-circle img-responsive center-block" src="images/users/user-rita-jefferson-70x71.jpg" width="70" height="71" alt=""></div>
+                                <div class="offset-lg-top-13"><img class="rounded-circle img-responsive center-block" src="{{asset('images/users/user-rita-jefferson-70x71.jpg')  }}" width="70" height="71" alt=""></div>
                             </div>
                             <div class="unit-body">
                                 <div class="box-comment-body">
-                                    <div class="box-comment-body-top">
+                                    <div class="box-comment-body-top" >
                                         <div class="pull-sm-left">
                                             <!-- List Inline-->
                                             <ul class="list-inline">
-                                                <li class="p font-weight-bold"><a class="link-decoration-none text-hover-primary text-gray" href="my-philosophy.html">Rita Jefferson</a></li>
+                                                <li class="p font-weight-bold"><a class="link-decoration-none text-hover-primary text-gray" href="my-philosophy.html">{{comment.nickname}}</a></li>
                                                 <li><span class="icon icon-xxs material-icons-ico material-icons-thumb_up text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Like</a></li>
                                                 <li><span class="icon icon-xxs material-icons-ico material-icons-chat_bubble text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Reply</a></li>
                                             </ul>
                                         </div>
                                         <div class="pull-sm-right">
-                                            <p><span class="inset-right-7 text-middle">Feb 16, 7:42 PM</span><span class="icon icon-xxs material-icons-ico material-icons-access_time text-gray-light text-middle"></span></p>
+                                            <p><span class="inset-right-7 text-middle">{{comment.dateat | date('Y', 'm','d' ,'H','m')}}</span><span class="icon icon-xxs material-icons-ico material-icons-access_time text-gray-light text-middle"></span></p>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="box-comment-body-bottom offset-top-20">
-                                        <p>The topic you describe here is really important. However, there are dozens of ways which you can use to make profitable investments.</p>
+                                        <p>{{comment.content}}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Box Comment-->
-                        <div class="unit align-items-sm-center align-items-xl-start unit-xs flex-sm-row unit-spacing-md box-comment offset-top-30 inset-sm-left-25 inset-xl-left-104">
-                            <div class="unit-left">
-                                <div class="offset-lg-top-13"><img class="rounded-circle img-responsive center-block" src="images/users/user-john-doe-70x71.jpg" width="70" height="71" alt=""></div>
-                            </div>
-                            <div class="unit-body">
-                                <div class="box-comment-body">
-                                    <div class="box-comment-body-top">
-                                        <div class="pull-sm-left">
-                                            <!-- List Inline-->
-                                            <ul class="list-inline">
-                                                <li class="p font-weight-bold"><a class="link-decoration-none text-hover-primary text-gray" href="my-philosophy.html">John Doe</a></li>
-                                                <li><span class="icon icon-xxs material-icons-ico material-icons-thumb_up text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Like</a></li>
-                                                <li><span class="icon icon-xxs material-icons-ico material-icons-chat_bubble text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Reply</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="pull-sm-right">
-                                            <p><span class="inset-right-7 text-middle">Feb 16, 7:42 PM</span><span class="icon icon-xxs material-icons-ico material-icons-access_time text-gray-light text-middle"></span></p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="box-comment-body-bottom offset-top-20">
-                                        <p>You are absolutely right! But at TopInvest, we have everything necessary to manage investments of any kind.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Box Comment-->
-                        <div class="unit align-items-sm-center align-items-xl-start unit-xs flex-sm-row unit-spacing-md box-comment offset-top-30">
-                            <div class="unit-left">
-                                <div class="offset-lg-top-13"><img class="rounded-circle img-responsive center-block" src="images/users/user-mila-moa-70x71.jpg" width="70" height="71" alt=""></div>
-                            </div>
-                            <div class="unit-body">
-                                <div class="box-comment-body">
-                                    <div class="box-comment-body-top">
-                                        <div class="pull-sm-left">
-                                            <!-- List Inline-->
-                                            <ul class="list-inline">
-                                                <li class="p font-weight-bold"><a class="link-decoration-none text-hover-primary text-gray" href="my-philosophy.html">Mila Moa</a></li>
-                                                <li><span class="icon icon-xxs material-icons-ico material-icons-thumb_up text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Like</a></li>
-                                                <li><span class="icon icon-xxs material-icons-ico material-icons-chat_bubble text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Reply</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="pull-sm-right">
-                                            <p><span class="inset-right-7 text-middle">Feb 16, 7:42 PM</span><span class="icon icon-xxs material-icons-ico material-icons-access_time text-gray-light text-middle"></span></p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="box-comment-body-bottom offset-top-20">
-                                        <p>Very useful post! Thanks for sharing! Now I’ll be planning my visit to your investment management company to receive a consultation on planned giving.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
+
+
                     </div>
                     <div class="offset-top-60 offset-md-top-100">
-                        <h2 class="text-center">Leave a comment</h2>
+                        <h2 class="text-center">{{ form(commentform) }}</h2>
                     </div>
                     <div class="offset-top-20">
                         <form class="rd-mailform text-left">

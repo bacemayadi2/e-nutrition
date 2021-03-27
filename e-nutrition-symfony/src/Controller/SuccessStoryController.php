@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\RendezVous;
 use App\Entity\SuccessStory;
 use App\Entity\TagSuccessStory;
+use App\Form\CommentsType;
 use App\Form\RendezVousType;
 use App\Form\SuccessStoryType;
+use App\Repository\CommentsRepository;
 use App\Repository\SuccessStoryRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,9 +16,12 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Comments;
+
 
 class SuccessStoryController extends AbstractController
 {
+
     /**
      * @Route("/success/story", name="success_story")
      */
@@ -66,6 +71,9 @@ class SuccessStoryController extends AbstractController
     }
 
 
+
+
+
     /**
      * @param SuccessStoryRepository $repository
      * @return Response
@@ -79,6 +87,7 @@ class SuccessStoryController extends AbstractController
         return $this->render('success_story/public.html.twig', [
             'controller_name' => 'SuccessStoryController',
             'Success' => $Success,
+
         ]);
     }
     /**
@@ -86,14 +95,40 @@ class SuccessStoryController extends AbstractController
      * @return Response
      * @Route("detpost/{id}", name="postSuccess")
      */
-    public function AfficherPostSuccess(SuccessStoryRepository $repository , $id ){
+    public function AfficherPostSuccess(CommentsRepository $rep ,SuccessStoryRepository $repository , $id ,Request  $request){
 
         //$repo= $this->getDoctrine()->getRepository(RendezVous::class   );
         $Success=$repository->find($id);
+        $comments= $rep->findBy(['success' => $id]);
+        $time = new \DateTime();
+        //partie commentaire//
+
+        $comment = new Comments();
+        $comment->setSuccess($Success);
+        $comment->setDateAt($time);
+        $commentForm = $this->createForm(CommentsType::class , $comment);
+        $commentForm -> handleRequest($request);
+
+        //traitement formulaire//
+        if ($commentForm->isSubmitted() && $commentForm->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+
+
+
+            return $this->redirectToRoute('postSuccess' , ['id'=> $id]);
+        }
+
+
 
         return $this->render('success_story/detpost.html.twig', [
             'controller_name' => 'SuccessStoryController',
             'Success' => $Success,
+            'commentform'=> $commentForm->createView(),
+            'comments'=>$comments
+
         ]);
     }
     /**
