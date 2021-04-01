@@ -32,6 +32,12 @@ class Mesure
      */
     private $dateMesure;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Patient::class, inversedBy="mesures")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $patient;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -80,5 +86,17 @@ class Mesure
     public function poidsIdeal(){
         // 50 + (0.91 × [height in centimeters − 152.4])
         return 50 + (0.91 * ($this->Taille * 100 - 152.4));
+    }
+
+    public function getPatient(): ?Patient
+    {
+        return $this->patient;
+    }
+
+    public function setPatient(?Patient $patient): self
+    {
+        $this->patient = $patient;
+
+        return $this;
     }
 }

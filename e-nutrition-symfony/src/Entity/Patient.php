@@ -29,10 +29,16 @@ class Patient extends Utilisateur
      */
     private $evaluations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Mesure::class, mappedBy="patient", orphanRemoval=true)
+     */
+    private $mesures;
+
     public function __construct()
     {
         $this->ficheConsultations = new ArrayCollection();
         $this->evaluations = new ArrayCollection();
+        $this->mesures = new ArrayCollection();
     }
 
     public function getStyleDeVie(): ?string
@@ -100,6 +106,36 @@ class Patient extends Utilisateur
             // set the owning side to null (unless already changed)
             if ($evaluation->getPatient() === $this) {
                 $evaluation->setPatient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Mesure[]
+     */
+    public function getMesures(): Collection
+    {
+        return $this->mesures;
+    }
+
+    public function addMesure(Mesure $mesure): self
+    {
+        if (!$this->mesures->contains($mesure)) {
+            $this->mesures[] = $mesure;
+            $mesure->setPatient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMesure(Mesure $mesure): self
+    {
+        if ($this->mesures->removeElement($mesure)) {
+            // set the owning side to null (unless already changed)
+            if ($mesure->getPatient() === $this) {
+                $mesure->setPatient(null);
             }
         }
 

@@ -37,6 +37,7 @@ class MesureController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $mesure->setDateMesure(new \DateTime());
+            $mesure->setPatient($this->getUser());
             $entityManager->persist($mesure);
             $entityManager->flush();
 
@@ -51,16 +52,17 @@ class MesureController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="mesure_show", methods={"GET"})
+     * @Route("/show", name="mesure_show", methods={"GET"})
      */
-    /*
-    public function show(Mesure $mesure): Response
+
+    public function show(MesureRepository $repo): Response
     {
+        $mesure=$repo->findAll();
         return $this->render('mesure/show.html.twig', [
             'mesure' => $mesure,
         ]);
     }
-    */
+
 
     /**
      * @Route("/{id}/edit", name="mesure_edit", methods={"GET","POST"})
