@@ -64,16 +64,16 @@
                                             <ul class="list-inline">
                                                 <li class="p font-weight-bold"><a class="link-decoration-none text-hover-primary text-gray" href="my-philosophy.html">{{comment.nickname}}</a></li>
                                                 <li><span class="icon icon-xxs material-icons-ico material-icons-thumb_up text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Like</a></li>
-                                                <li><span class="icon icon-xxs material-icons-ico material-icons-chat_bubble text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Reply</a></li>
+                                                <li><span class="icon icon-xxs material-icons-ico material-icons-chat_bubble text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#ajout-comm" data-reply data-id="{{ comment.id }}">Reply</a></li>
                                             </ul>
                                         </div>
                                         <div class="pull-sm-right">
-                                            <p><span class="inset-right-7 text-middle">{{comment.dateat | date('Y', 'm','d' ,'H','m')}}</span><span class="icon icon-xxs material-icons-ico material-icons-access_time text-gray-light text-middle"></span></p>
+                                            <p><span class="inset-right-7 text-middle">{{comment.dateat | date("d/m/Y H:i")}}</span><span class="icon icon-xxs material-icons-ico material-icons-access_time text-gray-light text-middle"></span></p>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
-                                    <div class="box-comment-body-bottom offset-top-20">
-                                        <p>{{comment.content}}</p>
+                                    <div class="box-comment-body-bottom offset-top-20"  >
+                                        <p>{{comment.content | raw}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -82,25 +82,32 @@
 
 
                     </div>
-                    <div class="offset-top-60 offset-md-top-100">
-                        <h2 class="text-center">{{ form(commentform) }}</h2>
+                    <div class="offset-top-60 offset-md-top-100" id="ajout-comm">
+
+                         <h2 class="text-center">{{ form(commentform) }}</h2>
+
                     </div>
-                    <div class="offset-top-20">
-                        <form class="rd-mailform text-left">
-                            <div class="form-wrap">
-                                <label class="form-label" for="blog-post-message">Message</label>
-                                <textarea class="form-input" id="blog-post-message" name="message"></textarea>
-                            </div>
-                            <div class="text-center text-md-right offset-top-13">
-                                <button class="btn btn-primary" type="submit">Send a message</button>
-                            </div>
-                        </form>
-                    </div>
+
                 </div>
 
             </div>
         </div>
     </section>
+    {% block javascripts %}
+        <script>
+
+            window.onload = () =>{
+                document.querySelectorAll("[data-reply]").forEach(element =>{
+                    element.addEventListener("click", function(){
+                        document.querySelector("#comments_parentid").value = this.dataset.id;
+
+                    })
+                })
+            }
+        </script>
+    {% endblock%}
+
+
 
 
 

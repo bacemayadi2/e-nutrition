@@ -55,6 +55,14 @@ class Comments
      */
     private $success;
 
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Comments::class, inversedBy="replies")
+     */
+    private $parent;
+
+
     /**
      * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="parent")
      */
@@ -64,6 +72,9 @@ class Comments
     {
         $this->replies = new ArrayCollection();
     }
+
+
+
 
     public function getId(): ?int
     {
@@ -153,6 +164,17 @@ class Comments
 
         return $this;
     }
+    public function getParent(): ?self
+    {
+        return $this->parent;
+    }
+
+    public function setParent(?self $parent): self
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
 
     /**
      * @return Collection|Comments[]
@@ -183,4 +205,8 @@ class Comments
 
         return $this;
     }
+
+
+
+
 }

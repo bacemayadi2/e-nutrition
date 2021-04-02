@@ -18,7 +18,7 @@ class CommentsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content', CKEditorType::class ,[
+            ->add('content', CKEditorType::class ,['label'=>'Votre commentaire',
 
                 'attr' => [
                     'class' => 'form-control'
@@ -26,12 +26,14 @@ class CommentsType extends AbstractType
             ])
 
             ->add('email' , EmailType::class ,[
+                'label'=>'Votre E-Mail',
 
                 'attr' => [
                     'class' => 'form-control'
                 ]
             ])
             ->add('nickname' , TextType::class ,[
+                'label'=>'Votre Pseudo',
 
                 'attr' => [
                     'class' => 'form-control'
