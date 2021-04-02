@@ -63,6 +63,17 @@ class MesureController extends AbstractController
         ]);
     }
 
+    /**
+
+     * @Route("/showf", name="mesure_show", methods={"GET"})
+     */
+    public function showf(MesureRepository $repo): Response
+    {
+        $mesure=$repo->findAll();
+        return $this->render('front/mesure/affichage.html.twig', [
+            'mesure' => $mesure,
+        ]);
+    }
 
     /**
      * @Route("/{id}/edit", name="mesure_edit", methods={"GET","POST"})
@@ -86,15 +97,19 @@ class MesureController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="mesure_delete", methods={"DELETE"})
+     * @Route("delete/{id}", name="mesure_delete")
      */
-    public function delete(Request $request, Mesure $mesure): Response
+    public function delete(Request $request, MesureRepository $repo,$id): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$mesure->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($mesure);
-            $entityManager->flush();
-        }
+        $em=$this->getDoctrine()->getManager()  ;
+        $mesure=$repo->find($id);
+        $em->remove($mesure);
+        $em->flush();
+//        if ($this->isCsrfTokenValid('delete'.$mesure->getId(), $request->request->get('_token'))) {
+//            $entityManager = $this->getDoctrine()->getManager();
+//            $entityManager->remove($mesure);
+//            $entityManager->flush();
+//        }
 
         return $this->redirectToRoute('mesure_index');
     }

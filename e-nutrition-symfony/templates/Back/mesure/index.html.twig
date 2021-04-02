@@ -60,23 +60,26 @@
                                                     <th scope="col">Taille</th>
                                                     <th scope="col">Poids</th>
                                                     <th scope="col">IMC</th>
+                                                    <th scope="col">Date </th>
                                                     <th scope="col">Actions</th>
+
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 {% for mesure in mesures %}
                                                     <tr>
-                                                        <td>Remplacez-moi</td>
+                                                        <td>{{ mesure.patient.nom }} {{  mesure.patient.prenom }}</td>
                                                         <td>{{ mesure.Taille }}</td>
                                                         <td>{{ mesure.poids }}</td>
                                                         <td>{{ mesure.calculerIMC() }}</td>
+                                                        <td>{{ mesure.dateMesure | date('d-m-Y')}}</td>
                                                         <td style="text-align: center;">
                                                             <a class="btn btn-primary"
                                                                href="{{ url("mesure_edit", { 'id': mesure.id }) }}">
                                                                 <i class="far fa-edit"></i></a>
 
                                                             <a class="btn btn-danger" onclick="return confirm('Voulez-vous supprimer cette publication?');"
-                                                               href="{{ url("mesure_delete", { 'id': mesure.id }) }}">
+                                                               href="{{ path('mesure_delete',{'id':mesure.id }) }}">
                                                                 <i class="far fa-trash-alt"></i></a>
                                                         </td>
                                                     </tr>
