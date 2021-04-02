@@ -61,11 +61,24 @@ return $query->getQuery()->getResult();
 
 }
 
+    public function countByDateAndNutritionniste($n){
+        $query=$this->createQueryBuilder('d')
+            ->select('SUBSTRING(d.CreationDate,1,7) as CreationDate,COUNT(d) as count')
+            ->groupBy('CreationDate')
+            ->where('d.nutritionniste = :n')
+            ->setParameter('n',$n)
+        ;
+        return $query->getQuery()->getResult();
+
+    }
+
+
 
     /**
      * @return FicheConsultation[] Returns an array of FicheConsultation objects
      */
 
+   
     public function findEntitiesByString($value)
     {
         return $this->createQueryBuilder('f')
@@ -75,6 +88,17 @@ return $query->getQuery()->getResult();
             ->getQuery()
             ->getResult()
         ;
+    }
+    public function findEntitiesByStringAndNutritionniste($value,$n)
+    {
+        return $this->createQueryBuilder('f')
+            ->where('f.Symptome like :v and f.nutritionniste = :n')
+            ->setParameter('n',$n)
+            ->setParameter('v', '%'.$value.'%')
+            ->orderBy('f.CreationDate', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
 

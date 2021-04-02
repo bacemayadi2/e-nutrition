@@ -62,7 +62,7 @@ class EvaluationRepository extends ServiceEntityRepository
             $nbrRow++;
             $total+=$row->getNote();
         }
-        $avg=$total/$nbrRow;
-        return $avg;
+       // $avg=$total/$nbrRow;
+       // return $avg;
     }
 }

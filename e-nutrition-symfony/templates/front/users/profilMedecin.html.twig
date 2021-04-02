@@ -183,20 +183,77 @@
                 <div class="profile-comments-list">
                     {%  for c in m.evaluations %}
 
-                    <div class="comment clearfix">
-                        <div class="comment-photo">
-                            <a href="#"><img alt="" src="https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-50x50.jpg" class="avatar avatar-50 photo"></a>
-                        </div>
-                        <div class="comment-text">
-                            <div class="comment-head clearfix">
+{#                   <div class="comment clearfix">#}
+{#                        <div class="comment-photo">#}
+{#                            <a href="#"><img alt="" src="https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-50x50.jpg" class="avatar avatar-50 photo"></a>#}
+{#                        </div>#}
+{#                        <div class="comment-text">#}
+{#                            <div class="comment-head clearfix">#}
+{##}
+{#                                <span class="comment-date">{{ c.patient.nom }}</span>#}
+{#                                <span class="comment-date">{{c.getCreatedAt|date('d-m-Y')}}</span>#}
+{#                            </div>#}
+{##}
+{##}
+{##}
+{#                            <div class="text">{{ c.commentaire }}</div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="clear"></div>#}
 
-                                <span class="comment-date">!!</span>
+                        <div class="comment clearfix">
+                            <div class="comment-photo">
+                                <a href="#"><img alt="" src="https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-50x50.jpg" class="avatar avatar-50 photo"></a>
                             </div>
-                            <div class="text">{{ c.commentaire }}</div>
+                            <div class="comment-text">
+                                <div class="comment-head clearfix">
+										<span class="comment-title">
+											<strong>{{ c.patient.nom }}</strong>
+											a attribué la note
+	<span class="control-tip"><div class="post-rating-result" title="{{ c.note }}">
+                                        {% for i in 0..c.note %}
+                                            <i class="fa fa-star"> </i>
+                                        {% endfor %}
+					<meta itemprop="ratingValue" content="4.33" />
+					<meta itemprop="reviewCount" content="3" />
+				</div></span>										</span>
+                                    <span class="comment-date">{{c.getCreatedAt|date('d-m-Y')}}</span>
+                                </div>
+                                <div class="text">{{ c.commentaire }}</div>
+                            </div>
+
+
                         </div>
-                    </div>
-                    <div class="clear"></div>
+
                     {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     {{ form_start(form) }}
                         <div class="form-group">

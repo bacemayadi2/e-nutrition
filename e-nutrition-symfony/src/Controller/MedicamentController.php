@@ -95,18 +95,6 @@ class MedicamentController extends AbstractController
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * @route("supprimerMedicament/{id}", name="deleteM")
      */
@@ -117,6 +105,29 @@ class MedicamentController extends AbstractController
         $em->remove($medicament);
         $em->flush();
         return $this->redirectToRoute('afficherMedicament');
+    }
+    /**
+     * @param MedicamentRepository $repository
+     *@return \Symfony\Component\HttpFoundation\Response
+     * @Route ("afficherDetailFiche/{id}",name="afficherDetailFiche")
+     */
+    public function afficherDetailFiche(FicheConsultationRepository $repo,$id,Request $request,MedicamentRepository $repository,PaginatorInterface $paginator)
+    {
+        $donnee=$repository->findBy(
+            ['fiche'=>$id]
+
+        );
+        $medicament=$paginator->paginate(
+            $donnee,
+            /* query NOT result */
+            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+            7 /*limit per page*/
+        );
+        $fiche=$repo->find($id);
+        return $this->render("front/fiche_consultation/DetailFiche.html.twig",
+            ['medicament'=>$medicament,'fiche'=>$fiche]
+
+        );
     }
 
 

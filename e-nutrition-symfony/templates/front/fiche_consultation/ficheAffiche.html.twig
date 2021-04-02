@@ -12,7 +12,7 @@
                     <!-- List Inline-->
                     <ul class="list-inline list-inline-dashed list-white text-big p offset-md-top-13">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="blog-classic.html">Blog</a></li>
+                        <li><a href="blog-classic.html">Fiches</a></li>
                         <li>Blog Grid 3 Columns
                         </li>
                     </ul>
@@ -36,15 +36,15 @@
                     <div class="col-md-6 col-lg-4 offset-top-30">
                         <!-- Post Classic-->
                         {% if f.TagFicheConsultation[0].isImage() %}
-                        <article class="post-masonry"><a class="thumbnail-classic" href="blog-post.html"><span class="thumbnail-classic-img-wrap"><img class="img-responsive center-block" src="{{ f.tagFicheConsultation[0].getUrl()}}" width="370" height="230" alt=""/></span></a>
+                        <article class="post-masonry"><a class="thumbnail-classic" href="{{ path('afficherDetailFiche',{'id':f.id}) }}"><span class="thumbnail-classic-img-wrap"><img class="img-responsive center-block" src="{{ f.tagFicheConsultation[0].getUrl()}}" width="370" height="230" alt=""/></span></a>
                             {% endif %}
                             <div class="post-body">
                                 <div class="text-center"><span class="icon post-icon-absolute icon-circle fl-great-icon-set-ico fl-great-icon-set-pencil107 bg-default text-center"></span></div>
-                                <p class="post-title text-big font-weight-bold text-uppercase text-spacing-100"><a href="blog-post.html">Fiche consultation</a></p>
+                                <p class="post-title text-big font-weight-bold text-uppercase text-spacing-100"><a href="{{ path('afficherDetailFiche',{'id':f.id}) }}">Fiche consultation</a></p>
                                 <!-- List Inline-->
                                 <ul class="list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p">
                                     <li><span class="icon icon-xs material-icons-ico material-icons-event text-middle text-gray"></span><span class="text-middle inset-left-7 post-meta"> {{ f.CreationDate|date('y-m-d')}}</span></li>
-                                    <li><span class="icon icon-xs material-icons-ico material-icons-person text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">By:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="{{ path('profileUser',{'id':f.nutritionniste.id}) }}">{{ f.nutritionniste.nom }}</a></li>
+                                    <li><span class="icon icon-xs material-icons-ico material-icons-person text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">By:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="{{ path('profileMedecin',{'id':f.nutritionniste.id}) }}">{{ f.nutritionniste.nom }}</a></li>
                                     <li><span class="icon icon-xs material-icons-ico material-icons-question_answer text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">Description</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="#"></a></li>
                                 </ul>
                                 <p class="offset-top-20">{{ f.description}}</p>

@@ -17,12 +17,12 @@ class FicheConsultationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('CreationDate',DateType::class)
-            ->add('nutritionniste',EntityType::class,[
-                'class' => Nutritionniste::class,
-                'choice_label' => 'nom',
-                'multiple' => false,
-
-            ])
+//            ->add('nutritionniste',EntityType::class,[
+//                'class' => Nutritionniste::class,
+//                'choice_label' => 'nom',
+//                'multiple' => false,
+//
+//            ])
             ->add('patient',EntityType::class,[
                 'class' => Patient::class,
                 'choice_label' => 'nom',

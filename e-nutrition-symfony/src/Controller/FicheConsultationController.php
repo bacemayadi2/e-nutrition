@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Nutritionniste;
 use App\Entity\TagFicheConsultation;
 
 use App\Repository\MedicamentRepository;
@@ -30,7 +31,7 @@ class FicheConsultationController extends AbstractController
 
     public function AfficheFicheFront(FicheConsultationRepository $repository)
     {
-        $ficheConsultation=$repository->findAll();
+        $ficheConsultation=$repository->findBy(['patient' => $this->getUser()->getId()]);
         return $this->render('front/fiche_consultation/ficheAffiche.html.twig', [
             'ficheConsultation' => $ficheConsultation]);
 
@@ -57,7 +58,7 @@ class FicheConsultationController extends AbstractController
     public function AfficheFiche(Request $request,PaginatorInterface $paginator,FicheConsultationRepository $repository)
     {
 
-        $donnees=$repository->findAll();
+        $donnees=$repository->findBy(['nutritionniste' => $this->getUser()->getId()]);
         $ficheConsultation=$paginator->paginate(
             $donnees,
             /* query NOT result */
@@ -83,8 +84,8 @@ class FicheConsultationController extends AbstractController
   // $form->add('Ajouter',SubmitType::class);
    $form->handleRequest($request);
        if($form->isSubmitted()) {
-           dump($form);
-           $ficheConsultation->getNutritionniste();
+
+           $ficheConsultation->setNutritionniste($this->getUser());
            $ficheConsultation->getPatient();
       }
    if($form->isSubmitted()&& $form->isValid() ){
@@ -143,7 +144,8 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
      */
     public function statistique(PatientRepository $repository,FicheConsultationRepository $repo){
 //on va chercher le nombre des consultations par date
-        $ficheConsultations=$repo->countByDate();
+        $userid=$this->getUser()->getId();
+        $ficheConsultations=$repo->countByDateAndNutritionniste($this->getUser());
         $dates=[];
         $patients=$repository->find(18);
 
@@ -167,24 +169,6 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
         ]);
     }
 
-    /**
-     * @Route("/SearchFich", name="SearchFich")
-     */
-    function SearchDoctor(Request $request, FicheConsultationRepository $repo)
-    {
-        $searchBy = $request->get('searchChoice');
-        $input = $request->get('search'); // $input = $_POST['search']
-        $users = 0;
-        switch ($searchBy)
-        {
-            case "nom": $users = $repo->findBy(['typeCompte' => $input]); break;
-            case "prenom": $users = $repo->findBy(['prenom' => $input]); break;
-            case "nom et prenom":  $users = $repo->findBy(['nom' => $input]); break;
-            case "ville": $users = $repo->findBy(['ville' => $input]); break;
-            default: echo "error !!!";
-        }
-        return $this->render('front/users/SearchDoctor.html.twig', ['users'=>$users]);
-    }
 
     /**
      * @Route("/SearchFiche", name="SearchFiche")
@@ -192,8 +176,15 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
     public function search(Request $request,FicheConsultationRepository $repo)
     {
         $requestString = $request->get('q');
-
-        $entities =  $repo->findEntitiesByString($requestString);
+        $entities=null;
+        //if ( (in_array("ROLE_DOCTOR", $this->getUser()->getRoles()) ))
+        {
+            $entities = $repo->findEntitiesByStringAndNutritionniste($requestString, $this->getUser());
+        }
+        //else if (( (in_array("ROLE_ADMIN", $this->getUser()->getRoles()) )))
+        {
+            $entities = $repo->findEntitiesByString($requestString);
+        }
 
         if(!$entities) {
             $result['entities']['error'] = "Aucune fiche trouvée";
