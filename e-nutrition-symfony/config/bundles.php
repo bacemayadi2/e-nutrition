@@ -18,4 +18,6 @@ return array(
     SymfonyCasts\Bundle\VerifyEmail\SymfonyCastsVerifyEmailBundle::class => array('all' => true),
     Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle::class => array('all' => true),
     FOS\CKEditorBundle\FOSCKEditorBundle::class => array('all' => true),
+    blackknight467\StarRatingBundle\StarRatingBundle::class => ['all' => true],
+
 );

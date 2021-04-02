@@ -68,145 +68,127 @@
     <section id="rw-layout" class="rw-layout full-width-layout">
         {% for  m in medecin %}
 
-        <div class="rw-container rw-section">
-            <div class="rw-inner clearfix">
+            <div class="rw-container rw-section">
+                <div class="rw-inner clearfix">
 
-                <!-- Main content -->
-                <div class="rw-column rw-content">
-                    <!-- Nom et prénom_______________________________________________________________________________________________________________________________________-->
+                    <!-- Main content -->
+                    <div class="rw-column rw-content">
+                        <!-- Nom et prénom_______________________________________________________________________________________________________________________________________-->
 
-                    <div class="rw-row page-title">
-                        <div class="grid-container">
+                        <div class="rw-row page-title">
+                            <div class="grid-container">
 
                                 <h1>Nom et Prénom : {{ m.nom }} {{ m.prenom }}</h1>
 
-                        </div>
-                    </div>
-                    <!-- image_______________________________________________________________________________________________________________________________________-->
-                    <div class="rw-row subtle">
-                        <div class="grid-container">
-                            <div class="grid desk-3">
-                                <div class="profile-avatar">
-                                    <a href="https://gustos.w3.style/author/andrei/">
-                                        <img alt='' src='https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-256x256.jpg' class='avatar avatar-256 photo' />
-                                    </a>
-                                </div> <!-- .profile-avatar -->
                             </div>
+                        </div>
+                        <!-- image_______________________________________________________________________________________________________________________________________-->
+                        <div class="rw-row subtle">
+                            <div class="grid-container">
+                                <div class="grid desk-3">
+                                    <div class="profile-avatar">
+                                        <a href="https://gustos.w3.style/author/andrei/">
+                                            <img alt='' src='https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-256x256.jpg' class='avatar avatar-256 photo' />
+                                        </a>
+                                    </div> <!-- .profile-avatar -->
+                                </div>
 
-                            <div class="grid desk-9">
-                                <div id="user-summary" class="profile-user-tab active">
-                                    <div class="grid desk-6 alpha">
-                                        <ul class="profile-rows">
-                                            <li>
-                                                <i class="the-icon fa fa-cutlery"></i>
-                                                <span class="the-label">
+                                <div class="grid desk-9">
+                                    <div id="user-summary" class="profile-user-tab active">
+                                        <div class="grid desk-6 alpha">
+                                            <ul class="profile-rows">
+                                                <li>
+                                                    <i class="the-icon fa fa-cutlery"></i>
+                                                    <span class="the-label">
 
                                                         <p><b>E-mail:</b> {{ m.email }}</p>
 
                                                 </span>
 
-                                            <li>
-                                                <i class="the-icon fa fa-history"></i>
-                                                <span class="the-label">
+                                                <li>
+                                                    <i class="the-icon fa fa-history"></i>
+                                                    <span class="the-label">
 
                                                         <p><b>Tel:</b> {{ m.tel }}</p>
 
                                                 </span>
-                                            </li>
+                                                </li>
 
-                                            <li>
-                                                <i class="the-icon fa fa-child"></i>
-                                                <span class="the-label">
+                                                <li>
+                                                    <i class="the-icon fa fa-child"></i>
+                                                    <span class="the-label">
 
                                                         <p><b>Sexe:</b> {{ m.sexe }}</p>
 
                                                 </span>
-                                            </li>
+                                                </li>
 
-                                            <li>
-                                                <i class="the-icon fa fa-eye"></i>
-                                                <span class="the-label">
+                                                <li>
+                                                    <i class="the-icon fa fa-eye"></i>
+                                                    <span class="the-label">
                                                         <p><b>Date de naissance:</b> {{ m.dateNaiss|date('d-m-Y') }}</p>
 
                                                 </span>
-                                            </li>
+                                                </li>
 
-                                            <li>
-                                                <i class="the-icon fa fa-eye"></i>
-                                                <span class="the-label">
+                                                <li>
+                                                    <i class="the-icon fa fa-eye"></i>
+                                                    <span class="the-label">
 
                                                         <p><b>Ville:</b> {{ m.ville }}</p>
 
                                                 </span>
-                                            </li>
-                                            <li>
-                                                <i class="the-icon fa fa-eye"></i>
-                                                <span class="the-label">
+                                                </li>
+                                                <li>
+                                                    <i class="the-icon fa fa-eye"></i>
+                                                    <span class="the-label">
 
                                                         <p><b>Adresse:</b> {{ m.adresse }}</p>
 
                                                 </span>
-                                            </li>
-                                            <li>
-                                                <i class="the-icon fa fa-eye"></i>
-                                                <span class="the-label">
+                                                </li>
+                                                <li>
+                                                    <i class="the-icon fa fa-eye"></i>
+                                                    <span class="the-label">
 
                                                         <p><b>Note:</b> {{ avg }}/5</p>
 
                                                 </span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div> <!-- #user-summary -->
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div> <!-- #user-summary -->
+                                </div>
+                                <div class="clear"></div>
+
+                            </div> <!-- .grid-container -->
+                        </div> <!-- .rw-row -->
+                    </div> <!-- .rw-inner -->
+
+                </div> <!-- .rw-container -->
+
+                <div class="rw-row subtle border-bottom profile-main-menu-block">
+                    <div class="grid-container">
+                        <div class="grid desk-12">
+                            <div class="profile-main-menu">
+                                <ul>
+                                    <li><a href="https://gustos.w3.style/author/andrei/?profile-summary=activity"><span class="title">Activity</span></a></li><li><a href="https://gustos.w3.style/author/andrei/?profile-summary=recipes"><span class="title">Recipes</span><span class="count">5</span></a></li><li><a href="https://gustos.w3.style/author/andrei/?profile-summary=favorites"><span class="title">Favorites</span><span class="count">0</span></a></li><li><a href="https://gustos.w3.style/author/andrei/?profile-summary=likes"><span class="title">Likes</span><span class="count">0</span></a></li><li class="active"><a href="https://gustos.w3.style/author/andrei/?profile-summary=comments"><span class="title">Comments</span><span class="count">{{ m.evaluations | length  }}</span></a></li>                                        </ul>
                             </div>
-                            <div class="clear"></div>
-
-                        </div> <!-- .grid-container -->
-                    </div> <!-- .rw-row -->
-                </div> <!-- .rw-inner -->
-
-            </div> <!-- .rw-container -->
-
-            <div class="rw-row subtle border-bottom profile-main-menu-block">
-                <div class="grid-container">
-                    <div class="grid desk-12">
-                        <div class="profile-main-menu">
-                            <ul>
-                                <li><a href="https://gustos.w3.style/author/andrei/?profile-summary=activity"><span class="title">Activity</span></a></li><li><a href="https://gustos.w3.style/author/andrei/?profile-summary=recipes"><span class="title">Recipes</span><span class="count">5</span></a></li><li><a href="https://gustos.w3.style/author/andrei/?profile-summary=favorites"><span class="title">Favorites</span><span class="count">0</span></a></li><li><a href="https://gustos.w3.style/author/andrei/?profile-summary=likes"><span class="title">Likes</span><span class="count">0</span></a></li><li class="active"><a href="https://gustos.w3.style/author/andrei/?profile-summary=comments"><span class="title">Comments</span><span class="count">{{ m.evaluations | length  }}</span></a></li>                                        </ul>
                         </div>
-                    </div>
-                </div> <!-- .grid-container -->
-            </div>
+                    </div> <!-- .grid-container -->
+                </div>
 
 
-            <div class="rw-row profile-summary-tab">
-                <div class="profile-comments-list">
-                    {%  for c in m.evaluations %}
+                <div class="rw-row profile-summary-tab">
+                    <div class="profile-comments-list">
+                        {%  for c in m.evaluations %}
 
-{#                   <div class="comment clearfix">#}
-{#                        <div class="comment-photo">#}
-{#                            <a href="#"><img alt="" src="https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-50x50.jpg" class="avatar avatar-50 photo"></a>#}
-{#                        </div>#}
-{#                        <div class="comment-text">#}
-{#                            <div class="comment-head clearfix">#}
-{##}
-{#                                <span class="comment-date">{{ c.patient.nom }}</span>#}
-{#                                <span class="comment-date">{{c.getCreatedAt|date('d-m-Y')}}</span>#}
-{#                            </div>#}
-{##}
-{##}
-{##}
-{#                            <div class="text">{{ c.commentaire }}</div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                    <div class="clear"></div>#}
-
-                        <div class="comment clearfix">
-                            <div class="comment-photo">
-                                <a href="#"><img alt="" src="https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-50x50.jpg" class="avatar avatar-50 photo"></a>
-                            </div>
-                            <div class="comment-text">
-                                <div class="comment-head clearfix">
+                            <div class="comment clearfix">
+                                <div class="comment-photo">
+                                    <a href="#"><img alt="" src="https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-50x50.jpg" class="avatar avatar-50 photo"></a>
+                                </div>
+                                <div class="comment-text">
+                                    <div class="comment-head clearfix">
 										<span class="comment-title">
 											<strong>{{ c.patient.nom }}</strong>
 											a attribué la note
@@ -217,47 +199,19 @@
 					<meta itemprop="ratingValue" content="4.33" />
 					<meta itemprop="reviewCount" content="3" />
 				</div></span>										</span>
-                                    <span class="comment-date">{{c.getCreatedAt|date('d-m-Y')}}</span>
+                                        <span class="comment-date">{{c.getCreatedAt|date('d-m-Y')}}</span>
+                                    </div>
+                                    <div class="text">{{ c.commentaire }}</div>
                                 </div>
-                                <div class="text">{{ c.commentaire }}</div>
+
+
                             </div>
 
+                        {% endfor %}
 
-                        </div>
-
-                    {% endfor %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    {{ form_start(form) }}
+                        {{ form_start(form) }}
                         <div class="form-group">
-                        {{ form_widget(form.commentaire) }}
+                            {{ form_widget(form.commentaire) }}
                         </div>
                         <div class="form-group">
                             {{ form_widget(form.note) }}
@@ -266,23 +220,23 @@
                             {{ form_widget(form.envoyer) }}
                         </div>
 
-                    {{ form_end(form) }}
+                        {{ form_end(form) }}
 
 
-                </div>
-                <div class="clear"></div>
-            </div>
-
-            <div id="rw-footer" class="rw-section rw-footer">
-                <div class="rw-inner clearfix">
-
-                    <a href="#rw-layout" class="footer-to-top" title="Go to top">
-                        <i class="fa fa-chevron-up"></i>
-                    </a>
+                    </div>
+                    <div class="clear"></div>
                 </div>
 
+                <div id="rw-footer" class="rw-section rw-footer">
+                    <div class="rw-inner clearfix">
+
+                        <a href="#rw-layout" class="footer-to-top" title="Go to top">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </div>
+
+                </div>
             </div>
-        </div>
         {% endfor %}
     </section><!-- .rw-layout -->
 
