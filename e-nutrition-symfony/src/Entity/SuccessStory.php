@@ -47,7 +47,7 @@ class SuccessStory
     private $likeStory;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="success", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="success", orphanRemoval=true ,cascade={"all"})
      */
     private $comments;
 

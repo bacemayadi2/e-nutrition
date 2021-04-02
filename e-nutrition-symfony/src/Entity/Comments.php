@@ -64,7 +64,7 @@ class Comments
 
 
     /**
-     * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="parent")
+     * @ORM\OneToMany(targetEntity=Comments::class, mappedBy="parent",cascade={"all"})
      */
     private $replies;
 

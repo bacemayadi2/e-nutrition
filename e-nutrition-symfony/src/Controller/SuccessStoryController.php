@@ -6,6 +6,7 @@ use App\Entity\RendezVous;
 use App\Entity\SuccessStory;
 use App\Entity\TagSuccessStory;
 use App\Form\CommentsType;
+use App\Form\CommentsuserType;
 use App\Form\RendezVousType;
 use App\Form\SuccessStoryType;
 use App\Repository\CommentsRepository;
@@ -93,6 +94,22 @@ class SuccessStoryController extends AbstractController
     /**
      * @param SuccessStoryRepository $repository
      * @return Response
+     * @Route("backSuccess", name="Pubback")
+     */
+    public function AfficherbackSuccess(SuccessStoryRepository $repository ){
+
+        //$repo= $this->getDoctrine()->getRepository(RendezVous::class   );
+        $Success=$repository->findAll();
+
+        return $this->render('Back/SuccessStory/backSuccess.html.twig', [
+            'controller_name' => 'SuccessStoryController',
+            'Success' => $Success,
+
+        ]);
+    }
+    /**
+     * @param SuccessStoryRepository $repository
+     * @return Response
      * @Route("detpost/{id}", name="postSuccess")
      */
     public function AfficherPostSuccess(CommentsRepository $rep ,SuccessStoryRepository $repository , $id ,Request  $request){
@@ -102,46 +119,86 @@ class SuccessStoryController extends AbstractController
         $comments= $rep->findBy(['success' => $id]);
         //$time = new \DateTime();
         //partie commentaire//
-
+        $user= $this->getUser() ;
         $comment = new Comments();
+        if ($user == null ) {
+            $commentForm = $this->createForm(CommentsType::class, $comment);
+            $commentForm->handleRequest($request);
 
-        $commentForm = $this->createForm(CommentsType::class , $comment);
-        $commentForm -> handleRequest($request);
+            //traitement formulaire
+            if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+                $comment->setSuccess($Success);
+                $comment->setDateAt(new \DateTime());
 
-        //traitement formulaire
-        if ($commentForm->isSubmitted() && $commentForm->isValid())
-        {
-            $comment->setSuccess($Success);
-            $comment->setDateAt(new \DateTime());
-
-            //recuperation champ parentid
-            $parentid = $commentForm->get("parentid")->getData();
+                //recuperation champ parentid
+                $parentid = $commentForm->get("parentid")->getData();
 
 
-            $em = $this->getDoctrine()->getManager();
-            if ($parentid != null) {
-                $parent = $em->getRepository(Comments::class)->find($parentid);
+                $em = $this->getDoctrine()->getManager();
+                if ($parentid != null) {
+                    $parent = $em->getRepository(Comments::class)->find($parentid);
+                }
+                //on definit le parent
+                $comment->setParent($parent ?? null);
+                $em->persist($comment);
+                $em->flush();
+
+
+                return $this->redirectToRoute('postSuccess', ['id' => $id]);
             }
-            //on definit le parent
-            $comment->setParent($parent ?? null);
-            $em->persist($comment);
-            $em->flush();
 
 
+            return $this->render('success_story/detpost.html.twig', [
+                'controller_name' => 'SuccessStoryController',
+                'Success' => $Success,
+                'commentform' => $commentForm->createView(),
+                'comments' => $comments
 
-            return $this->redirectToRoute('postSuccess' , ['id'=> $id]);
+            ]);
         }
+        else
+        {
+
+                $commentForm = $this->createForm(CommentsuserType::class, $comment);
+                $commentForm->handleRequest($request);
+
+                //traitement formulaire
+                if ($commentForm->isSubmitted() && $commentForm->isValid()) {
+                    $comment->setSuccess($Success);
+                    $comment->setNickname($user->getNom() . " " . $user->getPrenom());
+                    $comment->setEmail($user->getEmail() );
+                    $comment->setDateAt(new \DateTime());
+
+                    //recuperation champ parentid
+                    $parentid = $commentForm->get("parentid")->getData();
 
 
+                    $em = $this->getDoctrine()->getManager();
+                    if ($parentid != null) {
+                        $parent = $em->getRepository(Comments::class)->find($parentid);
+                    }
+                    //on definit le parent
+                    $comment->setParent($parent ?? null);
+                    $em->persist($comment);
+                    $em->flush();
 
-        return $this->render('success_story/detpost.html.twig', [
-            'controller_name' => 'SuccessStoryController',
-            'Success' => $Success,
-            'commentform'=> $commentForm->createView(),
-            'comments'=>$comments
 
-        ]);
+                    return $this->redirectToRoute('postSuccess', ['id' => $id]);
+                }
+
+
+                return $this->render('success_story/detpostUser.html.twig', [
+                    'controller_name' => 'SuccessStoryController',
+                    'Success' => $Success,
+                    'commentform' => $commentForm->createView(),
+                    'comments' => $comments
+
+                ]);
+
+        }
     }
+
+
     /**
      * @param SuccessStoryRepository $repository
      * @return Response

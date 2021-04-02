@@ -1,0 +1,154 @@
+{% extends 'front/base.html.twig' %}
+{% block Content %}
+    <!-- Parallax-->
+    <section class="section section-height-800 parallax-container context-dark bg-gray-darkest text-xl-left" data-parallax-img="{{ asset('front/images/backgrounds/background-01-1920x900.jpg') }}">
+        <div class="parallax-content">
+            <div class="bg-overlay-black">
+                <div class="container section-30 section-md-95 section-lg-top-120 section-lg-bottom-150">
+                    <div class="d-none d-lg-block">
+                        <h1>Blog Post</h1>
+                    </div>
+                    <!-- List Inline-->
+                    <ul class="list-inline list-inline-dashed list-white text-big p offset-md-top-13">
+                        <li><a href="{{ path('home_front') }}">Home</a></li>
+                        <li><a href="{{ path('Pub') }}">Posts</a></li>
+                        <li>Success Storie
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Blog Post-->
+    <section class="section-95 text-left">
+        <div class="container">
+            <div class="row justify-content-sm-center">
+                <div class=""><table><tr><td><img class="img-responsive center-block" src="{{asset(Success.tagSucess[0].getUrl())}}" width="770" alt=""></td><td><img class="img-responsive center-block" src="{{ asset(Success.tagSucess[0].getUrl())}}" width="770" alt=""></td></tr></table>
+                    <p class="post-classic-title text-big font-weight-bold text-uppercase text-spacing-100 offset-top-20 text-primary">{{ Success.titre }}</p>
+                    <!-- List Inline-->
+                    <ul class="list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p">
+                        <li><span class="icon icon-xs material-icons-ico material-icons-event text-middle text-gray"></span><span class="text-middle inset-left-7 post-meta">{{Success.dateCreation | date('d-m-Y')}}</span></li>
+                        <li><span class="icon icon-xs material-icons-ico material-icons-person text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">By:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="my-philosophy.html">Abdelhamid atallah</a></li>
+                        <li><span class="icon icon-xs material-icons-ico material-icons-question_answer text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">Comments:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="#">3</a></li>
+                    </ul>
+                    <p class="offset-top-20">{{ Success.text }}</p>
+                    <div class="text-center text-sm-left offset-top-20">
+                        <iframe   width="916" height="523" src="{{ path('affichervideo',{ 'url':Success.tagSucess[2].getName , 'extension':Success.tagSucess[2].getExtension }) }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                        </iframe></div></li>
+                    <div class="pull-xs-left">
+                        <p class="text-big font-weight-bold text-gray">Share this post:</p>
+                    </div>
+                    <div class="pull-xs-right offset-top-10 offset-xs-top-0">
+                        <ul class="list-inline list-inline-0">
+                            <li class="text-center"><a class="icon icon-xxs icon-circle icon-gray-lighter fa fa-tumblr-square" href="#"></a></li>
+                            <li class="text-center"><a class="icon icon-xxs icon-circle icon-gray-lighter fa fa-pinterest-p" href="#"></a></li>
+                            <li class="text-center"><a class="icon icon-xxs icon-circle icon-gray-lighter fa fa-soundcloud" href="#"></a></li>
+                            <li class="text-center"><a class="icon icon-xxs icon-circle icon-gray-lighter fa fa-vimeo-square" href="#"></a></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="offset-top-60 offset-md-top-100">
+                    <!-- Box Comment-->
+
+                    {% for comment in comments  %}
+                        {% if comment.parent  == null %}
+                            <div class="unit align-items-sm-center align-items-xl-start unit-xs flex-sm-row unit-spacing-md box-comment offset-top-34">
+                                <div class="unit-left">
+                                    <div class="offset-lg-top-13"><img class="rounded-circle img-responsive center-block" src="{{asset('front/images/users/user-rita-jefferson-70x71.jpg')  }}" width="70" height="71" alt=""></div>
+                                </div>
+                                <div class="unit-body">
+                                    <div class="box-comment-body">
+                                        <div class="box-comment-body-top" >
+                                            <div class="pull-sm-left">
+                                                <!-- List Inline-->
+                                                <ul class="list-inline">
+                                                    <li class="p font-weight-bold"><a class="link-decoration-none text-hover-primary text-gray" href="my-philosophy.html">{{comment.nickname}}</a></li>
+                                                    <li><span class="icon icon-xxs material-icons-ico material-icons-thumb_up text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Like</a></li>
+                                                    <li><span class="icon icon-xxs material-icons-ico material-icons-chat_bubble text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#ajout-comm" data-reply data-id="{{ comment.id }}">Reply</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="pull-sm-right">
+                                                <p><span class="inset-right-7 text-middle">{{comment.dateat | date("d/m/Y H:i")}}</span><span class="icon icon-xxs material-icons-ico material-icons-access_time text-gray-light text-middle"></span></p>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="box-comment-body-bottom offset-top-20"  >
+                                            <p>{{comment.content | raw}}</p>
+
+                                        </div>
+                                        {% for reply in comment.replies  %}
+                                            <div class="unit align-items-sm-center align-items-xl-start unit-xs flex-sm-row unit-spacing-md box-comment offset-top-34">
+                                                <div class="unit-left">
+                                                    <div class="offset-lg-top-13"><img class="rounded-circle img-responsive center-block" src="{{asset('front/images/users/user-rita-jefferson-70x71.jpg')  }}" width="70" height="71" alt=""></div>
+                                                </div>
+                                                <div class="unit-body">
+                                                    <div class="box-comment-body">
+                                                        <div class="box-comment-body-top" >
+                                                            <div class="pull-sm-left">
+                                                                <!-- List Inline-->
+                                                                <ul class="list-inline">
+                                                                    <li class="p font-weight-bold"><a class="link-decoration-none text-hover-primary text-gray" href="my-philosophy.html">{{reply.nickname}}</a></li>
+                                                                    <li><span class="icon icon-xxs material-icons-ico material-icons-thumb_up text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Like</a></li>
+                                                                    {#                                                    <li><span class="icon icon-xxs material-icons-ico material-icons-chat_bubble text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#ajout-comm" data-reply data-id="{{ reply.id }}">Reply</a></li>#}
+                                                                </ul>
+                                                            </div>
+                                                            <div class="pull-sm-right">
+                                                                <p><span class="inset-right-7 text-middle">{{reply.dateat | date("d/m/Y H:i")}}</span><span class="icon icon-xxs material-icons-ico material-icons-access_time text-gray-light text-middle"></span></p>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        <div class="box-comment-body-bottom offset-top-20"  >
+                                                            <p>{{reply.content | raw}}</p>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+
+                </div>
+                <div class="offset-top-60 offset-md-top-100" id="ajout-comm">
+
+                    <h2 class="text-center">{{ form(commentform) }}</h2>
+
+                </div>
+
+            </div>
+
+        </div>
+        </div>
+    </section>
+    {% block javascripts %}
+        <script>
+
+            window.onload = () =>{
+                document.querySelectorAll("[data-reply]").forEach(element =>{
+                    element.addEventListener("click", function(){
+                        document.querySelector("#comments_parentid").value = this.dataset.id;
+
+                    })
+                })
+            }
+        </script>
+    {% endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
