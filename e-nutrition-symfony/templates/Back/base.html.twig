@@ -286,6 +286,38 @@
 <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true">
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+<!-- gestion users -->
+            <li class=" nav-item"><a href="#"><i class="fas fa-utensils"></i><span class="menu-title" data-i18n="nav.page_layouts.main">Gestion Utilisateurs</span></a>
+                <ul class="menu-content">
+                    <li><a class="menu-item" href="#" data-i18n="nav.page_layouts.3_columns.main">Afficher Utilisateurs</a>
+                        <ul class="menu-content">
+                            <li><a class="menu-item" href="{{ path('ajouterAliment') }}" data-i18n="nav.page_layouts.3_columns.left_sidebar">Nutritionniste</a>
+                            </li>
+                            <li><a class="menu-item" href="{{ path('afficherAliment') }}" data-i18n="nav.page_layouts.3_columns.left_sticky_sidebar">Patient</a>
+                            </li>
+                            <li><a class="menu-item" href="#" data-i18n="nav.page_layouts.3_columns.main">categorie</a>
+                                <ul class="menu-content">
+                                    <li><a class="menu-item" href="{{ path('ajouterCategorie') }}" data-i18n="nav.page_layouts.3_columns.left_sidebar">Secrétaires</a>
+                                    </li>
+                                    <li><a class="menu-item" href="{{ path('afficherCategorie') }}" data-i18n="nav.page_layouts.3_columns.left_sticky_sidebar">afficher categorie</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li><a class="menu-item" href="#" data-i18n="nav.page_layouts.3_columns_detached.main">plat</a>
+                        <ul class="menu-content">
+                            <li><a class="menu-item" href="{{ path('ajouterplat') }}" data-i18n="nav.page_layouts.3_columns_detached.detached_left_sidebar">ajouter plat</a>
+                            </li>
+                            <li><a class="menu-item" href="{{ path('afficherplat') }}" data-i18n="nav.page_layouts.3_columns_detached.detached_sticky_left_sidebar">afficher plat</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+
             <li class=" nav-item"><a href="#"><i class="fas fa-utensils"></i><span class="menu-title" data-i18n="nav.page_layouts.main">nutrition</span></a>
                 <ul class="menu-content">
                     <li><a class="menu-item" href="#" data-i18n="nav.page_layouts.3_columns.main">aliment</a>
@@ -315,6 +347,7 @@
                     </li>
                 </ul>
             </li>
+
 {#            <li class=" nav-item"><a href="index-2.html"><i class="icon-home"></i><span class="menu-title" data-i18n="nav.dash.main">Dashboard</span><span class="badge badge badge-info badge-pill float-right mr-2">5</span></a>#}
 {#                <ul class="menu-content">#}
 {#                    <li class="active"><a class="menu-item" href="dashboard-ecommerce.html" data-i18n="nav.dash.ecommerce">eCommerce</a>#}
