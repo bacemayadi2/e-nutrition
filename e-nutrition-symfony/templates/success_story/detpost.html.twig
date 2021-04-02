@@ -51,10 +51,12 @@
                     <div class="offset-top-60 offset-md-top-100">
                         <h2 class="text-center">3 comments</h2>
                         <!-- Box Comment-->
+
                         {% for comment in comments  %}
+                            {% if comment.parent  == null %}
                         <div class="unit align-items-sm-center align-items-xl-start unit-xs flex-sm-row unit-spacing-md box-comment offset-top-34">
                             <div class="unit-left">
-                                <div class="offset-lg-top-13"><img class="rounded-circle img-responsive center-block" src="{{asset('images/users/user-rita-jefferson-70x71.jpg')  }}" width="70" height="71" alt=""></div>
+                                <div class="offset-lg-top-13"><img class="rounded-circle img-responsive center-block" src="{{asset('front/images/users/user-rita-jefferson-70x71.jpg')  }}" width="70" height="71" alt=""></div>
                             </div>
                             <div class="unit-body">
                                 <div class="box-comment-body">
@@ -74,10 +76,42 @@
                                     </div>
                                     <div class="box-comment-body-bottom offset-top-20"  >
                                         <p>{{comment.content | raw}}</p>
+
                                     </div>
+                                    {% for reply in comment.replies  %}
+                                    <div class="unit align-items-sm-center align-items-xl-start unit-xs flex-sm-row unit-spacing-md box-comment offset-top-34">
+                                    <div class="unit-left">
+                                        <div class="offset-lg-top-13"><img class="rounded-circle img-responsive center-block" src="{{asset('front/images/users/user-rita-jefferson-70x71.jpg')  }}" width="70" height="71" alt=""></div>
+                                    </div>
+                                    <div class="unit-body">
+                                    <div class="box-comment-body">
+                                        <div class="box-comment-body-top" >
+                                            <div class="pull-sm-left">
+                                                <!-- List Inline-->
+                                                <ul class="list-inline">
+                                                    <li class="p font-weight-bold"><a class="link-decoration-none text-hover-primary text-gray" href="my-philosophy.html">{{reply.nickname}}</a></li>
+                                                    <li><span class="icon icon-xxs material-icons-ico material-icons-thumb_up text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Like</a></li>
+{#                                                    <li><span class="icon icon-xxs material-icons-ico material-icons-chat_bubble text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#ajout-comm" data-reply data-id="{{ reply.id }}">Reply</a></li>#}
+                                                </ul>
+                                            </div>
+                                            <div class="pull-sm-right">
+                                                <p><span class="inset-right-7 text-middle">{{reply.dateat | date("d/m/Y H:i")}}</span><span class="icon icon-xxs material-icons-ico material-icons-access_time text-gray-light text-middle"></span></p>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                        <div class="box-comment-body-bottom offset-top-20"  >
+                                            <p>{{reply.content | raw}}</p>
+
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    {% endfor %}
                                 </div>
+
                             </div>
                         </div>
+                            {% endif %}
                         {% endfor %}
 
 

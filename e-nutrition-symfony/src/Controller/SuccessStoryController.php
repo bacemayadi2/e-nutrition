@@ -104,22 +104,26 @@ class SuccessStoryController extends AbstractController
         //partie commentaire//
 
         $comment = new Comments();
-        $comment->setSuccess($Success);
-        $comment->setDateAt(new \DateTime());
 
         $commentForm = $this->createForm(CommentsType::class , $comment);
         $commentForm -> handleRequest($request);
 
-        //traitement formulaire//
+        //traitement formulaire
         if ($commentForm->isSubmitted() && $commentForm->isValid())
         {
-            //recuperation champ parentid//
+            $comment->setSuccess($Success);
+            $comment->setDateAt(new \DateTime());
+
+            //recuperation champ parentid
             $parentid = $commentForm->get("parentid")->getData();
 
 
             $em = $this->getDoctrine()->getManager();
-            $parent = $em->getRepository(Comments::class)->find($parentid);
-            $comment->setParent($parent);
+            if ($parentid != null) {
+                $parent = $em->getRepository(Comments::class)->find($parentid);
+            }
+            //on definit le parent
+            $comment->setParent($parent ?? null);
             $em->persist($comment);
             $em->flush();
 
