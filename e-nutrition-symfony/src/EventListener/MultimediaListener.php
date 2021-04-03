@@ -38,6 +38,10 @@ public function onVichuploaderPreremove(Event $event){
     {
         $fileSystem= new Filesystem();
         $fileSystem->remove('multimedia/'.$tag->getName() .'.jpg'); // remove old file
+        $fileSystem->remove('multimedia/'.$tag->getName() .'480.mp4');
+        $fileSystem->remove('multimedia/'.$tag->getName() .'240.mp4');
+        $fileSystem->remove('multimedia/'.$tag->getName() .'360.mp4');
+
     }
 
 

@@ -1,4 +1,136 @@
-<video controls>
-    <source src="multimedia/{{ asset( url )}}.{{ extension}}" type="video/{{ ( extension )}}">
-    Your browser does not support the video tag.
-</video>
+{#<link rel="stylesheet" href="{{ asset('video/css/videre.css')}}" />#}
+{#<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>#}
+{#<script src="{{ asset('video/js/videre.js')}}"></script>#}
+{#<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">#}
+{#<script>#}
+
+{#    $(document).ready(function(){#}
+
+{#        $('#player').videre({#}
+{#            video: {#}
+{#                quality: [#}
+{#                    {#}
+{#                        label: '480p',#}
+{#                        src: 'multimedia{{ asset( url )}}480.{{ extension}}',#}
+{#                        type:"video/{{ ( extension )}}"#}
+{#                    },#}
+{#                    {#}
+{#                        label: '360p',#}
+{#                        src: 'multimedia{{ asset( url )}}360.{{ extension}}',#}
+{#                        type:"video/{{ ( extension )}}"#}
+
+{#                    },#}
+{#                    {#}
+{#                        label: '240p',#}
+{#                        src: 'multimedia{{ asset( url )}}240.{{ extension}}',#}
+{#                        type:"video/{{ ( extension )}}"#}
+
+{#                    }#}
+{#                ],#}
+{#                title: ''#}
+{#            },#}
+{#            dimensions: 1024#}
+{#        });#}
+
+
+
+{#    });#}
+
+{#</script>#}
+
+
+{#<video controls>#}
+{#    <source src="multimedia/{{ asset( url )}}480.{{ extension}}" type="video/{{ ( extension )}}">#}
+{#    <source src="multimedia/{{ asset( url )}}360.{{ extension}}" type="video/{{ ( extension )}}">#}
+
+{#    Your browser does not support the video tag.#}
+{#</video>#}
+{#<div id="player"></div>#}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <meta name="author" content="Sam Potts" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+    <!-- Docs styles -->
+    <link rel="stylesheet" href="{{ asset('video/demo.css') }}" />
+
+    <!-- Preload -->
+    <link
+            rel="preload"
+            as="font"
+            crossorigin
+            type="font/woff2"
+            href="https://cdn.plyr.io/static/fonts/gordita-medium.woff2"
+    />
+    <link
+            rel="preload"
+            as="font"1
+            crossorigin
+            type="font/woff2"
+            href="https://cdn.plyr.io/static/fonts/gordita-bold.woff2"
+    />
+
+
+
+<div class="grid">
+    <main>
+        <div id="container">
+            <video
+                    controls
+                    crossorigin
+                    playsinline
+                    data-poster="multimedia{{ asset( url )}}.jpg"
+                    id="player"
+            >
+                <!-- Video files -->
+                <source
+                        src="multimedia{{ asset( url )}}240.{{ extension}}"
+                        type="video/mp4"
+                        size="240"
+                />
+                <source
+                        src="multimedia{{ asset( url )}}360.{{ extension}}"
+                        type="video/mp4"
+                        size="360"
+                />
+                <source
+                        src="multimedia{{ asset( url )}}480.{{ extension}}"
+                        type="video/mp4"
+                        size="480"
+                />
+
+                <!-- Caption files -->
+
+
+                <!-- Fallback for browsers that don't support the <video> element -->
+            </video>
+        </div>
+
+            <span class="plyr__cite plyr__cite--video" hidden>
+                <span>
+                    <svg class="icon">
+                        <path
+                        ></path>
+                    </svg>
+
+                </span>
+            </span>
+
+
+
+    </main>
+</div>
+
+
+
+<script src="{{ asset('video/demo.js') }}" crossorigin="anonymous"></script>
+</html>
+
+

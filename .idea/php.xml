@@ -124,10 +124,6 @@
       <path value="$PROJECT_DIR$/e-nutrition-symfony/vendor/doctrine/doctrine-bundle" />
       <path value="$PROJECT_DIR$/e-nutrition-symfony/vendor/doctrine/doctrine-migrations-bundle" />
       <path value="$PROJECT_DIR$/e-nutrition-symfony/vendor/doctrine/instantiator" />
-      <path value="$PROJECT_DIR$/e-nutrition-symfony/vendor/friendsofsymfony/ckeditor-bundle" />
-      <path value="$PROJECT_DIR$/e-nutrition-symfony/vendor/blackknight467/star-rating-bundle" />
-      <path value="$PROJECT_DIR$/e-nutrition-symfony/vendor/doctrine/deprecations" />
-      <path value="$PROJECT_DIR$/e-nutrition-symfony/vendor/symfony/templating" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

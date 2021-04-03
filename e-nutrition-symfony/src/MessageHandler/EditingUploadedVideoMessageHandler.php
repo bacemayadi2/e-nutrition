@@ -26,7 +26,7 @@ final class EditingUploadedVideoMessageHandler implements MessageHandlerInterfac
         $contenucontroleur=new ContenueMutlimediaController( );
         $projectDir=$message->getDir();
         $nomfile= $message->getFilename();
-        ContenuMultimedia::generatethumbnailtranscode480pmp4($nomfile,$projectDir);
+        ContenuMultimedia::generatethumbnailtranscode($nomfile,$projectDir);
 
         }
 }

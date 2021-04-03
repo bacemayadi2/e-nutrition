@@ -166,7 +166,7 @@ class ContenuMultimedia
     {
         return $this->fileMultimedia;
     }
-    public static  function generatethumbnailtranscode480pmp4($filename,$projectDir):bool
+    public static  function generatethumbnailtranscode($filename,$projectDir):bool
     {
 
         $name = u($filename)->split('.')[0];
@@ -182,15 +182,39 @@ class ContenuMultimedia
             $format = new X264();
             $format->setAudioCodec("libmp3lame");
             $video = $ffmpeg->open($projectDir. 'multimedia/' . $filename);
-            $video
+            $video480=$video;
+            $video360=$video;
+            $video240=$video;
+
+            $video480
                 ->filters()
-                ->resize(new Dimension(848, 480));
+                ->resize(new Dimension(850, 480))
+                ->synchronize();
+            $format->setKiloBitrate(700);
+            dump($format);
+            $video480
+                ->save($format, $projectDir.'multimedia/' . $name . 'new480' . '.mp4');
+            $format->setKiloBitrate(400);
+
+            $video360
+                ->filters()
+                ->resize(new Dimension(640, 360))
+                ->synchronize();
+
+            $video360
+                ->save($format, $projectDir.'multimedia/' . $name . 'new360' . '.mp4');
+            $format->setKiloBitrate(200);
+
+            $video240
+                ->filters()
+                ->resize(new Dimension(420, 240))
+                ->synchronize();
+            $video240
+                ->save($format, $projectDir.'multimedia/' . $name . 'new240' . '.mp4');
             $video
                 ->frame(TimeCode::fromSeconds(10))
                 ->save($projectDir.'multimedia/' . $name . 'new' . '.jpg');
 
-            $video
-                ->save($format, $projectDir.'multimedia/' . $name . 'new' . '.mp4');
 
             $fileSystem= new Filesystem();
             $fileSystem->remove($projectDir.'multimedia/' . $filename); // remove old file

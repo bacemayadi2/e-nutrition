@@ -32,11 +32,7 @@ class AlimentController extends AbstractController
         //  $form->add("Ajouter",SubmitType::class);
         $form->handleRequest($request);//gere requette envoyer par l'utlisateur
         if($form->isSubmitted())
-            dump($form);
-        foreach ($aliment->getCategorieAliment() as $c  )
-        {
-            dump ($c);
-        }
+
         if($form->isSubmitted() && $form->isValid()){
             $em=$this->getDoctrine()->getManager();
 
