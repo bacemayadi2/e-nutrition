@@ -22,7 +22,7 @@ class CompositionController extends AbstractController
      * @param CompositionRepository $repo
      * @param $id
      * @param  $idp
-     * @Route ("/supprimerAlimentplat/{id}/{idp}",name="supprimerAlimentplat")
+     * @Route ("doctor/supprimerAlimentplat/{id}/{idp}",name="doctor_supprimerAlimentplat")
      */
     function delete(CompositionRepository $repo , $id, $idp)
     {

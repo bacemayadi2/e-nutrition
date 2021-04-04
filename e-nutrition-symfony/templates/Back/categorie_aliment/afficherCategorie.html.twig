@@ -46,18 +46,18 @@
                                                         {% if c.getNumberOfAliment > 0 %}
                                                         <a href="#"><button type="button" class="btn btn-primary" Disabled>supprimer</button> </a>
                                                         {% else %}
-                                                            <a href="{{ path('supprimerCategorie',{'id':c.id }) }}"><button type="button" class="btn btn-primary">supprimer</button> </a>
+                                                            <a href="{{ path('doctor_supprimerCategorie',{'id':c.id }) }}"><button type="button" class="btn btn-primary">supprimer</button> </a>
                                                         {% endif %}
                                                 </div>
                                                     <div style="text-align: center;">
-                                                        <a href="{{ path('modiferCategorie',{'id':c.id }) }}">  <button type="button" class="btn btn-success">modifier</button> </a>
+                                                        <a href="{{ path('doctor_modiferCategorie',{'id':c.id }) }}">  <button type="button" class="btn btn-success">modifier</button> </a>
                                                     </div>
                                                 </div>
                                             </li>
                                             {% endfor %}
 
                                                 <li> <div style="text-align: left;">
-                                                        <a href="{{ path('ajouterCategorie') }}">  <button type="button" class="btn btn-success">ajouter categorie</button> </a>
+                                                        <a href="{{ path('doctor_ajouterCategorie') }}">  <button type="button" class="btn btn-success">ajouter categorie</button> </a>
                                                     </div>
                                                 </li>
 

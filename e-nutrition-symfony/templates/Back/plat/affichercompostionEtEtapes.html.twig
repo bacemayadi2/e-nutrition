@@ -39,10 +39,10 @@
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <div style="text-align: center;">
-                                                        <a href="{{ path('supprimerEtapeDePreparationRepositoryplat',{'id':e.id ,'idp':e.plat.id }) }}"><button type="button" class="btn btn-primary">supprimer</button>
+                                                        <a href="{{ path('doctor_supprimerEtapeDePreparationRepositoryplat',{'id':e.id ,'idp':e.plat.id }) }}"><button type="button" class="btn btn-primary">supprimer</button></a>
                                                     </div>
                                                     <div style="text-align: center;">
-                                                        <a href="{{ path('modifierPlat',{'id':e.plat.id }) }}">  <button type="button" class="btn btn-success">modifier</button>
+                                                        <a href="{{ path('doctor_modifierPlat',{'id':e.plat.id }) }}">  <button type="button" class="btn btn-success">modifier</button></a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -96,10 +96,10 @@
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <div style="text-align: center;">
-                                                        <a href="{{ path('supprimerAlimentplat',{'id':f.id ,  'idp':f.plat.id  }) }}"><button type="button" class="btn btn-primary">supprimer</button>
+                                                        <a href="{{ path('doctor_supprimerAlimentplat',{'id':f.id ,  'idp':f.plat.id  }) }}"><button type="button" class="btn btn-primary">supprimer</button></a>
                                                     </div>
                                                     <div style="text-align: center;">
-                                                        <a href="{{ path('modifierPlat',{'id':f.plat.id }) }}">  <button type="button" class="btn btn-success">modifier</button>
+                                                        <a href="{{ path('doctor_modifierPlat',{'id':f.plat.id }) }}">  <button type="button" class="btn btn-success">modifier</button></a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -146,11 +146,10 @@
 
                                 {% for tag in plat.TagNourriture %}
                                     {% if tag.isVideo() %}
-                                            <video width="400" height="240" controls>
-                                                <source src="{{ asset( tag.getUrl() )}}" type="video/{{ ( tag.getExtension )}}">
-                                                Your browser does not support the video tag.
-                                            </video>
 
+                                        <li data-thumb="{{ asset( tag.getthumbnail() )}}"><div class="entry-photo single-recipe-photo-cover">
+                                                <iframe   width="1100" height="710" src="{{ path('affichervideo',{ 'url':tag.getName , 'extension':tag.getExtension }) }}" frameborder="0" allowfullscreen>
+                                                </iframe></div></li>
                                     {% endif %}
                                 {% endfor %}
 

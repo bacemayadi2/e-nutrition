@@ -34,11 +34,10 @@
 
 
                             <div class="card-content collapse show">
-                                <form method="post" class="search-form" action="{{ path('rechercheAliment') }}">
-                                    <input type="text" class="search-field fullwidth" name="recherchealiment" placeholder="Type keyword and press enter" value="">
-                               </form>
+                                    <input type="text" id="search" class="search-field fullwidth" name="doctor_recherchealiment" placeholder="Type keyword and press enter" value="">
+
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table class="table" id="t">
 {#                                        <tr>#}
 {#                                            <th><input type="text" id="searchnom" class="form-control" placeholder="Searchnom"></th>#}
 {#                                            <th><input type="text" id="searchcategorie" class="form-control" placeholder="Searchcategorie"></th>#}
@@ -64,7 +63,7 @@
                                         </tr>
                                         </thead>
 
-                                        <tbody>
+                                        <tbody  id="all">
                                         <tr {% for f in aliment %} >
                                             <td> {{ f.nom }}</td>
                                             <td> {{ f.categorieToString() }} </td>
@@ -79,25 +78,28 @@
                                                         {% if f.getnbrOFTimeUsed() > 0 %}
                                                             <a href="#"><button type="button" class="btn btn-primary" Disabled>supprimer</button> </a>
                                                         {% else %}
-                                                            <a href="{{ path('supprimerAliment',{'id':f.id }) }}"><button type="button" class="btn btn-primary">supprimer</button></a>
+                                                            <a href="{{ path('doctor_supprimerAliment',{'id':f.id }) }}"><button type="button" class="btn btn-primary">supprimer</button></a>
 
                                                         {% endif %}
                                                         <span class="badge badge-primary badge-pill float-right">{{f.getnbrOFTimeUsed() }}</span>
 
                                                     </div>
                                                     <div style="text-align: center;">
-                                                        <a href="{{ path('modifierAliment',{'id':f.id }) }}">  <button type="button" class="btn btn-success">modifier</button></a>
+                                                        <a href="{{ path('doctor_modifierAliment',{'id':f.id }) }}">  <button type="button" class="btn btn-success">modifier</button></a>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr {% endfor %}>
                                         <tr>
                                             <td><div style="text-align: left;">
-                                                    <a href="{{ path('ajouterAliment') }}">  <button type="button" class="btn btn-success">ajouter aliment</button></a></div>
+                                                    <a href="{{ path('doctor_ajouterAliment') }}">  <button type="button" class="btn btn-success">ajouter aliment</button></a></div>
                                             </td></tr>
                                         {{ knp_pagination_render(aliment) }}
 
                                         </tbody>
+                                        <tbody id="search">
+                                        </tbody>
+
 
                                     </table>
                                 </div>
@@ -112,19 +114,19 @@
 
     <script>
         $( document ).ready(function() {
-            $("#recherchealiment").keyup(function(e){
+            $("#search").keyup(function(e){
                 /* La variable value va prendre la valeur insérer dans le champ de texte
                 afin d’effectuer la recherche */
                 var value = $(this).val();
                 /* Ajax est lancé lors du remplissage du champ texte dont l’id est
                 « search » pour faire la recherche */
 
-                6
+
 
                 $.ajax({
                     /* l’url est une chaine de caractères contenant l’adresse où la requête est
                     envoyée */
-                    url : "{{ path('rechercheAliment') }}",
+                    url : "{{ path('doctor_rechercheAliment') }}",
                     /* La méthode utilisée pour transférer les données est GET */
                     type : 'GET',
                     /*Ici search value va prendre la chaine entrée par un utilisateur dans la
@@ -136,11 +138,13 @@
                     nouveau contenu*/
                     success : function(retour){
                         if(retour){
+                            console.log(retour);
+
                             $('#t tbody#search').empty();
                             $.each(JSON.parse(retour), function(i, obj) {
+
                                 $('#t tbody#all').hide();
-                                $('#t tbody#search').append('<tr><td> '+obj.id+'</td> <td> '+obj.nom+' </td>  <td> '+obj.categorieToString+' </td> <td> '+obj.poid+' </td>  <td> '+obj.proteines+' </td>  <td> '+obj.glucides+' </td>  <td> '+obj.lipides+' </td>  <td> '+obj.calculerCalorie+' </td>
-                                    <td>   <a href="supprimerAliment/'+obj.id+'"><button type="button" class="btn btn-primary">supprimer</button> </a>   <a href=" modifierAliment/'+obj.id+'"> <button type="button" class="btn btn-success">modifier</button> </a>  </td> </tr> );
+                                $('#t tbody#search').append('<tr>  <td> '+obj.nom+' </td>  <td> '+obj.categorieToString+' </td> <td> '+obj.poid+' </td>  <td> '+obj.proteines+' </td>  <td> '+obj.glucides+' </td>  <td> '+obj.lipides+' </td>  <td> '+obj.calculerCalorie+' </td> <td>    <a href="supprimerAliment/'+obj.id+'"><button type="button" class="btn btn-primary">supprimer</button> </a>   <a href=" modifierAliment/'+obj.id+'"> <button type="button" class="btn btn-success">modifier</button> </a>  </td> </tr> ');
                             });
                         }
                         else

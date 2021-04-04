@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use PhpParser\Node\Scalar\String_;
+use Symfony\Component\Serializer\Annotation\Groups as Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=AlimentRepository::class)
@@ -17,6 +19,7 @@ class Aliment extends Nourriture
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
 
     private $codeABarre;
@@ -28,6 +31,7 @@ class Aliment extends Nourriture
 
     /**
      * @ORM\OneToMany(targetEntity=Composition::class, mappedBy="aliment")
+     *
      */
     private $compositions;
 
@@ -60,6 +64,9 @@ class Aliment extends Nourriture
         return $this->categorieAliment;
     }
 
+    /**
+     * @return string
+     */
     public function  categorieToString(): string
     {
         $s="";

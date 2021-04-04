@@ -22,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PlatController extends AbstractController
 {
     /**
-     * @Route("/ajouterplat", name="ajouterplat")
+     * @Route("doctor/ajouterplat", name="doctor_ajouterplat")
      */
     public function ajouterPlat(Request $request): Response
     {
@@ -50,7 +50,7 @@ class PlatController extends AbstractController
                 'notice',
                 'Your changes were saved!'
             );
-           return $this->redirectToRoute('afficherplat');
+           return $this->redirectToRoute('doctor_afficherplat');
         }
 
         return $this->render("back/plat/ajouterplat.html.twig",
@@ -59,7 +59,7 @@ class PlatController extends AbstractController
 
     /**
      * @param PlatRepository $repo
-     * @Route ("afficherplat",name="afficherplat")
+     * @Route ("doctor/afficherplat",name="doctor_afficherplat")
      */
     public function afficher(PlatRepository $repo,PaginatorInterface $paginator,Request $request)
     {
@@ -125,7 +125,7 @@ class PlatController extends AbstractController
     /**
      * @param PlatRepository $repo
      * @param $id
-     * @Route ("/supprimerplat/{id}",name="supprimerPlat")
+     * @Route ("doctor/supprimerplat/{id}",name="doctor_supprimerPlat")
      */
     function delete(PlatRepository $repo ,$id)
     {
@@ -133,12 +133,12 @@ class PlatController extends AbstractController
         $plat=$repo->find($id);
         $em->remove($plat);
         $em->flush();
-        return $this->redirectToRoute('afficherplat');
+        return $this->redirectToRoute('doctor_afficherplat');
     }
 
 
     /**
-     * @Route("/modifierPlat/{id}", name="modifierPlat")
+     * @Route("doctor/modifierPlat/{id}", name="doctor_modifierPlat")
      */
     public function modifierPlat(Request $request,PlatRepository $repo,$id): Response
     {
@@ -153,7 +153,7 @@ class PlatController extends AbstractController
             $em=$this->getDoctrine()->getManager();
             $em->flush();
 
-             return $this->redirectToRoute('afficherplat');
+             return $this->redirectToRoute('doctor_afficherplat');
         }
         return $this->render("back/plat/ajouterplat.html.twig",
             [  'form' => $form->createView()]);
@@ -163,7 +163,7 @@ class PlatController extends AbstractController
      * @param CompositionRepository $repoC
      * @param EtapeDePreparationRepository $repoE
      * @param PlatRepository $repop
-     * @Route ("afficherEtapeAliment/{id}",name="afficherEtapeAliment")
+     * @Route ("doctor/afficherEtapeAliment/{id}",name="doctor_afficherEtapeAliment")
      */
     public function afficherEtapeAliment(CompositionRepository $repoC,$id,EtapeDePreparationRepository $repoE,PlatRepository  $repop)
     {
@@ -188,7 +188,7 @@ class PlatController extends AbstractController
     public function Recherche(PlatRepository $repository,Request $request,PaginatorInterface $paginator)
     {
 
-        $name=$request->get('searchplat');
+        $name=$request->get('doctor_searchplat');
         $donnees=$repository->findplatbyname($name);
 
 

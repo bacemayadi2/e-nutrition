@@ -22,7 +22,7 @@ class AlimentController extends AbstractController
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     * @Route ("/ajouteraliment",name="ajouterAliment")
+     * @Route ("doctor/ajouteraliment",name="doctor_ajouterAliment")
      */
     public function ajoute(Request $request)
     {
@@ -49,7 +49,7 @@ class AlimentController extends AbstractController
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     * @Route ("modifieraliment/{id}",name="modifierAliment")
+     * @Route ("doctor/modifieraliment/{id}",name="doctor_modifierAliment")
      */
     public function modifier(Request $request,  $id,AlimentRepository $repoAliment)
     {
@@ -76,7 +76,7 @@ class AlimentController extends AbstractController
 
     /**
      * @param AlimentRepository $repo
-     * @Route ("afficherAliment",name="afficherAliment")
+     * @Route ("doctor/afficherAliment",name="doctor_afficherAliment")
      */
     public function afficher(AlimentRepository $repo,PaginatorInterface $paginator,Request $request)
     {
@@ -95,7 +95,7 @@ class AlimentController extends AbstractController
 
 
     /**
-     * @Route ("afficherAlimentfront",name="afficherAlimentfront")
+     * @Route ("/afficherAlimentfront",name="afficherAlimentfront")
      */
     public function afficherfront(AlimentRepository $repo)
     {
@@ -107,7 +107,7 @@ class AlimentController extends AbstractController
     /**
      * @param AlimentRepository $repo
      * @param $id
-     * @Route ("/supprimerAliment/{id}",name="supprimerAliment")
+     * @Route ("/doctor/supprimerAliment/{id}",name="doctor_supprimerAliment")
      */
     function delete(AlimentRepository $repo ,$id)
     {
@@ -116,39 +116,38 @@ class AlimentController extends AbstractController
         dump($aliment);
         $em->remove($aliment);
         $em->flush();
-        return $this->redirectToRoute('afficherAliment');
+        return $this->redirectToRoute('doctor_afficherAliment');
     }
     /**
      * @param AlimentRepository $repository
-     * @Route ("rechercheAliment",name="rechercheAliment")
+     * @Route ("/doctor/rechercheAliment",name="doctor_rechercheAliment")
      */
     public function Recherche(AlimentRepository $repository,Request $request,PaginatorInterface $paginator,NormalizerInterface $normalizer)
     {
 
-        $name=$request->get('recherchealiment');
-        $donnees=$repository->findalimentbyname($name);
 
-
-        $aliment=$paginator->paginate(
-            $donnees,
-            /* query NOT result */
-            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
-            7/*limit per page*/
-        );
-        return $this->render("back/aliment/afficherAliment.html.twig",
-            ["aliment"=>$aliment] );
-
-//        $repository = $this->getDoctrine()->getRepository(Aliment::class);
-//        $name=$request->get('recherchealiment');
-//        $donnees=$repository->findalimentbyname($name);
 //        $aliment=$paginator->paginate(
 //            $donnees,
 //            /* query NOT result */
 //            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
 //            7/*limit per page*/
 //        );
-//        $jsonContent = $normalizer->normalize($aliment, 'json',['groups'=>'$aliment']);
-//$retour=json_encode($jsonContent);
-//return new Response($retour);
+//        return $this->render("back/aliment/afficherAliment.html.twig",
+//            ["aliment"=>$aliment] );
+
+        $repository = $this->getDoctrine()->getRepository(Aliment::class);
+        $name=$request->get('searchValue');
+        $donnees=$repository->findalimentbyname($name);
+
+        $aliment=$repository->findalimentbyname($name);
+//        $aliment=$paginator->paginate(
+//            $donnees,
+//            /* query NOT result */
+//            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+//            7/*limit per page*/
+//        );
+        $jsonContent = $normalizer->normalize($aliment, 'json',['groups'=>'aliments']);
+        $retour =json_encode($jsonContent);
+    return new Response($retour);
     }
 }
