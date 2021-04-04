@@ -291,10 +291,14 @@
                 <ul class="menu-content">
                     <li><a class="menu-item" href="#" data-i18n="nav.page_layouts.3_columns.main">Afficher Utilisateurs</a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="{{ path('ajouterAliment') }}" data-i18n="nav.page_layouts.3_columns.left_sidebar">Nutritionniste</a>
-                            </li>
-                            <li><a class="menu-item" href="{{ path('afficherAliment') }}" data-i18n="nav.page_layouts.3_columns.left_sticky_sidebar">Patient</a>
-                            </li>
+                            <li><a class="menu-item" href="{{ path('admin_DisplayUsers') }}" data-i18n="nav.page_layouts.3_columns.left_sticky_sidebar">Afficher Tous</a></li>
+
+                            <li><a class="menu-item" href="{{ path('admin_DisplayDoctors') }}" data-i18n="nav.page_layouts.3_columns.left_sidebar">Nutritionnistes</a></li>
+
+                            <li><a class="menu-item" href="{{ path('admin_DisplayDoctors') }}" data-i18n="nav.page_layouts.3_columns.left_sticky_sidebar">Patients</a></li>
+
+                            <li><a class="menu-item" href="{{ path('admin_DisplaySecretaires') }}" data-i18n="nav.page_layouts.3_columns.left_sticky_sidebar">Secrétaires</a></li>
+
                             <li><a class="menu-item" href="#" data-i18n="nav.page_layouts.3_columns.main">categorie</a>
                                 <ul class="menu-content">
                                     <li><a class="menu-item" href="{{ path('ajouterCategorie') }}" data-i18n="nav.page_layouts.3_columns.left_sidebar">Secrétaires</a>
