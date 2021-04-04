@@ -2,11 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Challenge;
+use App\Entity\Nutritionniste;
+use App\Form\ChallengeType;
+use App\Form\NutritionnisteType;
+use App\Repository\ChallengeRepository;
 use App\Repository\NutritionnisteRepository;
 use App\Repository\PatientRepository;
 use App\Repository\SecretaireRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -130,5 +137,35 @@ class AdminController extends AbstractController
         $user->removeRoleAdmin();
 
         return $this->redirectToRoute('admin_DisplayUsers');
+    }
+
+    /**
+     * @Route("/DisplayChallenges", name="DisplayChallenges")
+     */
+    public function DisplayChallenges(ChallengeRepository $repo)
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, "You must be ADMIN to access to this page");
+        $challenges = $repo->findAll();
+        return $this->render("back/challenges/DisplayChallenges.html.twig",['challenges'=>$challenges]);
+    }
+
+    /**
+     * @Route("/CreateChallenge", name="CreateChallenge")
+     */
+    public function CreateChallenge(Request $request, ChallengeRepository $repo)
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, "You must be ADMIN to access to this page");
+
+        $challenge = new Challenge();
+        $form = $this->createForm(ChallengeType::class, $challenge);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($challenge);
+            $entityManager->flush();
+        }
+        return $this->render('back/challenges/createChallenge.html.twig', ['form'=>$form->createView()] );
     }
 }

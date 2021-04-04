@@ -22,7 +22,6 @@ class PatientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('typeCompte', ChoiceType::class, ['choices'  => ['Choisir votre type de compte'=> 0, 'Patient' => 'Patient', 'Nutritionniste' => 'Nutritionniste', 'Secrétaire' => 'Secrétaire']])
             ->add('email', EmailType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre adresse e-mail"]])
             ->add('agreeTerms', CheckboxType::class, [ 'mapped' => false,
                 'constraints' => [ new IsTrue([ 'message' => 'You should agree to our terms.', ]), ],])

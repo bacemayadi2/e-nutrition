@@ -37,6 +37,16 @@ class Challenge
      */
     private $participants = [];
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateDebut;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateFin;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +96,30 @@ class Challenge
     public function setParticipants(array $participants): self
     {
         $this->participants = $participants;
+
+        return $this;
+    }
+
+    public function getDateDebut(): ?\DateTimeInterface
+    {
+        return $this->dateDebut;
+    }
+
+    public function setDateDebut(\DateTimeInterface $dateDebut): self
+    {
+        $this->dateDebut = $dateDebut;
+
+        return $this;
+    }
+
+    public function getDateFin(): ?\DateTimeInterface
+    {
+        return $this->dateFin;
+    }
+
+    public function setDateFin(\DateTimeInterface $dateFin): self
+    {
+        $this->dateFin = $dateFin;
 
         return $this;
     }
