@@ -1,0 +1,124 @@
+{%  extends "front/baseforotherpage.html.twig" %}
+
+{% block Content2 %}
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+    <div class="rw-section rw-container">
+        <div class="rw-inner clearfix">
+
+
+                <!-- Main content -->
+                <div class="rw-column rw-content">
+
+                    <div class="rw-row page-title ">
+                        <h1>Gallerie</h1>
+                    </div>
+
+{#   {{ form_start(form) }}#}
+
+                    <div class="rw-row">
+
+                        <div class="recipes-filter clearfix">
+
+                            <ul id="fichier"
+                                data-prototype="{{ form_widget(form.tagUtilisateur.vars.prototype)|e }}"
+
+                                data-widget-tags="{{ '<li></li>'|e }}"
+                                data-widget-counter="{{ form.tagUtilisateur|length }}" >
+
+                            </ul>
+
+
+                            <button type="button"
+                                    class="btn btn-primary add-another-collection-widget"
+                                    data-list-selector="#fichier">multimedia +</button>
+                        <div class="recipes-list recipes-list-grid clearfix">
+
+
+
+                            {% for tag in users.tagUtilisateur %}
+                            <!-- Entry -->
+                            <div class="recipe-view-grid rvg-3-col">
+                                <div class="grid-in">
+
+                                    <div class="recipe-block">
+                                        <a href="https://gustos.w3.style/recipes/ham-salad-2/"><div class="entry-photo">
+                                                <img src="{{ asset( tag.getUrl() )}}" /></div></a><div class="entry-micro-signs"><span class="smk_theme_tooltip micro-sign video" title="This recipe contains 3 videos"><i class="fa fa-film"></i></span></div>		<div class="recipe-title">
+                                            <a href="https://gustos.w3.style/recipes/ham-salad-2/">Ham Salad</a>
+                                        </div>
+                                        <div class="recipe-controls">
+                                            <a data-post="187" data-settings="{&quot;tag&quot;:&quot;a&quot;,&quot;class&quot;:&quot;like-post&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Like&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;fa fa-thumbs-o-up\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Dislike&quot;,&quot;content_remove&quot;:&quot;&lt;i class=\&quot;fa fa-thumbs-up\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_format&quot;:&quot;%text% (%count%)&quot;,&quot;title_not_logged&quot;:&quot;Please log in to like this post&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:false,&quot;echo&quot;:true}" data-act="like" data-l="0" title="Please log in to like this post" href="#" class="smk-mark-button like-post"><i class="fa fa-thumbs-o-up"></i></a><a data-post="187" data-settings="{&quot;tag&quot;:&quot;a&quot;,&quot;class&quot;:&quot;favorite-post&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Add to favorites&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;fa fa-heart-o\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Remove from favorites&quot;,&quot;content_remove&quot;:&quot;&lt;i class=\&quot;fa fa-heart\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_format&quot;:&quot;%text% (%count%)&quot;,&quot;title_not_logged&quot;:&quot;Please log in to add this post to favorites&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:false,&quot;echo&quot;:true}" data-act="favorite" data-l="0" title="Please log in to add this post to favorites" href="#" class="smk-mark-button favorite-post"><i class="fa fa-heart-o"></i></a>		</div>
+
+                                    </div>
+
+                                </div> <!-- .grid-in -->
+                            </div> <!-- .entry -->
+
+                            {% endfor %}
+
+                            <form name="form" method="get" >
+                                <input type="submit" name="btn_ajouter" value="Ajouter">
+                            </form>
+
+{#                      {{ form_row(form.Ajouter) }} #}
+
+
+                            <div class="clear-grid"></div>
+
+                        </div> <!-- .recipes-list -->
+                        <div class="recipes-pagination">
+                            <div class="button-block center "><span class="button primary current small">1</span><a class="button nobg primary small" href="/recipes/?view=grid&#038;pag=2">2</a><a class="button nobg primary small" href="/recipes/?view=grid&#038;pag=3">3</a></div></div>
+                    </div> <!-- .rw-row -->
+
+{#             {{ form_end(form) }} #}
+
+                </div>
+                </div>
+
+        </div> <!-- .rw-inner -->
+    </div> <!-- .rw-container -->
+
+        <script>
+            jQuery(document).ready(function () {
+                jQuery('.add-another-collection-widget').click(function (e) {
+                    var list = jQuery(jQuery(this).attr('data-list-selector'));
+                    // Try to find the counter of the list or use the length of the list
+                    var counter = list.data('widget-counter') || list.children().length;
+
+                    // grab the prototype template
+                    var newWidget = list.attr('data-prototype');
+                    // replace the "__name__" used in the id and name of the prototype
+                    // with a number that's unique to your emails
+                    // end name attribute looks like name="contact[emails][2]"
+                    newWidget = newWidget.replace(/__name__/g, counter);
+                    // Increase the counter
+                    counter++;
+                    // And store it, the length cannot be used if deleting widgets is allowed
+                    list.data('widget-counter', counter);
+
+                    // create a new list element and add it to the list
+                    var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
+                    newElem.appendTo(list);
+
+
+                    addTagFormDeleteLink($(newElem));
+                    /*! selectize.js - v0.12.6 | https://github.com/selectize/selectize.js | Apache License (v2) */
+
+                    $('select').selectize();
+
+                });
+
+            });
+
+            function addTagFormDeleteLink($tagFormLi) {
+                var $removeFormButton = $('<button type="button" class="btn btn-danger">enlever</button>');
+                $tagFormLi.append($removeFormButton);
+
+                $removeFormButton.on('click', function(e) {
+                    // remove the li for the tag form
+                    $tagFormLi.remove();
+                });
+            }
+        </script>
+
+{% endblock %}

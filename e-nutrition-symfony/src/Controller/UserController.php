@@ -6,6 +6,7 @@ use App\Entity\Evaluation;
 use App\Entity\Nutritionniste;
 use App\Entity\Patient;
 use App\Entity\Student;
+use App\Entity\Utilisateur;
 use App\Form\EvaluationType;
 use App\Form\NutritionnisteType;
 use App\Form\PatientType;
@@ -14,65 +15,27 @@ use App\Form\UserType;
 use App\Repository\EvaluationRepository;
 use App\Repository\NutritionnisteRepository;
 use App\Repository\PatientRepository;
+use App\Repository\SecretaireRepository;
 use App\Repository\StudentRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class UserController extends AbstractController
 {
-    /**
-     * @Route("/user", name="user")
-     */
-    public function index(): Response
-    {
-        return $this->render('Back/users/createUser.html.twig', ['controller_name' => 'UserController',]);
-    }
-
     /**
      * @Route("/profileUser", name="profileUser")
      */
     public function profileUser(): Response
     {
         return $this->render('front/users/profileUser.html.twig', ['controller_name' => 'UserController',]);
-    }
-
-    /**
-     * @Route("/admin/DisplayUsers", name="DisplayUsers")
-     */
-    public function DisplayUsers(UserRepository $repo)
-    {
-        $users = $repo->findAll();
-        return $this->render("back/users/DisplayUsers.html.twig",['users'=>$users]);
-    }
-
-    /**
-     * @Route("CreateUser", name="CreateUser")
-     */
-    function CreateUser(Request $request)
-    {
-        $choice = $request->get('typeCompte');
-        $user = new Nutritionniste();
-
-        $form = $this->createForm(NutritionnisteType::class, $user);
-//        $form = $this->createForm(UserType::class, $user);
-        $form->add("Ajouter", SubmitType::class);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid())
-        {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-            return $this->redirectToRoute('CreateUser');
-        }
-        return $this->render('front/users/createUser.html.twig', ['form'=>$form->createView()]);
     }
 
     /**
@@ -98,36 +61,30 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/admin/DeleteUser/{id}", name="DeleteUser")
-     */
-    function DeleteUser(UserRepository  $repo, $id)
-    {
-        $user = $repo->find($id);
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($user);
-        $em->flush();
-        return $this->redirectToRoute('DisplayUsers');
-    }
+    * @Route("/searchAjax ", name="searchAjax")
+    */
+    public function searchAjax(Request $request, NormalizerInterface $Normalizer)
+     {
+         $repository = $this -> getDoctrine() -> getRepository(Nutritionniste::class);
+
+         $requestString = $request -> get('search');
+
+         $doctors = $repository -> findByName($requestString);
+
+         $jsonContent = $Normalizer->normalize($doctors, 'json',['groups'=>'doctors']);
+
+         $retour=json_encode($jsonContent);
+
+         return new Response($retour);
+     }
 
     /**
      * @Route("/SearchDoctor", name="SearchDoctor")
      */
-    function SearchDoctor(Request $request, UserRepository $repo)
+    function SearchDoctor()
     {
-        $searchBy = $request->get('searchChoice');
-        $input = $request->get('search'); // $input = $_POST['search']
-        $users = 0;
-        switch ($searchBy)
-        {
-            case "nom": $users = $repo->findBy(['typeCompte' => $input]); break;
-            case "prenom": $users = $repo->findBy(['prenom' => $input]); break;
-            case "nom et prenom":  $users = $repo->findBy(['nom' => $input]); break;
-            case "ville": $users = $repo->findBy(['ville' => $input]); break;
-            default: echo "error !!!";
-        }
-        return $this->render('front/users/SearchDoctor.html.twig', ['users'=>$users]);
+        return $this->render('front/users/SearchDoctor.html.twig');
     }
-
 
     /**
      * @Route("/profileMedecin/{id}", name="profileMedecin")
@@ -152,14 +109,30 @@ class UserController extends AbstractController
             $em->persist($evaluation);
             $em->flush();
 
-            return $this->redirectToRoute('profileMedecin', array(
-                'id' => $id));
+            return $this->redirectToRoute('profileMedecin', array('id' => $id));
         }
         $medecin=$repo->findBy(['id' => $id]);
         $avg=$evRep->Average($medecin);
         return $this->render('front/users/profilMedecin.html.twig', ['medecin' => $medecin,'form'=>$form->createView(),'avg'=>$avg]);
-
     }
 
+    /**
+     * @Route("/gallery/{id}", name="gallery")
+     */
+    public function Gallery(Request $request, UserRepository $repo, $id)
+    {
+        $users = $repo->find($id);
 
+        $form = $this->createForm(UserType::class, $users);
+        $form->add("Ajouter", SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+        }
+        return $this->render("front/users/gallery.html.twig", ['users'=>$users, 'form'=>$form->createView()]);
+    }
 }

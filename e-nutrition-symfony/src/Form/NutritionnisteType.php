@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Nutritionniste;
+use App\Entity\Secretaire;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -44,13 +46,23 @@ class NutritionnisteType extends AbstractType
 
             ->add('adresse', TextType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre adresse"]])
 
-            ->add('secretaire',CollectionType::class,[
-                'entry_type' => SecretaireType::class,
-                'allow_add' => true,
-                'entry_options' => ['label' => false],
-                'allow_delete' => true,
-                'by_reference' => false,
-                'block_name' => 'etape' ])
+//            ->add('secretaire',CollectionType::class,[
+//                'entry_type' => SecretaireType::class,
+//                'allow_add' => true,
+//                'entry_options' => ['label' => false],
+//                'allow_delete' => true,
+//                'by_reference' => false],
+//
+//            )
+            ->add('secretaire' )
+
+//            ->add('secretaire', EntityType::class,
+//            ['class'=>Secretaire::class,
+//                'choice_label'=> 'nom',
+//                'by_reference' => false,
+//                'mapped' => false,
+//
+//            ])
 
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,

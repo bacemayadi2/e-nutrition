@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Nutritionniste extends Utilisateur
 {
     /**
-     * @ORM\OneToMany(targetEntity=Secretaire::class, mappedBy="nutritionniste")
+     * @ORM\OneToMany(targetEntity=Secretaire::class, mappedBy="nutritionniste", cascade={"persist"})
      */
     private $secretaire;
 
@@ -120,8 +120,10 @@ class Nutritionniste extends Utilisateur
                 $evaluation->setNutritionniste(null);
             }
         }
-
         return $this;
     }
+
+
+
 
 }

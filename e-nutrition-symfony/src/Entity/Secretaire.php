@@ -29,6 +29,6 @@ class Secretaire extends Utilisateur
 
     public function __toString() {
         // to show the name of the Category in the select
-        return $this->getNom() + $this->getPrenom() ;
+        return $this->getNom() . $this->getPrenom() ;
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -20,76 +22,86 @@ class Utilisateur implements UserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Saisir votre nom svp !!!")
      */
-    private $nom;
+    protected $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Saisir votre prénom svp !!!")
      */
-    private $prenom;
+    protected $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Choisir votre sexe svp !!!")
      */
-    private $sexe;
+    protected $sexe;
 
     /**
      * @ORM\Column(type="date")
      * @Assert\NotBlank(message="Saisir votre date de naissance svp !!!")
      */
-    private $dateNaiss;
+    protected $dateNaiss;
 
     /**
      * @ORM\Column(type="string", length=30)
      * @Assert\NotBlank(message="E-mail is required")
      * @Assert\Email(message="Saisir votre E-mail svp !!!")
      */
-    private $email;
+    protected $email;
 
     /**
      * @ORM\Column(type="string", length=20)
      * @Assert\NotBlank(message="Saisir votre numéro de téléphone svp !!!")
      */
-    private $tel;
+    protected $tel;
 
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private $typeCompte;
+    protected $typeCompte;
 
     /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank(message="Saisir votre ville svp !!!")
      */
-    private $ville;
+    protected $ville;
 
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank(message="Saisir votre adresse svp !!!")
      */
-    private $adresse;
+    protected $adresse;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $password;
+    protected $password;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isVerified = false;
+    protected $isVerified = false;
 
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    protected $roles = [];
+
+    /**
+     * @ORM\OneToMany(targetEntity=TagUtilisateur::class, mappedBy="utilisateur", cascade={"all"},orphanRemoval=true)
+     */
+    protected $tagUtilisateur;
+
+    public function __construct()
+    {
+        $this->tagUtilisateur = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -204,6 +216,11 @@ class Utilisateur implements UserInterface
         return $this;
     }
 
+    public function addRole(Utilisateur $user, String $role): self
+    {
+        array_push($user->roles, $role);
+    }
+
 //______________________________________________________________________________________________________________________
 
     public function getRoles(): array
@@ -256,6 +273,51 @@ class Utilisateur implements UserInterface
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function removeRoleAdmin(): self
+    {
+        foreach ($this->roles as $role)
+        {
+            if ($role == 'ROLE_ADMIN')
+            {
+                unset($role);
+            }
+        }
+
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection|TagUtilisateur[]
+     */
+    public function getTagUtilisateur(): Collection
+    {
+        return $this->tagUtilisateur;
+    }
+
+    public function addTagUtilisateur(TagUtilisateur $tagUtilisateur): self
+    {
+        if (!$this->tagUtilisateur->contains($tagUtilisateur)) {
+            $this->tagUtilisateur[] = $tagUtilisateur;
+            $tagUtilisateur->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTagUtilisateur(TagUtilisateur $tagUtilisateur): self
+    {
+        if ($this->tagUtilisateur->removeElement($tagUtilisateur)) {
+            // set the owning side to null (unless already changed)
+            if ($tagUtilisateur->getUtilisateur() === $this) {
+                $tagUtilisateur->setUtilisateur(null);
+            }
+        }
 
         return $this;
     }

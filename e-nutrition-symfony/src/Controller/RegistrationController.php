@@ -35,8 +35,21 @@ class RegistrationController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            // encode the plain password
+        $user->setRoles(["ROLE_DOCTOR", "ROLE_SECRETAIRE", "ROLE_PATIENT"]);
+//        foreach ($user->getSecretaire() as $secretaire )
+//        {
+//            $secretaire->setNutritionniste($user);
+//            $user->removeSecretaire($secretaire);
+//
+//        } for modifier
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            foreach ($user->getSecretaire() as $secretaire )
+            {
+                $secretaire->setNutritionniste($user);
+
+            }            // encode the plain password
             $user->setPassword( $passwordEncoder->encodePassword( $user, $form->get('plainPassword')->getData()));
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -51,7 +64,9 @@ class RegistrationController extends AbstractController
                 'main' // firewall name in security.yaml
             );
         }
+
         return $this->render('registration/registerDoctor.html.twig', ['registrationForm'=>$form->createView()] );
+
     }
 
 
@@ -66,6 +81,8 @@ class RegistrationController extends AbstractController
         $form->add("Ajouter", SubmitType::class);
 
         $form->handleRequest($request);
+
+        $user->setRoles(["ROLE_PATIENT"]);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -86,8 +103,6 @@ class RegistrationController extends AbstractController
         return $this->render('registration/registerPatient.html.twig', ['registrationForm'=>$form->createView()] );
     }
 
-
-
     /**
      * @Route("/registerSecretaire", name="app_register_secretaire")
      */
@@ -99,8 +114,11 @@ class RegistrationController extends AbstractController
 
         $form->handleRequest($request);
 
+        $user->setRoles(["ROLE_SECRETAIRE", "ROLE_PATIENT"]);
+
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
+
             $user->setPassword( $passwordEncoder->encodePassword( $user, $form->get('plainPassword')->getData()));
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -117,11 +135,6 @@ class RegistrationController extends AbstractController
         }
         return $this->render('registration/registerSecretaire.html.twig', ['registrationForm'=>$form->createView()] );
     }
-
-
-
-
-
 
     /**
      * @Route("/register", name="register")

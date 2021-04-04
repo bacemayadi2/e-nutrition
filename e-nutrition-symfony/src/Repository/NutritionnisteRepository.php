@@ -19,6 +19,16 @@ class NutritionnisteRepository extends ServiceEntityRepository
         parent::__construct($registry, Nutritionniste::class);
     }
 
+
+    public function findByName($nom)
+    {
+        return $this->createQueryBuilder('user')
+            ->where('user.nom LIKE :nom')
+            ->setParameter('nom', '%'.$nom.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Nutritionniste[] Returns an array of Nutritionniste objects
     //  */

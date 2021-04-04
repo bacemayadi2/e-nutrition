@@ -2,7 +2,7 @@
 {% block Content %}
 
     <br>
-    <h1 align="center">Liste des utilisateurs</h1>
+    <h1 align="center">Liste des Patients</h1>
     <br>
 
     <div class="app-content content">
@@ -34,30 +34,38 @@
                     <thead class="bg-primary white">
                         <tr>
                             <th>Id</th>
-                            <th>Type Compte</th>
+                            <th>E-Mail</th>
                             <th>Nom</th>
                             <th>Prenom</th>
+                            <th>Ville</th>
                             <th>Sexe</th>
                             <th>Date Naissance</th>
-                            <th>E-Mail</th>
                             <th>Numéro de téléphone</th>
                             <th>Roles</th>
+                            <th colspan="3" style="text-align: center">Gestion</th>
                         </tr>
                     </thead>
                     <tr {% for u in users %}>
                         <td>{{ u.id }}</td>
-                        <td>{{ u.typeCompte }}</td>
+                        <td>{{ u.email }}</td>
                         <td>{{ u.nom }}</td>
                         <td>{{ u.prenom }}</td>
+                        <td>{{ u.ville }}</td>
                         <td>{{ u.sexe }}</td>
                         <td>{{ u.dateNaiss|date('d-m-Y') }}</td>
-                        <td>{{ u.email }}</td>
+
                         <td>{{ u.tel }}</td>
-                        <td {% for role in u.roles %}>
-                            {{ role }}
-                        </td {% endfor %}>
+                        <td>
+                            {% for role in u.roles %}
+                                {{ role }}
+                            {% endfor %}
+                        </td>
                         <td><div class="btn-group"> <a href="{{ path('UpdateUser', {'id':u.id}) }}" ><button type="button" class="btn btn-primary">Modifier</button> </a></div></td>
-                        <td><div class="btn-group"> <a href="{{ path('DeleteUser', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Supprimer</button></a></div></td>
+                        <td><div class="btn-group"> <a href="{{ path('admin_DeleteUser', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Supprimer</button></a></div></td>
+                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                            <td><div class="btn-group"> <a href="{{ path('admin_PromoteToAdmin', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Promote to admin</button></a></div></td>
+                            <td><div class="btn-group"> <a href="{{ path('admin_RemoveRoleAdmin', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Remove Admin Role</button></a></div></td>
+                        {% endif %}
                     </tr {% endfor %}>
                 </table>
             </div>
