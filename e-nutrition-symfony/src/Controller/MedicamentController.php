@@ -42,7 +42,7 @@ class MedicamentController extends AbstractController
             $donnee,
             /* query NOT result */
             $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
-            7 /*limit per page*/
+            1 /*limit per page*/
         );
         $fiche=$repoFiche->find($id);
 

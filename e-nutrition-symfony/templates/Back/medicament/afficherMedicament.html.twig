@@ -44,14 +44,13 @@
 
                                             <td> <a href="{{ path('deleteM',{'id':m.id}) }}">Delete</a></td>
 
-
+                                            {{ knp_pagination_render(medicament) }}
                                         </tr {% endfor %}>
-
-
                                         </tbody>
-
                                     </table>
-
+                                    <div style="text-align: left;">
+                                        <a href="{{  path('listeMedicament',{'id':fiche.getId()}) }}">  <button type="button" class="btn btn-success">imprimer</button></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -35,39 +35,39 @@
                                 <th>nom du patient</th>
                                 <th>nom du nutritionniste</th>
                                 <th>Date de création </th>
-                                <th>Poids(m)</th>
-                                <th>Taille</th>
+                                <th>Poids(kg)</th>
+                                <th>Taille(m)</th>
                                 <th>Description</th>
                                 <th>Symptomes</th>
                                 <th>Appétit</th>
                                 <th> Imc(kg/m)</th>
-                                <th> nbr</th>
+                                <th>nombre fiches</th>
                             </tr>
                             </thead>
                             <tbody  id="myTable">
 
 
                             </tbody>
-                            <tbody>
-                            <tr {% for f in ficheConsultation %} >
+{#                            <tbody>#}
+{#                            <tr {% for f in ficheConsultation %} >#}
 
-                                <td> {{ f.patient.nom }}</td>
-                                <td> {{ f.nutritionniste.nom }}</td>
-                                <td> {{ f.CreationDate|date('y-m-d')}} </td>
-                                <td>{{ f.poids }}</td>
-                                <td>{{ f.taille }}</td>
-                                <td>{{ f.description }}</td>
-                                <td>{{ f.symptome }}</td>
-                                <td>{{ f.apetit }}</td>
-                                <td>{{ f.calculerImc }}</td>
-                                <td>{{ f.getnbrOFTimeUsed }}</td>
+{#                                <td> {{ f.patient.nom }}</td>#}
+{#                                <td> {{ f.nutritionniste.nom }}</td>#}
+{#                                <td> {{ f.CreationDate|date('y-m-d')}} </td>#}
+{#                                <td>{{ f.poids }}</td>#}
+{#                                <td>{{ f.taille }}</td>#}
+{#                                <td>{{ f.description }}</td>#}
+{#                                <td>{{ f.symptome }}</td>#}
+{#                                <td>{{ f.apetit }}</td>#}
+{#                                <td>{{ f.calculerImc }}</td>#}
+{#                                <td>{{ f.getnbrOFTimeUsed }}</td>#}
 
-                                <td> <a href="{{ path('afficherMedicament',{'id':f.id}) }}">Voir medicament</a></td>
-                                <td> <a href="{{ path('deleteF',{'id':f.id}) }}">Delete</a></td>
-                                <td> <a href="{{ path('updateF',{'id':f.id}) }}">Modifier</a></td>
-                          </tr {% endfor %}
-                                  {{ knp_pagination_render(ficheConsultation) }}>
-                            </tbody>
+{#                                <td> <a href="{{ path('afficherMedicament',{'id':f.id}) }}">Voir medicament</a></td>#}
+{#                                <td> <a href="{{ path('deleteF',{'id':f.id}) }}">Delete</a></td>#}
+{#                                <td> <a href="{{ path('updateF',{'id':f.id}) }}">Modifier</a></td>#}
+{#                          </tr {% endfor %}#}
+{#                                  {{ knp_pagination_render(ficheConsultation) }}>#}
+{#                            </tbody>#}
 
                             </table>
                         </div>
@@ -120,12 +120,18 @@
                                                     '<td>'+value[3]+'</td>'+
                                                     '<td>'+value[4]+'</td>'+
                                                     '<td>'+value[5]+'</td>'+
-                                                    '<td><a href="afficherMedicament/'+id+'">Voir medicament</a></td><tr>'
-
+                                                    '<td>'+value[6]+'</td>'+
+                                                    '<td>'+value[7]+'</td>'+
+                                                    '<td>'+value[8]+'</td>'+
+                                                    '<td>'+value[9]+'</td>'+
+                                                    '<td><a href="afficherMedicament/'+id+'">Voir medicament</a></td>'+
+                                                    '<td><a href="deleteF/'+id+'">delete</a></td>'+
+                                                    '<td><a href="updateF/'+id+'">modifier</a></td><tr>'
                                                 );
                                             } else {
                                                 entitySelector.append('<div class="errorLi">'+value+'</div>');
                                             }
+
                                         }
                                     });
                                 });
@@ -170,12 +176,20 @@
                                                 '<td>'+value[3]+'</td>'+
                                                 '<td>'+value[4]+'</td>'+
                                                 '<td>'+value[5]+'</td>'+
-                                                '<td><a href="afficherMedicament/'+id+'">Voir medicament</a></td><tr>'
+                                                '<td>'+value[6]+'</td>'+
+                                                '<td>'+value[7]+'</td>'+
+                                                '<td>'+value[8]+'</td>'+
+                                                '<td>'+value[9]+'</td>'+
+                                                '<td><a href="afficherMedicament/'+id+'">Voir medicament</a></td>'+
+                                                '<td><a href="deleteF/'+id+'">delete</a></td>'+
+                                                '<td><a href="updateF/'+id+'">modifier</a></td><tr>'
 
                                             );
+
                                         } else {
                                             entitySelector.append('<div class="errorLi">'+value+'</div>');
                                         }
+
                                     }
                                 });
                             });

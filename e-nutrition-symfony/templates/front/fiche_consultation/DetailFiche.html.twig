@@ -3,7 +3,7 @@
 {% block Content %}
 
 
-<main class="page-content">
+<main class="page-content" xmlns="http://www.w3.org/1999/html">
     <div id="fb-root"></div>
     <!-- Blog Post-->
     <section class="section-95 text-left">
@@ -14,126 +14,24 @@
                     <p class="post-classic-title text-big font-weight-bold text-uppercase text-spacing-100 offset-top-20 text-primary">Fiche Consultation</p>
                     <!-- List Inline-->
                     <ul class="list-inline list-inline-22 list-inline-dashed-vertical font-weight-bold p">
-                        {% for m in medicament %}
-                        <li><span class="icon icon-xs material-icons-ico material-icons-event text-middle text-gray"></span>{{m.fiche.getCreationDate|date('d-m-Y')}}
-                        <li><span class="icon icon-xs material-icons-ico material-icons-person text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">By:</span><br class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="my-philosophy.html">{{ m.fiche.nutritionniste.nom }}{ m.fiche.nutritionniste.prenom }}</a></li>
-                        <li><span class="icon icon-xs material-icons-ico material-icons-question_answer text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">Comments:</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="#">3</a></li>
+
+                        <li><span class="icon icon-xs material-icons-ico material-icons-event text-middle text-gray"></span>{{fiche.getCreationDate|date('d-m-Y')}}
+                        <li><span class="icon icon-xs material-icons-ico material-icons-person text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">By:{{fiche.nutritionniste.nom }}&nbsp;{{ fiche.nutritionniste.prenom }}</span></li>
+                        <li><span class="icon icon-xs material-icons-ico material-icons-question_answer text-middle text-gray"></span><span class="text-regular inset-left-4 text-gray text-middle">Description</span><a class="text-middle link-decoration-none text-hover-primary text-gray-light inset-left-4" href="#"></a></li>
+
                     </ul>
-                    <p class="offset-top-20">Consuming too much energy – whether from fat or carbohydrates, including sugar – will make you gain weight. If left unchecked, this excess weight increases your risk of lifestyle-related diseases such as diabetes, heart disease and some cancers.</p>
-                    <p class="inset-xl-right-20">In recognition of this, the World Health Organisation (WHO) recommends adults and children limit their intake of “free sugars” to less than 10% of their total energy intake. Below 5% is even better and carries additional health benefits.</p><img class="img-responsive center-block offset-top-34" src="images/pages/blog-post-01-770x480.jpg" width="770" height="480" alt="">
-                    <p class="offset-top-20 offset-md-top-34">Free sugars refer to monosaccharides (such as glucose) and disaccharides (sucrose or table sugar) added to foods and drinks by the manufacturer, cook or consumer. It also refers to sugars naturally present in honey, syrups, fruit juices and fruit juice concentrates. Free sugars are different from sugars found in whole fresh fruits and vegetables. There is no scientific evidence that consuming these sugars leads to health problems. So the guidelines don’t apply to fresh fruit and vegetables.If you’re an average-sized adult eating and drinking enough to maintain a healthy body weight (roughly 8,700 kilojoules per day), 10% of your total energy intake from free sugar roughly translates to no more than 54 grams, or around 12 teaspoons, per day.</p>
-                    <div class="text-center text-sm-left offset-top-20">
-                        <div class="pull-xs-left">
-                            <p class="text-big font-weight-bold text-gray">Share this post:</p>
-                        </div>
-                        <div class="pull-xs-right offset-top-10 offset-xs-top-0">
-                            <ul class="list-inline list-inline-0">
-                                <li class="text-center"><a class="icon icon-xxs icon-circle icon-gray-lighter fa fa-tumblr-square" href="#"></a></li>
-                                <li class="text-center"><a class="icon icon-xxs icon-circle icon-gray-lighter fa fa-pinterest-p" href="#"></a></li>
-                                <li class="text-center"><a class="icon icon-xxs icon-circle icon-gray-lighter fa fa-soundcloud" href="#"></a></li>
-                                <li class="text-center"><a class="icon icon-xxs icon-circle icon-gray-lighter fa fa-vimeo-square" href="#"></a></li>
-                            </ul>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="offset-top-60 offset-md-top-100">
-                        <h2 class="text-center">3 comments</h2>
-                        <!-- Box Comment-->
-                        <div class="unit align-items-sm-center align-items-xl-start unit-xs flex-sm-row unit-spacing-md box-comment offset-top-34">
-                            <div class="unit-left">
-                                <div class="offset-lg-top-13"><img class="rounded-circle img-responsive center-block" src="images/users/user-rita-jefferson-70x71.jpg" width="70" height="71" alt=""></div>
-                            </div>
-                            <div class="unit-body">
-                                <div class="box-comment-body">
-                                    <div class="box-comment-body-top">
-                                        <div class="pull-sm-left">
-                                            <!-- List Inline-->
-                                            <ul class="list-inline">
-                                                <li class="p font-weight-bold"><a class="link-decoration-none text-hover-primary text-gray" href="my-philosophy.html">Rita Jefferson</a></li>
-                                                <li><span class="icon icon-xxs material-icons-ico material-icons-thumb_up text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Like</a></li>
-                                                <li><span class="icon icon-xxs material-icons-ico material-icons-chat_bubble text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Reply</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="pull-sm-right">
-                                            <p><span class="inset-right-7 text-middle">Feb 16, 7:42 PM</span><span class="icon icon-xxs material-icons-ico material-icons-access_time text-gray-light text-middle"></span></p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="box-comment-body-bottom offset-top-20">
-                                        <p>The topic you describe here is really important. However, there are dozens of ways which you can use to make profitable investments.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Box Comment-->
-                        <div class="unit align-items-sm-center align-items-xl-start unit-xs flex-sm-row unit-spacing-md box-comment offset-top-30 inset-sm-left-25 inset-xl-left-104">
-                            <div class="unit-left">
-                                <div class="offset-lg-top-13"><img class="rounded-circle img-responsive center-block" src="images/users/user-john-doe-70x71.jpg" width="70" height="71" alt=""></div>
-                            </div>
-                            <div class="unit-body">
-                                <div class="box-comment-body">
-                                    <div class="box-comment-body-top">
-                                        <div class="pull-sm-left">
-                                            <!-- List Inline-->
-                                            <ul class="list-inline">
-                                                <li class="p font-weight-bold"><a class="link-decoration-none text-hover-primary text-gray" href="my-philosophy.html">John Doe</a></li>
-                                                <li><span class="icon icon-xxs material-icons-ico material-icons-thumb_up text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Like</a></li>
-                                                <li><span class="icon icon-xxs material-icons-ico material-icons-chat_bubble text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Reply</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="pull-sm-right">
-                                            <p><span class="inset-right-7 text-middle">Feb 16, 7:42 PM</span><span class="icon icon-xxs material-icons-ico material-icons-access_time text-gray-light text-middle"></span></p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="box-comment-body-bottom offset-top-20">
-                                        <p>You are absolutely right! But at TopInvest, we have everything necessary to manage investments of any kind.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Box Comment-->
-                        <div class="unit align-items-sm-center align-items-xl-start unit-xs flex-sm-row unit-spacing-md box-comment offset-top-30">
-                            <div class="unit-left">
-                                <div class="offset-lg-top-13"><img class="rounded-circle img-responsive center-block" src="images/users/user-mila-moa-70x71.jpg" width="70" height="71" alt=""></div>
-                            </div>
-                            <div class="unit-body">
-                                <div class="box-comment-body">
-                                    <div class="box-comment-body-top">
-                                        <div class="pull-sm-left">
-                                            <!-- List Inline-->
-                                            <ul class="list-inline">
-                                                <li class="p font-weight-bold"><a class="link-decoration-none text-hover-primary text-gray" href="my-philosophy.html">Mila Moa</a></li>
-                                                <li><span class="icon icon-xxs material-icons-ico material-icons-thumb_up text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Like</a></li>
-                                                <li><span class="icon icon-xxs material-icons-ico material-icons-chat_bubble text-primary text-middle"></span><a class="link-decoration-none text-hover-primary text-gray-light inset-left-7 text-middle" href="#">Reply</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="pull-sm-right">
-                                            <p><span class="inset-right-7 text-middle">Feb 16, 7:42 PM</span><span class="icon icon-xxs material-icons-ico material-icons-access_time text-gray-light text-middle"></span></p>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="box-comment-body-bottom offset-top-20">
-                                        <p>Very useful post! Thanks for sharing! Now I’ll be planning my visit to your investment management company to receive a consultation on planned giving.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="offset-top-60 offset-md-top-100">
-                        <h2 class="text-center">Leave a comment</h2>
-                    </div>
-                    <div class="offset-top-20">
-                        <form class="rd-mailform text-left">
-                            <div class="form-wrap">
-                                <label class="form-label" for="blog-post-message">Message</label>
-                                <textarea class="form-input" id="blog-post-message" name="message"></textarea>
-                            </div>
-                            <div class="text-center text-md-right offset-top-13">
-                                <button class="btn btn-primary" type="submit">Send a message</button>
-                            </div>
-                        </form>
-                    </div>
+
+                    <p class="offset-top-20"> {{ fiche.Description }}</p>
+                    <p class="offset-top-20">Votre poids : {{ fiche.poids }} kg</p>
+                    <p class="offset-top-20">Votre taille :{{ fiche.taille }} mètres</p>
+                    <p class="offset-top-20">Votre Imc :{{ fiche.calculerImc }}</p>
+                    <p class="offset-top-20">Symptomes : {{ fiche.symptome  }}</p>
+                    <p class="offset-top-20">Apetit : {{ fiche.apetit  }}</p>
+
+                    <p class="post-classic-title text-big font-weight-bold text-uppercase text-spacing-100 offset-top-20 text-primary">lES MEDICAMENTS</p>
+                    {% for m in medicament %}
+                    <p class="offset-top-0">-{{ m.nom }} &nbsp; {{ m.quantite }} &nbsp;  pendant {{ m.duree }}</p><img class="img-responsive center-block offset-top-34">
+                    {% endfor %}
                 </div>
                 <div class="col-md-10 col-lg-4 offset-top-90 offset-md-top-0">
                     <!-- Aside-->
@@ -146,72 +44,22 @@
                             </div>
                             <button class="form-search-submit" type="submit"><span class="icon icon-xs fa fa-search text-gray"></span></button>
                         </form>
-                        <div class="offset-top-34 offset-md-top-50">
-                            <h3>About</h3>
-                            <p class="offset-top-13">I am a Certified Health Coach, focused on women's health, bringing you super-practical support to help you feel great, take care of your body, and actually enjoy the process. I don’t tell my clients what to do, I teach them what to do.</p><a class="btn btn-primary offset-top-20" href="work-with-me.html">Read more</a>
-                        </div>
-                        <div class="offset-top-34 offset-md-top-50">
-                            <h3>Categories</h3>
-                            <!-- List Marked-->
+                        <br class="offset-top-34 offset-md-top-50">
+                            <h3>Quelques conseils</h3>
+                            <p class="offset-top-13">Pour bien manger, ces quelques conseils peuvent vous aider à ne pas commettre d'erreur :</br></br>
 
-                            <ul class="list list-marked font-weight-bold offset-top-13">
-                                <li><a class="link-decoration-none" href="#">{{ m.nom }}{{ m.quantite }}{{ m.duree }}{{ m.fiche.id }}</a></li>
-                            </ul>
-                            {% endfor %}
-                        </div>
-                        <div class="offset-top-34 offset-md-top-50">
-                            <h3>Popular posts</h3>
-                            <!-- Unit-->
-                            <div class="unit align-items-center flex-row unit-spacing-sm offset-top-13">
-                                <div class="unit-left"><a class="thumbnail-classic" href="blog-post.html"><span class="thumbnail-classic-img-wrap"><img class="img-responsive center-block" src="images/blog/post-10-80x80.jpg" width="80" height="80" alt=""></span></a></div>
-                                <div class="unit-body">
-                                    <p class="font-weight-bold"><a class="link-decoration-none text-hover-primary text-gray" href="blog-post.html">5 Simple smoothie recipes + free challenge</a></p>
-                                    <!-- List Inline-->
-                                    <ul class="list-inline list-inline-dashed">
-                                        <li>January 16, 2018</li>
-                                        <li class="p"><a class="link-decoration-none text-hover-primary text-gray-light" href="#">1 Comment</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Unit-->
-                            <div class="unit align-items-center flex-row unit-spacing-sm offset-top-30">
-                                <div class="unit-left"><a class="thumbnail-classic" href="blog-post.html"><span class="thumbnail-classic-img-wrap"><img class="img-responsive center-block" src="images/blog/post-11-80x80.jpg" width="80" height="80" alt=""></span></a></div>
-                                <div class="unit-body">
-                                    <p class="font-weight-bold"><a class="link-decoration-none text-hover-primary text-gray" href="blog-post.html">How does natural food affect your mood?</a></p>
-                                    <!-- List Inline-->
-                                    <ul class="list-inline list-inline-dashed">
-                                        <li>January 20, 2018</li>
-                                        <li class="p"><a class="link-decoration-none text-hover-primary text-gray-light" href="#">2 Comment</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Unit-->
-                            <div class="unit align-items-center flex-row unit-spacing-sm offset-top-30">
-                                <div class="unit-left"><a class="thumbnail-classic" href="blog-post.html"><span class="thumbnail-classic-img-wrap"><img class="img-responsive center-block" src="images/blog/post-12-80x80.jpg" width="80" height="80" alt=""></span></a></div>
-                                <div class="unit-body">
-                                    <p class="font-weight-bold"><a class="link-decoration-none text-hover-primary text-gray" href="blog-post.html">Chia seed pudding | easy healthy breakfast idea</a></p>
-                                    <!-- List Inline-->
-                                    <ul class="list-inline list-inline-dashed">
-                                        <li>January 22, 2018</li>
-                                        <li class="p"><a class="link-decoration-none text-hover-primary text-gray-light" href="#">2 Comment</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="offset-top-34 offset-md-top-50">
-                            <h3>Archive</h3>
-                            <!-- List Marked-->
-                            <ul class="list list-marked font-weight-bold offset-top-13">
-                                <li><a class="link-decoration-none" href="#">January 2018</a></li>
-                                <li><a class="link-decoration-none" href="#">February 2018</a></li>
-                                <li><a class="link-decoration-none" href="#">March 2018</a></li>
-                                <li><a class="link-decoration-none" href="#">April 2018</a></li>
-                                <li><a class="link-decoration-none" href="#">Jul 2018</a></li>
-                            </ul>
-                        </div>
-                        <div class="offset-top-34 offset-md-top-50">
-                            <h3>Tags</h3>
-                            <div class="group-sm offset-top-13"><a class="btn btn-tag btn-primary-gray-outline" href="#">Weight Loss</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Diet</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Fitness</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Pilates</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Massage</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Personal Training</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Fruit</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Health Coach</a><a class="btn btn-tag btn-primary-gray-outline" href="#">Vegetables</a></div>
+                              1)  Evitez le grignotage ou alors prenez une vraie collation avec fruits et laitages.</br></br>
+                              2)  Consommez un peu de matières grasses de cuisson et d'assaisonnement (beurre, huile).</br></br>
+                              3)  Mangez des fruits et/ou des légumes, crus ou cuits, à tous les repas.</br></br>
+                                4)  Accordez une large place au pain.</br></br>
+                              5)   Consommez plus souvent des légumes secs.</br></br>
+                               6)  Limitez les confiseries.</br></br>
+                               7)  Modérez votre consommation de fritures ; il n'existe pas d'huiles légères.</br></br>
+                                8)  Consommez un produit laitier à chaque repas y compris au petit déjeuner, c'est la seule façon de couvrir les besoins en calcium à tous les âges de la vie.</br></br>
+                               9)  Variez les fromages aussi souvent que possible, essayez les goûts nouveaux.</br></br>
+                               10)  Mangez dans le calme et consacrez du temps à vos repas.</br></br>
+                               11)  Buvez de l'eau à volonté, pendant les repas ou en dehors.</br></br>
+                               12)  Attention aux calories apportées par le vin et les alcools (1 g d'alcool = 7 Kcal). </p><a class="btn btn-primary offset-top-20" href="work-with-me.html">Read more</a>
                         </div>
                         <div class="offset-top-34 offset-md-top-60"><a class="thumbnail-classic" href="#"><span class="thumbnail-classic-img-wrap"><img class="img-responsive center-block" src="images/banner-01-350x500.jpg" width="350" height="500" alt=""></span></a></div>
                     </aside>
@@ -265,12 +113,6 @@
                                 <div class="form-wrap">
                                     <label class="form-label" for="contact-us-phone">Phone</label>
                                     <input class="form-input" id="contact-us-phone" type="text" name="phone" data-constraints="@Numeric @Required">
-                                </div>
-                            </div>
-                            <div class="col-sm-12 offset-top-10 text-center text-xl-left">
-                                <div class="form-wrap">
-                                    <label class="form-label" for="contact-us-message">Message</label>
-                                    <textarea class="form-input" id="contact-us-message" name="message" data-constraints="@Required"></textarea>
                                 </div>
                             </div>
                         </div>

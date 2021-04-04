@@ -348,6 +348,18 @@
                 </ul>
             </li>
 
+            <!-- gestion fiche + medicaments  -->
+            <li class=" nav-item"><a href="#"><i class="fas fa-pills"></i><span class="menu-title" data-i18n="nav.page_layouts.main">Fiche Consultation </span></a>
+                <ul class="menu-content">
+
+                    <li><a class="menu-item" href="{{ path('ficheAjout') }}" data-i18n="nav.page_layouts.3_columns.left_sidebar">ajouter fiche</a>
+                    </li>
+                    <li><a class="menu-item" href="{{ path('afficherFicheConsultation') }}" data-i18n="nav.page_layouts.3_columns.left_sticky_sidebar">afficher fiche</a>
+                    </li>
+                    <li><a class="menu-item" href="{{ path('stats') }}" data-i18n="nav.page_layouts.3_columns.left_sticky_sidebar">Statistiques</a>
+                    </li>
+                </ul>
+                    </li>
 {#            <li class=" nav-item"><a href="index-2.html"><i class="icon-home"></i><span class="menu-title" data-i18n="nav.dash.main">Dashboard</span><span class="badge badge badge-info badge-pill float-right mr-2">5</span></a>#}
 {#                <ul class="menu-content">#}
 {#                    <li class="active"><a class="menu-item" href="dashboard-ecommerce.html" data-i18n="nav.dash.ecommerce">eCommerce</a>#}
@@ -362,6 +374,7 @@
 {#                    </li>#}
 {#                </ul>#}
 {#            </li>#}
+
             <li class=" nav-item"><a href="#"><i class="icon-screen-tablet"></i><span class="menu-title" data-i18n="nav.templates.main">Templates</span></a>
                 <ul class="menu-content">
                     <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">Vertical</a>

@@ -63,7 +63,7 @@ class FicheConsultationController extends AbstractController
             $donnees,
             /* query NOT result */
             $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
-            7 /*limit per page*/
+            3 /*limit per page*/
         );
         return $this->render('Back/fiche_consultation/afficherFicheConsultation.html.twig',
         ['ficheConsultation'=>$ficheConsultation]);
@@ -161,7 +161,7 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
         }
 
 
-        $ficheConsultationCount[]=count($patients->getFicheConsultations());
+        //$ficheConsultationCount[]=count($patients->getFicheConsultations());
         return $this->render('Back/fiche_consultation/stats.html.twig',[
 
             'ficheConsultationCount'=>json_encode($ficheConsultationCount),
@@ -177,11 +177,11 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
     {
         $requestString = $request->get('q');
         $entities=null;
-        //if ( (in_array("ROLE_DOCTOR", $this->getUser()->getRoles()) ))
+        if ( (in_array("ROLE_DOCTOR", $this->getUser()->getRoles()) ))
         {
-            $entities = $repo->findEntitiesByStringAndNutritionniste($requestString, $this->getUser());
+          $entities = $repo->findEntitiesByStringAndNutritionniste($requestString, $this->getUser());
         }
-        //else if (( (in_array("ROLE_ADMIN", $this->getUser()->getRoles()) )))
+        else if (( (in_array("ROLE_ADMIN", $this->getUser()->getRoles()) )))
         {
             $entities = $repo->findEntitiesByString($requestString);
         }
@@ -198,7 +198,7 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
     public function getRealEntities($fiches){
 
         foreach ($fiches as $f){
-            $realEntities[$f->getId()] = [$f->getPatient()->getNom(),$f->getNutritionniste()->getNom(),$f->getCreationDate(),$f->getPoids(),$f->getTaille(),$f->getDescription()];
+            $realEntities[$f->getId()] = [$f->getPatient()->getNom(),$f->getNutritionniste()->getNom(),$f->getCreationDate(),$f->getPoids(),$f->getTaille(),$f->getDescription(),$f->getSymptome(),$f->getApetit(),$f->calculerImc(),$f->getnbrOFTimeUsed()];
         }
 
         return $realEntities;
