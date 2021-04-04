@@ -20,9 +20,20 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 class AlimentController extends AbstractController
 {
     /**
+     * @Route("/docadmin/back", name="docadmin_back")
+     */
+    public function index(): Response
+    {
+
+
+        return $this->render('back/index.html.twig', [
+            'controller_name' => 'HomeBackController',
+        ]);
+    }
+    /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     * @Route ("doctor/ajouteraliment",name="doctor_ajouterAliment")
+     * @Route ("docadmin/ajouteraliment",name="docadmin_ajouterAliment")
      */
     public function ajoute(Request $request)
     {
@@ -34,6 +45,7 @@ class AlimentController extends AbstractController
         if($form->isSubmitted())
 
         if($form->isSubmitted() && $form->isValid()){
+            $aliment->setNutritionniste($this->getUser());
             $em=$this->getDoctrine()->getManager();
 
             $em->persist($aliment);
@@ -49,7 +61,7 @@ class AlimentController extends AbstractController
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     * @Route ("doctor/modifieraliment/{id}",name="doctor_modifierAliment")
+     * @Route ("docadmin/modifieraliment/{id}",name="docadmin_modifierAliment")
      */
     public function modifier(Request $request,  $id,AlimentRepository $repoAliment)
     {
@@ -76,7 +88,7 @@ class AlimentController extends AbstractController
 
     /**
      * @param AlimentRepository $repo
-     * @Route ("doctor/afficherAliment",name="doctor_afficherAliment")
+     * @Route ("docadmin/afficherAliment",name="docadmin_afficherAliment")
      */
     public function afficher(AlimentRepository $repo,PaginatorInterface $paginator,Request $request)
     {
@@ -107,7 +119,7 @@ class AlimentController extends AbstractController
     /**
      * @param AlimentRepository $repo
      * @param $id
-     * @Route ("/doctor/supprimerAliment/{id}",name="doctor_supprimerAliment")
+     * @Route ("/docadmin/supprimerAliment/{id}",name="docadmin_supprimerAliment")
      */
     function delete(AlimentRepository $repo ,$id)
     {
@@ -116,11 +128,11 @@ class AlimentController extends AbstractController
         dump($aliment);
         $em->remove($aliment);
         $em->flush();
-        return $this->redirectToRoute('doctor_afficherAliment');
+        return $this->redirectToRoute('docadmin_afficherAliment');
     }
     /**
      * @param AlimentRepository $repository
-     * @Route ("/doctor/rechercheAliment",name="doctor_rechercheAliment")
+     * @Route ("/docadmin/rechercheAliment",name="docadmin_rechercheAliment")
      */
     public function Recherche(AlimentRepository $repository,Request $request,PaginatorInterface $paginator,NormalizerInterface $normalizer)
     {

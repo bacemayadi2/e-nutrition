@@ -27,11 +27,17 @@ class Nutritionniste extends Utilisateur
      */
     private $evaluations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Nourriture::class, mappedBy="nutritionniste")
+     */
+    private $nourritures;
+
     public function __construct()
     {
         $this->secretaire = new ArrayCollection();
         $this->ficheConsultations = new ArrayCollection();
         $this->evaluations = new ArrayCollection();
+        $this->nourritures = new ArrayCollection();
     }
 
     /**
@@ -120,6 +126,36 @@ class Nutritionniste extends Utilisateur
                 $evaluation->setNutritionniste(null);
             }
         }
+        return $this;
+    }
+
+    /**
+     * @return Collection|Nourriture[]
+     */
+    public function getNourritures(): Collection
+    {
+        return $this->nourritures;
+    }
+
+    public function addNourriture(Nourriture $nourriture): self
+    {
+        if (!$this->nourritures->contains($nourriture)) {
+            $this->nourritures[] = $nourriture;
+            $nourriture->setNutritionniste($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNourriture(Nourriture $nourriture): self
+    {
+        if ($this->nourritures->removeElement($nourriture)) {
+            // set the owning side to null (unless already changed)
+            if ($nourriture->getNutritionniste() === $this) {
+                $nourriture->setNutritionniste(null);
+            }
+        }
+
         return $this;
     }
 

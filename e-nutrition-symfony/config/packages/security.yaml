@@ -38,12 +38,16 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     role_hierarchy:
-        ROLE_USER: [ ROLE_PATIENT,ROLE_DOCTOR,ROLE_SECRETAIRE ]
+        ROLE_USER: [ ROLE_PATIENT,ROLE_SECRETAIRE ]
+        ROLE_DOCTOR: [ROLE_DOCTOR]
         ROLE_ADMIN: [ ROLE_ADMIN ]
         ROLE_SUPER_ADMIN: [ ROLE_ADMIN ]
     access_control:
          - { path: ^/super_admin, roles: [ROLE_ADMIN, ROLE_USER]  }
          - { path: ^/admin, roles: [ROLE_ADMIN, ROLE_USER]  }
-         - { path: ^/doctor, roles: [ROLE_USER] }
+         - { path: ^/doctor, roles: [ROLE_DOCTOR] }
          - { path: ^/secretaire, roles: [ROLE_SECRETAIRE, ROLE_PATIENT] }
          - { path: ^/patient, roles: ROLE_PATIENT }
+
+
+         - { path: ^/docadmin, roles: [ROLE_ADMIN, ROLE_DOCTOR] }

@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class EtapeDePreparationController extends AbstractController
 {
     /**
-     * @Route("doctor/etape/de/preparation", name="doctor_etape_de_preparation")
+     * @Route("docadmin/etape/de/preparation", name="docadmin_etape_de_preparation")
      */
     public function index(): Response
     {
@@ -22,7 +22,7 @@ class EtapeDePreparationController extends AbstractController
      * @param EtapeDePreparationRepository $repo
      * @param $id
      * @param  $idp
-     * @Route ("doctor/supprimerEtapeDePreparationRepositoryplat/{id}/{idp}",name="doctor_supprimerEtapeDePreparationRepositoryplat")
+     * @Route ("docadmin/supprimerEtapeDePreparationRepositoryplat/{id}/{idp}",name="docadmin_supprimerEtapeDePreparationRepositoryplat")
      */
     function delete(EtapeDePreparationRepository $repo ,$id,$idp)
     {
