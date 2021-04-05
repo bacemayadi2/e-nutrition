@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ChallengeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ChallengeRepository::class)
@@ -19,16 +20,19 @@ class Challenge
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Saisir le titre !!!")
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Saisir la description !!!")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Saisir la categorie !!!")
      */
     private $categorie;
 

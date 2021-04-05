@@ -19,10 +19,6 @@
                             <div class="form-group col-10 mb-2">
                                 <table class="form-wrap">
                                     <tr>
-                                        <td>{{ form_label(registrationForm.typeCompte, "Type Compte: ") }} </td>
-                                        <td>{{ form_widget(registrationForm.typeCompte, {'attr': {'style': 'width: 300px'} + {'class':'form-control'}}) }}</td>
-                                    </tr>
-                                    <tr>
                                         <td>{{ form_label(registrationForm.email, "E-Mail: ") }} </td>
                                         <td>{{ form_widget(registrationForm.email, {'attr': {'style': 'width: 300px'} + {'class':'form-control'}}) }}</td>
                                     </tr>
@@ -73,6 +69,13 @@
 
                             {{ form_widget(registrationForm.Ajouter, {'attr':{'class':'btn btn-primary'}}) }}
                             {{ form_errors(registrationForm.email) }}
+                            {{ form_errors(registrationForm.nom) }}
+                            {{ form_errors(registrationForm.prenom) }}
+                            {{ form_errors(registrationForm.sexe) }}
+                            {{ form_errors(registrationForm.dateNaiss) }}
+                            {{ form_errors(registrationForm.ville) }}
+                            {{ form_errors(registrationForm.adresse) }}
+                            {{ form_errors(registrationForm.dateNaiss) }}
                             {{ form_errors(registrationForm.plainPassword) }}
                             {{ form_end(registrationForm) }}
                         </div>

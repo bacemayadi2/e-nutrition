@@ -44,6 +44,12 @@
 
                             {{ form_widget(form.Ajouter, {'attr':{'class':'btn btn-primary'}}) }}
 
+                            {{ form_errors(form.titre) }}
+                            {{ form_errors(form.description) }}
+                            {{ form_errors(form.categorie) }}
+                            {{ form_errors(form.dateDebut) }}
+                            {{ form_errors(form.dateFin) }}
+
                             {{ form_end(form) }}
                         </div>
                     </div>

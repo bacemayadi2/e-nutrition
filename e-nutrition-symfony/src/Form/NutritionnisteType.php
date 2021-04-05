@@ -24,7 +24,6 @@ class NutritionnisteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('typeCompte', ChoiceType::class, ['choices'  => ['Choisir votre type de compte'=> 0, 'Patient' => 'Patient', 'Nutritionniste' => 'Nutritionniste', 'Secrétaire' => 'Secrétaire']])
 
             ->add('email', EmailType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre adresse e-mail"]])
 

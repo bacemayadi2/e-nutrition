@@ -30,47 +30,49 @@
             <br>
             <br>
             <div class="col-11 mb-2">
-                <table border="1" cellpadding="50" align="center" class="table">
-                    <thead class="bg-primary white">
-                        <tr>
-                            <th>Id</th>
-                            <th>E-Mail</th>
-                            <th>Nom</th>
-                            <th>Prenom</th>
-                            <th>Ville</th>
-                            <th>Sexe</th>
-                            <th>Date Naissance</th>
+                {% if  users%}
+                    <table border="1" cellpadding="50" align="center" class="table">
+                        <thead class="bg-primary white">
+                            <tr>
+                                <th>Id</th>
+                                <th>E-Mail</th>
+                                <th>Nom</th>
+                                <th>Prenom</th>
+                                <th>Ville</th>
+                                <th>Sexe</th>
+                                <th>Date Naissance</th>
 
-                            <th>Numéro de téléphone</th>
-                            <th>Roles</th>
-                            <th colspan="4" style="text-align: center">Gestion</th>
-                        </tr>
-                    </thead>
-                    <tr {% for u in users %}>
-                        <td>{{ u.id }}</td>
-                        <td>{{ u.email }}</td>
-                        <td>{{ u.nom }}</td>
-                        <td>{{ u.prenom }}</td>
-                        <td>{{ u.ville }}</td>
-                        <td>{{ u.sexe }}</td>
-                        <td>{{ u.dateNaiss|date('d-m-Y') }}</td>
+                                <th>Numéro de téléphone</th>
+                                <th>Roles</th>
+                                <th colspan="4" style="text-align: center">Gestion</th>
+                            </tr>
+                        </thead>
+                        <tr {% for u in users %}>
+                            <td>{{ u.id }}</td>
+                            <td>{{ u.email }}</td>
+                            <td>{{ u.nom }}</td>
+                            <td>{{ u.prenom }}</td>
+                            <td>{{ u.ville }}</td>
+                            <td>{{ u.sexe }}</td>
+                            <td>{{ u.dateNaiss|date('d-m-Y') }}</td>
 
-                        <td>{{ u.tel }}</td>
-                        <td>
-                            {% for role in u.roles %}
-                                {{ role }}
-                            {% endfor %}
-                        </td>
-                        <td><div class="btn-group"> <a href="{{ path('UpdateUser', {'id':u.id}) }}" ><button type="button" class="btn btn-primary">Modifier</button> </a></div></td>
-                        <td><div class="btn-group"> <a href="{{ path('admin_DeleteUser', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Supprimer</button></a></div></td>
-                        {% if is_granted('ROLE_SUPER_ADMIN') %}
-                            <td><div class="btn-group"> <a href="{{ path('admin_PromoteToAdmin', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Promote to admin</button></a></div></td>
-                            <td><div class="btn-group"> <a href="{{ path('admin_RemoveRoleAdmin', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Remove Admin Role</button></a></div></td>
-                        {% endif %}
-
-
-                    </tr {% endfor %}>
-                </table>
+                            <td>{{ u.tel }}</td>
+                            <td>
+                                {% for role in u.roles %}
+                                    {{ role }}
+                                {% endfor %}
+                            </td>
+                            <td><div class="btn-group"> <a href="{{ path('UpdateUser', {'id':u.id}) }}" ><button type="button" class="btn btn-primary">Modifier</button> </a></div></td>
+                            <td><div class="btn-group"> <a href="{{ path('admin_DeleteUser', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Supprimer</button></a></div></td>
+                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                <td><div class="btn-group"> <a href="{{ path('admin_PromoteToAdmin', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Promote to admin</button></a></div></td>
+                                <td><div class="btn-group"> <a href="{{ path('admin_RemoveRoleAdmin', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Remove Admin Role</button></a></div></td>
+                            {% endif %}
+                        </tr {% endfor %}>
+                    </table>
+                {% else %}
+                    <div style="text-align: center">Aucun utilisateur trouvé</div>
+                {% endif %}
             </div>
         </div>
     </div>
