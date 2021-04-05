@@ -80,9 +80,9 @@
 *                                            <div class="entry-content">
                                                {{ plat.description}}</div>
                                             <div class="entry-info-author">
-                                                <a href="https://gustos.w3.style/author/danida415/">
-                                                    <img alt='' src='https://secure.gravatar.com/avatar/c48126a06aba487f94907616bae8787b?s=50&#038;d=mm&#038;r=g' srcset='https://secure.gravatar.com/avatar/c48126a06aba487f94907616bae8787b?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' loading='lazy'/>						</a>
-                                                <div class="author-name"><a href="https://gustos.w3.style/author/danida415/" itemprop="author">Daniel Davis</a></div>
+                                                <a href="{{ path('user_profileMedecin',{'id':plat.nutritionniste.id })}}">
+                                                    <img alt='' src='{{ plat.nutritionniste.getphotoProfile() }}' srcset='https://secure.gravatar.com/avatar/c48126a06aba487f94907616bae8787b?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' loading='lazy'/>						</a>
+                                                <div class="author-name"><a href="{{ path('user_profileMedecin',{'id':plat.nutritionniste.id })}}" itemprop="author">{{plat.nutritionniste.nom }}  {{ plat.nutritionniste.prenom }}</a></div>
                                                 <div class="total-recipes">1 recipes</div>
                                             </div>
                                             </div> <!-- .recipe-info-2 -->

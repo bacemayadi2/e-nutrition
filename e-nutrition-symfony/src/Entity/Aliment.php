@@ -35,6 +35,56 @@ class Aliment extends Nourriture
      */
     private $compositions;
 
+    /**
+     * @Groups ("aliments")
+     */
+    private $calories;
+
+    /**
+     * @Groups ("aliments")
+     */
+    private $categories;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Proportion::class, mappedBy="aliment", orphanRemoval=true)
+     */
+    private $proportions;
+
+
+    public function getCalories(): ?float
+    {
+        $this->setCalories();
+        return $this->calories;
+    }
+
+    /**
+     * @param mixed $calories
+     */
+    public function setCalories(): void
+    {
+        $this->calories = $this->calculerCalorie();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategories() :string
+    {
+        $this->setCategories();
+        return $this->categories;
+    }
+
+    /**
+     * @param mixed $categories
+     */
+    public function setCategories(): void
+    {
+        $this->categories = $this->categorieToString();
+    }
+
+
+
+
 
 
 
@@ -42,6 +92,7 @@ class Aliment extends Nourriture
     {
         $this->categorieAliment = new ArrayCollection();
         $this->compositions = new ArrayCollection();
+        $this->proportions = new ArrayCollection();
     }
 
 
@@ -145,6 +196,36 @@ public function  getnbrOFTimeUsed():float
         // to show the name of the Category in the select
         return $this->getNom();
 
+    }
+
+    /**
+     * @return Collection|Proportion[]
+     */
+    public function getProportions(): Collection
+    {
+        return $this->proportions;
+    }
+
+    public function addProportion(Proportion $proportion): self
+    {
+        if (!$this->proportions->contains($proportion)) {
+            $this->proportions[] = $proportion;
+            $proportion->setAliment($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProportion(Proportion $proportion): self
+    {
+        if ($this->proportions->removeElement($proportion)) {
+            // set the owning side to null (unless already changed)
+            if ($proportion->getAliment() === $this) {
+                $proportion->setAliment(null);
+            }
+        }
+
+        return $this;
     }
 
 

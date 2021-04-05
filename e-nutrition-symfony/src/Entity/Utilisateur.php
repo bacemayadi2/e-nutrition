@@ -321,4 +321,17 @@ class Utilisateur implements UserInterface
 
         return $this;
     }
+
+    public function getphotoProfile():?string
+    {
+        if($this->tagUtilisateur != null)
+        {
+            foreach ($this->tagUtilisateur as $tag) {
+                if ($tag->getIsPhotoDeProfile()) {
+                    return $tag->getUrl();
+                }
+            }
+        }
+        return "multimedia/defaultprofile.jpg";
+    }
 }

@@ -144,7 +144,7 @@
                             $.each(JSON.parse(retour), function(i, obj) {
 
                                 $('#t tbody#all').hide();
-                                $('#t tbody#search').append('<tr>  <td> '+obj.nom+' </td>  <td> '+obj.categorieToString+' </td> <td> '+obj.poid+' </td>  <td> '+obj.proteines+' </td>  <td> '+obj.glucides+' </td>  <td> '+obj.lipides+' </td>  <td> '+obj.calculerCalorie+' </td> <td>    <a href="supprimerAliment/'+obj.id+'"><button type="button" class="btn btn-primary">supprimer</button> </a>   <a href=" modifierAliment/'+obj.id+'"> <button type="button" class="btn btn-success">modifier</button> </a>  </td> </tr> ');
+                                $('#t tbody#search').append('<tr>  <td> '+obj.nom+' </td>  <td> '+obj.categories+' </td> <td> '+obj.poid+' </td>  <td> '+obj.proteines+' </td>  <td> '+obj.glucides+' </td>  <td> '+obj.lipides+' </td>  <td> '+obj.calories+' </td> <td>    <a href="supprimerAliment/'+obj.id+'"><button type="button" class="btn btn-primary">supprimer</button> </a>   <a href=" modifierAliment/'+obj.id+'"> <button type="button" class="btn btn-success">modifier</button> </a>  </td> </tr> ');
                             });
                         }
                         else

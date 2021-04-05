@@ -64,7 +64,15 @@ class PlatController extends AbstractController
      */
     public function afficher(PlatRepository $repo,PaginatorInterface $paginator,Request $request)
     {
-        $donnees=$repo->findAll();
+        if (( (in_array("ROLE_ADMIN", $this->getUser()->getRoles()) ))) {
+            $donnees = $repo->findAll();
+        }
+        elseif ( (in_array("ROLE_DOCTOR", $this->getUser()->getRoles()) ))
+         {
+             $donnees = $repo->findplatbyNutrioniste($this->getUser());
+
+         }
+
 
         $plat=$paginator->paginate(
             $donnees,
@@ -147,6 +155,7 @@ class PlatController extends AbstractController
         $form =$this->createForm(PlatType::class,$plat);
       //  $form->add("Ajouter",SubmitType::class);
         $form->handleRequest($request);//gere requette envoyer par l'utlisateur
+       // $plat->setNutritionniste($this->getUser());
 
 
         if($form->isSubmitted() && $form->isValid()){

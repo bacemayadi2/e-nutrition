@@ -35,6 +35,11 @@ class Patient extends Utilisateur
     private $mesures;
 
     /**
+     * @ORM\OneToMany(targetEntity=Proportion::class, mappedBy="patient")
+     */
+    private $proportions;
+
+    /**
      * @ORM\ManyToMany(targetEntity=Challenge::class, inversedBy="participants")
      */
     private $challenges;
@@ -44,6 +49,7 @@ class Patient extends Utilisateur
         $this->ficheConsultations = new ArrayCollection();
         $this->evaluations = new ArrayCollection();
         $this->mesures = new ArrayCollection();
+        $this->proportions = new ArrayCollection();
         $this->challenges = new ArrayCollection();
     }
 
@@ -168,6 +174,36 @@ class Patient extends Utilisateur
     public function removeChallenge(Challenge $challenge): self
     {
         $this->challenges->removeElement($challenge);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Proportion[]
+     */
+    public function getProportions(): Collection
+    {
+        return $this->proportions;
+    }
+
+    public function addProportion(Proportion $proportion): self
+    {
+        if (!$this->proportions->contains($proportion)) {
+            $this->proportions[] = $proportion;
+            $proportion->setPatient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProportion(Proportion $proportion): self
+    {
+        if ($this->proportions->removeElement($proportion)) {
+            // set the owning side to null (unless already changed)
+            if ($proportion->getPatient() === $this) {
+                $proportion->setPatient(null);
+            }
+        }
 
         return $this;
     }

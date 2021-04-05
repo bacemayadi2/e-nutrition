@@ -1,0 +1,85 @@
+{% extends 'front/baseforotherpage.html.twig' %}
+
+{% block Content2 %}
+
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+        <main class="page-content">
+
+            <section class="section-95">
+                <div class="container">
+                    <input type="text" id="search" class="search-field fullwidth" name="recherchealiment" placeholder="Type keyword and press enter" value="">
+
+
+                    <div class="row justify-content-sm-center">
+        <table id="t" class="table table-condensed table-responsive table-striped"><thead><tr><th>Food</th><th>Quantity</th><th>categorie</th><th>Calories</th><th>lipides</th><th>proteines</th><th>glucides</th><th></th></tr></thead>
+            <tbody id="all">
+             {% for f in aliment %}
+             <tr><td>{{ f.nom}}</td><td></td> <td>{{ f.categories}} </td><td>{{f.calories}}</td><td>{{ f.lipides}}</td><td>{{ f.proteines}}</td><td>{{ f.glucides}}</td><td>
+{#                    {{ form_widget(registrationForm.Ajouter, {'attr':{'class':'add btn btn-default'}}) }}#}
+                 </td></tr></tbody>
+            {% endfor %}
+            <tbody id="search">
+            </tbody>
+
+            </table>
+
+
+
+                        <div id="itemslist" class="foodtablecalculator"><table class="table table-condensed table-responsive table-striped">        <table id="t" class="table table-condensed table-responsive table-striped"><thead><tr><th>Food</th><th>Quantity</th><th>categorie</th><th>Calories</th><th>lipides</th><th>proteines</th><th>glucides</th><th></th></tr></thead>
+                                    <tbody id="list-tbody"><tr id="iditemlist-0"><td data-title="Food">CEREALS RTE,MALT-O-MEAL,OAT BLENDERS W/ HONEY &amp; ALMONDS</td><td data-title="Quantity">1</td><td>categorie</td><td data-title="Calories">379</td><td data-title="Fat">4</td><td data-title="Protein">7</td><td data-title="Carbs*">77</td><td>
+                                        <input type="button" class="remove btn btn-default" onclick="removefromlist(0)" value="Remove">
+                                    </td></tr><tr></tr><tr><td></td><td></td><td><strong>SUBTOTALS</strong></td><td data-title="Calories"><strong>379</strong></td><td data-title="Fat"><strong>4</strong></td><td data-title="Protein"><strong>7</strong></td><td data-title="Carbs*"><strong>77</strong></td></tr></tbody></table><div class="small">*Total carbohydrates</div></div>
+                    </div></div>
+            </section>
+        </main>
+
+    <script>
+        $( document ).ready(function() {
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = $(this).val();
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+
+
+
+                $.ajax({
+                    /* l’url est une chaine de caractères contenant l’adresse où la requête est
+                    envoyée */
+                    url : "{{ path('rechercheAliment') }}",
+                    /* La méthode utilisée pour transférer les données est GET */
+                    type : 'GET',
+                    /*Ici search value va prendre la chaine entrée par un utilisateur dans la
+                    zone de recherche et sera placée après l’url */
+                    data: {
+                        'searchValue' : value
+                    },
+                    /*Cette fonction permet de vider le contenu du tableau pour recevoir le
+                    nouveau contenu*/
+                    success : function(retour){
+                        if(retour){
+                            console.log(retour);
+
+                            $('#t tbody#search').empty();
+                            $.each(JSON.parse(retour), function(i, obj) {
+
+                                $('#t tbody#all').hide();
+                                $('#t tbody#search').append('<tr>  <td> '+obj.nom+' </td> <td></td> <td> '+obj.categories+' </td> <td> '+obj.calories+' </td>  <td> '+obj.lipides+' </td>  <td> '+obj.proteines+' </td>  <td> '+obj.glucides+' </td>  <td>  </td> <td>    <a href="supprimerAliment/'+obj.id+'"><button type="button" class="btn btn-primary">supprimer</button> </a>  </td> </tr> ');
+                            });
+                        }
+                        else
+                        {
+                            $('#t tbody#foodtbody').show();
+                            $('#t tbody#search').empty();
+                            $('#t tbody#search').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+{% endblock %}

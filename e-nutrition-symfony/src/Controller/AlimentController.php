@@ -50,7 +50,7 @@ class AlimentController extends AbstractController
 
             $em->persist($aliment);
             $em->flush();
-            return $this->redirectToRoute('afficherAliment');
+            return $this->redirectToRoute('docadmin_afficherAliment');
         }
         return $this->render("back/aliment/ajouterAliment.html.twig",
             [  'form'=> $form->createView(), ]);
@@ -78,7 +78,7 @@ class AlimentController extends AbstractController
 
             $em=$this->getDoctrine()->getManager();
             $em->flush();
-            return $this->redirectToRoute('afficherAliment');
+            return $this->redirectToRoute('docadmin_afficherAliment');
         }
         return $this->render("back/aliment/ajouterAliment.html.twig",
             [  'form'=> $form->createView(), ]);
@@ -92,7 +92,18 @@ class AlimentController extends AbstractController
      */
     public function afficher(AlimentRepository $repo,PaginatorInterface $paginator,Request $request)
     {
-        $donnees=$repo->findAll();
+          $donnees=$repo->findAll();
+
+//        $donnees=null;
+//         if (( (in_array("ROLE_ADMIN", $this->getUser()->getRoles()) )))
+//        {
+//            $donnees=$repo->findAll();
+//        }
+//         elseif ( (in_array("ROLE_DOCTOR", $this->getUser()->getRoles()) ))
+//         {
+//             $donnees = $repo->findalimentbyNutrioniste( $this->getUser());
+//         }// remove comment to  only show aliment you addit as doctor
+
         $aliment=$paginator->paginate(
             $donnees,
             /* query NOT result */
@@ -125,7 +136,6 @@ class AlimentController extends AbstractController
     {
         $em=$this->getDoctrine()->getManager()  ;
         $aliment=$repo->find($id);
-        dump($aliment);
         $em->remove($aliment);
         $em->flush();
         return $this->redirectToRoute('docadmin_afficherAliment');

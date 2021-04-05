@@ -26,6 +26,23 @@ class AlimentRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findalimentbynameNutrioniste($nom,$n){
+        return $this->createQueryBuilder('aliment')
+            ->where('aliment.nom LIKE :name and aliment.nutritionniste = :n')
+            ->setParameter('n',$n)
+            ->setParameter('name', '%'.$nom.'%')
+            ->getQuery()
+            ->getResult();
+    }
+    public function findalimentbyNutrioniste($n){
+        return $this->createQueryBuilder('aliment')
+            ->where(' aliment.nutritionniste = :n')
+            ->setParameter('n',$n)
+            ->getQuery()
+            ->getResult();
+    }
+
+
     // /**
     //  * @return Aliment[] Returns an array of Aliment objects
     //  */

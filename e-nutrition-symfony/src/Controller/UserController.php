@@ -6,11 +6,13 @@ use App\Entity\Evaluation;
 use App\Entity\Nutritionniste;
 use App\Entity\Patient;
 use App\Entity\Student;
+use App\Entity\TagsUser;
 use App\Entity\Utilisateur;
 use App\Form\EvaluationType;
 use App\Form\NutritionnisteType;
 use App\Form\PatientType;
 use App\Form\StudentType;
+use App\Form\TagsUserType;
 use App\Form\UserType;
 use App\Repository\ChallengeRepository;
 use App\Repository\EvaluationRepository;
@@ -126,15 +128,23 @@ class UserController extends AbstractController
     public function Gallery(Request $request, UserRepository $repo, $id)
     {
         $users = $repo->find($id);
-
-        $form = $this->createForm(UserType::class, $users);
+        $tagsuser = new TagsUser();
+        $form = $this->createForm(TagsUserType::class, $tagsuser);
         $form->add("Ajouter", SubmitType::class);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
+            foreach ($tagsuser->getTags() as $tag)
+            {
+                $tag->setIsPhotoDeProfile(false);
+                $users->addTagUtilisateur($tag);
+            }
+
             $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            //$em->remove($tagsuser);
             $em->flush();
         }
         return $this->render("front/users/gallery.html.twig", ['users'=>$users, 'form'=>$form->createView()]);
@@ -161,5 +171,29 @@ class UserController extends AbstractController
         $challenge->addParticipant($user);
 
         return $this->redirectToRoute('user_DisplayChallenges');
+    }
+    /**
+     * @Route("/setphotodeprofile/{id}/{idtag}", name="setprofile")
+     */
+    public function setphotoprofile(Request $request, UserRepository $repo, $id,$idtag)
+    {
+        $users = $repo->find($id);
+
+
+
+            foreach ($users->getTagUtilisateur() as $tag)
+            {
+                if ($tag->getId()!=$idtag) {
+                    $tag->setIsPhotoDeProfile(false);
+                }
+                else
+                    $tag->setIsPhotoDeProfile(true);
+
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+
+        return $this->redirectToRoute('user_profileUser');
     }
 }

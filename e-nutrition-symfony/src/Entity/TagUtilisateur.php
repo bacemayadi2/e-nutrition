@@ -15,6 +15,14 @@ class TagUtilisateur extends Tag
      */
     private $utilisateur;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isPhotoDeProfile=false;
+
+
+    private $tagsUser;
+
     public function getUtilisateur(): ?Utilisateur
     {
         return $this->utilisateur;
@@ -23,6 +31,30 @@ class TagUtilisateur extends Tag
     public function setUtilisateur(?Utilisateur $utilisateur): self
     {
         $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    public function getIsPhotoDeProfile(): ?bool
+    {
+        return $this->isPhotoDeProfile;
+    }
+
+    public function setIsPhotoDeProfile(bool $isPhotoDeProfile): self
+    {
+        $this->isPhotoDeProfile = $isPhotoDeProfile;
+
+        return $this;
+    }
+
+    public function getTagsUser(): ?TagsUser
+    {
+        return $this->tagsUser;
+    }
+
+    public function setTagsUser(?TagsUser $tagsUser): self
+    {
+        $this->tagsUser = $tagsUser;
 
         return $this;
     }

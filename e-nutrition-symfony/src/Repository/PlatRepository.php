@@ -26,6 +26,13 @@ class PlatRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function findplatbyNutrioniste($n){
+        return $this->createQueryBuilder('plat')
+            ->where(' plat.nutritionniste = :n')
+            ->setParameter('n',$n)
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Plat[] Returns an array of Plat objects
     //  */

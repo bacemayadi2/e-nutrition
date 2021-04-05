@@ -14,17 +14,17 @@
                         <h1>Gallerie</h1>
                     </div>
 
-{#   {{ form_start(form) }}#}
+   {{ form_start(form) }}
 
                     <div class="rw-row">
 
                         <div class="recipes-filter clearfix">
 
                             <ul id="fichier"
-                                data-prototype="{{ form_widget(form.tagUtilisateur.vars.prototype)|e }}"
+                                data-prototype="{{ form_widget(form.tags.vars.prototype)|e }}"
 
                                 data-widget-tags="{{ '<li></li>'|e }}"
-                                data-widget-counter="{{ form.tagUtilisateur|length }}" >
+                                data-widget-counter="{{ form.tags|length }}" >
 
                             </ul>
 
@@ -47,7 +47,7 @@
                                             <a href="https://gustos.w3.style/recipes/ham-salad-2/">Ham Salad</a>
                                         </div>
                                         <div class="recipe-controls">
-                                            <a data-post="187" data-settings="{&quot;tag&quot;:&quot;a&quot;,&quot;class&quot;:&quot;like-post&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Like&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;fa fa-thumbs-o-up\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Dislike&quot;,&quot;content_remove&quot;:&quot;&lt;i class=\&quot;fa fa-thumbs-up\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_format&quot;:&quot;%text% (%count%)&quot;,&quot;title_not_logged&quot;:&quot;Please log in to like this post&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:false,&quot;echo&quot;:true}" data-act="like" data-l="0" title="Please log in to like this post" href="#" class="smk-mark-button like-post"><i class="fa fa-thumbs-o-up"></i></a><a data-post="187" data-settings="{&quot;tag&quot;:&quot;a&quot;,&quot;class&quot;:&quot;favorite-post&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Add to favorites&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;fa fa-heart-o\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Remove from favorites&quot;,&quot;content_remove&quot;:&quot;&lt;i class=\&quot;fa fa-heart\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_format&quot;:&quot;%text% (%count%)&quot;,&quot;title_not_logged&quot;:&quot;Please log in to add this post to favorites&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:false,&quot;echo&quot;:true}" data-act="favorite" data-l="0" title="Please log in to add this post to favorites" href="#" class="smk-mark-button favorite-post"><i class="fa fa-heart-o"></i></a>		</div>
+                                            <a data-post="187" data-settings="{&quot;tag&quot;:&quot;a&quot;,&quot;class&quot;:&quot;favorite-post&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Add to favorites&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;fa fa-heart-o\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Remove from favorites&quot;,&quot;content_remove&quot;:&quot;&lt;i class=\&quot;fa fa-heart\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_format&quot;:&quot;%text% (%count%)&quot;,&quot;title_not_logged&quot;:&quot;set as photo de profile&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:false,&quot;echo&quot;:true}" data-act="favorite" data-l="0" title="set as photo de profile" href="{{ path('user_setprofile',{'id':users.id ,'idtag':tag.id }) }}" class="smk-mark-button favorite-post"><i class="fa fa-heart-o"></i></a>		</div>
 
                                     </div>
 
@@ -56,11 +56,9 @@
 
                             {% endfor %}
 
-                            <form name="form" method="get" >
-                                <input type="submit" name="btn_ajouter" value="Ajouter">
-                            </form>
 
-{#                      {{ form_row(form.Ajouter) }} #}
+
+                      {{ form_row(form.Ajouter) }}
 
 
                             <div class="clear-grid"></div>
@@ -70,7 +68,7 @@
                             <div class="button-block center "><span class="button primary current small">1</span><a class="button nobg primary small" href="/recipes/?view=grid&#038;pag=2">2</a><a class="button nobg primary small" href="/recipes/?view=grid&#038;pag=3">3</a></div></div>
                     </div> <!-- .rw-row -->
 
-{#             {{ form_end(form) }} #}
+             {{ form_end(form) }}
 
                 </div>
                 </div>
