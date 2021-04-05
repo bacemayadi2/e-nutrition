@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategorieAlimentController extends AbstractController
 {
     /**
-     * @Route("doctor/categorie/aliment", name="doctor_categorie_aliment")
+     * @Route("docadmin/categorie/aliment", name="docadmin_categorie_aliment")
      */
     public function index(): Response
     {
@@ -26,7 +26,7 @@ class CategorieAlimentController extends AbstractController
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     * @Route ("doctor/ajoutercategorie",name="doctor_ajouterCategorie")
+     * @Route ("docadmin/ajoutercategorie",name="docadmin_ajouterCategorie")
      */
     public function ajoute(Request $request)
     {
@@ -40,7 +40,7 @@ class CategorieAlimentController extends AbstractController
 
                 $em->persist($categorie);
                 $em->flush();
-                return $this->redirectToRoute('doctor_afficherCategorie');
+                return $this->redirectToRoute('docadmin_afficherCategorie');
             }
         return $this->render("back/categorie_aliment/ajouterCategorie.html.twig",
             [  'form'=> $form->createView() ]);
@@ -49,7 +49,7 @@ class CategorieAlimentController extends AbstractController
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     * @Route ("doctor/modifercategorie/{id}",name="doctor_modiferCategorie")
+     * @Route ("docadmin/modifercategorie/{id}",name="docadmin_modiferCategorie")
      */
     public function modifer(Request $request,CategorieAlimentRepository $repo,$id)
     {
@@ -62,14 +62,14 @@ class CategorieAlimentController extends AbstractController
                 $em=$this->getDoctrine()->getManager();
 
                 $em->flush();
-                return $this->redirectToRoute('doctor_afficherCategorie');
+                return $this->redirectToRoute('docadmin_afficherCategorie');
             }
         return $this->render("back/categorie_aliment/ajouterCategorie.html.twig",
             [  'form'=> $form->createView() ]);
     }
 
     /**
-     * @Route ("doctor/afficherCategorie",name="doctor_afficherCategorie")
+     * @Route ("docadmin/afficherCategorie",name="docadmin_afficherCategorie")
      */
     public function afficher(CategorieAlimentRepository $repo,PaginatorInterface $paginator,Request $request)
     {
@@ -86,7 +86,7 @@ class CategorieAlimentController extends AbstractController
     /**
      * @param CategorieAlimentRepository $repo
      * @param $id
-     * @Route ("doctor/supprimerCategorie/{id}",name="doctor_supprimerCategorie")
+     * @Route ("docadmin/supprimerCategorie/{id}",name="docadmin_supprimerCategorie")
      */
     function delete(CategorieAlimentRepository $repo ,$id)
     {
@@ -94,6 +94,6 @@ class CategorieAlimentController extends AbstractController
         $categorie=$repo->find($id);
         $em->remove($categorie);
         $em->flush();
-        return $this->redirectToRoute('doctor_afficherCategorie');
+        return $this->redirectToRoute('docadmin_afficherCategorie');
     }
 }

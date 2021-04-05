@@ -57,6 +57,11 @@ class Nourriture
      */
     protected $tagNourriture;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Nutritionniste::class, inversedBy="nourritures")
+     */
+    private $nutritionniste;
+
     public function __construct()
     {
         $this->tagNourriture = new ArrayCollection();
@@ -159,6 +164,18 @@ class Nourriture
                 $tagNourriture->setNourriture(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNutritionniste(): ?Nutritionniste
+    {
+        return $this->nutritionniste;
+    }
+
+    public function setNutritionniste(?Nutritionniste $nutritionniste): self
+    {
+        $this->nutritionniste = $nutritionniste;
 
         return $this;
     }

@@ -28,7 +28,5 @@ final class Version20210404171037 extends AbstractMigration
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('DROP TABLE challenge');
-        $this->addSql('ALTER TABLE mesure DROP FOREIGN KEY FK_5F1B6E706B899279');
-        $this->addSql('DROP INDEX IDX_5F1B6E706B899279 ON mesure');
     }
 }

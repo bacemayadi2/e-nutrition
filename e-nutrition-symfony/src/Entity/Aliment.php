@@ -37,6 +37,7 @@ class Aliment extends Nourriture
 
 
 
+
     public function __construct()
     {
         $this->categorieAliment = new ArrayCollection();
@@ -145,6 +146,9 @@ public function  getnbrOFTimeUsed():float
         return $this->getNom();
 
     }
+
+
+
 
 
 }

@@ -28,7 +28,7 @@ class AdminController extends AbstractController
      */
     public function index(): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN', null, "You don't have privilege to access to this page");
+        $this->denyAccessUnlessGranted('ROLE_ADMIN' , null, "You don't have privilege to access to this page");
 
         return $this->render('back/index.html.twig', [
             'controller_name' => 'HomeBackController',

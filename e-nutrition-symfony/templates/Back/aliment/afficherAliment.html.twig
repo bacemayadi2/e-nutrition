@@ -34,7 +34,7 @@
 
 
                             <div class="card-content collapse show">
-                                    <input type="text" id="search" class="search-field fullwidth" name="doctor_recherchealiment" placeholder="Type keyword and press enter" value="">
+                                    <input type="text" id="search" class="search-field fullwidth" name="docadmin_recherchealiment" placeholder="Type keyword and press enter" value="">
 
                                 <div class="table-responsive">
                                     <table class="table" id="t">
@@ -78,21 +78,21 @@
                                                         {% if f.getnbrOFTimeUsed() > 0 %}
                                                             <a href="#"><button type="button" class="btn btn-primary" Disabled>supprimer</button> </a>
                                                         {% else %}
-                                                            <a href="{{ path('doctor_supprimerAliment',{'id':f.id }) }}"><button type="button" class="btn btn-primary">supprimer</button></a>
+                                                            <a href="{{ path('docadmin_supprimerAliment',{'id':f.id }) }}"><button type="button" class="btn btn-primary">supprimer</button></a>
 
                                                         {% endif %}
                                                         <span class="badge badge-primary badge-pill float-right">{{f.getnbrOFTimeUsed() }}</span>
 
                                                     </div>
                                                     <div style="text-align: center;">
-                                                        <a href="{{ path('doctor_modifierAliment',{'id':f.id }) }}">  <button type="button" class="btn btn-success">modifier</button></a>
+                                                        <a href="{{ path('docadmin_modifierAliment',{'id':f.id }) }}">  <button type="button" class="btn btn-success">modifier</button></a>
                                                     </div>
                                                 </div>
                                             </td>
                                         </tr {% endfor %}>
                                         <tr>
                                             <td><div style="text-align: left;">
-                                                    <a href="{{ path('doctor_ajouterAliment') }}">  <button type="button" class="btn btn-success">ajouter aliment</button></a></div>
+                                                    <a href="{{ path('docadmin_ajouterAliment') }}">  <button type="button" class="btn btn-success">ajouter aliment</button></a></div>
                                             </td></tr>
                                         {{ knp_pagination_render(aliment) }}
 
@@ -126,7 +126,7 @@
                 $.ajax({
                     /* l’url est une chaine de caractères contenant l’adresse où la requête est
                     envoyée */
-                    url : "{{ path('doctor_rechercheAliment') }}",
+                    url : "{{ path('docadmin_rechercheAliment') }}",
                     /* La méthode utilisée pour transférer les données est GET */
                     type : 'GET',
                     /*Ici search value va prendre la chaine entrée par un utilisateur dans la
