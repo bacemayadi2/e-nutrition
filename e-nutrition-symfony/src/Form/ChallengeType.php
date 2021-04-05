@@ -22,8 +22,7 @@ class ChallengeType extends AbstractType
             ->add('dateDebut', \Symfony\Component\Form\Extension\Core\Type\DateType::class, [ 'placeholder' => ['year' => 'Year', 'month' => 'Month', 'day' => 'Day'],
                 'widget' => 'choice','years' => range(2021,2050),'format' => 'dd-MM-yyyy' ])
             ->add('dateFin', \Symfony\Component\Form\Extension\Core\Type\DateType::class, [ 'placeholder' => ['year' => 'Year', 'month' => 'Month', 'day' => 'Day'],
-                'widget' => 'choice','years' => range(2021,2050),'format' => 'dd-MM-yyyy' ])
-            ->add("Ajouter", SubmitType::class);
+                'widget' => 'choice','years' => range(2021,2050),'format' => 'dd-MM-yyyy' ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

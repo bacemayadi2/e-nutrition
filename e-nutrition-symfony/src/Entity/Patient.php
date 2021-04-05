@@ -34,11 +34,17 @@ class Patient extends Utilisateur
      */
     private $mesures;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Challenge::class, inversedBy="participants")
+     */
+    private $challenges;
+
     public function __construct()
     {
         $this->ficheConsultations = new ArrayCollection();
         $this->evaluations = new ArrayCollection();
         $this->mesures = new ArrayCollection();
+        $this->challenges = new ArrayCollection();
     }
 
     public function getStyleDeVie(): ?string
@@ -138,6 +144,30 @@ class Patient extends Utilisateur
                 $mesure->setPatient(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Challenge[]
+     */
+    public function getChallenges(): Collection
+    {
+        return $this->challenges;
+    }
+
+    public function addChallenge(Challenge $challenge): self
+    {
+        if (!$this->challenges->contains($challenge)) {
+            $this->challenges[] = $challenge;
+        }
+
+        return $this;
+    }
+
+    public function removeChallenge(Challenge $challenge): self
+    {
+        $this->challenges->removeElement($challenge);
 
         return $this;
     }

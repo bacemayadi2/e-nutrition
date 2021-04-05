@@ -66,10 +66,7 @@ class RegistrationController extends AbstractController
         }
 
         return $this->render('registration/registerDoctor.html.twig', ['registrationForm'=>$form->createView()] );
-
     }
-
-
 
     /**
      * @Route("/registerPatient", name="app_register_patient")

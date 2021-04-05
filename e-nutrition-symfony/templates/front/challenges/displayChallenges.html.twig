@@ -1,0 +1,66 @@
+{% extends 'front/base.html.twig' %}
+
+{% block head %}
+    <link rel="stylesheet" id="wp-block-library-css" href="https://gustos.w3.style/wp-includes/css/dist/block-library/style.min.css?ver=5.5.3" type="text/css" media="all">
+    <link rel="stylesheet" id="wc-block-vendors-style-css" href="https://gustos.w3.style/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/vendors-style.css?ver=3.1.0" type="text/css" media="all">
+    <link rel="stylesheet" id="wc-block-style-css" href="https://gustos.w3.style/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/style.css?ver=3.1.0" type="text/css" media="all">
+    <link rel="stylesheet" id="submit-feedback-main-css-css" href="https://gustos.w3.style/wp-content/plugins/submit-feedback/assets/main.min.css?ver=0.1.0" type="text/css" media="all">
+    <link rel="stylesheet" id="woocommerce-layout-css" href="https://gustos.w3.style/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=4.5.2" type="text/css" media="all">
+    <link rel="stylesheet" id="woocommerce-smallscreen-css" href="https://gustos.w3.style/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=4.5.2" type="text/css" media="only screen and (max-width: 768px)">
+    <link rel="stylesheet" id="woocommerce-general-css" href="https://gustos.w3.style/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=4.5.2" type="text/css" media="all">
+    <style id="woocommerce-inline-inline-css" type="text/css">
+        .woocommerce form .form-row .required { visibility: visible; }
+    </style>
+
+    <link rel="stylesheet" id="zerowp-social-profiles-styles-css" href="https://gustos.w3.style/wp-content/plugins/zerowp-social-profiles/assets/css/styles.css?ver=1.2.1" type="text/css" media="all">
+    <link rel="stylesheet" id="gustos-slim-select-css" href="https://gustos.w3.style/wp-content/themes/gustos/assets//slim-select/slimselect.min.css?ver=1.26.0" type="text/css" media="all">
+    <link rel="stylesheet" id="ztip-css" href="https://gustos.w3.style/wp-content/themes/gustos/assets/modules/ztip/ztip.css?ver=1.0" type="text/css" media="all">
+    <link rel="stylesheet" id="accordionjs-css" href="https://gustos.w3.style/wp-content/themes/gustos/assets/modules/accordionjs/accordion.css?ver=2.1.1" type="text/css" media="all">
+    <link rel="stylesheet" id="gustos-root-vars-css" href="https://gustos.w3.style/wp-content/themes/gustos/assets/root.css?ver=2.10.7" type="text/css" media="all">
+    <link rel="stylesheet" id="gustos-stylesheet-css" href="https://gustos.w3.style/wp-content/themes/gustos/style.min.css?ver=2.10.7" type="text/css" media="all">
+    <link rel="stylesheet" id="gustos-wp-override-css" href="https://gustos.w3.style/wp-content/themes/gustos/wp.min.css?ver=2.10.7" type="text/css" media="all">
+    <link rel="stylesheet" id="font-awesome-css" href="https://gustos.w3.style/wp-content/themes/gustos/assets/modules/font-awesome/css/font-awesome.min.css?ver=4.7.0" type="text/css" media="all">
+    <link rel="stylesheet" id="heading-google-font-css" href="//fonts.googleapis.com/css?family=Imprima&amp;ver=5.5.3" type="text/css" media="all">
+{% endblock %}
+
+
+{% block Content %}
+
+    {%  if challenges %}
+
+        <div class="members-list grid-container">
+            {% for c in challenges %}
+                <div class="grid desk-6">
+                    <div class="member clearfix">
+                        <div class="user-avatar">
+                            <a href=""><img alt="" src=""></a>
+                        </div>
+                        <div class="user-details grid desk-7 mob-6 alpha clearfix">
+                            <div class="title clearfix">
+                                <a href="https://gustos.w3.style/author/elated-keller/" class="name">{{ c.titre }}</a>
+                            </div>
+                            <div class="info">
+                                 <div class="info-item">Date début: {{ c.dateDebut|date('d-m-y') }}</div>
+                                 <div class="info-item user-reputation">
+                                       <span class="count">Date fin: {{ c.dateFin|date('d-m-y') }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-follow grid desk-5 mob-6 omega clearfix">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <a href="{{ path('user_JoinChallenge', {'idc': c.id, 'idp': app.user.id  }) }}" ><button type="button" class="btn btn-success" >Participer au défi</button></a>
+                            {% else %}
+                                <button type="button" class="btn btn-success" disabled>Participer au défi</button>
+                            {% endif %}
+                            <br>
+                            <div>Nombre de participants: {{ c.participants|length }}</div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div style="text-align: center">Pas de défis pour ce moment</div>
+    {% endif %}
+
+{% endblock%}

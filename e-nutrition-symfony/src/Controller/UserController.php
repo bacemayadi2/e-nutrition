@@ -12,6 +12,7 @@ use App\Form\NutritionnisteType;
 use App\Form\PatientType;
 use App\Form\StudentType;
 use App\Form\UserType;
+use App\Repository\ChallengeRepository;
 use App\Repository\EvaluationRepository;
 use App\Repository\NutritionnisteRepository;
 use App\Repository\PatientRepository;
@@ -28,6 +29,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
+/**
+ * @Route("/user", name="user_")
+ */
 class UserController extends AbstractController
 {
     /**
@@ -55,7 +59,7 @@ class UserController extends AbstractController
             $em = $this->getDoctrine()->getManager();
 
             $em->flush();
-            return $this->redirectToRoute('DisplayUsers');
+            return $this->redirectToRoute('user_DisplayUsers');
         }
         return $this->render('front/users/updateUser.html.twig', ['form'=>$form->createView()]);
     }
@@ -109,7 +113,7 @@ class UserController extends AbstractController
             $em->persist($evaluation);
             $em->flush();
 
-            return $this->redirectToRoute('profileMedecin', array('id' => $id));
+            return $this->redirectToRoute('user_profileMedecin', array('id' => $id));
         }
         $medecin=$repo->findBy(['id' => $id]);
         $avg=$evRep->Average($medecin);
@@ -134,5 +138,28 @@ class UserController extends AbstractController
             $em->flush();
         }
         return $this->render("front/users/gallery.html.twig", ['users'=>$users, 'form'=>$form->createView()]);
+    }
+
+    /**
+     * @Route("/DisplayChallenges", name="DisplayChallenges")
+     */
+    public function DisplayChallenges(Request $request, ChallengeRepository $repo)
+    {
+        $challenges = $repo->findAll();
+        return $this->render("front/challenges/displayChallenges.html.twig",['challenges'=>$challenges]);
+    }
+
+    /**
+     * @Route("/JoinChallenge/{idc}/{idp}", name="JoinChallenge")
+     */
+    public function JoinChallenge($idc, $idp, ChallengeRepository $repo, PatientRepository $repoPatient)
+    {
+        $this->denyAccessUnlessGranted('ROLE_PATIENT', null, "You must be authenticated to join this event!!!");
+        $challenge = $repo->find($idc);
+        $user = $repoPatient->find($idp);
+
+        $challenge->addParticipant($user);
+
+        return $this->redirectToRoute('user_DisplayChallenges');
     }
 }

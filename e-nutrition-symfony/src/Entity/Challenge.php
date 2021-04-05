@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ChallengeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -36,10 +38,6 @@ class Challenge
      */
     private $categorie;
 
-    /**
-     * @ORM\Column(type="array")
-     */
-    private $participants = [];
 
     /**
      * @ORM\Column(type="date")
@@ -50,6 +48,16 @@ class Challenge
      * @ORM\Column(type="date")
      */
     private $dateFin;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Patient::class, mappedBy="challenges", cascade={"persist"})
+     */
+    private $participants;
+
+    public function __construct()
+    {
+        $this->participants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -92,18 +100,6 @@ class Challenge
         return $this;
     }
 
-    public function getParticipants(): ?array
-    {
-        return $this->participants;
-    }
-
-    public function setParticipants(array $participants): self
-    {
-        $this->participants = $participants;
-
-        return $this;
-    }
-
     public function getDateDebut(): ?\DateTimeInterface
     {
         return $this->dateDebut;
@@ -124,6 +120,33 @@ class Challenge
     public function setDateFin(\DateTimeInterface $dateFin): self
     {
         $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Patient[]
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(Patient $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+            $participant->addChallenge($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Patient $participant): self
+    {
+        if ($this->participants->removeElement($participant)) {
+            $participant->removeChallenge($this);
+        }
 
         return $this;
     }

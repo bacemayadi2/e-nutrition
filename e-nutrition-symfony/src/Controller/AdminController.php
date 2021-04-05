@@ -6,6 +6,7 @@ use App\Entity\Challenge;
 use App\Entity\Nutritionniste;
 use App\Form\ChallengeType;
 use App\Form\NutritionnisteType;
+use App\Form\UserType;
 use App\Repository\ChallengeRepository;
 use App\Repository\NutritionnisteRepository;
 use App\Repository\PatientRepository;
@@ -146,7 +147,7 @@ class AdminController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN', null, "You must be ADMIN to access to this page");
         $challenges = $repo->findAll();
-        return $this->render("back/challenges/DisplayChallenges.html.twig",['challenges'=>$challenges]);
+        return $this->render("back/challenges/displayChallenges.html.twig",['challenges'=>$challenges]);
     }
 
     /**
@@ -158,6 +159,7 @@ class AdminController extends AbstractController
 
         $challenge = new Challenge();
         $form = $this->createForm(ChallengeType::class, $challenge);
+        $form->add("Ajouter", SubmitType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
@@ -165,6 +167,7 @@ class AdminController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($challenge);
             $entityManager->flush();
+            return $this->redirectToRoute('admin_DisplayChallenges');
         }
         return $this->render('back/challenges/createChallenge.html.twig', ['form'=>$form->createView()] );
     }
@@ -178,6 +181,28 @@ class AdminController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->remove($challenge);
         $em->flush();
-        return $this->redirectToRoute('admin_DeleteChallenge');
+        return $this->redirectToRoute('admin_DisplayChallenges');
+    }
+
+    /**
+     * @Route("UpdateChallenge/{id}", name="UpdateChallenge")
+     */
+    function UpdateChallenge(ChallengeRepository  $repo, Request $request, $id)
+    {
+        $challenge = $repo->find($id);
+
+        $form = $this->createForm(ChallengeType::class, $challenge);
+        $form->add("Valider", SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+
+            $em->flush();
+            return $this->redirectToRoute('admin_DisplayChallenges');
+        }
+        return $this->render('back/challenge/updateChallenge.html.twig', ['form'=>$form->createView()]);
     }
 }
