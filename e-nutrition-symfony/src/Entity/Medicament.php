@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\MedicamentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups as Groups;
 
 /**
  * @ORM\Entity(repositoryClass=MedicamentRepository::class)
@@ -14,28 +15,56 @@ class Medicament
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("medicaments")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups ("medicaments")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups ("medicaments")
      */
     private $quantite;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups ("medicaments")
      */
     private $duree;
 
     /**
      * @ORM\ManyToOne(targetEntity=FicheConsultation::class, inversedBy="medicaments")
+     * @Groups ("medicaments")
      */
     private $fiche;
+
+    /**
+     * @Groups ("medicaments")
+     */
+    private  $idfiche;
+
+    /**
+     * @return mixed
+     */
+    public function getIdfiche()
+    {
+        $this->setIdfiche();
+        return $this->idfiche;
+    }
+
+    /**
+     * @param mixed $idfiche
+     */
+    public function setIdfiche(): void
+    {
+        $this->idfiche = $this->fiche->getId();
+    }
+
 
     public function getId(): ?int
     {

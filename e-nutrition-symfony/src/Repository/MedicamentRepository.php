@@ -47,4 +47,13 @@ class MedicamentRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findmedicamentbynom($nom,$fiche){
+        return $this->createQueryBuilder('medicament')
+            ->where('medicament.nom LIKE :nom and medicament.fiche = :fiche')
+            ->setParameter('fiche',$fiche)
+            ->setParameter('nom', '%'.$nom.'%')
+            ->getQuery()
+            ->getResult();
+    }
+
 }

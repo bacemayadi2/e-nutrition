@@ -145,7 +145,14 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
     public function statistique(PatientRepository $repository,FicheConsultationRepository $repo){
 //on va chercher le nombre des consultations par date
         $userid=$this->getUser()->getId();
-        $ficheConsultations=$repo->countByDateAndNutritionniste($this->getUser());
+
+        if (( (in_array("ROLE_ADMIN", $this->getUser()->getRoles()) ))) {
+
+            $ficheConsultations=$repo->countByDate();
+        }
+        else {
+            $ficheConsultations=$repo->countByDateAndNutritionniste($this->getUser());
+        }
         $dates=[];
         $patients=$repository->find(18);
 
@@ -177,13 +184,13 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
     {
         $requestString = $request->get('q');
         $entities=null;
-        if ( (in_array("ROLE_DOCTOR", $this->getUser()->getRoles()) ))
-        {
-          $entities = $repo->findEntitiesByStringAndNutritionniste($requestString, $this->getUser());
-        }
-        else if (( (in_array("ROLE_ADMIN", $this->getUser()->getRoles()) )))
+        if (( (in_array("ROLE_ADMIN", $this->getUser()->getRoles()) )))
         {
             $entities = $repo->findEntitiesByString($requestString);
+        }
+        else if ( (in_array("ROLE_DOCTOR", $this->getUser()->getRoles()) ))
+        {
+            $entities = $repo->findEntitiesByStringAndNutritionniste($requestString, $this->getUser());
         }
 
         if(!$entities) {

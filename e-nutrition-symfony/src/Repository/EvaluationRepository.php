@@ -61,8 +61,10 @@ class EvaluationRepository extends ServiceEntityRepository
         foreach ($liste as $row){
             $nbrRow++;
             $total+=$row->getNote();
-        }
-       // $avg=$total/$nbrRow;
-       // return $avg;
+        }        if ($nbrRow!=0) {
+        $avg = $total / $nbrRow;
+        return $avg;
+    }
+        else return 0;
     }
 }

@@ -1,6 +1,8 @@
 {% extends 'back/base.html.twig' %}
 {% block Content %}
-
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
     <div class="app-content content">
         <div class="content-wrapper">
 
@@ -20,10 +22,12 @@
                                     </ul>
                                 </div>
                             </div>
-                            <input id="myInput" class="form-control rounded" type="text" placeholder="Search.." >
+
+                            <input type="text" id="search" class="form-control rounded" placeholder="Search.." value="">
+
                             <div class="card-content collapse show">
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table class="table" id="t">
                                         <thead class="bg-primary white">
                                         <tr>
                                             <th>Id</th>
@@ -33,7 +37,7 @@
                                             <th>id fiche consultation</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="all">
                                         <tr {% for m in medicament %} >
 
                                             <td> {{ m.id }}</td>
@@ -47,6 +51,7 @@
                                             {{ knp_pagination_render(medicament) }}
                                         </tr {% endfor %}>
                                         </tbody>
+                                        <tbody id="search"></tbody>
                                     </table>
                                     <div style="text-align: left;">
                                         <a href="{{  path('listeMedicament',{'id':fiche.getId()}) }}">  <button type="button" class="btn btn-success">imprimer</button></a>
@@ -94,5 +99,51 @@
             </div>
         </div>
     </div>
+    <script>
+        $( document ).ready(function() {
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = $(this).val();
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
 
+
+
+                $.ajax({
+                    /* l’url est une chaine de caractères contenant l’adresse où la requête est
+                    envoyée */
+                    url : "{{ path('Search_medicament',{'id':fiche.getId()}) }}",
+                    /* La méthode utilisée pour transférer les données est GET */
+                    type : 'GET',
+                    /*Ici search value va prendre la chaine entrée par un utilisateur dans la
+                    zone de recherche et sera placée après l’url */
+                    data: {
+                        'searchValue' : value
+                    },
+                    /*Cette fonction permet de vider le contenu du tableau pour recevoir le
+                    nouveau contenu*/
+                    success : function(retour){
+                        if(retour){
+                            console.log(retour);
+
+                            $('#t tbody#search').empty();
+                            $.each(JSON.parse(retour), function(i, obj) {
+
+                                $('#t tbody#all').hide();
+                                $('#t tbody#search').append('<tr> <td> '+obj.id+' </td> <td> '+obj.nom+' </td>  <td> '+obj.quantite+' </td> <td> '+obj.duree+' </td>  <td> '+obj.idfiche+' </td>   <td>    <a href="deleteM/'+obj.id+'"><button type="button" class="btn btn-primary">supprimer</button> </a>    </td> </tr> ');
+                            });
+                        }
+                        else
+                        {
+                            $('#t tbody#all').show();
+                            $('#t tbody#search').empty();
+                            $('#t tbody#search').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
 {% endblock %}

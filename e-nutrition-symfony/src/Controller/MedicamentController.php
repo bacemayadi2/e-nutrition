@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Medicament;
 use App\Repository\FicheConsultationRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\MedicamentRepository;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class MedicamentController extends AbstractController
 {
@@ -130,6 +132,43 @@ class MedicamentController extends AbstractController
         );
     }
 
+    /**
+     * @param MedicamentRepository $repository
+     * @param Request $request
+     * @param PaginatorInterface $paginator
+     * @param NormalizerInterface $normalizer
+     * @return Response
+     * @Route  ("Search_medicament/{id}",name="Search_medicament")
+     */
+
+    public function Recherche(FicheConsultationRepository $repo,MedicamentRepository $repository,Request $request,PaginatorInterface $paginator,NormalizerInterface $normalizer,$id)
+    {
+
+
+//        $aliment=$paginator->paginate(
+//            $donnees,
+//            /* query NOT result */
+//            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+//            7/*limit per page*/
+//        );
+//        return $this->render("back/aliment/afficherAliment.html.twig",
+//            ["aliment"=>$aliment] );
+
+        $repository = $this->getDoctrine()->getRepository(Medicament::class);
+        $nom=$request->get('searchValue');
+
+         $fiche=$repo->find($id);
+        $medicament=$repository->findmedicamentbynom($nom,$fiche);
+//        $aliment=$paginator->paginate(
+//            $donnees,
+//            /* query NOT result */
+//            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+//            7/*limit per page*/
+//        );
+        $jsonContent = $normalizer->normalize($medicament, 'json',['groups'=>'medicaments']);
+        $retour =json_encode($jsonContent);
+        return new Response($retour);
+    }
 
 
 }

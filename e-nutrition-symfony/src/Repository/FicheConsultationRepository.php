@@ -56,6 +56,7 @@ $query=$this->createQueryBuilder('d')
     ->select('SUBSTRING(d.CreationDate,1,7) as CreationDate,COUNT(d) as count')
 
     ->groupBy('CreationDate')
+    ->orderBy('CreationDate')
     ;
 return $query->getQuery()->getResult();
 
@@ -67,6 +68,7 @@ return $query->getQuery()->getResult();
             ->groupBy('CreationDate')
             ->where('d.nutritionniste = :n')
             ->setParameter('n',$n)
+            ->orderBy('CreationDate')
         ;
         return $query->getQuery()->getResult();
 
