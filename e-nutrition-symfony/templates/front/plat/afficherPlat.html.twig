@@ -68,6 +68,7 @@
                                     {% endif %}
                                 {% endfor %}
                             </ul>
+
                             <div class="recipe-tools">
 {#                                <div data-post="185" data-settings="{&quot;tag&quot;:&quot;div&quot;,&quot;class&quot;:&quot;tool like smk_theme_tooltip&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Like&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;the-icon fa fa-thumbs-o-up\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Dislike&quot;,&quot;content_remove&quot;:&quot;&quot;,&quot;title_format&quot;:&quot;%text% (%count%)&quot;,&quot;title_not_logged&quot;:&quot;Please log in to like this post&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:false,&quot;echo&quot;:true}" data-act="like" data-l="0" title="Please log in to like this post" class="smk-mark-button tool like smk_theme_tooltip"><i class="the-icon fa fa-thumbs-o-up"></i></div><div data-post="185" data-settings="{&quot;tag&quot;:&quot;div&quot;,&quot;class&quot;:&quot;tool favorite smk_theme_tooltip&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Add to favorites&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;the-icon fa fa-heart-o\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Remove from favorites&quot;,&quot;content_remove&quot;:&quot;&quot;,&quot;title_format&quot;:&quot;%text% (%count%)&quot;,&quot;title_not_logged&quot;:&quot;Please log in to add this post to favorites&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:false,&quot;echo&quot;:true}" data-act="favorite" data-l="0" title="Please log in to add this post to favorites" class="smk-mark-button tool favorite smk_theme_tooltip"><i class="the-icon fa fa-heart-o"></i></div>                                                                                    <a href="/recipes/crevette-a-la-marseillaise/?print_recipe=1" rel="nofollow"#}
 {#                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          class="tool print"#}
@@ -85,6 +86,8 @@
 
 
                                 <div class="single-recipe-ingredients">
+                                    <button onclick="myFunction({{ plat.id }},{{ plat.nbrportion }})" type="button" class="btn btn-primary">manger une portion</button>
+
                                     <h3 class="recipe-headlines ingredients first">Ingredients:</h3>
                                     <ul id="main-ingredients-list">
                                         {% for composition in plat.compostions %}
@@ -96,7 +99,7 @@
                                         </li>
                                         {% endfor %}
                                     </ul>
-                                    <button onclick="myFunction({{ plat.id }},{{ plat.nbrportion }})" type="button" class="btn btn-default">manger une portion</button>
+                                    <button onclick="myFunction({{ plat.id }},{{ plat.nbrportion }})" type="button" class="btn btn-primary">manger une portion</button>
 
                                 </div>
 

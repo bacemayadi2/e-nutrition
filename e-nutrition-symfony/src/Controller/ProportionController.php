@@ -109,7 +109,7 @@ class ProportionController extends AbstractController
         $donnees=$repo->findAll();
         $endDate = (new \DateTime());
         $startDate = (clone $endDate)->modify('- 1 day ');
-        $oldproportions=$repoP->findbetwen2date($startDate,$endDate);
+        $oldproportions=$repoP->findbetwen2date($startDate,$endDate,$this->getUser());
 
         $proportion[]=null;
 
@@ -152,7 +152,6 @@ class ProportionController extends AbstractController
         $totalLipides=0;
         $totalProteins=0;
         $totalGlucides=0;
-        dump ($oldproportions);
         foreach ($oldproportions as $p)
         {
             $p->calculatenutritionvalue();
@@ -223,7 +222,6 @@ class ProportionController extends AbstractController
             {
                 $endDate = (new \DateTime());
                 $startDate = (clone $endDate)->modify('- 1 month ');
-                dump($startDate);
                 $proportion=$repo->countByDateAndpatientmois($this->getUser(),$startDate,$endDate);
                 $form = $this->createFormBuilder()
                     ->add('kcal', ChoiceType::class, ['choices' => [ 'mois' => 'mois', 'jour' => 'jour', 'annees' => 'annees']])
@@ -290,7 +288,6 @@ class ProportionController extends AbstractController
         foreach ($proportion as $p){
 
             $dates[]=$p['date'];
-            dump($p);
             $proportionCount[]=$p['count'];
             $lastindex=sizeof($proportionCountcum)-1;
             if ($lastindex!=-1)

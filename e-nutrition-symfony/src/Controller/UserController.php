@@ -45,14 +45,14 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("UpdateUser/{id}", name="UpdateUser")
+     * @Route("/UpdateDoctor/{id}", name="UpdateDoctor")
      */
     function UpdateUser(NutritionnisteRepository  $repo, Request $request, $id)
     {
         $user = $repo->find($id);
 
-        $form = $this->createForm(Nutritionniste::class, $user);
-        $form->add("Valider", SubmitType::class);
+        $form = $this->createForm(NutritionnisteType::class, $user);
+        $form->add("Modifier", SubmitType::class);
 
         $form->handleRequest($request);
 
@@ -61,13 +61,13 @@ class UserController extends AbstractController
             $em = $this->getDoctrine()->getManager();
 
             $em->flush();
-            return $this->redirectToRoute('user_DisplayUsers');
+            return $this->redirectToRoute('user_profileUser');
         }
-        return $this->render('front/users/updateUser.html.twig', ['form'=>$form->createView()]);
+        return $this->render('front/users/updateDoctor.html.twig', ['form'=>$form->createView()]);
     }
 
     /**
-    * @Route("/searchAjax ", name="searchAjax")
+    * @Route("/searchAjax", name="searchAjax")
     */
     public function searchAjax(NutritionnisteRepository $repo, Request $request, NormalizerInterface $Normalizer)
      {
@@ -89,7 +89,9 @@ class UserController extends AbstractController
      */
     function SearchDoctor()
     {
-        return $this->render('front/users/SearchDoctor.html.twig');
+        $repo = $this->getDoctrine()->getRepository(Nutritionniste::class);
+
+        return $this->render('front/users/SearchDoctor.html.twig', ['doctors'=>$repo]);
     }
 
     /**

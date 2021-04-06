@@ -29,6 +29,15 @@
         <div class="table-responsive">
             <br>
             <br>
+
+            <form name="f">
+                <div class="form-group col-10 mb-2">
+                    <input type="text" placeholder="Search" id="text_search" name="text_search" class="form-control" required><br>
+
+                </div>
+            </form>
+
+
             <div class="col-11 mb-2">
                 {%  if doctors %}
                     <table border="1" cellpadding="50" align="center" class="table">
@@ -46,6 +55,7 @@
                             <th colspan="3" style="text-align: center">Gestion</th>
                         </tr>
                         </thead>
+                        <tbody id="all">
                         <tr {% for u in doctors %}>
                             <td>{{ u.id }}</td>
                             <td>{{ u.email }}</td>
@@ -60,12 +70,18 @@
                                     {{ role }}
                                 {% endfor %}
                             </td>
-                            <td><div class="btn-group"> <a href="{{ path('UpdateUser', {'id':u.id}) }}" ><button type="button" class="btn btn-primary">Modifier</button> </a></div></td>
+
+                            <td><div class="btn-group"> <a href="{{ path('user_UpdateUser', {'id':u.id}) }}" ><button type="button" class="btn btn-primary">Modifier</button> </a></div></td>
                             {% if is_granted('ROLE_SUPER_ADMIN') %}
                                 <td><div class="btn-group"> <a href="{{ path('admin_PromoteToAdmin', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Promote to admin</button></a></div></td>
                                 <td><div class="btn-group"> <a href="{{ path('admin_RemoveRoleAdmin', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Remove Admin Role</button></a></div></td>
                             {% endif %}
                         </tr {% endfor %}>
+                        </tbody>
+
+                        <tbody id="search">
+                        </tbody>
+
                     </table>
                 {% else %}
                     <div style="text-align: center">Aucun nutritionniste trouvé</div>
@@ -81,5 +97,42 @@
     </div>
     </div>
 
+    <script>
+        $( document ).ready(function() {
+            $("#search").keyup(function(e){
+
+                var value = $(this).val();
+
+                $.ajax({
+
+                    url : "{{ path('user_searchAjax') }}",
+
+                    type : 'GET',
+
+                    data: {
+                        'searchValue' : value
+                    },
+
+                    success : function(retour){
+                        if(retour){
+                            console.log(retour);
+                            $('#t tbody#search').empty();
+                            $.each(JSON.parse(retour), function(i, obj) {
+                                $('#table tbody#all').hide();
+                                $('#table tbody#search').append('<tr> <td> '+obj.id+' </td> <td> '+obj.nom+' </td>  <td> '+obj.prenom+' </td> <td> '+obj.email+' </td>  <td> '+obj.ville+' </td>   <td>    <a href="deleteM/'+obj.id+'"><button type="button" class="btn btn-primary">supprimer</button> </a>    </td> </tr> ');
+                            });
+                        }
+                        else
+                        {
+                            $('#table tbody#all').show();
+                            $('#table tbody#search').empty();
+                            $('#table tbody#search').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
 
 {% endblock%}

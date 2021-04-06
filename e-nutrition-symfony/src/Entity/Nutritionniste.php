@@ -16,25 +16,21 @@ class Nutritionniste extends Utilisateur
 {
     /**
      * @ORM\OneToMany(targetEntity=Secretaire::class, mappedBy="nutritionniste", cascade={"persist"})
-     * @Groups ("doctors")
      */
     private $secretaire;
 
     /**
      * @ORM\OneToMany(targetEntity=FicheConsultation::class, mappedBy="nutritionniste",cascade={"all"},orphanRemoval=true)
-     * @Groups ("doctors")
      */
     private $ficheConsultations;
 
     /**
      * @ORM\OneToMany(targetEntity=Evaluation::class, mappedBy="nutritionniste")
-     * @Groups ("doctors")
      */
     private $evaluations;
 
     /**
      * @ORM\OneToMany(targetEntity=Nourriture::class, mappedBy="nutritionniste")
-     * @Groups ("doctors")
      */
     private $nourritures;
 

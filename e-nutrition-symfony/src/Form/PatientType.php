@@ -23,8 +23,6 @@ class PatientType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre adresse e-mail"]])
-            ->add('agreeTerms', CheckboxType::class, [ 'mapped' => false,
-                'constraints' => [ new IsTrue([ 'message' => 'You should agree to our terms.', ]), ],])
             ->add('nom', TextType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre nom"]])
             ->add('prenom', TextType::class, [ 'attr'=>[ 'placeholder'=>"saisir votre prenom"]])
             ->add('sexe', ChoiceType::class, [ 'choices'=>[ 'Choisir votre sexe'=> 0, 'Homme'=> "Homme", 'Femme'=> 'Femme' ]])

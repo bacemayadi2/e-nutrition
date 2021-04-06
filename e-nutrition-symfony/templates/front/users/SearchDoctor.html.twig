@@ -30,7 +30,7 @@
 
                                     <form name="f">
                                         <div class="form-group col-10 mb-2">
-                                            <input type="text" placeholder="Search" id="text_search" name="text_search" class="form-control" required><br>
+                                            <input type="text" placeholder="Search" id="search" name="text_search" class="form-control" required><br>
 
                                         </div>
                                     </form>
@@ -39,7 +39,7 @@
 
                                     </div>
                                     <div class="col-11 mb-2">
-                                        <table border="1" border-collapse="50" align="center" class="table" id="table">
+                                        <table border="1" border-collapse="50" align="center" class="table" id="t">
                                             <thead class="bg-primary white">
                                                 <tr>
                                                     <th>Nom</th>
@@ -79,6 +79,7 @@
         $( document ).ready(function() {
             $("#search").keyup(function(e){
 
+                console.log("hello1");
                 var value = $(this).val();
 
                 $.ajax({
@@ -93,18 +94,18 @@
 
                     success : function(retour){
                         if(retour){
-                            console.log(retour);
+                            console.log("hello2");
                             $('#t tbody#search').empty();
                             $.each(JSON.parse(retour), function(i, obj) {
-                                $('#table tbody#all').hide();
-                                $('#table tbody#search').append('<tr> <td> '+obj.id+' </td> <td> '+obj.nom+' </td>  <td> '+obj.prenom+' </td> <td> '+obj.email+' </td>  <td> '+obj.ville+' </td>   <td>    <a href="deleteM/'+obj.id+'"><button type="button" class="btn btn-primary">supprimer</button> </a>    </td> </tr> ');
+                                $('#t tbody#all').hide();
+                                $('#t tbody#search').append('<tr><td> '+obj.id+' </td><td> '+obj.prenom+' </td><td>'+obj.email+' </td></tr>');
                             });
                         }
                         else
                         {
-                            $('#table tbody#all').show();
-                            $('#table tbody#search').empty();
-                            $('#table tbody#search').fadeIn('fast');
+                            $(`#t tbody#all`).show();
+                            $('#t tbody#search').empty();
+                            $('#t tbody#search').fadeIn('fast');
                         }
                     },
                 });
@@ -112,6 +113,4 @@
             });
         });
     </script>
-
-
 {% endblock%}

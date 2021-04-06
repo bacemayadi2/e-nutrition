@@ -9,7 +9,7 @@
     <div class="rw-section rw-container">
         <div class="rw-inner clearfix">
     <aside class="widget widget_search"><form method="post" class="search-form" action="{{ path('rechercheplat') }}">
-            <input type="text" class="search-field fullwidth" name="searchplat" placeholder="Type keyword and press enter" value="">
+            <input id="searchplat" type="text" class="search-field fullwidth" name="searchplat" placeholder="recherche" value="">
         </form>
     </aside>
             <!-- Main content -->
@@ -62,28 +62,29 @@
                                             </div>
                                             <div class="entry-controls minimal">
 
-						<span class="control-tip"><div class="post-rating-result" title="4 stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>
-					<meta itemprop="ratingValue" content="4.33" />
-					<meta itemprop="reviewCount" content="3" />
-				</div></span>
-                                                <div class="control"> <i class="fa fa-calendar"></i> </div><span class="control-tip">August 20, 2016</span>
+{#						<span class="control-tip">#}
+{#                            <div class="post-rating-result" title="4 stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>#}
+{#					<meta itemprop="ratingValue" content="4.33" />#}
+{#					<meta itemprop="reviewCount" content="3" />#}
+{#				</div></span>#}
+{#                                                <div class="control"> <i class="fa fa-calendar"></i> </div><span class="control-tip">August 20, 2016</span>#}
 
-                                                <a data-post="179" data-settings="{&quot;tag&quot;:&quot;a&quot;,&quot;class&quot;:&quot;control entry-to-favorites&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Add to favorites&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;fa fa-heart-o\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Remove from favorites&quot;,&quot;content_remove&quot;:&quot;&lt;i class=\&quot;fa fa-heart\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_format&quot;:&quot;%text%&quot;,&quot;title_not_logged&quot;:&quot;Please log in to add this post to favorites&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:&quot;next&quot;,&quot;echo&quot;:true,&quot;total_in_title&quot;:false}" data-act="favorite" data-l="0" title="Please log in to add this post to favorites" href="#" class="smk-mark-button control entry-to-favorites"><i class="fa fa-heart-o"></i></a>						<span class="control-tip">28</span>
+{#                                                <a data-post="179" data-settings="{&quot;tag&quot;:&quot;a&quot;,&quot;class&quot;:&quot;control entry-to-favorites&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Add to favorites&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;fa fa-heart-o\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Remove from favorites&quot;,&quot;content_remove&quot;:&quot;&lt;i class=\&quot;fa fa-heart\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_format&quot;:&quot;%text%&quot;,&quot;title_not_logged&quot;:&quot;Please log in to add this post to favorites&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:&quot;next&quot;,&quot;echo&quot;:true,&quot;total_in_title&quot;:false}" data-act="favorite" data-l="0" title="Please log in to add this post to favorites" href="#" class="smk-mark-button control entry-to-favorites"><i class="fa fa-heart-o"></i></a>						<span class="control-tip">28</span>#}
 
-                                                <a data-post="179" data-settings="{&quot;tag&quot;:&quot;a&quot;,&quot;class&quot;:&quot;control entry-like&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Like&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;fa fa-thumbs-o-up\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Dislike&quot;,&quot;content_remove&quot;:&quot;&lt;i class=\&quot;fa fa-thumbs-up\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_format&quot;:&quot;%text%&quot;,&quot;title_not_logged&quot;:&quot;Please log in to like this post&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:&quot;next&quot;,&quot;echo&quot;:true,&quot;total_in_title&quot;:false}" data-act="like" data-l="0" title="Please log in to like this post" href="#" class="smk-mark-button control entry-like"><i class="fa fa-thumbs-o-up"></i></a>						<span class="control-tip">29</span>
+{#                                                <a data-post="179" data-settings="{&quot;tag&quot;:&quot;a&quot;,&quot;class&quot;:&quot;control entry-like&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Like&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;fa fa-thumbs-o-up\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Dislike&quot;,&quot;content_remove&quot;:&quot;&lt;i class=\&quot;fa fa-thumbs-up\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_format&quot;:&quot;%text%&quot;,&quot;title_not_logged&quot;:&quot;Please log in to like this post&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:&quot;next&quot;,&quot;echo&quot;:true,&quot;total_in_title&quot;:false}" data-act="like" data-l="0" title="Please log in to like this post" href="#" class="smk-mark-button control entry-like"><i class="fa fa-thumbs-o-up"></i></a>						<span class="control-tip">29</span>#}
 
-                                                <span class="control entry-comments" title="Comments"> <i class="fa fa-comments"></i> </span>
-                                                <span class="control-tip">15 Comments</span>
-                                                <div class="control"> <i class="fa fa-bar-chart"></i> </div>
-                                                <span class="control-tip">3810 views</span>
-                                            </div>
-*                                            <div class="entry-content">
+{#                                                <span class="control entry-comments" title="Comments"> <i class="fa fa-comments"></i> </span>#}
+{#                                                <span class="control-tip">15 Comments</span>#}
+{#                                                <div class="control"> <i class="fa fa-bar-chart"></i> </div>#}
+{#                                                <span class="control-tip">3810 views</span>#}
+{#                                            </div>#}
+                                            <div class="entry-content">
                                                {{ plat.description}}</div>
                                             <div class="entry-info-author">
                                                 <a href="{{ path('user_profileMedecin',{'id':plat.nutritionniste.id })}}">
                                                     <img alt='' src='{{ plat.nutritionniste.getphotoProfile() }}' srcset='https://secure.gravatar.com/avatar/c48126a06aba487f94907616bae8787b?s=100&#038;d=mm&#038;r=g 2x' class='avatar avatar-50 photo' height='50' width='50' loading='lazy'/>						</a>
                                                 <div class="author-name"><a href="{{ path('user_profileMedecin',{'id':plat.nutritionniste.id })}}" itemprop="author">{{plat.nutritionniste.nom }}  {{ plat.nutritionniste.prenom }}</a></div>
-                                                <div class="total-recipes">1 recipes</div>
+{#                                                <div class="total-recipes">1 recipes</div>#}
                                             </div>
                                             </div> <!-- .recipe-info-2 -->
                                         </div> <!-- .recipe-main-inf0 -->
