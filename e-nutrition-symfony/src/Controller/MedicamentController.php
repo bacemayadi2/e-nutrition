@@ -26,13 +26,11 @@ class MedicamentController extends AbstractController
         ]);
     }
 
-
     /**
      * @param MedicamentRepository $repository
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("afficherMedicament/{id}",name="afficherMedicament")
      */
-
 
     public function AfficheMedicament(Request $request,PaginatorInterface $paginator,$id,MedicamentRepository $repository,FicheConsultationRepository $repoFiche)
     {

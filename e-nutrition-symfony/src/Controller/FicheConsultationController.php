@@ -202,14 +202,12 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
         return new Response(json_encode($result));
     }
 
-    public function getRealEntities($fiches){
+    public function getRealEntities($fiches)
+    {
 
         foreach ($fiches as $f){
             $realEntities[$f->getId()] = [$f->getPatient()->getNom(),$f->getNutritionniste()->getNom(),$f->getCreationDate(),$f->getPoids(),$f->getTaille(),$f->getDescription(),$f->getSymptome(),$f->getApetit(),$f->calculerImc(),$f->getnbrOFTimeUsed()];
         }
-
         return $realEntities;
     }
-
-
 }

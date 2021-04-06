@@ -47,11 +47,11 @@ class UserController extends AbstractController
     /**
      * @Route("UpdateUser/{id}", name="UpdateUser")
      */
-    function UpdateUser(UserRepository  $repo, Request $request, $id)
+    function UpdateUser(NutritionnisteRepository  $repo, Request $request, $id)
     {
         $user = $repo->find($id);
 
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(Nutritionniste::class, $user);
         $form->add("Valider", SubmitType::class);
 
         $form->handleRequest($request);
@@ -69,13 +69,13 @@ class UserController extends AbstractController
     /**
     * @Route("/searchAjax ", name="searchAjax")
     */
-    public function searchAjax(Request $request, NormalizerInterface $Normalizer)
+    public function searchAjax(NutritionnisteRepository $repo, Request $request, NormalizerInterface $Normalizer)
      {
-         $repository = $this -> getDoctrine() -> getRepository(Nutritionniste::class);
+         $repo = $this -> getDoctrine() -> getRepository(Nutritionniste::class);
 
          $requestString = $request -> get('search');
 
-         $doctors = $repository -> findByName($requestString);
+         $doctors = $repo -> findByName($requestString);
 
          $jsonContent = $Normalizer->normalize($doctors, 'json',['groups'=>'doctors']);
 
@@ -153,7 +153,7 @@ class UserController extends AbstractController
     /**
      * @Route("/DisplayChallenges", name="DisplayChallenges")
      */
-    public function DisplayChallenges(Request $request, ChallengeRepository $repo)
+    public function DisplayChallenges(ChallengeRepository $repo)
     {
         $challenges = $repo->findAll();
         return $this->render("front/challenges/displayChallenges.html.twig",['challenges'=>$challenges]);
@@ -165,7 +165,9 @@ class UserController extends AbstractController
     public function JoinChallenge($idc, $idp, ChallengeRepository $repo, PatientRepository $repoPatient)
     {
         $this->denyAccessUnlessGranted('ROLE_PATIENT', null, "You must be authenticated to join this event!!!");
+
         $challenge = $repo->find($idc);
+
         $user = $repoPatient->find($idp);
 
         $challenge->addParticipant($user);
@@ -195,5 +197,16 @@ class UserController extends AbstractController
             $em->flush();
 
         return $this->redirectToRoute('user_profileUser');
+    }
+
+    /**
+     * @Route("/ChallengeDetails/{id}", name="ChallengeDetails")
+     */
+    public function ChallengeDetails($id, ChallengeRepository $repo, PatientRepository $repoPatient)
+    {
+        $this->denyAccessUnlessGranted('ROLE_PATIENT', null, "You must be authenticated to join this event!!!");
+        $challenge = $repo->find($id);
+
+        return $this->render("front/challenges/challengeDetails.html.twig",['challenge'=>$challenge]);
     }
 }

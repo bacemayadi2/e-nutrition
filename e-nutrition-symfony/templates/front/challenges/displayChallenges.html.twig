@@ -33,11 +33,11 @@
                 <div class="grid desk-6">
                     <div class="member clearfix">
                         <div class="user-avatar">
-                            <a href=""><img alt="" src=""></a>
+                            <a href="{{ path('user_ChallengeDetails', {'id': c.id}) }}"><img alt="" src=""></a>
                         </div>
                         <div class="user-details grid desk-7 mob-6 alpha clearfix">
                             <div class="title clearfix">
-                                <a href="https://gustos.w3.style/author/elated-keller/" class="name">{{ c.titre }}</a>
+                                <a href="{{ path('user_ChallengeDetails', {'id': c.id}) }}" class="name">{{ c.titre }}</a>
                             </div>
                             <div class="info">
                                  <div class="info-item">Date début: {{ c.dateDebut|date('d-m-y') }}</div>

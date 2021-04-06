@@ -1,0 +1,147 @@
+{% extends 'front/base.html.twig' %}
+
+{% block head %}
+    <style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 .07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
+    </style>
+    <link rel='stylesheet' id='wp-block-library-css'  href='https://gustos.w3.style/wp-includes/css/dist/block-library/style.min.css?ver=5.5.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='wc-block-vendors-style-css'  href='https://gustos.w3.style/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/vendors-style.css?ver=3.1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='wc-block-style-css'  href='https://gustos.w3.style/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/style.css?ver=3.1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='submit-feedback-main-css-css'  href='https://gustos.w3.style/wp-content/plugins/submit-feedback/assets/main.min.css?ver=0.1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='woocommerce-layout-css'  href='https://gustos.w3.style/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=4.5.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='woocommerce-smallscreen-css'  href='https://gustos.w3.style/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=4.5.2' type='text/css' media='only screen and (max-width: 768px)' />
+    <link rel='stylesheet' id='woocommerce-general-css'  href='https://gustos.w3.style/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=4.5.2' type='text/css' media='all' />
+    <style id='woocommerce-inline-inline-css' type='text/css'>
+        .woocommerce form .form-row .required { visibility: visible; }
+    </style>
+    <link rel='stylesheet' id='zerowp-social-profiles-styles-css'  href='https://gustos.w3.style/wp-content/plugins/zerowp-social-profiles/assets/css/styles.css?ver=1.2.1' type='text/css' media='all' />
+    <link rel='stylesheet' id='gustos-slim-select-css'  href='https://gustos.w3.style/wp-content/themes/gustos/assets//slim-select/slimselect.min.css?ver=1.26.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='ztip-css'  href='https://gustos.w3.style/wp-content/themes/gustos/assets/modules/ztip/ztip.css?ver=1.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='accordionjs-css'  href='https://gustos.w3.style/wp-content/themes/gustos/assets/modules/accordionjs/accordion.css?ver=2.1.1' type='text/css' media='all' />
+    <link rel='stylesheet' id='gustos-root-vars-css'  href='https://gustos.w3.style/wp-content/themes/gustos/assets/root.css?ver=2.10.7' type='text/css' media='all' />
+    <link rel='stylesheet' id='gustos-stylesheet-css'  href='https://gustos.w3.style/wp-content/themes/gustos/style.min.css?ver=2.10.7' type='text/css' media='all' />
+    <link rel='stylesheet' id='gustos-wp-override-css'  href='https://gustos.w3.style/wp-content/themes/gustos/wp.min.css?ver=2.10.7' type='text/css' media='all' />
+    <link rel='stylesheet' id='font-awesome-css'  href='https://gustos.w3.style/wp-content/themes/gustos/assets/modules/font-awesome/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='gustos-font-awards-css'  href='https://gustos.w3.style/wp-content/themes/gustos/assets/font-awards/style.css?ver=2.10.7' type='text/css' media='all' />
+    <link rel='stylesheet' id='heading-google-font-css'  href='//fonts.googleapis.com/css?family=Imprima&#038;ver=5.5.3' type='text/css' media='all' />
+    <script type='text/javascript' src='https://gustos.w3.style/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp' id='jquery-core-js'></script>
+    <link rel="https://api.w.org/" href="https://gustos.w3.style/wp-json/" /><link rel="alternate" type="application/json" href="https://gustos.w3.style/wp-json/wp/v2/users/2" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://gustos.w3.style/xmlrpc.php?rsd" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://gustos.w3.style/wp-includes/wlwmanifest.xml" />
+    <meta name="generator" content="WordPress 5.5.3" />
+    <meta name="generator" content="WooCommerce 4.5.2" />
+    <meta name="generator" content="Gustos 2.10.7" />
+    <noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+    <link rel="icon" href="https://gustos.w3.style/wp-content/uploads/2016/08/cropped-logo-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://gustos.w3.style/wp-content/uploads/2016/08/cropped-logo-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://gustos.w3.style/wp-content/uploads/2016/08/cropped-logo-180x180.png" />
+    <meta name="msapplication-TileImage" content="https://gustos.w3.style/wp-content/uploads/2016/08/cropped-logo-270x270.png" />
+    <style>:root{--color-accent: #706fd3;--color-accent-lighter: #8685fd;--color-accent-darker: #5958a8;--color-link: #706fd3;--width-layout: 1340px;--width-sidebar: 300px;--background-body: #eee;--background-body--full: #eee  repeat scroll;--background-body--size: auto;--font-family-body: Arial, "Helvetica Neue", Helvetica, sans-serif;--font-family-heading: "Imprima", Helvetica, Arial, sans-serif;--background-color-header: #2c2c54;--color-header-text: #fff;--color-header-link: #fff;--background-color-submenu: #2c2c54}</style>
+{% endblock%}
+
+{% block Content %}
+
+    <div class="rw-row page-title" wfd-id="111">
+        <div class="grid-container" wfd-id="112">
+            <div class="grid desk-6 mob-6 alpha" wfd-id="115">
+                    <h1> {{ challenge.titre}} </h1>
+            </div>
+            <div class="grid desk-6 mob-6 omega" wfd-id="113">
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a href="#" ><button type="button" class="btn btn-success" >Participer au défi</button></a>
+                {% else %}
+                    <button type="button" class="btn btn-success" disabled>Participer au défi</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="rw-row subtle" wfd-id="68">
+        <div class="grid-container" wfd-id="69">
+
+            <div class="clear" wfd-id="106"></div>
+
+            <div class="grid desk-3" wfd-id="104">
+                <div class="profile-avatar" wfd-id="105">
+                    <a href="#"><img alt="" src="https://secure.gravatar.com/avatar/e22c8af3706578ce9aa8280550eac522?s=256&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/e22c8af3706578ce9aa8280550eac522?s=512&amp;d=mm&amp;r=g 2x" class="avatar avatar-256 photo" height="256" width="256" loading="lazy"></a>
+
+                </div> <!-- .profile-avatar -->
+            </div>
+
+            <div class="grid desk-9" wfd-id="71">
+
+                <div id="user-summary" class="profile-user-tab active" wfd-id="73">
+                    <div class="grid desk-6 alpha" wfd-id="90">
+                        <ul class="profile-rows" wfd-id="91">
+
+                            <li wfd-id="101">
+                                <i class="the-icon fa fa-history"></i>
+                                <span class="the-label" wfd-id="103">{{ challenge.titre}} </span>
+                            </li>
+
+                            <li wfd-id="98">
+                                <i class="the-icon fa fa-child"></i>
+                                <span class="the-label" wfd-id="100">{{ challenge.dateDebut|date('d-m-y')}} </span>
+                            </li>
+
+                            <li wfd-id="95">
+                                <i class="fas fa-user-clock"></i>
+                                <span class="the-label" wfd-id="97">{{ challenge.dateFin|date('d-m-y')}} </span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="grid desk-6 omega" wfd-id="75">
+                        <div class="following-block clearfix" wfd-id="77">
+                            <div class="follow-col reputation" wfd-id="86">
+                                <div class="follow-col-in" wfd-id="87">
+                                    <a href="https://gustos.w3.style/author/elated-keller/?profile-section=reputation"><span class="count" wfd-id="89">{{ challenge.participants|length}}</span><span class="title" wfd-id="88">Nombre de participant(s)</span></a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="clear" wfd-id="76"></div>
+
+
+
+                    </div>
+                    <div class="clear" wfd-id="74"></div>
+                </div> <!-- #user-summary -->
+
+
+                <div id="user-send-pm" class="profile-user-tab" wfd-id="72">
+                    <div class="tab-inner" wfd-id="178">
+                        <div class="notification super-light orange" wfd-id="184"><a href="/author/elated-keller/?auth=login">Please login to send a message to Elated keller</a></div>			<form method="post" class="private-messaging-form" wfd-id="179">
+                            <div class="form-label" wfd-id="183">
+                                Send private message to Elated keller				</div>
+                            <div class="form-description" wfd-id="182">Press Ctrl + Enter to send the message.</div>				<div class="response-message" wfd-id="181"></div>
+                            <textarea name="message" class="private-messaging-textarea" wfd-id="172"></textarea>
+                            <input type="hidden" name="sender" value="0" wfd-id="167">
+                            <input type="hidden" name="receiver" value="1" wfd-id="166">
+                            <input type="hidden" name="private_message" value="create" wfd-id="165">
+                            <input type="hidden" id="_wpnonce" name="_wpnonce" value="e5d54a0768" wfd-id="164"><input type="hidden" name="_wp_http_referer" value="/author/elated-keller/" wfd-id="163">				<div class="private-messaging-footer clearfix" wfd-id="180">
+                                <input class="button primary private-messaging-button" value="Send message" disabled="" type="submit" wfd-id="162">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="clear" wfd-id="177"></div>
+                </div> <!-- #user-send-pm -->
+
+            </div>
+            <div class="clear" wfd-id="70"></div>
+
+
+        </div> <!-- .grid-container -->
+    </div>
+
+{% endblock%}

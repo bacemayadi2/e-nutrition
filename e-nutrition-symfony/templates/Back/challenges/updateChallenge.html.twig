@@ -1,0 +1,44 @@
+{% extends 'back/base.html.twig' %}
+
+{% block Content %}
+    {% block Content %}
+
+        <div align="center" >
+            <br>
+            <h1>Modifier Défi</h1>
+            <br>
+            {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+            <table class="form-wrap">
+
+                <tr>
+                    <td>{{ form_label(form.titre, "Titre: ") }} </td>
+                    <td>{{ form_widget(form.titre, {'attr': {'style': 'width: 300px'} + {'class':'form-control'}}) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.description, "Description: ") }} </td>
+                    <td>{{ form_widget(form.description, {'attr': {'style': 'width: 300px'} + {'class':'form-control'}}) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.categorie, "Categorie: ") }}</td>
+                    <td>{{ form_widget(form.categorie, {'attr': {'style': 'width: 300px'} + {'class':'form-control'} } )  }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.dateDebut, "Date de début de défi: ") }}</td>
+                    <td>{{ form_widget(form.dateDebut) }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form_label(form.dateFin, "Date de fin de défi: ") }}</td>
+                    <td>{{ form_widget(form.dateFin) }}</td>
+                </tr>
+            </table>
+
+            {{ form_widget(form.Valider, {'attr':{'class':'btn btn-primary'}}) }}
+
+            {{ form_errors(form.titre) }}
+            {{ form_errors(form.description) }}
+            {{ form_errors(form.categorie) }}
+            {{ form_errors(form.dateDebut) }}
+            {{ form_errors(form.dateFin) }}
+        </div>
+    {% endblock%}
+{% endblock %}

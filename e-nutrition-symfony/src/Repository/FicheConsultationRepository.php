@@ -79,8 +79,6 @@ return $query->getQuery()->getResult();
     /**
      * @return FicheConsultation[] Returns an array of FicheConsultation objects
      */
-
-   
     public function findEntitiesByString($value)
     {
         return $this->createQueryBuilder('f')
@@ -88,9 +86,10 @@ return $query->getQuery()->getResult();
             ->setParameter('v', '%'.$value.'%')
             ->orderBy('f.CreationDate', 'ASC')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
+
+
     public function findEntitiesByStringAndNutritionniste($value,$n)
     {
         return $this->createQueryBuilder('f')

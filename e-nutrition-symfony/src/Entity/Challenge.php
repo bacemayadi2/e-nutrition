@@ -38,7 +38,6 @@ class Challenge
      */
     private $categorie;
 
-
     /**
      * @ORM\Column(type="date")
      */
@@ -50,7 +49,7 @@ class Challenge
     private $dateFin;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Patient::class, mappedBy="challenges", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity=Patient::class, mappedBy="challenges", cascade={"all"})
      */
     private $participants;
 

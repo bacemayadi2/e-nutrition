@@ -6,38 +6,36 @@
         <br>
         <h1>Modifier Compte</h1>
         <br>
-        {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+        <form name="form" action="{{ path('UpdateClass', {'id':id, 'name':name}) }}">
+            <h2>name <input type="text" value="{{ name }}" name="classroom_name"></h2>
+
             <table class="form-wrap">
                 <tr>
-                    <td>{{ form_label(form.typeCompte, "Type Compte") }} </td>
-                    <td>{{ form_widget(form.typeCompte, {'attr': {'style': 'width: 250px'}}) }}</td>
+                    <td>E-Mail</td>
+                    <td><input type="text" value="{{ name }}" name="classroom_name"></td>
                 </tr>
                 <tr>
-                    <td>{{ form_label(form.nom, "Nom") }} </td>
-                    <td>{{ form_widget(form.nom, {'attr': {'style': 'width: 250px'}}) }}</td>
+                    <td>Nom:  </td>
+                    <td><input type="submit" value="Update"></td>
                 </tr>
                 <tr>
-                    <td>{{ form_label(form.prenom, "Prenom") }}</td>
-                    <td>{{ form_widget(form.prenom, {'attr': {'style': 'width: 250px'}}) }}</td>
+                    <td>Prenom: </td>
+                    <td><input type="text" value="{{ name }}" name="classroom_name"></td>
                 </tr>
                 <tr>
-                    <td>{{ form_label(form.sexe, "Sexe") }}</td>
-                    <td> {{ form_widget(form.sexe, {'attr': {'style': 'width: 250px'}}) }}</td>
+                    <td>Sexe: </td>
+                    <td> <input type="text" value="{{ name }}" name="classroom_name"></td>
                 </tr>
                 <tr>
-                    <td>{{ form_label(form.dateNaiss, "Date de naissance") }}</td>
-                    <td>{{ form_widget(form.dateNaiss, {'attr': {'style': 'width: 250px'}}) }}</td>
+                    <td>Date de naissance: </td>
+                    <td><input type="text" value="{{ name }}" name="classroom_name"></td>
                 </tr>
                 <tr>
-                    <td>{{ form_label(form.email, "E-Mail") }}</td>
-                    <td>{{ form_widget(form.email, {'attr': {'style': 'width: 250px'}}) }}</td>
-                </tr>
-                <tr>
-                    <td>{{ form_label(form.tel, "Numéro de téléphone") }}</td>
-                    <td>{{ form_widget(form.tel, {'attr': {'style': 'width: 250px'}})  }}</td>
+                    <td>Numéro de téléphone</td>
+                    <td><input type="text" value="{{ name }}" name="classroom_name"></td>
                 </tr>
             </table>
-
+        </form>
             {{ form_widget(form.Valider, {'attr':{'class':'btn btn-primary'}}) }}
 
             {{ form_errors(form.nom) }}
