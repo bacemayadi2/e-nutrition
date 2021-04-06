@@ -75,30 +75,39 @@ class MesureController extends AbstractController
 //            'mesure' => $mesure,
         $userid=$this->getUser()->getId();
 
-        if (( (in_array("ROLE_PATIENT", $this->getUser()->getRoles()) ))) {
 
-            $mesure=$Repository->countByDate();
-        }
-//        else {
-//            $mesure=$Repository->countByDatePatient($this->getUser());
-//        }
+            $poid=$Repository->countpoidByDatePatient($this->getUser());
+
         $dates=[];
-        $patient=$Repo->find(18);
 
-        $mesure=[];
+        $poidcount=[];
 
 //on démonte les données pour les séparer tel qu'attendu par CharJs
 
-        foreach ($mesure as $mesure){
+        foreach ($poid as $p){
 
-            $dates[]=$mesure['dates'];
-            $mesure[]=$mesure['count'];
+            $dates[]=$p['dateMesure'];
+            $poidcount[]=$p['count'];
 
         }
+        $taille=$Repository->counttailleByDatePatient($this->getUser());
+
+
+        $taillecount=[];
+
+//on démonte les données pour les séparer tel qu'attendu par CharJs
+
+        foreach ($taille as $t){
+
+            $taillecount[]=$t['count'];
+
+        }
+        dump($poid);
         //$ficheConsultationCount[]=count($patients->getFicheConsultations());
         return $this->render('Front/mesure/affichage.html.twig',[
 
-            'mesure'=>json_encode($mesure),
+            'poids'=>json_encode($poidcount),
+            'taille'=>json_encode($taillecount),
             'dates'=>json_encode($dates),
         ]);
 

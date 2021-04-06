@@ -1,11 +1,12 @@
 {% extends 'front/base.html.twig' %}
 {% block Content %}
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
 
 <head>
         <title>Line Chart Multiple Axes</title>
-        <script src="{{ asset('front/Chart.min.js') }}"></script>
         <script src="{{ asset('front/utils.js') }}"></script>
         <style>
             canvas {
@@ -23,10 +24,7 @@
     <link rel="alternate" type="application/rss+xml" title="Gustos &raquo; Feed" href="https://gustos.w3.style/feed/" />
     <link rel="alternate" type="application/rss+xml" title="Gustos &raquo; Comments Feed" href="https://gustos.w3.style/comments/feed/" />
     <link rel="alternate" type="application/rss+xml" title="Gustos &raquo; Posts by Andrei Feed" href="https://gustos.w3.style/author/andrei/feed/" />
-    <script type="text/javascript">
-        window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/gustos.w3.style\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.5.3"}};
-        !function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
-    </script>
+
 
 
     <style type="text/css">
@@ -216,9 +214,8 @@
             </div>
             <div class="content-body"><!-- Form wizard with number tabs section start -->
 
-                <div style="width:75%;">
-                    <canvas id="canvas"></canvas>
-                </div>
+                <canvas id="mesure" width="400" height="100"></canvas>
+
             </div>
         </div>
 
@@ -316,23 +313,21 @@
 <script type='text/javascript' src='https://gustos.w3.style/wp-includes/js/wp-embed.min.js?ver=5.5.3' id='wp-embed-js'></script>
 </body>
 
+{% endblock %}
 
-<div class="app-content content">
-
-
+{% block footerscript%}
     <script>
 
-        let mesure=document.querySelector("#mesure")
-        let annGraph=new Chart(mesure,{
+        let portion=document.querySelector("#mesure")
+        let annGraph=new Chart(portion,{
             type:"line",
             data:{
                 labels:{{ dates|raw }},
                 datasets:[{
 
-                    label:"Evolution de mesures par date",
-                    data:{{ taille|raw }},
+                    label:"poids",
                     data:{{ poids|raw }},
-                    fill: true,
+                    fill: false,
                     borderColor: "#afc82a",
 
                     backgroundColor: "#afc82a",
@@ -342,7 +337,24 @@
                     pointHoverBorderColor: "#afc82a",
 
 
-                }]
+                },
+                    {
+                        type: 'line',
+                        label:"taille ",
+                        data:{{ taille|raw }},
+                        fill: false,
+                        borderColor: "#c8432a",
+
+                        backgroundColor: "#c8432a",
+                        pointBackgroundColor: "#c8432a",
+                        pointBorderColor: "#c8432a",
+                        pointHoverBackgroundColor: "#c8432a",
+                        pointHoverBorderColor: "#c8432a",
+
+
+
+                    }]
+
             }
 
         })
@@ -351,5 +363,6 @@
     </script>
 
 
-    {% endblock %}
+{% endblock %}
+
 
