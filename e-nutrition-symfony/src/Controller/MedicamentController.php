@@ -34,7 +34,6 @@ class MedicamentController extends AbstractController
 
     public function AfficheMedicament(Request $request,PaginatorInterface $paginator,$id,MedicamentRepository $repository,FicheConsultationRepository $repoFiche)
     {
-
         $donnee=$repository->findBy(
             ['fiche'=>$id]
         );

@@ -192,7 +192,8 @@ class AdminController extends AbstractController
         $challenge = $repo->find($id);
 
         $form = $this->createForm(ChallengeType::class, $challenge);
-        $form->add("Valider", SubmitType::class);
+        $form->add("Modifier", SubmitType::class);
+
 
         $form->handleRequest($request);
 
@@ -203,6 +204,6 @@ class AdminController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('admin_DisplayChallenges');
         }
-        return $this->render('back/challenge/updateChallenge.html.twig', ['form'=>$form->createView()]);
+        return $this->render('back/challenges/updateChallenge.html.twig', ['form'=>$form->createView()]);
     }
 }

@@ -6,11 +6,10 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\DocBlock\Serializer;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Serializable;
+use Symfony\Component\Serializer\Annotation\Groups as Groups;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -29,6 +28,7 @@ class Utilisateur implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Saisir votre nom svp !!!")
+     * @Groups ("doctors")
      */
     protected $nom;
 
@@ -101,24 +101,6 @@ class Utilisateur implements UserInterface
     protected $tagUtilisateur;
 
     protected  $imageprofileurl;
-
-    /**
-     * @return mixed
-     */
-    public function getImageprofileurl()
-    {
-        $this->setImageprofileurl();
-        return $this->imageprofileurl;
-    }
-
-    /**
-     * @param mixed $imageprofileurl
-     */
-    public function setImageprofileurl(): void
-    {
-        $this->imageprofileurl = $this->getphotoProfile();
-    }
-
 
     public function __construct()
     {
@@ -340,7 +322,6 @@ class Utilisateur implements UserInterface
                 $tagUtilisateur->setUtilisateur(null);
             }
         }
-
         return $this;
     }
 
@@ -357,4 +338,20 @@ class Utilisateur implements UserInterface
         return "multimedia/defaultprofile.jpg";
     }
 
+    /**
+     * @return mixed
+     */
+    public function getImageprofileurl()
+    {
+        $this->setImageprofileurl();
+        return $this->imageprofileurl;
+    }
+
+    /**
+     * @param mixed $imageprofileurl
+     */
+    public function setImageprofileurl(): void
+    {
+        $this->imageprofileurl = $this->getphotoProfile();
+    }
 }

@@ -62,7 +62,7 @@
                                     {{ role }}
                                 {% endfor %}
                             </td>
-                            <td><div class="btn-group"> <a href="{{ path('user_UpdateUser', {'id':u.id}) }}" ><button type="button" class="btn btn-primary">Modifier</button> </a></div></td>
+                            <td><div class="btn-group"> <a href="{{ path('user_UpdateDoctor', {'id':u.id}) }}" ><button type="button" class="btn btn-primary">Modifier</button> </a></div></td>
                             <td><div class="btn-group"> <a href="{{ path('admin_DeleteUser', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Supprimer</button></a></div></td>
                             {% if is_granted('ROLE_SUPER_ADMIN') %}
                                 <td><div class="btn-group"> <a href="{{ path('admin_PromoteToAdmin', {'id':u.id}) }}" ><button type="button" class="btn btn-success">Promote to admin</button></a></div></td>
