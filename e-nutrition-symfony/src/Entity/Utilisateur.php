@@ -6,9 +6,11 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\DocBlock\Serializer;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Serializable;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -97,6 +99,26 @@ class Utilisateur implements UserInterface
      * @ORM\OneToMany(targetEntity=TagUtilisateur::class, mappedBy="utilisateur", cascade={"all"},orphanRemoval=true)
      */
     protected $tagUtilisateur;
+
+    protected  $imageprofileurl;
+
+    /**
+     * @return mixed
+     */
+    public function getImageprofileurl()
+    {
+        $this->setImageprofileurl();
+        return $this->imageprofileurl;
+    }
+
+    /**
+     * @param mixed $imageprofileurl
+     */
+    public function setImageprofileurl(): void
+    {
+        $this->imageprofileurl = $this->getphotoProfile();
+    }
+
 
     public function __construct()
     {
@@ -334,4 +356,5 @@ class Utilisateur implements UserInterface
         }
         return "multimedia/defaultprofile.jpg";
     }
+
 }

@@ -4,11 +4,13 @@ namespace App\Entity;
 
 use App\Repository\TagUtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
+
 
 /**
  * @ORM\Entity(repositoryClass=TagUtilisateurRepository::class)
  */
-class TagUtilisateur extends Tag
+class TagUtilisateur extends Tag implements Serializable
 {
     /**
      * @ORM\ManyToOne(targetEntity=Utilisateur::class, inversedBy="tagUtilisateur")
@@ -57,5 +59,16 @@ class TagUtilisateur extends Tag
         $this->tagsUser = $tagsUser;
 
         return $this;
+    }
+
+    public function serialize()
+    {
+
+        return serialize($this->getId());
+    }
+
+    public function unserialize($serialized)
+    {
+        // TODO: Implement unserialize() method.
     }
 }

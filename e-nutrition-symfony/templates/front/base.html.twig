@@ -139,10 +139,11 @@
                                                 </li>
                                                 <li class="scrollable-container media-list w-100"><a href="javascript:void(0)">
                                                         <div class="media">
+
                                                             <div class="media-left"><span class="avatar avatar-sm avatar-online rounded-circle">
                                                                     <img src="{{ asset('back/images/portrait/small/avatar-s-19.png')}}" alt="avatar"><i></i></span>
-
                                                             </div>
+
                                                             <div class="media-body">
                                                                 <h6 class="media-heading">Margaret Govan</h6>
                                                                 <p class="notification-text font-small-3 text-muted">I like your portfolio, let's start.</p><small>
@@ -178,9 +179,16 @@
                                         </li>
                                         <li class="dropdown dropdown-user nav-item">
                                             <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                                <span class="avatar avatar-online">
-                                                    <img src="{{ asset('back/images/portrait/small/avatar-s-1.png')}}" alt="avatar"><i></i>
-                                                </span><span class="user-name">John Doe</span>
+                                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                                    <span class="avatar avatar-online">
+                                                    <img src="{{ asset(app.user.imageprofileurl)}}" alt="avatar"><i></i>
+                                                </span><span class="user-name">{{ app.user.nom }} {{ app.user.prenom }}</span>
+                                                {% else %}
+                                                    <a href="{{ path('app_login') }}">  <button type="button" class="btn btn-success">login</button></a>
+
+
+                                                {% endif %}
+
                                             </a>
 
                                             <div class="dropdown-menu dropdown-menu-right">
