@@ -92,7 +92,7 @@
                                                     </tr>
                                                 {% endfor %}
                                                 </tbody>
-                                               <tbody id="all"> </tbody>
+                                               <tbody id="search"> </tbody>
 
                                             </table>
                                         </div>
@@ -160,7 +160,7 @@
                             $.each(JSON.parse(retour), function(i, obj) {
 
                                 $('#t tbody#all').hide();
-                                $('#t tbody#search').append('<tr>  <td> '+obj.title+' </td>  <td> '+obj.title+' </td> <td> '+obj.body+'  </td> <td>    <a href="blog_post_delete/'+obj.id+'"><button type="button" class="btn btn-primary">supprimer</button> </a>   <a href=" blog_post_edit/'+obj.id+'"> <button type="button" class="btn btn-success">modifier</button> </a>  </td> </tr> ');
+                                $('#t tbody#search').append('<tr>  <td> '+obj.date+' </td>  <td> '+obj.title+' </td> <td> '+obj.body+'  </td> <td>    <a href="blog_post_delete/'+obj.id+'"><button type="button" class="btn btn-primary">supprimer</button> </a>   <a href=" blog_post_edit/'+obj.id+'"> <button type="button" class="btn btn-success">modifier</button> </a>  </td> </tr> ');
                             });
                         }
                         else

@@ -17,6 +17,21 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 class BlogPostController extends AbstractController
 {
     /**
+     * @Route("/search", name="blogsearch")
+     */
+    public function Recherche(BlogPostRepository $blogPostRepository ,Request  $request,NormalizerInterface $normalizer)
+    {
+
+
+
+            $repository = $this->getDoctrine()->getRepository(BlogPost::class);
+          $title=$request->get('searchValue');
+           $blog=$repository->findBlogPostbyname($title);
+         $jsonContent = $normalizer->normalize($blog, 'json',['groups'=>'blogs']);
+              $retour =json_encode($jsonContent);
+            return new Response($retour);
+    }
+    /**
      * @Route("/", name="blog_post_index", methods={"GET"})
      */
     public function index(BlogPostRepository $blogPostRepository): Response
@@ -110,40 +125,5 @@ class BlogPostController extends AbstractController
         return $this->redirectToRoute('blog_post_index_admin');
     }
 
-    /**
-     * @Route("/search", name="blogsearch")
-     */
-    public function Recherche(BlogPostRepository $blogPostRepository ,Request  $request,NormalizerInterface $normalizer)
-    {
-        $blogPosts = $blogPostRepository->findAll();
-        return $this->render('front/blog/index.html.twig', [
-            'blog_posts' => $blogPosts,
-            'truncate' => true
-        ]);
 
-//        $aliment=$paginator->paginate(
-//            $donnees,,
-//            /* query NOT result */
-//            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
-//            7/*limit per page*/
-//        );
-//        return $this->render("back/aliment/afficherAliment.html.twig",
-//            ["aliment"=>$aliment] );
-
-    //    $repository = $this->getDoctrine()->getRepository(BlogPost::class);
-      //  $title=$request->get('searchValue');
-
-
-     //   $blog=$repository->findBlogPostbyname($title);
-//        $aliment=$paginator->paginate(
-//            $donnees,
-//            /* query NOT result */
-//            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
-//            7/*limit per page*/
-//        );
-       //dump($blog);
-       // $jsonContent = $normalizer->normalize($blog, 'json',['groups'=>'blogs']);
-  //      $retour =json_encode($jsonContent);
-    //    return new Response($retour);
-    }
 }
