@@ -1,6 +1,11 @@
 {% extends 'back/base.html.twig' %}
 {% block Content %}
 
+
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-header row">
@@ -51,10 +56,11 @@
                             </div>
                             <!----------------------------------------------------->
                             <div class="card-content collapse show" style="height: 100%">
+                                <input type="text" id="search" class="search-field fullwidth" placeholder="Type keyword and press enter" value="">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-12">
-                                            <table class="table table-bordered">
+                                            <table class="table table-bordered" , id="t">
                                                 <thead>
                                                 <tr>
                                                     <th scope="col" style="width: 12%">Date</th>
@@ -63,7 +69,8 @@
                                                     <th scope="col" style="width: 20%; text-align: center;">Actions</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody id="all">
+
                                                 {% for blog_post in blog_posts %}
                                                     <tr>
                                                         <td>{{ blog_post.date.date|date("Y-m-d") }}</td>
@@ -85,6 +92,8 @@
                                                     </tr>
                                                 {% endfor %}
                                                 </tbody>
+                                               <tbody id="all"> </tbody>
+
                                             </table>
                                         </div>
                                     </div>
@@ -117,6 +126,55 @@
 
     <!-- ////////////////////////////////////////////////////////////////////////////-->
 
+</div>
+
+    <script>
+        $( document ).ready(function() {
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = $(this).val();
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+
+
+
+                $.ajax({
+                    /* l’url est une chaine de caractères contenant l’adresse où la requête est
+                    envoyée */
+                    url : "{{ path('blogsearch') }}",
+                    /* La méthode utilisée pour transférer les données est GET */
+                    type : 'GET',
+                    /*Ici search value va prendre la chaine entrée par un utilisateur dans la
+                    zone de recherche et sera placée après l’url */
+                    data: {
+                        'searchValue' : value
+                    },
+                    /*Cette fonction permet de vider le contenu du tableau pour recevoir le
+                    nouveau contenu*/
+                    success : function(retour){
+                        if(retour){
+                            console.log(retour);
+
+                            $('#t tbody#search').empty();
+                            $.each(JSON.parse(retour), function(i, obj) {
+
+                                $('#t tbody#all').hide();
+                                $('#t tbody#search').append('<tr>  <td> '+obj.title+' </td>  <td> '+obj.title+' </td> <td> '+obj.body+'  </td> <td>    <a href="blog_post_delete/'+obj.id+'"><button type="button" class="btn btn-primary">supprimer</button> </a>   <a href=" blog_post_edit/'+obj.id+'"> <button type="button" class="btn btn-success">modifier</button> </a>  </td> </tr> ');
+                            });
+                        }
+                        else
+                        {
+                            $('#t tbody#all').show();
+                            $('#t tbody#search').empty();
+                            $('#t tbody#search').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
     {% endblock %}
 
 

@@ -308,10 +308,38 @@
                 <ul class="menu-content">
                     <li><a class="menu-item" href="{{ path('admin_DisplayChallenges') }}" data-i18n="nav.page_layouts.3_columns.main">Afficher les défis</a></li>
 
-                    <li><a class="menu-item" href="{{ path('admin_CreateChallenge') }}" data-i18n="nav.page_layouts.3_columns.left_sticky_sidebar">Ajouter Défi</a></li>
+                    </li>
 
                 </ul>
             </li>
+            <!-- gestion blog  -->
+            <li class=" nav-item"><a href="#"><i class="fas fa-book"></i><span class="menu-title" data-i18n="nav.page_layouts.main">Blog </span></a>
+                <ul class="menu-content">
+
+                    <li><a class="menu-item" href="{{ path('blog_post_new') }}" data-i18n="nav.page_layouts.3_columns.left_sidebar">ajouter un blog </a>
+                    </li>
+                    <li><a class="menu-item" href="{{ path('blog_post_index_admin') }}" data-i18n="nav.page_layouts.3_columns.left_sticky_sidebar">afficher un blog </a>
+                    </li>
+
+
+                    </li>
+
+                </ul>
+            </li>
+
+            <!-- gestion mesures  -->
+            <li class=" nav-item"><a href="#"><i class="fas fa-weight"></i><span class="menu-title" data-i18n="nav.page_layouts.main">mesures</span></a>
+                <ul class="menu-content">
+
+                    <li><a class="menu-item" href="{{ path('mesure_index') }}" data-i18n="nav.page_layouts.3_columns.left_sticky_sidebar">afficher mesures </a>
+                    </li>
+
+
+                    </li>
+
+                </ul>
+            </li>
+
 
             <li class=" nav-item"><a href="#"><i class="fas fa-utensils"></i><span class="menu-title" data-i18n="nav.page_layouts.main">nutrition</span></a>
                 <ul class="menu-content">

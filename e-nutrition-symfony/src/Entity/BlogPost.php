@@ -6,6 +6,7 @@ use App\Repository\BlogPostRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups as Groups;
 
 /**
  * @ORM\Entity(repositoryClass=BlogPostRepository::class)
@@ -16,26 +17,30 @@ class BlogPost
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     *  @Groups ("blogs")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Groups ("blogs")
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups ("blogs")
      */
     private $body;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups ("blogs")
      */
     private $date;
 
     /**
-     * @ORM\OneToMany(targetEntity=TagBlogPost::class, mappedBy="blogPost")
+     * @ORM\OneToMany(targetEntity=TagBlogPost::class, mappedBy="blogPost", cascade={"all"},orphanRemoval=true )
      */
     private $tagBlogPost;
 
@@ -113,5 +118,17 @@ class BlogPost
         }
 
         return $this;
+    }
+
+    public function getFirstImage():?string
+    {
+        foreach ($this->tagBlogPost as $tag)
+        {
+            if ($tag->isImage())
+            {
+                return $tag->getUrl();
+            }
+        }
+        return null;
     }
 }

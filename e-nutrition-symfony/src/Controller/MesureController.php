@@ -41,7 +41,7 @@ class MesureController extends AbstractController
             $entityManager->persist($mesure);
             $entityManager->flush();
 
-            return $this->redirectToRoute('mesure_index');
+            return $this->redirectToRoute('mesure_show');
         }
 
         return $this->render('back/mesure/edit_mesure.html.twig', [

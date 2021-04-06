@@ -19,6 +19,14 @@ class BlogPostRepository extends ServiceEntityRepository
         parent::__construct($registry, BlogPost::class);
     }
 
+
+    public function findBlogPostbyname($title){
+        return $this->createQueryBuilder('blogPost')
+            ->where('blogPost.title LIKE :title')
+            ->setParameter('title', '%'.$title.'%')
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return BlogPost[] Returns an array of BlogPost objects
     //  */
