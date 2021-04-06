@@ -198,7 +198,7 @@ class PlatController extends AbstractController
     public function Recherche(PlatRepository $repository,Request $request,PaginatorInterface $paginator)
     {
 
-        $name=$request->get('docadmin_searchplat');
+        $name=$request->get('searchplat');
         $donnees=$repository->findplatbyname($name);
 
 

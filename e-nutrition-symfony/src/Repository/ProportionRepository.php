@@ -19,11 +19,13 @@ class ProportionRepository extends ServiceEntityRepository
         parent::__construct($registry, Proportion::class);
     }
 
-    public function findbetwen2date($SDate,$EDate){
+    public function findbetwen2date($SDate,$EDate,$user){
         return $this->createQueryBuilder('proportion')
-            ->where('proportion.date BETWEEN :d1 AND :d2 ')
+            ->where('proportion.date BETWEEN :d1 AND :d2  AND proportion.patient = :d3')
+
             ->setParameter('d1',$SDate)
             ->setParameter('d2',$EDate)
+            ->setParameter('d3',$user)
             ->getQuery()
             ->getResult();
     }
@@ -32,7 +34,7 @@ class ProportionRepository extends ServiceEntityRepository
         $query=$this->createQueryBuilder('d')
             ->select('SUBSTRING(d.date,12,5) as date,sum(d.calorie) as count')
             ->groupBy('date')
-            ->where('d.patient = :n and d.date BETWEEN :d1 AND :d2  and d.date >= :d3')
+            ->where('d.patient = :n and d.date BETWEEN :d1 AND :d2  and d.date >= :d3 ')
             ->setParameter('d1',$d1)
             ->setParameter('d2',$d2)
             ->setParameter('n',$n)
@@ -48,7 +50,7 @@ class ProportionRepository extends ServiceEntityRepository
         $query=$this->createQueryBuilder('d')
             ->select('SUBSTRING(d.date,7,4) as date,sum(d.calorie) as count')
             ->groupBy('date')
-            ->where('d.patient = :n and d.date BETWEEN :d1 AND :d2 ')
+            ->where('d.patient = :n and d.date BETWEEN :d1 AND :d2')
             ->setParameter('d1',$d1)
             ->setParameter('d2',$d2)
             ->setParameter('n',$n)
@@ -62,7 +64,7 @@ class ProportionRepository extends ServiceEntityRepository
         $query=$this->createQueryBuilder('d')
             ->select('SUBSTRING(d.date,1,7) as date,sum(d.calorie) as count')
             ->groupBy('date')
-            ->where('d.patient = :n and d.date BETWEEN :d1 AND :d2 ')
+            ->where('d.patient = :n and d.date BETWEEN :d1 AND :d2  ')
             ->setParameter('d1',$d1)
             ->setParameter('d2',$d2)
             ->setParameter('n',$n)

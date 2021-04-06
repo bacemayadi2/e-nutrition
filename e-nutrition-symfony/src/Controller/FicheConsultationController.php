@@ -151,6 +151,7 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
             $ficheConsultations=$repo->countByDate();
         }
         else {
+
             $ficheConsultations=$repo->countByDateAndNutritionniste($this->getUser());
         }
         $dates=[];
