@@ -16,10 +16,21 @@
         <table id="t" class="table table-condensed table-responsive table-striped"><thead><tr><th>Food</th><th>Quantity</th><th>categorie</th><th>Calories</th><th>lipides</th><th>proteines</th><th>glucides</th><th></th></tr></thead>
             <tbody id="all">
              {% for f in aliment %}
-             <tr><td>{{ f.nom}}</td><td></td> <td>{{ f.categories}} </td><td>{{f.calories}}</td><td>{{ f.lipides}}</td><td>{{ f.proteines}}</td><td>{{ f.glucides}}</td><td>
-{#                    {{ form_widget(registrationForm.Ajouter, {'attr':{'class':'add btn btn-default'}}) }}#}
-                 </td></tr></tbody>
-            {% endfor %}
+
+
+                 <tr><td>{{ f.nom}}</td>                                        <td>{{ f.poid }}
+                     </td>
+                     </td> <td>{{ f.categories}} </td><td>{{f.calories}}</td><td>{{ f.lipides}}</td><td>{{ f.proteines}}</td><td>{{ f.glucides}}</td><td>
+                         <button onclick="myFunction({{ f.id }})" type="button" class="btn btn-default">ajouter</button>
+
+                     </td></tr>
+
+             {% endfor %}
+
+
+             {{ knp_pagination_render(aliment) }}
+
+            </tbody>
             <tbody id="search">
             </tbody>
 
@@ -28,9 +39,14 @@
 
 
                         <div id="itemslist" class="foodtablecalculator"><table class="table table-condensed table-responsive table-striped">        <table id="t" class="table table-condensed table-responsive table-striped"><thead><tr><th>Food</th><th>Quantity</th><th>categorie</th><th>Calories</th><th>lipides</th><th>proteines</th><th>glucides</th><th></th></tr></thead>
-                                    <tbody id="list-tbody"><tr id="iditemlist-0"><td data-title="Food">CEREALS RTE,MALT-O-MEAL,OAT BLENDERS W/ HONEY &amp; ALMONDS</td><td data-title="Quantity">1</td><td>categorie</td><td data-title="Calories">379</td><td data-title="Fat">4</td><td data-title="Protein">7</td><td data-title="Carbs*">77</td><td>
-                                        <input type="button" class="remove btn btn-default" onclick="removefromlist(0)" value="Remove">
-                                    </td></tr><tr></tr><tr><td></td><td></td><td><strong>SUBTOTALS</strong></td><td data-title="Calories"><strong>379</strong></td><td data-title="Fat"><strong>4</strong></td><td data-title="Protein"><strong>7</strong></td><td data-title="Carbs*"><strong>77</strong></td></tr></tbody></table><div class="small">*Total carbohydrates</div></div>
+                                    <tbody id="list-tbody"><tr id="iditemlist-0">
+                                        {% for p in proportions %}
+                                        <td>{{p.aliment.nom}}</td><td>{{ p.poid }}</td><td>{{ p.aliment.categories  }}</td><td>{{ p.calorie }}</td><td>{{ p.lipides }}</td><td>{{ p.proteines }}</td><td>{{ p.glucides }}</td><td>
+                                            <a href="{{ path('supprimerproportion',{'id':p.id }) }}"><button type="button" class="remove btn btn-default">supprimer</button></a>
+
+                                        </td> </tr>
+                                        {% endfor %}
+                                    <tr></tr><tr><td></td><td></td><td><strong>total</strong></td><td><strong>{{ tc }}</strong></td><td ><strong>{{ tl }}</strong></td><td ><strong>{{ tp }}</strong></td><td><strong>{{ tg }}</strong></td></tr></tbody></table></table></div>
                     </div></div>
             </section>
         </main>
@@ -67,12 +83,26 @@
                             $.each(JSON.parse(retour), function(i, obj) {
 
                                 $('#t tbody#all').hide();
-                                $('#t tbody#search').append('<tr>  <td> '+obj.nom+' </td> <td></td> <td> '+obj.categories+' </td> <td> '+obj.calories+' </td>  <td> '+obj.lipides+' </td>  <td> '+obj.proteines+' </td>  <td> '+obj.glucides+' </td>  <td>  </td> <td>    <a href="supprimerAliment/'+obj.id+'"><button type="button" class="btn btn-primary">supprimer</button> </a>  </td> </tr> ');
-                            });
-                        }
+                                $('#t tbody#search').append('<tr>  <td> '+obj.nom+' </td> <td>'+obj.poid+'</td> <td> '+obj.categories+' </td> <td> '+obj.calories+' </td>  <td> '+obj.lipides+' </td>  <td> '+obj.proteines+' </td>  <td> '+obj.glucides+' </td>  <td>  </td> <td>  <button onclick="myFunction('+obj.id+')" type="button" class="btn btn-default">ajouter</button>   </td> </tr> ');
+
+                                {#$('#t tbody#search').append(' {{ form_start ( forms.for[+i+]) }}        <tr><td>' +obj.nom+'</td> <td>{{ form_widget(forms.for['+i+'].poid) }}</td>   </td> <td>' +obj.categorie+' </td><td>'+obj.calories+'</td><td>'+ obj.lipides+'</td><td>'+ obj.proteines+'</td><td>'+ obj.glucides+'</td><td>{{ form_widget(forms.for['+i+'].Ajouter, {'attr':{'class':'btn btn-primary'}}) }} </td></tr>   {{ form_end(forms.for['+i+']) }}'                    );#}
+                        })}
                         else
                         {
-                            $('#t tbody#foodtbody').show();
+                            $('#t tbody#foodtbody').show
+
+
+
+
+
+
+
+
+
+
+
+
+                            ();
                             $('#t tbody#search').empty();
                             $('#t tbody#search').fadeIn('fast');
                         }
@@ -81,5 +111,14 @@
                 return false;
             });
         });
+    </script>
+
+    <script>
+        function myFunction(id) {
+            var quantite = prompt("entre le quantité manger", "100");
+            if (quantite != null) {
+                window.location="/ajouterproportion/"+id+"/"+quantite ;
+            }
+        }
     </script>
 {% endblock %}

@@ -42,6 +42,39 @@ class Proportion
      */
     private $aliment;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $lipides;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $glucides;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $proteines;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $calorie;
+
+
+    public function calculatenutritionvalue(): self
+    {
+        $aliment= $this->getAliment();
+         $this->setProteines(($aliment->getProteines()/$aliment->getPoid())*$this->getPoid());
+         $this->setGlucides(($aliment->getGlucides()/$aliment->getPoid())*$this->getPoid());
+         $this->setLipides(($aliment->getLipides()/$aliment->getPoid())*$this->getPoid());
+         $this->setCalorie(($aliment->getCalories()/$aliment->getPoid())*$this->getPoid());
+         return $this;
+    }
+
+
+
 
 
     public function getId(): ?int
@@ -99,6 +132,54 @@ class Proportion
     public function setAliment(?aliment $aliment): self
     {
         $this->aliment = $aliment;
+
+        return $this;
+    }
+
+    public function getLipides(): ?float
+    {
+        return $this->lipides;
+    }
+
+    public function setLipides(float $lipides): self
+    {
+        $this->lipides = $lipides;
+
+        return $this;
+    }
+
+    public function getGlucides(): ?float
+    {
+        return $this->glucides;
+    }
+
+    public function setGlucides(float $glucides): self
+    {
+        $this->glucides = $glucides;
+
+        return $this;
+    }
+
+    public function getProteines(): ?float
+    {
+        return $this->proteines;
+    }
+
+    public function setProteines(float $proteines): self
+    {
+        $this->proteines = $proteines;
+
+        return $this;
+    }
+
+    public function getCalorie(): ?float
+    {
+        return $this->calorie;
+    }
+
+    public function setCalorie(float $calorie): self
+    {
+        $this->calorie = $calorie;
 
         return $this;
     }

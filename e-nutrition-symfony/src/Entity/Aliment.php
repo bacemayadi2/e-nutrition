@@ -51,6 +51,28 @@ class Aliment extends Nourriture
     private $proportions;
 
 
+    private $numberofplat;
+
+    /**
+     * @return mixed
+     */
+    public function getNumberofplat()
+    {
+        $this->setNumberofplat();
+        return $this->numberofplat;
+    }
+
+    /**
+     * @param mixed $numberofplat
+     */
+    public function setNumberofplat(): void
+    {
+        $this->numberofplat = $this->setNumberofplat();
+    }
+
+
+
+
     public function getCalories(): ?float
     {
         $this->setCalories();

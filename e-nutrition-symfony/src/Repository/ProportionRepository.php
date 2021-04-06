@@ -19,10 +19,10 @@ class ProportionRepository extends ServiceEntityRepository
         parent::__construct($registry, Proportion::class);
     }
     public function findbetwen2date($SDate,$EDate){
-        return $this->createQueryBuilder('date')
-            ->where('Proportion.date BETWEEN :d1 AND :d2 ')
+        return $this->createQueryBuilder('proportion')
+            ->where('proportion.date BETWEEN :d1 AND :d2 ')
             ->setParameter('d1',$SDate)
-            ->setParameter('d1',$EDate)
+            ->setParameter('d2',$EDate)
             ->getQuery()
             ->getResult();
     }
