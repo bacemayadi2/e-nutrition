@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Mesure;
 use App\Form\Mesure1Type;
 use App\Repository\MesureRepository;
+use App\Repository\PatientRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -67,12 +68,40 @@ class MesureController extends AbstractController
 
      * @Route("/showf", name="mesure_show", methods={"GET"})
      */
-    public function showf(MesureRepository $repo): Response
+    public function showf(MesureRepository $Repository, PatientRepository $Repo): Response
     {
-        $mesure=$repo->findAll();
-        return $this->render('front/mesure/affichage.html.twig', [
-            'mesure' => $mesure,
+//        $mesure=$repo->findAll();
+//        return $this->render('front/mesure/affichage.html.twig', [
+//            'mesure' => $mesure,
+        $userid=$this->getUser()->getId();
+
+        if (( (in_array("ROLE_PATIENT", $this->getUser()->getRoles()) ))) {
+
+            $mesure=$Repository->countByDate();
+        }
+//        else {
+//            $mesure=$Repository->countByDatePatient($this->getUser());
+//        }
+        $dates=[];
+        $patient=$Repo->find(18);
+
+        $mesure=[];
+
+//on démonte les données pour les séparer tel qu'attendu par CharJs
+
+        foreach ($mesure as $mesure){
+
+            $dates[]=$mesure['dates'];
+            $mesure[]=$mesure['count'];
+
+        }
+        //$ficheConsultationCount[]=count($patients->getFicheConsultations());
+        return $this->render('Front/mesure/affichage.html.twig',[
+
+            'mesure'=>json_encode($mesure),
+            'dates'=>json_encode($dates),
         ]);
+
     }
 
     /**
@@ -113,4 +142,41 @@ class MesureController extends AbstractController
 
         return $this->redirectToRoute('mesure_index');
     }
+
+
+    /**
+     * @Route("/statscs", name="statscs")
+     */
+    public function statistiques(MesureRepository $Repository, PatientRepository $Repo){
+
+        $userid=$this->getUser()->getId();
+
+        if (( (in_array("ROLE_PATIENT", $this->getUser()->getRoles()) ))) {
+
+            $mesure=$Repository->countByDate();
+        }
+//        else {
+//            $mesure=$Repository->countByDatePatient($this->getUser());
+//        }
+        $dates=[];
+        $patient=$Repo->find(18);
+
+        $mesure=[];
+
+//on démonte les données pour les séparer tel qu'attendu par CharJs
+
+        foreach ($mesure as $mesure){
+
+            $dates[]=$mesure['dates'];
+            $mesure[]=$mesure['count'];
+
+        }
+        //$ficheConsultationCount[]=count($patients->getFicheConsultations());
+        return $this->render('Front/mesure/affichage.html.twig',[
+
+            'mesure'=>json_encode($mesure),
+            'dates'=>json_encode($dates),
+        ]);
+}
+
 }

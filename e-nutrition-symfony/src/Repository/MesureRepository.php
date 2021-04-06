@@ -47,4 +47,27 @@ class MesureRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function countByDate(){
+        $query=$this->createQueryBuilder('d')
+            ->select('SUBSTRING(d.dateMesure,1,10) as dateMesure,COUNT(d) as count')
+
+            ->groupBy('dateMesure')
+            ->orderBy('dateMesure')
+        ;
+        return $query->getQuery()->getResult();
+
+    }
+
+    public function countByDatePatient($n){
+        $query=$this->createQueryBuilder('d')
+            ->select('SUBSTRING(d.dateMesure,1,10) as dateMesure,COUNT(d) as count')
+            ->groupBy('dateMesure')
+            ->where('d.patient = :n')
+            ->setParameter('n',$n)
+            ->orderBy('dateMesure')
+        ;
+        return $query->getQuery()->getResult();
+
+    }
 }
