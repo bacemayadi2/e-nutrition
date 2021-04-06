@@ -7,10 +7,13 @@ use App\Entity\Proportion;
 use App\Form\PlatType;
 use App\Form\ProportionType;
 use App\Repository\AlimentRepository;
+use App\Repository\PatientRepository;
+use App\Repository\PlatRepository;
 use App\Repository\ProportionRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use phpDocumentor\Reflection\Types\Collection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +23,20 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 class ProportionController extends AbstractController
 {
 
+
+    /**
+     * @param ProportionRepository $repo
+     * @param $id
+     * @Route ("/supprimerproportions/{id}",name="supprimerproportionss")
+     */
+    function deleteproportions(ProportionRepository  $repop, $id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $proportion=$repop->find($id);
+        $em->remove($proportion);
+        $em->flush();
+        return $this->redirectToRoute('Proportions');
+    }
     /**
      * @param Request $request
      * @param $id
@@ -38,6 +55,33 @@ class ProportionController extends AbstractController
         $proportion->calculatenutritionvalue();
         $em=$this->getDoctrine()->getManager();
         $em->persist($proportion);
+        $em->flush();
+        return $this->redirectToRoute('Proportions');
+
+    }
+
+    /**
+     * @param Request $request
+     * @param $id
+     * @param AlimentRepository $repo
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Route ("/ajouterplatproportion/{id}/{quantite}",name="ajouterplatproportion")
+     */
+    public function ajouteplat(Request $request,$id,$quantite,PlatRepository $repo)
+    {
+        $plat=$repo->find($id);
+        foreach ($plat->getCompostions() as $compo )
+        {
+            $proportion =new Proportion();
+            $proportion->setPoid(($compo->getPoid()/$plat->getNbrportion())*$quantite);
+            $proportion->setPatient($this->getUser());
+            $proportion->setAliment($compo->getAliment());
+            $proportion->setDate(new \DateTime());
+            $proportion->calculatenutritionvalue();
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($proportion);
+
+        }
         $em->flush();
         return $this->redirectToRoute('Proportions');
 
@@ -124,28 +168,10 @@ class ProportionController extends AbstractController
 
         );
     }
-    /**
-     * @param $id
-     * @Route ("/supprimerproportion/{id}",name="supprimerproportion")
-     */
-    function delete(ProportionRepository $repo ,$id)
-    {
-        $em=$this->getDoctrine()->getManager()  ;
-        $proportion=$repo->find($id);
-        $em->remove($proportion);
-        $em->flush();
-        return $this->redirectToRoute('Proportions');
-    }
 
 
     /**
-     * @param AlimentRepository $repository
-     * @param Request $request
-     * @param PaginatorInterface $paginator
-     * @param NormalizerInterface $normalizer
-     * @return Response
      * @Route ("rechercheAliment",name="rechercheAliment")
-     * @throws \Symfony\Component\Serializer\Exception\ExceptionInterface
      */
     public function Recherche(AlimentRepository $repository,Request $request,PaginatorInterface $paginator,NormalizerInterface $normalizer)
     {
@@ -174,6 +200,119 @@ class ProportionController extends AbstractController
         $jsonContent = $normalizer->normalize($aliment, 'json',['groups'=>'aliments']);
         $retour =json_encode($jsonContent);
         return new Response($retour);
+    }
+
+
+    /**
+     * @Route ("statintake/{choix}",name="statintake")
+     */
+    public function statistique(ProportionRepository $repo,Request $request,$choix){
+        if  ($choix ==1)
+
+            {
+                $endDate = (new \DateTime());
+                $startDate = (clone $endDate)->modify('- 1 day ');
+                $proportion=$repo->countByDateAndpatientjour($this->getUser(),$startDate,$endDate);
+                $form = $this->createFormBuilder()
+                    ->add('kcal', ChoiceType::class, ['choices' => [ 'jour' => 'jour', 'mois' => 'mois', 'annees' => 'annees']])
+                    ->add('valider', SubmitType::class)
+                    ->getForm();
+
+            }
+        if ($choix ==2)
+            {
+                $endDate = (new \DateTime());
+                $startDate = (clone $endDate)->modify('- 1 month ');
+                dump($startDate);
+                $proportion=$repo->countByDateAndpatientmois($this->getUser(),$startDate,$endDate);
+                $form = $this->createFormBuilder()
+                    ->add('kcal', ChoiceType::class, ['choices' => [ 'mois' => 'mois', 'jour' => 'jour', 'annees' => 'annees']])
+                    ->add('valider', SubmitType::class)
+                    ->getForm();
+
+            }
+        if ($choix ==3)
+            {
+                $endDate = (new \DateTime());
+                $startDate = (clone $endDate)->modify('- 1 year ');
+                $proportion=$repo->countByDateAndpatientannee($this->getUser(),$startDate,$endDate);
+                $form = $this->createFormBuilder()
+                    ->add('kcal', ChoiceType::class, ['choices' => [ 'annees' => 'annees', 'jour' => 'jour', 'mois' => 'mois']])
+                    ->add('valider', SubmitType::class)
+                    ->getForm();
+
+            }
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            // data is an array with "name", "email", and "message" keys
+            $data = $form->getData();
+
+            switch ($data['kcal'])
+            {
+                case "jour":
+                    {
+                        return $this->redirect($this->generateUrl('statintake', array(
+                            'choix' => 1
+                        )));
+                       // return $this->redirectToRoute('statintake');
+
+                    }
+                case "mois":
+                    {
+                        return $this->redirect($this->generateUrl('statintake', array(
+                            'choix' => 2
+                        )));
+                        //return $this->redirectToRoute('statintake');
+
+                    }
+                case "annees":
+                {
+                    return $this->redirect($this->generateUrl('statintake', array(
+                        'choix' => 3
+                    )));
+                    //return $this->redirectToRoute('statintake');
+
+                }
+            }
+        }
+//on va chercher le nombre des consultations par date
+
+        $dates=[];
+
+        $proportionCount=[];
+        $proportionCountcum=[];
+
+
+//on démonte les données pour les séparer tel qu'attendu par CharJs
+        foreach ($proportion as $p){
+
+            $dates[]=$p['date'];
+            dump($p);
+            $proportionCount[]=$p['count'];
+            $lastindex=sizeof($proportionCountcum)-1;
+            if ($lastindex!=-1)
+            {
+            $proportionCountcum[]=$p['count']+ $proportionCountcum[$lastindex];
+            }
+            else{
+                $proportionCountcum[]=$p['count'];
+            }
+
+
+        }
+
+
+        //$ficheConsultationCount[]=count($patients->getFicheConsultations());
+        return $this->render('front/proportions/statintake.html.twig',[
+
+            'proportionCount'=>json_encode($proportionCount),
+            'proportionCountcum'=>json_encode($proportionCountcum),
+            'dates'=>json_encode($dates),
+            'form'=>$form->createView()
+        ]);
     }
 }
 

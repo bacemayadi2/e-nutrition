@@ -209,7 +209,9 @@
                                 <!-- RD Navbar Dropdown-->
                                 <ul class="rd-navbar-dropdown">
                                     <li><a href="{{ path('afficherplatfrontall') }}">tout les plat</a></li>
-                                    <li><a href="my-philosophy.html">Aliment (not implemented yet)</a></li>
+                                    <li><a href="{{ path('Proportions') }}">calculer nourriture</a></li>
+                                    <li><a href="{{ path('statintake',{'choix':1 }) }}">statistique nourriture</a></li>
+
                                 </ul>
                             </li>
                             <li><a href="{{ path('docadmin_back') }}">backend</a>

@@ -96,6 +96,7 @@
                                         </li>
                                         {% endfor %}
                                     </ul>
+                                    <button onclick="myFunction({{ plat.id }},{{ plat.nbrportion }})" type="button" class="btn btn-default">manger une portion</button>
 
                                 </div>
 
@@ -123,8 +124,9 @@
                                 <ul class="clearfix">
 
 
+                                    <li><div><i >nbr portion</i> <span>{{ plat.nbrportion}}</span></div></li>
 
-                                    <li id="recipe-meta-date">
+                                    <li>
                                         <i >Proteins</i>
                                         <span>{{ plat.proteines }}</span>
                                     </li>
@@ -290,4 +292,12 @@
         </div> <!-- .rw-inner -->
     </div> <!-- .rw-container -->
 
+    <script>
+        function myFunction(id,portion) {
+            var quantite = prompt("parmis "+portion+" portions combien aves vous manger :", portion);
+            if (quantite != null) {
+                window.location="/ajouterplatproportion/"+id+"/"+quantite ;
+            }
+        }
+    </script>
 {% endblock %}

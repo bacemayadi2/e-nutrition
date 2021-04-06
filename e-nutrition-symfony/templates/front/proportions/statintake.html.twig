@@ -1,0 +1,85 @@
+{% extends 'front/base.html.twig' %}
+
+{% block Content %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+
+            <section class="section-95">
+
+                <div class="container">
+                    <div class="row justify-content-sm-center">
+                    {{ form_start(form)}}
+                                                    <h4 class="card-title">Statistiques</h4>
+
+                                <div class="form-group col-10 mb-2">
+                                    <table class="form-wrap">
+                                        <tr>
+                                            <td>{{ form_label(form.kcal, "par") }} </td>
+                                            <td>{{ form_widget(form.kcal, {'attr': {'style': 'width:500px'} }) }}</td>
+
+
+
+                                <td>{{ form_widget(form.valider, {'attr':{'class':'btn btn-primary'}}) }}</td>
+                                            </tr>
+                                            </table>
+                                            </div>
+
+                            {{ form_end(form) }}
+
+
+                                <canvas id="portion" width="400" height="100"></canvas>
+                            </div>
+                        </div>
+
+{% endblock %}
+
+{% block footerscript%}
+   <script>
+
+        let portion=document.querySelector("#portion")
+        let annGraph=new Chart(portion,{
+            type:"bar",
+            data:{
+                labels:{{ dates|raw }},
+                datasets:[{
+
+                    label:"kilo calorie par ",
+                    data:{{ proportionCount|raw }},
+                    fill: true,
+                    borderColor: "#afc82a",
+
+                    backgroundColor: "#afc82a",
+                    pointBackgroundColor: "#afc82a",
+                    pointBorderColor: "#afc82a",
+                    pointHoverBackgroundColor: "#afc82a",
+                    pointHoverBorderColor: "#afc82a",
+
+
+                },
+                  {
+            type: 'line',
+            label:"cumulatif calorie ",
+            data:{{ proportionCountcum|raw }},
+            fill: false,
+            borderColor: "#c8432a",
+
+            backgroundColor: "#c8432a",
+            pointBackgroundColor: "#c8432a",
+            pointBorderColor: "#c8432a",
+            pointHoverBackgroundColor: "#c8432a",
+            pointHoverBorderColor: "#c8432a",
+
+
+
+        }]
+
+            }
+
+        })
+
+
+    </script>
+
+{% endblock %}

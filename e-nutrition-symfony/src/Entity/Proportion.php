@@ -37,7 +37,7 @@ class Proportion
     private $patient;
 
     /**
-     * @ORM\ManyToOne(targetEntity=aliment::class, inversedBy="proportions")
+     * @ORM\ManyToOne(targetEntity=Aliment::class, inversedBy="proportions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $aliment;

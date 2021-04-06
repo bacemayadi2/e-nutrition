@@ -18,6 +18,7 @@ class ProportionRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Proportion::class);
     }
+
     public function findbetwen2date($SDate,$EDate){
         return $this->createQueryBuilder('proportion')
             ->where('proportion.date BETWEEN :d1 AND :d2 ')
@@ -26,6 +27,51 @@ class ProportionRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function countByDateAndpatientjour($n,$d1,$d2){
+        $query=$this->createQueryBuilder('d')
+            ->select('SUBSTRING(d.date,12,5) as date,sum(d.calorie) as count')
+            ->groupBy('date')
+            ->where('d.patient = :n and d.date BETWEEN :d1 AND :d2  and d.date >= :d3')
+            ->setParameter('d1',$d1)
+            ->setParameter('d2',$d2)
+            ->setParameter('n',$n)
+            ->setParameter('d3',date("y-m-d", time()))
+            ->orderBy('date')
+        ;
+        return $query->getQuery()->getResult();
+
+    }
+
+
+    public function countByDateAndpatientmois($n,$d1,$d2){
+        $query=$this->createQueryBuilder('d')
+            ->select('SUBSTRING(d.date,7,4) as date,sum(d.calorie) as count')
+            ->groupBy('date')
+            ->where('d.patient = :n and d.date BETWEEN :d1 AND :d2 ')
+            ->setParameter('d1',$d1)
+            ->setParameter('d2',$d2)
+            ->setParameter('n',$n)
+            ->orderBy('date')
+        ;
+        return $query->getQuery()->getResult();
+
+    }
+
+    public function countByDateAndpatientannee($n,$d1,$d2){
+        $query=$this->createQueryBuilder('d')
+            ->select('SUBSTRING(d.date,1,7) as date,sum(d.calorie) as count')
+            ->groupBy('date')
+            ->where('d.patient = :n and d.date BETWEEN :d1 AND :d2 ')
+            ->setParameter('d1',$d1)
+            ->setParameter('d2',$d2)
+            ->setParameter('n',$n)
+            ->orderBy('date')
+        ;
+        return $query->getQuery()->getResult();
+
+    }
+
 
 
 

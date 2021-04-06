@@ -13,7 +13,7 @@
 
 
                     <div class="row justify-content-sm-center">
-        <table id="t" class="table table-condensed table-responsive table-striped"><thead><tr><th>Food</th><th>Quantity</th><th>categorie</th><th>Calories</th><th>lipides</th><th>proteines</th><th>glucides</th><th></th></tr></thead>
+        <table id="t" class="table table-condensed table-responsive table-striped"><thead><tr><th>aliment</th><th>Quantite</th><th>categorie</th><th>Calories</th><th>lipides</th><th>proteines</th><th>glucides</th><th></th></tr></thead>
             <tbody id="all">
              {% for f in aliment %}
 
@@ -33,16 +33,16 @@
             </tbody>
             <tbody id="search">
             </tbody>
-
             </table>
 
 
+                        aliment manger aujourd'hui
 
-                        <div id="itemslist" class="foodtablecalculator"><table class="table table-condensed table-responsive table-striped">        <table id="t" class="table table-condensed table-responsive table-striped"><thead><tr><th>Food</th><th>Quantity</th><th>categorie</th><th>Calories</th><th>lipides</th><th>proteines</th><th>glucides</th><th></th></tr></thead>
+                        <div id="itemslist" class="foodtablecalculator"><table class="table table-condensed table-responsive table-striped">        <table id="t" class="table table-condensed table-responsive table-striped"><thead><tr><th>aliment</th><th>Quantité</th><th>categorie</th><th>Calories</th><th>lipides</th><th>proteines</th><th>glucides</th><th></th></tr></thead>
                                     <tbody id="list-tbody"><tr id="iditemlist-0">
                                         {% for p in proportions %}
                                         <td>{{p.aliment.nom}}</td><td>{{ p.poid }}</td><td>{{ p.aliment.categories  }}</td><td>{{ p.calorie }}</td><td>{{ p.lipides }}</td><td>{{ p.proteines }}</td><td>{{ p.glucides }}</td><td>
-                                            <a href="{{ path('supprimerproportion',{'id':p.id }) }}"><button type="button" class="remove btn btn-default">supprimer</button></a>
+                                            <a href="{{ path('supprimerproportionss',{'id':p.id }) }}"><button type="button" class="remove btn btn-default">supprimer</button></a>
 
                                         </td> </tr>
                                         {% endfor %}
