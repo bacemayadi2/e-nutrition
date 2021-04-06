@@ -51,7 +51,7 @@ class MesureRepository extends ServiceEntityRepository
 
     public function countpoidByDatePatient($n){
         $query=$this->createQueryBuilder('d')
-            ->select('SUBSTRING(d.dateMesure,1,10) as dateMesure,sum(d.poids)  as count')
+            ->select('SUBSTRING(d.dateMesure,1,10) as dateMesure,d.poids  as count')
             ->groupBy('dateMesure')
             ->where('d.patient = :n')
             ->setParameter('n',$n)
@@ -62,7 +62,7 @@ class MesureRepository extends ServiceEntityRepository
     }
     public function counttailleByDatePatient($n){
         $query=$this->createQueryBuilder('d')
-            ->select('SUBSTRING(d.dateMesure,1,10) as dateMesure,sum(d.Taille)  as count')
+            ->select('SUBSTRING(d.dateMesure,1,10) as dateMesure,d.Taille  as count')
             ->groupBy('dateMesure')
             ->where('d.patient = :n')
             ->setParameter('n',$n)

@@ -335,6 +335,11 @@
                     pointBorderColor: "#afc82a",
                     pointHoverBackgroundColor: "#afc82a",
                     pointHoverBorderColor: "#afc82a",
+                    yAxisID: 'a',
+
+
+
+
 
 
                 },
@@ -350,11 +355,29 @@
                         pointBorderColor: "#c8432a",
                         pointHoverBackgroundColor: "#c8432a",
                         pointHoverBorderColor: "#c8432a",
+                        yAxisID: 'b',
+
+
+
 
 
 
                     }]
 
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        id: 'a',
+                        type: 'linear',
+                        position: 'left',
+                    }, {
+                        id: 'b',
+                        type: 'linear',
+                        position: 'right',
+
+                    }]
+                }
             }
 
         })
