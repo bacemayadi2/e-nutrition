@@ -42,11 +42,12 @@
                                         <table border="1" border-collapse="50" align="center" class="table" id="t">
                                             <thead class="bg-primary white">
                                                 <tr>
+                                                    <th>E-mail</th>
                                                     <th>Nom</th>
                                                     <th>Prenom</th>
                                                     <th>Sexe</th>
-                                                    <th>E-Mail</th>
                                                     <th>Numéro de téléphone</th>
+                                                    <td>Afficher</td>
                                                 </tr>
                                             </thead>
                                             <tbody id="all">
@@ -55,7 +56,9 @@
                                                 <td> {{ d.email }}</td>
                                                 <td> {{ d.nom }}</td>
                                                 <td> {{ d.prenom }}</td>
-
+                                                <td> {{ d.sexe }}</td>
+                                                <td> {{ d.tel }}</td>
+                                                <td><a href="{{ path('user_profileMedecin', {'id': d.id }) }}"><button type="button" class="btn btn-success"> afficher profil</button></a>
                                             </tr {% endfor %}>
                                             </tbody>
                                             <tbody id="search">
@@ -98,7 +101,7 @@
                             $('#t tbody#search').empty();
                             $.each(JSON.parse(retour), function(i, obj) {
                                 $('#t tbody#all').hide();
-                                $('#t tbody#search').append('<tr><td> '+obj.id+' </td><td> '+obj.prenom+' </td><td>'+obj.email+' </td></tr>');
+                                $('#t tbody#search').append('<tr><td> '+obj.email+' </td><td> '+obj.nom+' </td><td>'+obj.prenom+' </td><td>'+obj.sexe+'</td><td>'+obj.tel+' </td><td><a href="user/profileMedecin/'+obj.id+'"><button type="button" class="btn btn-success"> afficher profil</button></a></tr>');
                             });
                         }
                         else

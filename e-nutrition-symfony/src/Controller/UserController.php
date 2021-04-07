@@ -194,19 +194,29 @@ class UserController extends AbstractController
 
          $jsonContent = $Normalizer->normalize($doctors, 'json',['groups'=>'doctors']);
 
-         $retour=json_encode($jsonContent);
+         $retour = json_encode($jsonContent);
 
          return new Response($retour);
      }
 
     /**
+     * @Route("/affdoctor/{id}", name="affdoctor")
+     */
+    function affdoctor(NutritionnisteRepository $repo, $id)
+    {
+        $user = $repo->find($id);
+
+        return $this->render('front/users/profileUser.html.twig', ['medecin'=>$user]);
+    }
+
+    /**
      * @Route("/SearchDoctor", name="SearchDoctor")
      */
-    function SearchDoctor()
+    function SearchDoctor(NutritionnisteRepository $repo, Request $request)
     {
-        $repo = $this->getDoctrine()->getRepository(Nutritionniste::class);
+        $user = $repo->findAll();
 
-        return $this->render('front/users/SearchDoctor.html.twig', ['doctors'=>$repo]);
+        return $this->render('front/users/SearchDoctor.html.twig', ['doctors'=>$user]);
     }
 
     /**
