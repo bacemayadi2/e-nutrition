@@ -33,7 +33,7 @@
                 <div class="grid desk-6">
                     <div class="member clearfix">
                         <div class="user-avatar">
-                            <a href="{{ path('user_ChallengeDetails', {'id': c.id}) }}"><img alt="" src=""></a>
+                            <a href="{{ path('user_ChallengeDetails', {'id': c.id}) }}"><img alt="" src="{{ asset(c.tagChallenge[0].getUrl()) }}"></a>
                         </div>
                         <div class="user-details grid desk-7 mob-6 alpha clearfix">
                             <div class="title clearfix">

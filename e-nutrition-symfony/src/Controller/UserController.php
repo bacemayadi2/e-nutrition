@@ -6,6 +6,7 @@ use App\Entity\Evaluation;
 use App\Entity\Nutritionniste;
 use App\Entity\Patient;
 use App\Entity\Student;
+use App\Entity\TagsChallenge;
 use App\Entity\TagsUser;
 use App\Entity\Utilisateur;
 use App\Form\EvaluationType;
@@ -13,6 +14,7 @@ use App\Form\NutritionnisteType;
 use App\Form\PatientType;
 use App\Form\SecretaireType;
 use App\Form\StudentType;
+use App\Form\TagsChallengeType;
 use App\Form\TagsUserType;
 use App\Form\UserType;
 use App\Repository\ChallengeRepository;
@@ -317,11 +319,30 @@ class UserController extends AbstractController
     /**
      * @Route("/ChallengeDetails/{id}", name="ChallengeDetails")
      */
-    public function ChallengeDetails($id, ChallengeRepository $repo, PatientRepository $repoPatient)
+    public function ChallengeDetails($id, ChallengeRepository $repo, PatientRepository $repoPatient,Request $request)
     {
         $this->denyAccessUnlessGranted('ROLE_PATIENT', null, "You must be authenticated to join this event!!!");
         $challenge = $repo->find($id);
+        $tagsChallenge=new TagsChallenge();
+        $form = $this->createForm(TagsChallengeType::class, $tagsChallenge);
 
-        return $this->render("front/challenges/challengeDetails.html.twig",['challenge'=>$challenge]);
+        $form->add("Ajouter", SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            foreach ($tagsChallenge->getTags() as $tag)
+            {
+                $challenge->addTagChallenge($tag);
+            }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+            //$em->remove($tagsuser);
+            $em->flush();
+        }
+
+        return $this->render("front/challenges/challengeDetails.html.twig",['challenge'=>$challenge,'form'=>$form->createView()]);
     }
 }

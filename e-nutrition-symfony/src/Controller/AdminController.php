@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Challenge;
+use App\Entity\ChallengeTag;
 use App\Entity\Nutritionniste;
+use App\Entity\TagsChallenge;
 use App\Form\ChallengeType;
 use App\Form\NutritionnisteType;
 use App\Form\UserType;
@@ -120,6 +122,7 @@ class AdminController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN', null, "You must be ADMIN to access to this page");
         $challenges = $repo->findAll();
+        $tagsChallenge=new TagsChallenge();
         return $this->render("back/challenges/displayChallenges.html.twig",['challenges'=>$challenges]);
     }
 
@@ -131,6 +134,8 @@ class AdminController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN', null, "You must be ADMIN to access to this page");
 
         $challenge = new Challenge();
+        $image=new ChallengeTag();
+        $challenge->addTagChallenge($image);
         $form = $this->createForm(ChallengeType::class, $challenge);
         $form->add("Ajouter", SubmitType::class);
         $form->handleRequest($request);

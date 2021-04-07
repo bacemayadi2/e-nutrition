@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Challenge;
 use Doctrine\DBAL\Types\DateType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -22,7 +23,10 @@ class ChallengeType extends AbstractType
             ->add('dateDebut', \Symfony\Component\Form\Extension\Core\Type\DateType::class, [ 'placeholder' => ['year' => 'Year', 'month' => 'Month', 'day' => 'Day'],
                 'widget' => 'choice','years' => range(2021,2050),'format' => 'dd-MM-yyyy' ])
             ->add('dateFin', \Symfony\Component\Form\Extension\Core\Type\DateType::class, [ 'placeholder' => ['year' => 'Year', 'month' => 'Month', 'day' => 'Day'],
-                'widget' => 'choice','years' => range(2021,2050),'format' => 'dd-MM-yyyy' ]);
+                'widget' => 'choice','years' => range(2021,2050),'format' => 'dd-MM-yyyy' ])
+            ->add('tagChallenge' , CollectionType::class , [
+        'entry_type'=> ChallengeTagType::class,
+    ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

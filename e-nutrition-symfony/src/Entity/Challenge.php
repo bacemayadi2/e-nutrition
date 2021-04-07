@@ -53,9 +53,15 @@ class Challenge
      */
     private $participants;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ChallengeTag::class, mappedBy="challenge",cascade={"all"},orphanRemoval=true)
+     */
+    private $tagChallenge;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
+        $this->tagChallenge = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -145,6 +151,36 @@ class Challenge
     {
         if ($this->participants->removeElement($participant)) {
             $participant->removeChallenge($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ChallengeTag[]
+     */
+    public function getTagChallenge(): Collection
+    {
+        return $this->tagChallenge;
+    }
+
+    public function addTagChallenge(ChallengeTag $tagChallenge): self
+    {
+        if (!$this->tagChallenge->contains($tagChallenge)) {
+            $this->tagChallenge[] = $tagChallenge;
+            $tagChallenge->setChallenge($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTagChallenge(ChallengeTag $tagChallenge): self
+    {
+        if ($this->tagChallenge->removeElement($tagChallenge)) {
+            // set the owning side to null (unless already changed)
+            if ($tagChallenge->getChallenge() === $this) {
+                $tagChallenge->setChallenge(null);
+            }
         }
 
         return $this;

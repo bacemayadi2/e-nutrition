@@ -52,6 +52,7 @@
 {% endblock%}
 
 {% block Content %}
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 
     <div class="rw-row page-title" wfd-id="111">
         <div class="grid-container" wfd-id="112">
@@ -75,7 +76,8 @@
 
             <div class="grid desk-3" wfd-id="104">
                 <div class="profile-avatar" wfd-id="105">
-                    <a href="#"><img alt="" src="https://secure.gravatar.com/avatar/e22c8af3706578ce9aa8280550eac522?s=256&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/e22c8af3706578ce9aa8280550eac522?s=512&amp;d=mm&amp;r=g 2x" class="avatar avatar-256 photo" height="256" width="256" loading="lazy"></a>
+                    <img alt='' src=' {{ asset(challenge.tagChallenge[0].getUrl()) }}' />
+
 
                 </div> <!-- .profile-avatar -->
             </div>
@@ -103,6 +105,22 @@
 
                         </ul>
                     </div>
+{#                    {{ form_start(form)}}#}
+{#                    <ul id="fichier"#}
+{#                        data-prototype="{{ form_widget(form.tags.vars.prototype)|e }}"#}
+
+{#                        data-widget-tags="{{ '<li></li>'|e }}"#}
+{#                        data-widget-counter="{{ form.tags|length }}" >#}
+
+{#                    </ul>#}
+
+
+{#                    <button type="button"#}
+{#                            class="btn btn-primary add-another-collection-widget"#}
+{#                            data-list-selector="#fichier">multimedia +</button>#}
+{#                    {{ form_row(form.Ajouter) }}#}
+
+{#                    {{ form_end(form) }}#}
                     <div class="grid desk-6 omega" wfd-id="75">
                         <div class="following-block clearfix" wfd-id="77">
                             <div class="follow-col reputation" wfd-id="86">
@@ -140,5 +158,48 @@
             <div class="clear" wfd-id="70"></div>
         </div> <!-- .grid-container -->
     </div>
+
+    <script>
+        jQuery(document).ready(function () {
+            jQuery('.add-another-collection-widget').click(function (e) {
+                var list = jQuery(jQuery(this).attr('data-list-selector'));
+                // Try to find the counter of the list or use the length of the list
+                var counter = list.data('widget-counter') || list.children().length;
+
+                // grab the prototype template
+                var newWidget = list.attr('data-prototype');
+                // replace the "__name__" used in the id and name of the prototype
+                // with a number that's unique to your emails
+                // end name attribute looks like name="contact[emails][2]"
+                newWidget = newWidget.replace(/__name__/g, counter);
+                // Increase the counter
+                counter++;
+                // And store it, the length cannot be used if deleting widgets is allowed
+                list.data('widget-counter', counter);
+
+                // create a new list element and add it to the list
+                var newElem = jQuery(list.attr('data-widget-tags')).html(newWidget);
+                newElem.appendTo(list);
+
+
+                addTagFormDeleteLink($(newElem));
+                /*! selectize.js - v0.12.6 | https://github.com/selectize/selectize.js | Apache License (v2) */
+
+                $('select').selectize();
+
+            });
+
+        });
+
+        function addTagFormDeleteLink($tagFormLi) {
+            var $removeFormButton = $('<button type="button" class="btn btn-danger">enlever</button>');
+            $tagFormLi.append($removeFormButton);
+
+            $removeFormButton.on('click', function(e) {
+                // remove the li for the tag form
+                $tagFormLi.remove();
+            });
+        }
+    </script>
 
 {% endblock%}

@@ -38,6 +38,13 @@
                                         <td>{{ form_label(form.dateFin, "Date de fin de défi: ") }}</td>
                                         <td>{{ form_widget(form.dateFin) }}</td>
                                     </tr>
+                                    <tr>
+                                        <td>                                    {{ form_label(form.tagChallenge[0].contenuMultimedia.fileMultimedia, "image challenge") }}
+                                        </td>
+                                        <td>
+                                            {{ form_widget(form.tagChallenge[0].contenuMultimedia.fileMultimedia) }}
+                                        </td>
+                                    </tr>
                                 </table>
                             </div>
                             <br>
