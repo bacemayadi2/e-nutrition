@@ -11,9 +11,6 @@
                 <div class="container">
                     <div class="row justify-content-sm-center">
                     {{ form_start(form)}}
-                                                    <h4 class="card-title">Statistiques</h4>
-
-                                <div class="form-group col-10 mb-2">
                                     <table class="form-wrap">
                                         <tr>
                                             <td>{{ form_label(form.kcal, "par") }} </td>
@@ -28,11 +25,10 @@
 
                             {{ form_end(form) }}
 
-<div>
-                                <canvas id="portion" width="400" height="100"></canvas>
-                                 {{ dump() }}</div>
+                                <canvas id="portion" width="800" height="200"></canvas>
+
                             </div>
-                        </div>
+
 
 {% endblock %}
 

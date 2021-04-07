@@ -52,7 +52,7 @@
 
                     <div class="w-user-card right">
                         <div class="w-avatar">
-                            <a href="https://gustos.w3.style/author/andrei/"><img alt='' src='https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-200x200.jpg' class='avatar avatar-200 photo' /></a>
+                            <a href="blog_post_show"><img alt='' src='https://gustos.w3.style/wp-content/uploads/2021/01/partTimeDev-200x200.jpg' class='avatar avatar-200 photo' /></a>
                         </div>
                         <div class="w-in">
                             <div class="author-name"><a href="https://gustos.w3.style/author/andrei/">Andrei</a></div>
@@ -119,10 +119,10 @@
                                 <div class="entry-date">
                                     {{ blog_post.date.date|date("Y-m-d") }}
                                 </div>
-                                <div class="entry-title"><h2><a href="https://gustos.w3.style/2016/08/09/the-best-way-out-is-always-through/">{{  blog_post.title }}</a></h2></div>
+                                <div class="entry-title"><h2><a href="{{ path('blog_post_show',{'id':blog_post.id }) }}>{{  blog_post.title }}</a></h2></div>
                                 <div class="entry-content">
                                     <p>{{ blog_post.body|length > 50 ? blog_post.body|slice(0, 50) ~ '...' : blog_post.body }}</p>
-                                    <a href="https://gustos.w3.style/2016/08/09/the-best-way-out-is-always-through/">Read more &rarr;</a>									</div>
+                                    <a href="{{ path('blog_post_show',{'id':blog_post.id }) }}">Read more &rarr;</a>									</div>
                             </div>
                         </div> <!-- .entry -->
                     {% endfor %}
