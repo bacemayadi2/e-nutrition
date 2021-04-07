@@ -75,10 +75,10 @@
                                 <div class="profile-avatar">
                                         <img alt='' src=' {{ asset(app.user.imageprofileurl)}}' />
                                 </div> <!-- .profile-avatar -->
-                                <a href="{{ path('user_gallery',{'id':app.user.id }) }}">  <button type="button" class="btn btn-success">gallery</button></a>
+                                <a href="{{ path('user_gallery',{'id':app.user.id }) }}">  <button type="button" class="btn btn-success">Gallery</button></a>
 
+                                <a href="{{ path('user_UpdateUser',{'id':app.user.id }) }}">  <button type="button" class="btn btn-success">Modifier compte</button></a>
                             </div>
-
 
                             <div class="grid desk-9">
                                 <div id="user-summary" class="profile-user-tab active">

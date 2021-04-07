@@ -11,6 +11,7 @@ use App\Entity\Utilisateur;
 use App\Form\EvaluationType;
 use App\Form\NutritionnisteType;
 use App\Form\PatientType;
+use App\Form\SecretaireType;
 use App\Form\StudentType;
 use App\Form\TagsUserType;
 use App\Form\UserType;
@@ -44,10 +45,75 @@ class UserController extends AbstractController
         return $this->render('front/users/profileUser.html.twig', ['controller_name' => 'UserController',]);
     }
 
+//__________________________________________Update users________________________________________________________________
+
+    /**
+     * @Route("/UpdateUser/{id}", name="UpdateUser")
+     */
+    function UpdateUser(PatientRepository $p, NutritionnisteRepository $d, SecretaireRepository $s, Request $request, $id)
+    {
+        $userp = $p->find($id);
+        $userd = $d->find($id);
+        $users = $s->find($id);
+
+        if ($d instanceof Nutritionniste)
+        {
+            $form = $this->createForm(NutritionnisteType::class, $userd);
+            $form->add("Modifier", SubmitType::class);
+
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid())
+            {
+                $em = $this->getDoctrine()->getManager();
+
+                $em->flush();
+                return $this->redirectToRoute('user_profileUser');
+            }
+            return $this->render('front/users/updateDoctor.html.twig', ['form'=>$form->createView()]);
+        }//----------------------------------------------------------------------------------------------------------------
+        else if ($p instanceof Patient)
+        {
+            $form = $this->createForm(PatientType::class, $userp);
+            $form->add("Modifier", SubmitType::class);
+
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid())
+            {
+                $em = $this->getDoctrine()->getManager();
+
+                $em->flush();
+                return $this->redirectToRoute('user_profileUser');
+            }
+            return $this->render('front/users/updatePatient.html.twig', ['form'=>$form->createView()]);
+        }
+
+//----------------------------------------------------------------------------------------------------------------
+
+        $form = $this->createForm(SecretaireType::class, $users);
+        $form->add("Modifier", SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+
+            $em->flush();
+            return $this->redirectToRoute('user_profileUser');
+        }
+        return $this->render('front/users/updateSecretaire.html.twig', ['form'=>$form->createView()]);
+
+
+//----------------------------------------------------------------------------------------------------------------
+    }
+
+
     /**
      * @Route("/UpdateDoctor/{id}", name="UpdateDoctor")
      */
-    function UpdateUser(NutritionnisteRepository  $repo, Request $request, $id)
+    function UpdateDoctor(NutritionnisteRepository  $repo, Request $request, $id)
     {
         $user = $repo->find($id);
 
@@ -65,6 +131,53 @@ class UserController extends AbstractController
         }
         return $this->render('front/users/updateDoctor.html.twig', ['form'=>$form->createView()]);
     }
+
+    /**
+     * @Route("/UpdatePatient/{id}", name="UpdatePatient")
+     */
+    function UpdatePatient(PatientRepository  $repo, Request $request, $id)
+    {
+        $user = $repo->find($id);
+
+        $form = $this->createForm(PatientType::class, $user);
+        $form->add("Modifier", SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+
+            $em->flush();
+            return $this->redirectToRoute('user_profileUser');
+        }
+        return $this->render('front/users/updatePatient.html.twig', ['form'=>$form->createView()]);
+    }
+
+    /**
+     * @Route("/UpdateSecretaire/{id}", name="UpdateSecretaire")
+     */
+    function UpdateSecretaire(SecretaireRepository  $repo, Request $request, $id)
+    {
+        $user = $repo->find($id);
+
+        $form = $this->createForm(SecretaireType::class, $user);
+        $form->add("Modifier", SubmitType::class);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+
+            $em->flush();
+            return $this->redirectToRoute('user_profileUser');
+        }
+        return $this->render('front/users/updateSecretaire.html.twig', ['form'=>$form->createView()]);
+    }
+ //______________________________________________________________________________________________________________________
+
+
 
     /**
     * @Route("/searchAjax", name="searchAjax")

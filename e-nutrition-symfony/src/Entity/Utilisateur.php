@@ -283,14 +283,21 @@ class Utilisateur implements UserInterface
 
     public function removeRoleAdmin(): self
     {
-        foreach ($this->roles as $role)
+        if (($role = array_search("ROLE_ADMIN", $this->roles)) !== false) {
+            unset($this->roles[$role]);
+        }
+        else
         {
-            if ($role == 'ROLE_ADMIN')
-            {
-                unset($role);
-            }
+            echo "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh";
         }
 
+//        foreach ($this->roles as $role)
+//        {
+//            if ($role == 'ROLE_ADMIN')
+//            {
+//                unset($role);
+//            }
+//        }
 
         return $this;
     }

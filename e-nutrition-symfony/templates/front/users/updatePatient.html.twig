@@ -56,7 +56,7 @@
                                     </tr>
                                     <tr>
                                         <td>{{ form_label(form.plainPassword, "Password: ") }}</td>
-                                        <td>{{ form_widget(form.plainPassword, {'attr': {'style': 'width: 300px'} + {'class':'form-control'} } )  }}</td>
+                                        <td>{{ form_widget(form.plainPassword, {'attr': {'style': 'width: 300px'} + {'class':'form-control'} + {'disabled':'disabled'} } )  }}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -64,7 +64,6 @@
 
                             {{ form_widget(form.Modifier, {'attr':{'class':'btn btn-primary'}}) }}
 
-                            {{ form_errors(form.email) }}
                             {{ form_errors(form.nom) }}
                             {{ form_errors(form.prenom) }}
                             {{ form_errors(form.sexe) }}

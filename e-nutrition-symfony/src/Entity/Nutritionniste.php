@@ -68,7 +68,6 @@ class Nutritionniste extends Utilisateur
                 $secretaire->setNutritionniste(null);
             }
         }
-
         return $this;
     }
 

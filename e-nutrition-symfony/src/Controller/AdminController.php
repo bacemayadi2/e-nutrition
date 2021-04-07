@@ -46,33 +46,6 @@ class AdminController extends AbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN', null, "You must be ADMIN to access to this page");
         $users = $repo->findAll();
 
-        echo  "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh";
-
-        $tab = ['sami', 'feehri', 'salah'];
-
-        echo "hhhhhhhhhhhh";
-
-        foreach ($tab as $t)
-        {
-            echo " $t ";
-        }
-
-        echo " \n ";
-
-        $ch = 'sami';
-
-        foreach ($tab as $t)
-        {
-            unset($tab[$ch]);
-        }
-
-        echo "\n";
-
-        foreach ($tab as $t)
-        {
-            echo " $t ";
-        }
-
         return $this->render("back/users/DisplayUsers.html.twig",['users'=>$users]);
     }
 
