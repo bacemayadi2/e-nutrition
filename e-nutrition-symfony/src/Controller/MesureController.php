@@ -73,7 +73,7 @@ class MesureController extends AbstractController
 //        $mesure=$repo->findAll();
 //        return $this->render('front/mesure/affichage.html.twig', [
 //            'mesure' => $mesure,
-        $userid=$this->getUser()->getId();
+        $userid=$this->getUser()->getId();-
 
 
             $poid=$Repository->countpoidByDatePatient($this->getUser());
