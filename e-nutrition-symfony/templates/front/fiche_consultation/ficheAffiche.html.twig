@@ -12,8 +12,8 @@
                     <!-- List Inline-->
                     <ul class="list-inline list-inline-dashed list-white text-big p offset-md-top-13">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="blog-classic.html">Fiches</a></li>
-                        <li>Blog Grid 3 Columns
+                        <li><a href="blog-classic.html">Profil</a></li>
+                        <li>Vos fiches consultations
                         </li>
                     </ul>
                 </div>
@@ -54,6 +54,7 @@
                         </article>
                     </div>
                     {% endfor %}
+                    {{ knp_pagination_render(ficheConsultation) }}
                 </div>
 
 

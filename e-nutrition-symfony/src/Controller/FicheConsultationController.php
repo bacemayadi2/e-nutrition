@@ -29,9 +29,15 @@ class FicheConsultationController extends AbstractController
      */
 
 
-    public function AfficheFicheFront(FicheConsultationRepository $repository)
+    public function AfficheFicheFront(Request $request,PaginatorInterface $paginator,FicheConsultationRepository $repository)
     {
-        $ficheConsultation=$repository->findBy(['patient' => $this->getUser()->getId()]);
+        $donnees=$repository->findBy(['patient' => $this->getUser()->getId()]);
+        $ficheConsultation=$paginator->paginate(
+            $donnees,
+            /* query NOT result */
+            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+            3 /*limit per page*/
+        );
         return $this->render('front/fiche_consultation/ficheAffiche.html.twig', [
             'ficheConsultation' => $ficheConsultation]);
 
@@ -102,7 +108,7 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
 
 
     /**
-     * @route("supprimerFicheConsultation/{id}", name="deleteF")
+     * @route("supprimerFicheConsultation/{id}", name="deleteFa")
      */
 
    public function Delete($id,FicheConsultationRepository $repository){
@@ -120,7 +126,7 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
      * @param Request $request
      * @param $id
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
-     * @route("updateFicheConsultation/{id}", name="updateF")
+     * @route("updateFicheConsultation/{id}", name="updateFa")
      */
 
  function Update(FicheConsultationRepository $repository,$id,Request $request){
