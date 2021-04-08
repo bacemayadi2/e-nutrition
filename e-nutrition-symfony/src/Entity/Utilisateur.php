@@ -22,6 +22,7 @@ class Utilisateur implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("doctors")
      */
     protected $id;
 
@@ -35,18 +36,21 @@ class Utilisateur implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Saisir votre prénom svp !!!")
+     * @Groups ("doctors")
      */
     protected $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Choisir votre sexe svp !!!")
+     * @Groups ("doctors")
      */
     protected $sexe;
 
     /**
      * @ORM\Column(type="date")
      * @Assert\NotBlank(message="Saisir votre date de naissance svp !!!")
+     * @Groups ("doctors")
      */
     protected $dateNaiss;
 
@@ -54,29 +58,28 @@ class Utilisateur implements UserInterface
      * @ORM\Column(type="string", length=30)
      * @Assert\NotBlank(message="E-mail is required")
      * @Assert\Email(message="Saisir votre E-mail svp !!!")
+     * @Groups ("doctors")
      */
     protected $email;
 
     /**
      * @ORM\Column(type="string", length=20)
      * @Assert\NotBlank(message="Saisir votre numéro de téléphone svp !!!")
+     * @Groups ("doctors")
      */
     protected $tel;
 
     /**
-     * @ORM\Column(type="string", length=20)
-     */
-    protected $typeCompte;
-
-    /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank(message="Saisir votre ville svp !!!")
+     * @Groups ("doctors")
      */
     protected $ville;
 
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank(message="Saisir votre adresse svp !!!")
+     * @Groups ("doctors")
      */
     protected $adresse;
 
@@ -180,18 +183,6 @@ class Utilisateur implements UserInterface
     public function setTel(string $tel): self
     {
         $this->tel = $tel;
-
-        return $this;
-    }
-
-    public function getTypeCompte(): ?string
-    {
-        return $this->typeCompte;
-    }
-
-    public function setTypeCompte(string $typeCompte): self
-    {
-        $this->typeCompte = $typeCompte;
 
         return $this;
     }

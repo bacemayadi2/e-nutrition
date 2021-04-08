@@ -48,6 +48,4 @@ security:
          - { path: ^/doctor, roles: [ROLE_DOCTOR] }
          - { path: ^/secretaire, roles: [ROLE_SECRETAIRE, ROLE_PATIENT] }
          - { path: ^/patient, roles: ROLE_PATIENT }
-
-
          - { path: ^/docadmin, roles: [ROLE_ADMIN, ROLE_DOCTOR] }
