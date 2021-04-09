@@ -1,4 +1,4 @@
-package e.nutrition.Services;
+package e.nutrition.Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
