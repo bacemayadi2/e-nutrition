@@ -44,6 +44,8 @@ class Patient extends Utilisateur
      */
     private $challenges;
 
+
+
     public function __construct()
     {
         $this->ficheConsultations = new ArrayCollection();
@@ -207,6 +209,7 @@ class Patient extends Utilisateur
 
         return $this;
     }
+
 
 
 

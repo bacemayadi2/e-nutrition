@@ -20,12 +20,16 @@ class TagsChallenge
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=TagsChallenge::class, inversedBy="tags",cascade={"all"})
+     * @return mixed
      */
-    private $tagsChallenge;
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
     /**
-     * @ORM\OneToMany(targetEntity=TagsChallenge::class, mappedBy="tagsChallenge")
+     * @ORM\OneToMany(targetEntity=ChallengeTag::class, mappedBy="tagsChallenge" ,cascade={"all"},orphanRemoval=true)
      */
     private $tags;
 
@@ -34,32 +38,15 @@ class TagsChallenge
         $this->tags = new ArrayCollection();
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getTagsChallenge(): ?self
-    {
-        return $this->tagsChallenge;
-    }
-
-    public function setTagsChallenge(?self $tagsChallenge): self
-    {
-        $this->tagsChallenge = $tagsChallenge;
-
-        return $this;
-    }
-
     /**
-     * @return Collection|self[]
+     * @return Collection|ChallengeTag[]
      */
     public function getTags(): Collection
     {
         return $this->tags;
     }
 
-    public function addTag(self $tag): self
+    public function addTag(ChallengeTag $tag): self
     {
         if (!$this->tags->contains($tag)) {
             $this->tags[] = $tag;
@@ -69,7 +56,7 @@ class TagsChallenge
         return $this;
     }
 
-    public function removeTag(self $tag): self
+    public function removeTag(ChallengeTag $tag): self
     {
         if ($this->tags->removeElement($tag)) {
             // set the owning side to null (unless already changed)
@@ -80,4 +67,6 @@ class TagsChallenge
 
         return $this;
     }
+
+
 }

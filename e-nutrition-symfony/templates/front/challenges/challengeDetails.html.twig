@@ -1,57 +1,7 @@
-{% extends 'front/base.html.twig' %}
+{% extends 'front/baseforotherpage.html.twig' %}
 
-{% block head %}
-    <style type="text/css">
-        img.wp-smiley,
-        img.emoji
-        {
-            display: inline !important;
-            border: none !important;
-            box-shadow: none !important;
-            height: 1em !important;
-            width: 1em !important;
-            margin: 0 .07em !important;
-            vertical-align: -0.1em !important;
-            background: none !important;
-            padding: 0 !important;
-        }
-    </style>
 
-    <link rel='stylesheet' id='wp-block-library-css'  href='https://gustos.w3.style/wp-includes/css/dist/block-library/style.min.css?ver=5.5.3' type='text/css' media='all' />
-    <link rel='stylesheet' id='wc-block-vendors-style-css'  href='https://gustos.w3.style/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/vendors-style.css?ver=3.1.0' type='text/css' media='all' />
-    <link rel='stylesheet' id='wc-block-style-css'  href='https://gustos.w3.style/wp-content/plugins/woocommerce/packages/woocommerce-blocks/build/style.css?ver=3.1.0' type='text/css' media='all' />
-    <link rel='stylesheet' id='submit-feedback-main-css-css'  href='https://gustos.w3.style/wp-content/plugins/submit-feedback/assets/main.min.css?ver=0.1.0' type='text/css' media='all' />
-    <link rel='stylesheet' id='woocommerce-layout-css'  href='https://gustos.w3.style/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=4.5.2' type='text/css' media='all' />
-    <link rel='stylesheet' id='woocommerce-smallscreen-css'  href='https://gustos.w3.style/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=4.5.2' type='text/css' media='only screen and (max-width: 768px)' />
-    <link rel='stylesheet' id='woocommerce-general-css'  href='https://gustos.w3.style/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=4.5.2' type='text/css' media='all' />
-    <style id='woocommerce-inline-inline-css' type='text/css'>
-        .woocommerce form .form-row .required { visibility: visible; }
-    </style>
-    <link rel='stylesheet' id='zerowp-social-profiles-styles-css'  href='https://gustos.w3.style/wp-content/plugins/zerowp-social-profiles/assets/css/styles.css?ver=1.2.1' type='text/css' media='all' />
-    <link rel='stylesheet' id='gustos-slim-select-css'  href='https://gustos.w3.style/wp-content/themes/gustos/assets//slim-select/slimselect.min.css?ver=1.26.0' type='text/css' media='all' />
-    <link rel='stylesheet' id='ztip-css'  href='https://gustos.w3.style/wp-content/themes/gustos/assets/modules/ztip/ztip.css?ver=1.0' type='text/css' media='all' />
-    <link rel='stylesheet' id='accordionjs-css'  href='https://gustos.w3.style/wp-content/themes/gustos/assets/modules/accordionjs/accordion.css?ver=2.1.1' type='text/css' media='all' />
-    <link rel='stylesheet' id='gustos-root-vars-css'  href='https://gustos.w3.style/wp-content/themes/gustos/assets/root.css?ver=2.10.7' type='text/css' media='all' />
-    <link rel='stylesheet' id='gustos-stylesheet-css'  href='https://gustos.w3.style/wp-content/themes/gustos/style.min.css?ver=2.10.7' type='text/css' media='all' />
-    <link rel='stylesheet' id='gustos-wp-override-css'  href='https://gustos.w3.style/wp-content/themes/gustos/wp.min.css?ver=2.10.7' type='text/css' media='all' />
-    <link rel='stylesheet' id='font-awesome-css'  href='https://gustos.w3.style/wp-content/themes/gustos/assets/modules/font-awesome/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
-    <link rel='stylesheet' id='gustos-font-awards-css'  href='https://gustos.w3.style/wp-content/themes/gustos/assets/font-awards/style.css?ver=2.10.7' type='text/css' media='all' />
-    <link rel='stylesheet' id='heading-google-font-css'  href='//fonts.googleapis.com/css?family=Imprima&#038;ver=5.5.3' type='text/css' media='all' />
-    <script type='text/javascript' src='https://gustos.w3.style/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp' id='jquery-core-js'></script>
-    <link rel="https://api.w.org/" href="https://gustos.w3.style/wp-json/" /><link rel="alternate" type="application/json" href="https://gustos.w3.style/wp-json/wp/v2/users/2" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://gustos.w3.style/xmlrpc.php?rsd" />
-    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://gustos.w3.style/wp-includes/wlwmanifest.xml" />
-    <meta name="generator" content="WordPress 5.5.3" />
-    <meta name="generator" content="WooCommerce 4.5.2" />
-    <meta name="generator" content="Gustos 2.10.7" />
-    <noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
-    <link rel="icon" href="https://gustos.w3.style/wp-content/uploads/2016/08/cropped-logo-32x32.png" sizes="32x32" />
-    <link rel="icon" href="https://gustos.w3.style/wp-content/uploads/2016/08/cropped-logo-192x192.png" sizes="192x192" />
-    <link rel="apple-touch-icon" href="https://gustos.w3.style/wp-content/uploads/2016/08/cropped-logo-180x180.png" />
-    <meta name="msapplication-TileImage" content="https://gustos.w3.style/wp-content/uploads/2016/08/cropped-logo-270x270.png" />
-    <style>:root{--color-accent: #706fd3;--color-accent-lighter: #8685fd;--color-accent-darker: #5958a8;--color-link: #706fd3;--width-layout: 1340px;--width-sidebar: 300px;--background-body: #eee;--background-body--full: #eee  repeat scroll;--background-body--size: auto;--font-family-body: Arial, "Helvetica Neue", Helvetica, sans-serif;--font-family-heading: "Imprima", Helvetica, Arial, sans-serif;--background-color-header: #2c2c54;--color-header-text: #fff;--color-header-link: #fff;--background-color-submenu: #2c2c54}</style>
-{% endblock%}
-
-{% block Content %}
+{% block Content2 %}
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 
     <div class="rw-row page-title" wfd-id="111">
@@ -59,6 +9,7 @@
             <div class="grid desk-6 mob-6 alpha" wfd-id="115">
                     <h1> {{ challenge.titre}} </h1>
             </div>
+
             <div class="grid desk-6 mob-6 omega" wfd-id="113">
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <a href="#" ><button type="button" class="btn btn-success" >Participer au défi</button></a>
@@ -105,34 +56,22 @@
 
                         </ul>
                     </div>
-{#                    {{ form_start(form)}}#}
-{#                    <ul id="fichier"#}
-{#                        data-prototype="{{ form_widget(form.tags.vars.prototype)|e }}"#}
 
-{#                        data-widget-tags="{{ '<li></li>'|e }}"#}
-{#                        data-widget-counter="{{ form.tags|length }}" >#}
-
-{#                    </ul>#}
-
-
-{#                    <button type="button"#}
-{#                            class="btn btn-primary add-another-collection-widget"#}
-{#                            data-list-selector="#fichier">multimedia +</button>#}
-{#                    {{ form_row(form.Ajouter) }}#}
-
-{#                    {{ form_end(form) }}#}
                     <div class="grid desk-6 omega" wfd-id="75">
                         <div class="following-block clearfix" wfd-id="77">
                             <div class="follow-col reputation" wfd-id="86">
                                 <div class="follow-col-in" wfd-id="87">
-                                    <span class="count" wfd-id="89">{{ challenge.participants|length}}<span class="title" wfd-id="88">Nombre de participant(s)</span>
+                                    <span class="count" wfd-id="89">{{ challenge.participants|length}}<span class="title" wfd-id="88">Nombre de participant(s)</span> </span>
                                 </div>
                             </div>
 
+
                         </div>
+
                         <div class="clear" wfd-id="76"></div>
 
                     </div>
+
                     <div class="clear" wfd-id="74"></div>
                 </div> <!-- #user-summary -->
 
@@ -156,8 +95,51 @@
                 </div> <!-- #user-send-pm -->
             </div>
             <div class="clear" wfd-id="70"></div>
+            <div id="recipe-picture" class="entry-photo single-recipe-photo-cover">
+
+                <ul class="entry-recipe-slider">
+                    {% for tag in challenge.tagChallenge %}
+                        {% if loop.index !=1 %}
+                        {% if tag.isImage() %}
+                            <li data-thumb="{{ asset( tag.getUrl() )}}"><img src="{{ asset( tag.getUrl() )}}" alt="" />  </li>
+
+                        {% endif %}
+                        {% if tag.isVideo() %}
+
+                            <li data-thumb="{{ asset( tag.getthumbnail() )}}"><div class="entry-photo single-recipe-photo-cover">
+                                    <iframe   width="1100" height="710" src="{{ path('affichervideo',{ 'url':tag.getName , 'extension':tag.getExtension }) }}" frameborder="0" allowfullscreen>
+                                    </iframe></div></li>
+                        {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+                <div class="recipe-tools">
+                    {#                                <div data-post="185" data-settings="{&quot;tag&quot;:&quot;div&quot;,&quot;class&quot;:&quot;tool like smk_theme_tooltip&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Like&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;the-icon fa fa-thumbs-o-up\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Dislike&quot;,&quot;content_remove&quot;:&quot;&quot;,&quot;title_format&quot;:&quot;%text% (%count%)&quot;,&quot;title_not_logged&quot;:&quot;Please log in to like this post&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:false,&quot;echo&quot;:true}" data-act="like" data-l="0" title="Please log in to like this post" class="smk-mark-button tool like smk_theme_tooltip"><i class="the-icon fa fa-thumbs-o-up"></i></div><div data-post="185" data-settings="{&quot;tag&quot;:&quot;div&quot;,&quot;class&quot;:&quot;tool favorite smk_theme_tooltip&quot;,&quot;class_active&quot;:&quot;active&quot;,&quot;title&quot;:&quot;Add to favorites&quot;,&quot;content&quot;:&quot;&lt;i class=\&quot;the-icon fa fa-heart-o\&quot;&gt;&lt;\/i&gt;&quot;,&quot;title_remove&quot;:&quot;Remove from favorites&quot;,&quot;content_remove&quot;:&quot;&quot;,&quot;title_format&quot;:&quot;%text% (%count%)&quot;,&quot;title_not_logged&quot;:&quot;Please log in to add this post to favorites&quot;,&quot;attributes&quot;:[],&quot;modify_content&quot;:false,&quot;echo&quot;:true}" data-act="favorite" data-l="0" title="Please log in to add this post to favorites" class="smk-mark-button tool favorite smk_theme_tooltip"><i class="the-icon fa fa-heart-o"></i></div>                                                                                    <a href="/recipes/crevette-a-la-marseillaise/?print_recipe=1" rel="nofollow"#}
+                    {#                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          class="tool print"#}
+                    {#                             future print                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             title="Print (541)"><i class="the-icon fa fa-print"></i></a>#}
+                </div>
+            </div>
+
+            {{ form_start(form)}}
+            <ul id="fichier"
+                data-prototype="{{ form_widget(form.tags.vars.prototype)|e }}"
+
+                data-widget-tags="{{ '<li></li>'|e }}"
+                data-widget-counter="{{ form.tags|length }}" >
+
+            </ul>
+
+
+            <button type="button"
+                    class="btn btn-primary add-another-collection-widget"
+                    data-list-selector="#fichier">multimedia +</button>
+            {{ form_row(form.Ajouter) }}
+
+            {{ form_end(form) }}
         </div> <!-- .grid-container -->
     </div>
+
 
     <script>
         jQuery(document).ready(function () {

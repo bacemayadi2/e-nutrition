@@ -143,6 +143,7 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             $entityManager = $this->getDoctrine()->getManager();
+            $challenge->getTagChallenge()[0]->setUser($this->getUser());
             $entityManager->persist($challenge);
             $entityManager->flush();
             return $this->redirectToRoute('admin_DisplayChallenges');
