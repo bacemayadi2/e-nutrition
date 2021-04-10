@@ -61,13 +61,13 @@ public class ServiceNutritionniste implements IService <Nutritionniste>
     @Override
     public void Update(Nutritionniste t) 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void Display() 
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
   
