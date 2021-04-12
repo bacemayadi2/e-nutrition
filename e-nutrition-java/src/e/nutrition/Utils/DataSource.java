@@ -3,7 +3,7 @@ package e.nutrition.Utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+import com.mysql.cj.jdbc.Driver;
 /**
  *
  * @author ALADIN
@@ -26,10 +26,11 @@ public class DataSource
         try
         {
             cnx = DriverManager.getConnection(URL, LOGIN, PASSWORD);
-            System.out.println("Connecting !!!");
+            System.out.println("You are connecting to the database !!!");
         }
         catch (SQLException ex)
         {
+            System.out.println("Connection failed with the database !!!");
             System.out.println(ex.getMessage());
         }
     }

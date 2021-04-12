@@ -15,12 +15,14 @@ public class Patient extends User
 {
     private String styleDeVie;
 
-    public Patient(String styleDeVie, int id, String nom, String prenom, String sexe, Date dateNaiss, String email, String tel, String ville, String adresse) {
+    public Patient(int id, String nom, String prenom, String sexe, Date dateNaiss, String email, String tel, String ville,
+            String adresse, String styleDeVie) {
         super(id, nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
         this.styleDeVie = styleDeVie;
     }
 
-    public Patient(String styleDeVie, String nom, String prenom, String sexe, Date dateNaiss, String email, String tel, String ville, String adresse) {
+    public Patient(String nom, String prenom, String sexe, Date dateNaiss, String email, String tel, String ville, 
+            String adresse, String styleDeVie) {
         super(nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
         this.styleDeVie = styleDeVie;
     }

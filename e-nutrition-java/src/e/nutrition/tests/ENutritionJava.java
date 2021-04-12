@@ -2,13 +2,19 @@ package e.nutrition.tests;
 
 import e.nutrition.Models.Nutritionniste;
 import e.nutrition.Models.Secretaire;
+import e.nutrition.Services.ServiceChallenge;
 import e.nutrition.Utils.DataSource;
 import e.nutrition.Services.ServiceNutritionniste;
+import e.nutrition.Services.ServicePatient;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  *
@@ -30,20 +36,24 @@ public class ENutritionJava
         
         
         ServiceNutritionniste sn = new ServiceNutritionniste();
-        sn.Delete(s1);
-//        Nutritionniste n1 = new Nutritionniste(secretaires, nom, prenom, sexe, dateNaiss, email, tel, ville, adresse)
+        ServicePatient sp = new ServicePatient();
+        ServiceChallenge sc = new ServiceChallenge();
+
+        System.out.println("____________________________Delete____________________________________________________________________________________");
         
-//        try
-//        {
-//            String className = "com.mysql.jdbc.Driver";
-//            Class.forName(className);
-//            System.out.println("Success !!!");
-//        }
-//        catch(ClassNotFoundException ex)
-//        {
-//            System.out.println("Failed !!!");
-//            System.out.println(ex.getMessage());
-//        }
+        sn.Delete(s1);
+        
+        System.out.println("____________________________Display Patients____________________________________________________________________________________");
+        
+        sp.Display();
+        
+        System.out.println("____________________________Display Challenges____________________________________________________________________________________");
+        
+        List al = sc.Display();
+        
+        System.out.println(al);
+        
+
     }
     
 }

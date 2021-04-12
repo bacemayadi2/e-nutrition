@@ -15,14 +15,16 @@ public class Nutritionniste extends User
         super(id);
     }
     
-    public Nutritionniste(List<Secretaire> secretaires, int id, String nom, String prenom, String sexe, Date dateNaiss,
-            String email, String tel, String ville, String adresse) {
+    public Nutritionniste(int id, String nom, String prenom, String sexe, Date dateNaiss, String email, String tel,
+            String ville, String adresse)
+    {
         super(id, nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
-        this.secretaires = secretaires;
+        //this.secretaires = secretaires;
     }
 
-    public Nutritionniste(List<Secretaire> secretaires, String nom, String prenom, String sexe, Date dateNaiss,
-            String email, String tel, String ville, String adresse) {
+    public Nutritionniste(String nom, String prenom, String sexe, Date dateNaiss, String email, String tel, String ville,
+            String adresse, List<Secretaire> secretaires) 
+    {
         super(nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
         this.secretaires = secretaires;
     }
