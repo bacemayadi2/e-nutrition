@@ -53,7 +53,6 @@ public class ENutritionJava
         
         System.out.println(al);
         
-
     }
     
 }

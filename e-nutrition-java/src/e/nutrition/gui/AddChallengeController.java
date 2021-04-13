@@ -14,7 +14,6 @@ import java.awt.TextField;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -66,6 +65,8 @@ public class AddChallengeController implements Initializable
     private ServiceChallenge sc = new ServiceChallenge();
    
     
+    private int challenge_Id;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {        
@@ -75,29 +76,44 @@ public class AddChallengeController implements Initializable
     @FXML
     private void btn_add_challenge(ActionEvent event) 
     {
-        sc.Add(new Challenge(challengeTitre.getText(), challengeDescription.getText(), challengeCategorie.getText(), 
+        if( checkFields() )
+        {
+            sc.Add(new Challenge(challengeTitre.getText(), challengeDescription.getText(), challengeCategorie.getText(), 
                 Date.valueOf(challengeDateDebut.getValue()), Date.valueOf(challengeDateFin.getValue())));
         
-        System.out.println(challengeTitre.getText());
-        System.out.println(challengeDescription.getText());
-        System.out.println(challengeCategorie.getText());
-        System.out.println(Date.valueOf(challengeDateDebut.getValue()));
-        System.out.println(Date.valueOf(challengeDateFin.getValue()));
+            JOptionPane.showMessageDialog(null, "confirmation d'ajout");
+            refreshTableView();
+        }
         
-        JOptionPane.showMessageDialog(null, "confirmation d'ajout");
-        
-        refreshTableView();
     }
-    
-    
-    
 
     @FXML
     private void btn_update_challenge(ActionEvent event) 
     {
-        
+        if( checkFields() )
+        {
+            sc.Update(new Challenge(challenge_Id, challengeTitre.getText(), challengeDescription.getText(),
+                    challengeCategorie.getText(), Date.valueOf(challengeDateDebut.getValue()),
+                    Date.valueOf(challengeDateFin.getValue())));
+            refreshTableView(); 
+        }
     }
-
+    
+    @FXML
+    private void btn_get_challenge(ActionEvent event) 
+    {
+        Challenge challenge = tableview_challenge.getSelectionModel().getSelectedItem();
+        challenge_Id = challenge.getId();
+        challengeTitre.setText(challenge.getTitre());
+        challengeDescription.setText(challenge.getDescription());
+        challengeCategorie.setText(challenge.getCategorie());
+        challengeDateDebut.setValue(challenge.getDateDebut().toLocalDate());
+        challengeDateFin.setValue(challenge.getDateFin().toLocalDate());
+        
+        System.out.println("challenge id: " + challenge_Id);
+        System.out.println("challenge date type: " + challengeDateDebut.getValue().getClass());
+    }
+    
     @FXML
     private void btn_delete_challenge(ActionEvent event) 
     {
@@ -105,6 +121,8 @@ public class AddChallengeController implements Initializable
         sc.Delete(challenge);
         refreshTableView();
     }
+    
+    
     
     private void refreshTableView()
     {        
@@ -116,5 +134,23 @@ public class AddChallengeController implements Initializable
         table_datefin.setCellValueFactory(new PropertyValueFactory("dateFin"));
         
         tableview_challenge.setItems(sc.Display());
+    }
+    
+    private boolean checkFields()
+    {
+        if(challengeTitre.getText().isEmpty() || challengeCategorie.getText().isEmpty() || challengeDescription.getText().isEmpty()) 
+        {
+            System.out.println("All fields are required !!!");
+            return false;
+        }
+        else
+        {
+            if(challengeDateDebut.getValue().isAfter(challengeDateFin.getValue()))
+            {
+                System.out.println("You must select a valid date !!!");
+                return false;
+            }
+        }
+        return true;
     }
 }

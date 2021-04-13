@@ -43,7 +43,7 @@
             <TableColumn fx:id="table_datefin" prefWidth="108.0" text="Date de  fin" />
         </columns>
       </TableView>
-      <Button layoutX="614.0" layoutY="128.0" mnemonicParsing="false" onAction="#btn_update_challenge" prefHeight="53.0" prefWidth="87.0" text="Modifier" />
+      <Button layoutX="614.0" layoutY="128.0" mnemonicParsing="false" onAction="#btn_get_challenge" prefHeight="53.0" prefWidth="87.0" text="Modifier" />
       <Button layoutX="796.0" layoutY="128.0" mnemonicParsing="false" onAction="#btn_delete_challenge" prefHeight="53.0" prefWidth="120.0" text="Supprimer" />
       <Button layoutX="224.0" layoutY="676.0" mnemonicParsing="false" onAction="#btn_update_challenge" prefHeight="44.0" prefWidth="120.0" text="Modifier" />
    </children>

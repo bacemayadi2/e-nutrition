@@ -65,7 +65,7 @@ public class ServiceChallenge implements IService<Challenge>
     {
         try
         {
-            String req = "UPDATE challenge SET titre=?, description=?, categorie=?, dateDebut=?, dateFin=? WHERE id=?";
+            String req = "UPDATE challenge SET titre=?, description=?, categorie=?, date_debut=?, date_fin=? WHERE id=?";
             PreparedStatement ps = cnx.prepareStatement(req);
             
             ps.setString(1, t.getTitre());
@@ -74,6 +74,7 @@ public class ServiceChallenge implements IService<Challenge>
             ps.setDate(4, t.getDateDebut());
             ps.setDate(5, t.getDateFin()); 
             ps.setInt(6, t.getId());
+            ps.executeUpdate();
             System.out.println("Success update !!");
         }
         catch (SQLException e)
