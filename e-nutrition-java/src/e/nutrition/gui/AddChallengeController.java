@@ -14,6 +14,7 @@ import java.awt.TextField;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -71,7 +72,7 @@ public class AddChallengeController implements Initializable
     public void initialize(URL url, ResourceBundle rb) 
     {        
         refreshTableView();
-    }    
+    }
 
     @FXML
     private void btn_add_challenge(ActionEvent event) 
@@ -84,7 +85,6 @@ public class AddChallengeController implements Initializable
             JOptionPane.showMessageDialog(null, "confirmation d'ajout");
             refreshTableView();
         }
-        
     }
 
     @FXML
@@ -122,8 +122,6 @@ public class AddChallengeController implements Initializable
         refreshTableView();
     }
     
-    
-    
     private void refreshTableView()
     {        
         table_id.setCellValueFactory(new PropertyValueFactory("id"));
@@ -140,14 +138,19 @@ public class AddChallengeController implements Initializable
     {
         if(challengeTitre.getText().isEmpty() || challengeCategorie.getText().isEmpty() || challengeDescription.getText().isEmpty()) 
         {
-            System.out.println("All fields are required !!!");
+            JOptionPane.showMessageDialog(null, "All fields are required !!!");
             return false;
         }
         else
         {
-            if(challengeDateDebut.getValue().isAfter(challengeDateFin.getValue()))
+            if(challengeDateDebut.getValue() == null || challengeDateFin.getValue() == null || 
+                    challengeDateDebut.getValue().isBefore(LocalDate.now()) ||
+                    challengeDateDebut.getValue().isAfter(challengeDateFin.getValue()))
             {
-                System.out.println("You must select a valid date !!!");
+//                System.out.println("date fin class:  " + challengeDateDebut.getValue().getClass());
+//                System.out.println("sys date: " + LocalDate.now());
+//                System.out.println("sys date class: " + LocalDate.now().getClass());
+                JOptionPane.showMessageDialog(null, "You must select a valid date !!!");
                 return false;
             }
         }
