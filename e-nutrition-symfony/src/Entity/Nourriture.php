@@ -58,7 +58,7 @@ class Nourriture
     protected $tagNourriture;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Nutritionniste::class, inversedBy="nourritures")
+     * @ORM\ManyToOne(targetEntity=Utilisateur::class, inversedBy="nourritures")
      */
     private $nutritionniste;
 
@@ -168,12 +168,12 @@ class Nourriture
         return $this;
     }
 
-    public function getNutritionniste(): ?Nutritionniste
+    public function getNutritionniste(): ?Utilisateur
     {
         return $this->nutritionniste;
     }
 
-    public function setNutritionniste(?Nutritionniste $nutritionniste): self
+    public function setNutritionniste(?Utilisateur $nutritionniste): self
     {
         $this->nutritionniste = $nutritionniste;
 
