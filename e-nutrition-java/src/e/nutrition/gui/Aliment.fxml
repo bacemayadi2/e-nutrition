@@ -11,50 +11,56 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="761.0" prefWidth="1357.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="e.nutrition.gui.AddCategorieAlimentController">
+<AnchorPane id="AnchorPane" prefHeight="761.0" prefWidth="1357.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="e.nutrition.gui.AlimentController">
    <stylesheets>
       <URL value="@styleSheet.css" />
    </stylesheets>
    <children>
-      <Pane layoutY="41.0" prefHeight="722.0" prefWidth="1358.0" style="-fx-background-color: f;">
+      <Pane layoutX="6.0" layoutY="42.0" prefHeight="722.0" prefWidth="1358.0">
          <children>
             <Label layoutX="460.0" layoutY="43.0" text="Aliment">
                <font>
                   <Font size="33.0" />
                </font>
             </Label>
-            <Label layoutX="111.0" layoutY="163.0" prefHeight="19.0" prefWidth="62.0" text="nom " />
-            <TextField fx:id="nomAliment" layoutX="221.0" layoutY="160.0" promptText="nom aliment" />
-            <Button fx:id="btn_add_Aliment" layoutX="174.0" layoutY="556.0" mnemonicParsing="false" onAction="#btn_add_Categorie" prefHeight="30.0" prefWidth="93.0" style="-fx-background-color: #a6c550;" text="créer" />
-            <TableView fx:id="table_categorie_aliment" editable="true" layoutX="615.0" layoutY="99.0" prefHeight="444.0" prefWidth="477.0">
+            <Label layoutX="10.0" layoutY="163.0" prefHeight="19.0" prefWidth="62.0" text="nom " />
+            <TextField fx:id="nomAliment" layoutX="97.0" layoutY="160.0" prefHeight="25.0" prefWidth="141.0" promptText="nom aliment" />
+            <Button layoutX="174.0" layoutY="556.0" mnemonicParsing="false" onAction="#btn_add_Aliment" prefHeight="30.0" prefWidth="93.0" style="-fx-background-color: #a6c550;" text="créer" />
+            <TableView fx:id="table_aliment" editable="true" layoutX="351.0" layoutY="99.0" prefHeight="444.0" prefWidth="994.0">
                <columns>
                   <TableColumn fx:id="table_id" editable="false" prefWidth="75.0" text="id" visible="false" />
-                  <TableColumn fx:id="table_nom" prefWidth="191.20000839233398" text="nom" />
-                  <TableColumn fx:id="table_utiliser" editable="false" minWidth="8.000030517578125" prefWidth="168.8000030517578" text="utiliser " />
+                  <TableColumn fx:id="table_nom" prefWidth="166.4000244140625" text="nom" />
+                  <TableColumn fx:id="table_categories_Aliment" editable="false" minWidth="8.000030517578125" prefWidth="190.39996337890625" text="categories " />
+                  <TableColumn fx:id="table_poid" prefWidth="136.00006103515625" text="unité (g/piece)" />
+                  <TableColumn fx:id="table_proteines" minWidth="0.0" prefWidth="136.00006103515625" text="proteines" />
+                  <TableColumn fx:id="table_glucides" prefWidth="118.40008544921875" text="glucides" />
+                  <TableColumn fx:id="table_lipides" prefWidth="107.199951171875" text="lipides" />
+                  <TableColumn fx:id="table_calories" prefWidth="112.800048828125" text="kcal" />
                </columns>
             </TableView>
-            <Button layoutX="793.0" layoutY="556.0" mnemonicParsing="false" onAction="#btn_delete_Categorie" prefHeight="30.0" prefWidth="122.0" style="-fx-background-color: #a6c550;" text="supprimer" />
-            <Label layoutX="111.0" layoutY="210.0" text="categorie" />
-            <Label layoutX="111.0" layoutY="257.0" prefHeight="17.0" prefWidth="93.0" text="Code A barre" />
-            <TitledPane animated="false" layoutX="111.0" layoutY="289.0" prefHeight="254.0" prefWidth="335.0" text="valeur nutritionnelle">
+            <Button layoutX="997.0" layoutY="556.0" mnemonicParsing="false" onAction="#btn_delete_Aliment" prefHeight="30.0" prefWidth="122.0" style="-fx-background-color: #a6c550;" text="supprimer" />
+            <Label layoutX="10.0" layoutY="209.0" text="categorie" />
+            <Label layoutX="10.0" layoutY="257.0" prefHeight="17.0" prefWidth="93.0" text="Code A barre" />
+            <TitledPane animated="false" layoutX="10.0" layoutY="289.0" prefHeight="254.0" prefWidth="322.0" text="valeur nutritionnelle">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="86.0" layoutY="14.0" prefHeight="18.0" prefWidth="178.0" text="unité de mesure(g ou piece)" />
-                        <TextField fx:id="poid" layoutX="250.0" layoutY="10.0" prefHeight="26.0" prefWidth="49.0" text="100" />
-                        <Label layoutX="24.0" layoutY="62.0" prefHeight="18.0" prefWidth="82.0" text="lipide" />
-                        <Label layoutX="22.0" layoutY="114.0" prefHeight="18.0" prefWidth="113.0" text="proteine" />
-                        <Label layoutX="22.0" layoutY="162.0" prefHeight="18.0" prefWidth="74.0" text="glucide" />
-                        <TextField fx:id="lipides" layoutX="93.0" layoutY="59.0" prefHeight="26.0" prefWidth="82.0" promptText="en gramme" />
-                        <TextField fx:id="proteines" layoutX="93.0" layoutY="111.0" prefHeight="26.0" prefWidth="82.0" promptText="en gramme" />
-                        <TextField fx:id="glucides" layoutX="96.0" layoutY="158.0" prefHeight="26.0" prefWidth="80.0" promptText="en gramme" />
+                        <Label layoutX="53.0" layoutY="14.0" prefHeight="18.0" prefWidth="213.0" text="unité de mesure(g ou piece)" />
+                        <TextField fx:id="poid" layoutX="237.0" layoutY="10.0" prefHeight="26.0" prefWidth="69.0" text="100" />
+                        <Label layoutX="14.0" layoutY="63.0" prefHeight="18.0" prefWidth="82.0" text="lipide" />
+                        <Label layoutX="14.0" layoutY="115.0" prefHeight="18.0" prefWidth="113.0" text="proteine" />
+                        <Label layoutX="14.0" layoutY="162.0" prefHeight="18.0" prefWidth="74.0" text="glucide" />
+                        <TextField fx:id="lipides" layoutX="79.0" layoutY="59.0" prefHeight="26.0" prefWidth="82.0" promptText="en gramme" />
+                        <TextField fx:id="proteines" layoutX="79.0" layoutY="111.0" prefHeight="26.0" prefWidth="82.0" promptText="en gramme" />
+                        <TextField fx:id="glucides" layoutX="79.0" layoutY="158.0" prefHeight="26.0" prefWidth="81.0" promptText="en gramme" />
                      </children>
                   </AnchorPane>
               </content>
             </TitledPane>
-            <TextField fx:id="codeABarre" layoutX="204.0" layoutY="253.0" promptText="optional" />
+            <TextField fx:id="codeABarre" layoutX="97.0" layoutY="253.0" promptText="optional" />
+            <Button layoutX="653.0" layoutY="556.0" mnemonicParsing="false" onAction="#btn_modifier_Aliment" prefHeight="30.0" prefWidth="121.0" style="-fx-background-color: #a6c550;" text="valider modification" />
          </children>
       </Pane>
-      <Pane prefHeight="42.0" prefWidth="1358.0" style="-fx-background-color: c;" />
+      <Pane prefHeight="42.0" prefWidth="1358.0" />
    </children>
 </AnchorPane>

@@ -17,7 +17,7 @@ public class Nourriture {
     protected float lipidies,glucides,proteines,poid;
     protected int userId;
 
-    public float calculerCalorie()
+    public float getCalculerCalorie()
     {
         return this.glucides*4 + this.proteines*9 + this.lipidies*9;
     }

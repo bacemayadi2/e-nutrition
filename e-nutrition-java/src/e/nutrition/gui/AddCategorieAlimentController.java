@@ -42,6 +42,8 @@ public class AddCategorieAlimentController implements Initializable {
     private Button btn_add_Categorie;
     @FXML
     private Button btn_delete_Categorie;
+  
+
     
     //---------table
     @FXML
@@ -121,20 +123,15 @@ public class AddCategorieAlimentController implements Initializable {
         table_id.setCellValueFactory(new PropertyValueFactory("id"));
         table_nom.setCellValueFactory(new PropertyValueFactory("nomCategorie"));
         table_nom.setCellFactory( TextFieldTableCell.forTableColumn() );
-        table_nom.setOnEditCommit(
-        new EventHandler<CellEditEvent<CategorieAliment, String>>() {
-        @Override
-        public void handle(CellEditEvent<CategorieAliment, String> t) {
+        table_nom.setOnEditCommit((CellEditEvent<CategorieAliment, String> t) -> {
             CategorieAliment c;
-    
-
+            
+            
             (c =(CategorieAliment) t.getTableView().getItems().get(
-                t.getTablePosition().getRow())
-                ).setNomCategorie(t.getNewValue());
+                    t.getTablePosition().getRow())
+                    ).setNomCategorie(t.getNewValue());
             sC.Update(c);
-        }
-    }
-);
+        });
         table_utiliser.setCellValueFactory(new PropertyValueFactory("numberOfTimeUsed"));
             
         table_categorie_aliment.setItems(sC.Display());

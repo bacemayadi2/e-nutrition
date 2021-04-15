@@ -18,7 +18,7 @@ public class Aliment extends Nourriture {
    private List <CategorieAliment> categories = new ArrayList();
    private List <Composition> compostions = new ArrayList();
     //private List <Proportion> proportions = new ArrayList();
-   public String categorieToString() 
+   public String getCategorieString() 
    {
        String nomCategories="";
          Iterator<CategorieAliment>  i= categories.iterator();
@@ -91,13 +91,22 @@ public class Aliment extends Nourriture {
 
     @Override
     public String toString() {
-        return "Aliment{" +super.toString() + ", categories=" + categorieToString() + '}';
+        return "Aliment{" +super.toString() + ", categories=" + getCategorieString()+ '}';
     }
 
     public Aliment(int id, String nom, float lipidies, float glucides, float proteines, float poid ,String codeABarre, int userId) {
         super(id, nom, lipidies, glucides, proteines, poid, userId);
         this.codeABarre=codeABarre;
     }
+
+    public Aliment() {
+    }
+
+    public Aliment(String nom, float lipidies, float glucides, float proteines, float poid,String codeABarre, int userId) {
+        super(nom, lipidies, glucides, proteines, poid, userId);
+        this.codeABarre=codeABarre;
+    }
+    
   
   
   

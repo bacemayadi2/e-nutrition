@@ -59,7 +59,8 @@ public class ServiceCategorieAliment implements IService<CategorieAliment>{
             System.out.println("categorie non supprimer !!");
             System.out.println(e.getMessage());
         }
-               }
+        }
+        else
         System.out.println("impossible de  supprimer une categorie utliser par d'autre aliment");
 
         
@@ -104,7 +105,7 @@ public class ServiceCategorieAliment implements IService<CategorieAliment>{
               {
                   c.ajouterAliment(new Aliment(rs2.getInt("id"), rs2.getString("nom"), rs2.getFloat("lipides"), rs2.getFloat("glucides"),rs2.getFloat("protenies"), rs2.getFloat("poid"), rs2.getString("codeABarre"), rs2.getInt("user_id")));
               }
-
+              
               oblist.add(c);
                 
             }
