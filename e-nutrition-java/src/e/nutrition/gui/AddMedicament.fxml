@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="570.0" prefWidth="1031.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="e.nutrition.gui.AddMedicamentController">
+   <children>
+      <Label layoutX="65.0" layoutY="40.0" text="Ajouter un médicament">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="medicamentNom" layoutX="189.0" layoutY="123.0" prefHeight="31.0" prefWidth="176.0" />
+      <Label layoutX="34.0" layoutY="130.0" prefHeight="17.0" prefWidth="135.0" text="Nom du médicament" />
+      <TextField fx:id="medicamentQuantite" layoutX="189.0" layoutY="222.0" prefHeight="31.0" prefWidth="176.0" />
+      <Label layoutX="41.0" layoutY="229.0" text="Quantité" />
+      <TextField fx:id="medicamentDuree" layoutX="189.0" layoutY="317.0" prefHeight="31.0" prefWidth="176.0" />
+      <Label layoutX="46.0" layoutY="324.0" text="Durée" />
+      <ComboBox fx:id="medicamentfiche" layoutX="191.0" layoutY="418.0" onAction="#fichePatientAffectation" prefHeight="25.0" prefWidth="176.0" />
+      <Label layoutX="38.0" layoutY="347.0" prefHeight="17.0" prefWidth="47.0" />
+      <Label layoutX="51.0" layoutY="422.0" text="Fiche " />
+      <Button layoutX="85.0" layoutY="506.0" mnemonicParsing="false" onAction="#btn_ajouter_medicament" prefHeight="31.0" prefWidth="121.0" text="Ajouter" />
+      <TableView fx:id="tableview_medicament" layoutX="408.0" layoutY="100.0" prefHeight="382.0" prefWidth="371.0">
+        <columns>
+          <TableColumn fx:id="table_id" prefWidth="75.0" text="id" />
+            <TableColumn fx:id="table_nom1" prefWidth="75.0" text="nom" />
+          <TableColumn fx:id="table_quantite" prefWidth="75.0" text="quantité" />
+            <TableColumn fx:id="table_duree" prefWidth="75.0" text="durée" />
+        </columns>
+      </TableView>
+      <Button layoutX="424.0" layoutY="506.0" mnemonicParsing="false" onAction="#btn_supprimer_medicament" prefHeight="31.0" prefWidth="121.0" text="Supprimer" />
+      <Button layoutX="271.0" layoutY="503.0" mnemonicParsing="false" onAction="#btn_modifier_medicamentt" prefHeight="31.0" prefWidth="121.0" text="modifier" />
+      <Button layoutX="628.0" layoutY="510.0" mnemonicParsing="false" onAction="#btn_get_medicamentt" prefHeight="31.0" prefWidth="121.0" text="modifier" />
+   </children>
+</AnchorPane>
