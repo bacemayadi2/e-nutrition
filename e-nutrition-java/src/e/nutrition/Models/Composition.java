@@ -14,6 +14,11 @@ public class Composition {
    private float poid;
    private Aliment aliment;
    private Plat plat;
+
+    @Override
+    public String toString() {
+        return "Composition{" + "id=" + id + ", poid=" + poid + ", aliment=" + aliment + ", plat=" + plat + '}';
+    }
    
    public float calculerCalorieParpoid()
    {
