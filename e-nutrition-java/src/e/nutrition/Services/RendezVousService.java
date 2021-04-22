@@ -16,11 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+/*
 /**
  *
  * @author Abdelhamid
  */
+/*
 public class RendezVousService implements IService<RendezVous>{
     
     private static final String INSERT_STATEMENT = "Insert into pidev3a.rendez_vous(date, description) values (?,?)";
@@ -110,3 +111,4 @@ public class RendezVousService implements IService<RendezVous>{
 }
 
 
+*/

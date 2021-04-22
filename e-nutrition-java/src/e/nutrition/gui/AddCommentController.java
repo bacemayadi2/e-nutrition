@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
 package e.nutrition.gui;
 
 import e.nutrition.Models.Comments;
@@ -31,6 +32,7 @@ import javax.swing.JOptionPane;
  *
  * @author Abdelhamid
  */
+/*
 public class AddCommentController implements Initializable {
 
     @FXML
@@ -49,6 +51,7 @@ public class AddCommentController implements Initializable {
     /**
      * Initializes the controller class.
      */
+/*
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         SuccessStoryService successStoryService = new SuccessStoryService();
@@ -80,3 +83,4 @@ public class AddCommentController implements Initializable {
     }
     
 }
+*/

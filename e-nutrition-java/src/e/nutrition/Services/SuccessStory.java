@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
 package e.nutrition.Models;
 
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.util.Date;
  *
  * @author Abdelhamid
  */
+/*
 public class SuccessStory implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -141,3 +143,4 @@ public class SuccessStory implements Serializable {
     }
     
 }
+*/

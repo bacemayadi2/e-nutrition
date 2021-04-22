@@ -3,6 +3,7 @@
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
 */
+/*
 package e.nutrition.gui;
 
 import e.nutrition.Models.ContenuMultimedia;
@@ -34,6 +35,7 @@ import javafx.stage.Stage;
  *
  * @author Abdelhamid
  */
+/*
 public class AddSuccessController implements Initializable {
     
     @FXML
@@ -56,11 +58,12 @@ public class AddSuccessController implements Initializable {
     /**
      * Initializes the controller class.
      */
+/*
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
+    /*
     @FXML
     private void openFileChooser(ActionEvent event) {
         Scene scene = ssavant.getScene();
@@ -122,3 +125,4 @@ public class AddSuccessController implements Initializable {
     }
     
 }
+*/

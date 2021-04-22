@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
 package e.nutrition.gui;
 
 import e.nutrition.Models.SuccessStory;
@@ -21,6 +22,7 @@ import javafx.scene.image.ImageView;
  *
  * @author Abdelhamid
  */
+/*
 public class DisplaySuccessController implements Initializable {
 
     @FXML
@@ -35,6 +37,7 @@ public class DisplaySuccessController implements Initializable {
     /**
      * Initializes the controller class.
      */
+/*
     @Override
     public void initialize(URL url, ResourceBundle rb) {
                 
@@ -47,3 +50,4 @@ public class DisplaySuccessController implements Initializable {
     }    
     
 }
+*/

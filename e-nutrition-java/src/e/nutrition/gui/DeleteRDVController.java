@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
 package e.nutrition.gui;
 
 import e.nutrition.Models.RendezVous;
@@ -28,6 +29,7 @@ import javafx.stage.Stage;
  *
  * @author Abdelhamid
  */
+/*
 public class DeleteRDVController implements Initializable {
 
     @FXML
@@ -38,6 +40,7 @@ public class DeleteRDVController implements Initializable {
     /**
      * Initializes the controller class.
      */
+/*
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         RendezVousService rendezVousService = new RendezVousService();
@@ -59,3 +62,4 @@ public class DeleteRDVController implements Initializable {
     }
     
 }
+*/

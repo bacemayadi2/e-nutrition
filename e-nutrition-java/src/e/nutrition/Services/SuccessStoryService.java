@@ -3,6 +3,7 @@
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
 */
+/*
 package e.nutrition.Services;
 
 import e.nutrition.Models.SuccessStory;
@@ -22,6 +23,7 @@ import java.util.logging.Logger;
  *
  * @author Abdelhamid
  */
+/*
 public class SuccessStoryService implements IService<SuccessStory>{
     
     private static final String INSERT_STATEMENT = "Insert into pidev3a.success_story(titre, text, date_creation) values (?,?,?)";
@@ -135,3 +137,4 @@ public class SuccessStoryService implements IService<SuccessStory>{
     }
 }
 
+*/
