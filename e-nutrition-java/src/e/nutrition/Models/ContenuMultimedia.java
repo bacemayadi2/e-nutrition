@@ -5,6 +5,7 @@
  */
 package e.nutrition.Models;
 
+import e.nutrition.Models.tags.Tag;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;

@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author bacem
  */
-public class Aliment extends Nourriture {
+public class Aliment extends Nourriture   {
    private String codeABarre=null;
    private List <CategorieAliment> categories = new ArrayList();
    private List <Composition> compostions = new ArrayList();

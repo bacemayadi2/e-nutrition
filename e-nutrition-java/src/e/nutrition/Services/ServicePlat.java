@@ -10,7 +10,7 @@ import e.nutrition.Models.CategorieAliment;
 import e.nutrition.Models.Composition;
 import e.nutrition.Models.EtapeDePreparation;
 import e.nutrition.Models.Plat;
-import e.nutrition.Models.TagNourriture;
+import e.nutrition.Models.tags.TagNourriture;
 import e.nutrition.Utils.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

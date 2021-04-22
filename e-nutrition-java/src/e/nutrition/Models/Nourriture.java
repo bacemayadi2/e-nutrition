@@ -5,6 +5,7 @@
  */
 package e.nutrition.Models;
 
+import e.nutrition.Models.tags.TagNourriture;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,35 +14,36 @@ import java.util.Objects;
  *
  * @author bacem
  */
-public class Nourriture {
+public class Nourriture implements ITag<TagNourriture>{
     protected int id;
     protected String nom;
     protected float lipidies,glucides,proteines,poid;
     protected int userId;
     private List <TagNourriture> tags = new ArrayList();
+  
+    @Override
+    public void ajoutertag(TagNourriture t) {
+      if (t != null)
+      {
+          tags.add(t);
+      }
+    }
 
+    @Override
+    public void supprimertag(TagNourriture t) {
+     if (t!=null)
+      {
+          tags.remove(t);
+      }
+    }
+        
 
     
     public List<TagNourriture> getTags() {
         return tags;
     }
     
-    
-      public void supprimertag(TagNourriture tag)
-    {
-      if (tag!=null)
-      {
-          tags.remove(tag);
-      }
-    }
-  
-    public void ajoutertag(TagNourriture tag)
-    {
-      if (tag != null)
-      {
-          tags.add(tag);
-      }
-    }
+
 
 
     public float getCalculerCalorie()
@@ -168,7 +170,9 @@ public class Nourriture {
     {
         return "nourriture";
     }
+
         
+
         
 
     

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package e.nutrition.Models;
+package e.nutrition.Models.tags;
 
+import e.nutrition.Models.ContenuMultimedia;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,9 +40,6 @@ public class Tag {
         return id;
     }
     
-    public  String getDType(){
-    return "tag";
-    }
     
         public String getExtension()
     {

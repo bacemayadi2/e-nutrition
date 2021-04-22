@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package e.nutrition.Models;
+package e.nutrition.Models.tags;
+
+import e.nutrition.Models.ContenuMultimedia;
+import e.nutrition.Models.tags.Tag;
 
 /**
  *
@@ -11,7 +14,6 @@ package e.nutrition.Models;
  */
 public class TagNourriture extends Tag {
     
-    Nourriture nourriture;
     public TagNourriture(int id, ContenuMultimedia contenuMultimedia) {
         super(id, contenuMultimedia);
     }
@@ -20,18 +22,5 @@ public class TagNourriture extends Tag {
         super(contenuMultimedia);
     }
 
-    public TagNourriture(Nourriture nourriture, int id, ContenuMultimedia contenuMultimedia) {
-        super(id, contenuMultimedia);
-        this.nourriture = nourriture;
-    }
-
-    public TagNourriture(Nourriture nourriture, ContenuMultimedia contenuMultimedia) {
-        super(contenuMultimedia);
-        this.nourriture = nourriture;
-    }
-    
-    @Override
-    public  String getDType(){
-    return "tagnourriture";
-    }
+  
 }
