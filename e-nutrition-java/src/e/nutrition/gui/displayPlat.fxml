@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="761.0" prefWidth="1357.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="e.nutrition.gui.displayPlatController">
+   <children>
+      <Pane layoutX="-7.0" layoutY="154.0" prefHeight="289.0" prefWidth="1302.0">
+         <children>
+            <ImageView fx:id="image" fitHeight="255.0" fitWidth="384.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="453.0" layoutY="43.0" prefHeight="17.0" prefWidth="105.0" text="NBR PORTION" />
+            <Label fx:id="nbportion" layoutX="488.0" layoutY="60.0" prefHeight="17.0" prefWidth="22.0" text="4" />
+            <Label layoutX="444.0" layoutY="98.0" prefHeight="17.0" prefWidth="111.0" text="CALORIE/PORTION" />
+            <Label fx:id="calorie" layoutX="473.0" layoutY="125.0" prefHeight="17.0" prefWidth="74.0" text="623.35" />
+            <Label fx:id="nom_nutritionniste" layoutX="860.0" layoutY="215.0" prefHeight="36.0" prefWidth="145.0" />
+            <Label fx:id="nom_plat" layoutX="968.0" layoutY="14.0" prefHeight="27.0" prefWidth="74.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="description" layoutX="700.0" layoutY="45.0" prefHeight="140.0" prefWidth="536.0" text="Ma recette facile et rapide de pâte à crêpes facile à réaliser pour un résultat excellent. Elles sont légères, parfumées, bien dorées et peu sucrées (ce qui permet de se rattraper sur la garniture :). Je vous donne ci-dessous mes astuces pour bien les réussir. J’essaie de beurrer ma poêle toutes les 3 crêpes en général, et je les réserve sous une feuille de papier aluminium avant de les déguster, elles restent chaudes et moelleuses&#10;&#10;" wrapText="true" />
+            <Label layoutX="645.0" layoutY="224.0" text="by" />
+            <ImageView fx:id="avatar_nutritionniste" fitHeight="83.0" fitWidth="123.0" layoutX="682.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <Pane prefHeight="58.0" prefWidth="1357.0" />
+      <Label layoutX="606.0" layoutY="58.0" prefHeight="96.0" prefWidth="145.0" text="plats">
+         <font>
+            <Font size="66.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

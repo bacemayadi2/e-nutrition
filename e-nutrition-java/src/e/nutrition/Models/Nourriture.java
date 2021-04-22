@@ -5,6 +5,8 @@
  */
 package e.nutrition.Models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -16,6 +18,31 @@ public class Nourriture {
     protected String nom;
     protected float lipidies,glucides,proteines,poid;
     protected int userId;
+    private List <TagNourriture> tags = new ArrayList();
+
+
+    
+    public List<TagNourriture> getTags() {
+        return tags;
+    }
+    
+    
+      public void supprimertag(TagNourriture tag)
+    {
+      if (tag!=null)
+      {
+          tags.remove(tag);
+      }
+    }
+  
+    public void ajoutertag(TagNourriture tag)
+    {
+      if (tag != null)
+      {
+          tags.add(tag);
+      }
+    }
+
 
     public float getCalculerCalorie()
     {
@@ -133,7 +160,16 @@ public class Nourriture {
     public String toString() {
         return  "nom=" + nom + ", poid=" + poid + ", lipidies=" + lipidies + ", glucides=" + glucides + ", proteines=" + proteines + '}';
     }
+        public int getUserId() {
+        return userId;
+    }
     
+        public String getDType()
+    {
+        return "nourriture";
+    }
+        
+        
 
     
 }

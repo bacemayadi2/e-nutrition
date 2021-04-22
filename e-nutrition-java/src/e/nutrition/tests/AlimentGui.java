@@ -5,12 +5,21 @@
  */
 package e.nutrition.tests;
 
+import e.nutrition.Services.ServiceCategorieAliment;
+import e.nutrition.gui.AutocompleteMultiSelectionBox;
 import java.io.IOException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import jfxtras.styles.jmetro.JMetro;
 import jfxtras.styles.jmetro.Style;
@@ -23,10 +32,25 @@ public class AlimentGui extends Application{
     @Override
     public void start(Stage primaryStage) throws IOException 
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Aliment.fxml"));
+        /**Button btn = new Button("Sort");
+        StackPane.setAlignment(btn, Pos.BOTTOM_CENTER);
+        AutocompleteMultiSelectionBox selectize =new AutocompleteMultiSelectionBox();
+        
+            btn.setOnAction((ActionEvent event) -> {
+        FXCollections.sort(selectize.getTags());
+    });
+                Button btn2 = new Button("add \"42\"");
+    btn2.setOnAction(evt -> {
+        if (!selectize.getTags().contains("42")) {
+            selectize.getTags().add("42");
+        }
+    });*/
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/displayPlat.fxml"));
         Parent root = loader.load();
+                
         Scene scene = new Scene(root);
-         JMetro jMetro =new  JMetro(root, Style.LIGHT);
+         JMetro jMetro =new  JMetro(scene, Style.LIGHT);
         primaryStage.setTitle("Aliment");
         primaryStage.setScene(scene);
         primaryStage.show();

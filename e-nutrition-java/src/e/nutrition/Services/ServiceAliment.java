@@ -25,32 +25,24 @@ import javafx.collections.ObservableList;
 public class ServiceAliment implements IService<Aliment>{
 
     Connection cnx = DataSource.getInstance().getCnx();
-
+    ServiceNourriture sN=new ServiceNourriture();
     @Override
     public void Add(Aliment a) {
            try
         {
  
             //start mere 
-            String reqmere = "INSERT INTO nourriture (nom, lipides, glucides, proteines, poid, nutritionniste_id, dtype) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement mere = cnx.prepareStatement(reqmere);
-            mere.setString(1, a.getNom());
-            mere.setFloat(2, a.getLipidies());
-            mere.setFloat(3, a.getGlucides());
-            mere.setFloat(4, a.getProteines());
-            mere.setFloat(5, a.getPoid());
-            mere.setInt(6, a.getUser()); //get from session in futur 
-            mere.setString(7,"aliment");
-            mere.executeUpdate();
+            sN.Add(a);
             //fin mere
                        //start lock
             //String reqlocking = "LOCK TABLES nourriture WRITE"; // lock table jusqu'a la ajout de 2 table mere et fille 
            // PreparedStatement lock = cnx.prepareStatement(reqlocking);
            // lock.executeUpdate();
+           //get id  
             //fin lock 
             //start fille 
             
-            String reqfille="INSERT INTO aliment (id, code_abarre) VALUES ((SELECT MAX(id) from nourriture ),?)  ";
+            String reqfille="INSERT INTO aliment (id, code_abarre) VALUES ((SELECT LAST_INSERT_ID() ),?)  ";
             PreparedStatement fille = cnx.prepareStatement(reqfille);
             fille.setString(1, a.getCodeABarre());
             fille.executeUpdate();
@@ -61,10 +53,10 @@ public class ServiceAliment implements IService<Aliment>{
             Iterator<CategorieAliment>  i= a.getCategories().iterator();
             while(i.hasNext())
            {     
-              String reqCategorie="INSERT INTO aliment_categorie_aliment (aliment_id, categorie_aliment_id) VALUES (?, ?)";
-              PreparedStatement categorie = cnx.prepareStatement(reqCategorie);
-              categorie.setInt(1, a.getId());
-              categorie.setInt(2, i.next().getId());
+               String reqCategorie="INSERT INTO aliment_categorie_aliment (aliment_id, categorie_aliment_id) VALUES ((SELECT LAST_INSERT_ID()), ?)";
+               PreparedStatement categorie = cnx.prepareStatement(reqCategorie);
+               categorie.setInt(1, i.next().getId());
+               categorie.executeUpdate();
 
            }
             //fin categorie_aliment 
@@ -94,10 +86,7 @@ public class ServiceAliment implements IService<Aliment>{
             PreparedStatement fille = cnx.prepareStatement(fillereq);
             fille.setInt(1, a.getId());
             fille.executeUpdate();
-            String merereq = "DELETE FROM nourriture WHERE id=?";
-            PreparedStatement mere = cnx.prepareStatement(merereq);
-            mere.setInt(1, a.getId());
-            mere.executeUpdate();
+            sN.Delete(a);//delete from o=mother
             String categoriereq= "DELETE FROM aliment_categorie_aliment WHERE aliment_id=?";
             PreparedStatement categorie = cnx.prepareStatement(categoriereq);
             categorie.setInt(1, a.getId());
@@ -120,22 +109,15 @@ public class ServiceAliment implements IService<Aliment>{
     public void Update(Aliment a) {
     try
         {
-            System.out.println(a);
-              String merereq = "UPDATE  nourriture SET nom=? ,lipides=? ,glucides=?, proteines=? , poid=? WHERE id=?";
-            PreparedStatement mere = cnx.prepareStatement(merereq);
-            mere.setString(1, a.getNom());
-            mere.setFloat(2, a.getLipidies());
-            mere.setFloat(3, a.getGlucides());
-            mere.setFloat(4, a.getProteines());
-            mere.setFloat(5, a.getPoid());
-            mere.setInt(6, a.getId());
-            mere.executeUpdate();
+            sN.Update(a);//update mother
             String fillereq = "UPDATE  aliment SET code_abarre=?  WHERE id=?";
             PreparedStatement fille = cnx.prepareStatement(fillereq);
             fille.setString(1, a.getCodeABarre());
             fille.setInt(2, a.getId());
             fille.executeUpdate();
-            //delete old categorie
+            //remove comment after implementing update categories 
+            //delete old categorie 
+            /*
             String delcategoriereq= "DELETE FROM aliment_categorie_aliment WHERE aliment_id=?";
             PreparedStatement delcategorie = cnx.prepareStatement(delcategoriereq);
             delcategorie.setInt(1, a.getId());
@@ -148,7 +130,7 @@ public class ServiceAliment implements IService<Aliment>{
               PreparedStatement newcategorie = cnx.prepareStatement(newreqCategorie);
               newcategorie.setInt(1, a.getId());
               newcategorie.setInt(2, i.next().getId());
-           }
+           }*/
             
             System.out.println("aliment modifier !!");
             
@@ -188,13 +170,13 @@ public class ServiceAliment implements IService<Aliment>{
 
                  while(rsCompostion.next())
               {
-                String req4 = "SELECT * from plat where id =  (select plat_id from composition where id = ? ) "    ;
-                PreparedStatement ps4 = cnx.prepareStatement(req4);
-                ps4.setInt(1, rsCompostion.getInt("id"));
-                ResultSet rsplat = ps4.executeQuery();
-                if (rsplat.next())
+                //String req4 = "SELECT * from plat where id =  (select plat_id from composition where id = ? ) "    ;
+               //PreparedStatement ps4 = cnx.prepareStatement(req4);
+               //ps4.setInt(1, rsCompostion.getInt("id"));
+               // ResultSet rsplat = ps4.executeQuery();
+               // if (rsplat.next()) 
                 {
-                    a.ajouterCompostion(new Composition(rsCompostion.getInt("id"),a ,new Plat(rsplat.getInt("id"), rsplat.getString("description"), rsplat.getString("nbrportion")) ));
+                    a.ajouterCompostion(new Composition(rsCompostion.getInt("id"),a ,new Plat() )); //new Plat(rsplat.getInt("id"), rsplat.getString("description"), rsplat.getString("nbrportion"))
                 }
               }
 
@@ -204,10 +186,30 @@ public class ServiceAliment implements IService<Aliment>{
         }
         catch (SQLException e)
         {
-            System.out.println("error");
+            System.out.println("error aliment ");
             System.err.println(e.getMessage());
         }
         return oblist;   
-    }    
+    }
+
+public Aliment rechercherExactAlimentId(int id ) {
+     Aliment a=null;
+
+        try
+        {
+            String req = "SELECT t1.id as id, t1.nom as nom, t1.lipides as lipides, t1.glucides as glucides, t1.proteines as proteines, t1.poid as poid, t0.code_abarre as code_abarre , t1.nutritionniste_id as nutritionniste_id  FROM aliment t0 INNER JOIN nourriture t1 ON t0.id = t1.id where t0.id =?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next())
+            {
+               a=new Aliment(rs.getInt("id"),rs.getString("nom"), rs.getFloat("lipides"), rs.getFloat("glucides"), rs.getFloat("proteines"), rs.getFloat("poid"),rs.getString("code_abarre"), rs.getInt("nutritionniste_id"));
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+        return a;    }    
     
 }

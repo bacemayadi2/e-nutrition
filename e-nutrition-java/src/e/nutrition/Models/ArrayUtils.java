@@ -9,6 +9,6 @@ package e.nutrition.Models;
  *
  * @author bacem
  */
-public class ContenueMultimedia {
+class ArrayUtils {
     
 }

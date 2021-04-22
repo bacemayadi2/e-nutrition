@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -78,9 +80,11 @@ public class AlimentController implements Initializable {
     @FXML
     private TableView<Aliment> table_aliment;
     @FXML 
+    private AutocompleteMultiSelectionBox categorie_selector;
     
 
     private ServiceAliment sA= new ServiceAliment();
+    private ServiceCategorieAliment sCA = new ServiceCategorieAliment();
     private List <Aliment> alimentsToUpdate = new ArrayList();
 
     private int IdAliment;
@@ -97,7 +101,15 @@ public class AlimentController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
          refreshTableView();
+         ObservableSet<String> categories = FXCollections.observableSet();
+         sCA.Display().forEach((c)-> {
+             categories.add(c.getNomCategorie());
+         });
+          categorie_selector.setSuggestions(categories);
+
+
     }    
      private boolean checkFields()
     {
@@ -179,7 +191,12 @@ public class AlimentController implements Initializable {
     {
         if( checkFields() )
         {
-            sA.Add(new Aliment(nomAliment.getText(),Float.parseFloat( lipides.getText()),Float.parseFloat(glucides.getText()) , Float.parseFloat(proteines.getText()), Float.parseFloat(poid.getText()), codeABarre.getText(), 74 ));// toDo change 74 to id user from sesion
+            Aliment a = new Aliment(nomAliment.getText(),Float.parseFloat( lipides.getText()),Float.parseFloat(glucides.getText()) , Float.parseFloat(proteines.getText()), Float.parseFloat(poid.getText()), codeABarre.getText(), 74 );
+            categorie_selector.getTags().forEach((c)->{
+
+            a.ajouterCategorie(sCA.rechercherExactCategorie(c));
+           });
+            sA.Add(a);// toDo change 74 to id user from sesion
             JOptionPane.showMessageDialog(null, "confirmation d'ajout");
             refreshTableView();
         }
@@ -222,6 +239,7 @@ public class AlimentController implements Initializable {
         }
     }
     
+ 
      
     
 }

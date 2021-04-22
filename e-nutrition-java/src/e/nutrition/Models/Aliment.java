@@ -107,6 +107,12 @@ public class Aliment extends Nourriture {
         this.codeABarre=codeABarre;
     }
     
+   @Override
+    public String getDType()
+    {
+        return "aliment";
+    }
+    
   
   
   

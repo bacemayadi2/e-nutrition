@@ -9,6 +9,29 @@ package e.nutrition.Models;
  *
  * @author bacem
  */
-public interface TagNourriture {
+public class TagNourriture extends Tag {
     
+    Nourriture nourriture;
+    public TagNourriture(int id, ContenuMultimedia contenuMultimedia) {
+        super(id, contenuMultimedia);
+    }
+
+    public TagNourriture(ContenuMultimedia contenuMultimedia) {
+        super(contenuMultimedia);
+    }
+
+    public TagNourriture(Nourriture nourriture, int id, ContenuMultimedia contenuMultimedia) {
+        super(id, contenuMultimedia);
+        this.nourriture = nourriture;
+    }
+
+    public TagNourriture(Nourriture nourriture, ContenuMultimedia contenuMultimedia) {
+        super(contenuMultimedia);
+        this.nourriture = nourriture;
+    }
+    
+    @Override
+    public  String getDType(){
+    return "tagnourriture";
+    }
 }

@@ -39,13 +39,13 @@ public class AutocompleteMultiSelectionBox extends HBox {
     private final ObservableList<String> tags;
     private final ObservableSet<String> suggestions;
     private ContextMenu entriesPopup;
-    private static final int MAX_ENTRIES = 10;
+    private static final int MAX_ENTRIES = 5;
 
     private final TextField inputTextField;
 
     public AutocompleteMultiSelectionBox() {
         getStyleClass().setAll("tag-bar");
-        getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        getStylesheets().add(getClass().getResource("styleSheet.css").toExternalForm());
         tags = FXCollections.observableArrayList();
         suggestions = FXCollections.observableSet();
         inputTextField = new TextField();

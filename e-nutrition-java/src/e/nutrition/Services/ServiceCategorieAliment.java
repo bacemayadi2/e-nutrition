@@ -116,4 +116,25 @@ public class ServiceCategorieAliment implements IService<CategorieAliment>{
         }
         return oblist;    }
     
+    public CategorieAliment rechercherExactCategorie(String nom ) {
+     CategorieAliment c=null;
+
+        try
+        {
+            String req = "SELECT  * FROM categorie_aliment where nom_categorie = ?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, nom);
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next())
+            {
+               c=new CategorieAliment(rs.getInt("id"),rs.getString("nom_categorie"));            
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+        return c;    }
+    
 }
