@@ -27,12 +27,13 @@ public class ServiceMedicament implements IService <Medicament> {
     {
         try
         {
-            String req = "INSERT INTO medicament (nom, quantite, duree) VALUES "
-                    + "(?,?,?)             ";
+            String req = "INSERT INTO medicament (nom, quantite, duree,fiche_id) VALUES "
+                    + "(?,?,?,?)             ";
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setString(1, t.getNom());
             ps.setString(2, t.getQuantite());
             ps.setString(3, t.getDuree());
+            ps.setInt(4, t.getFiche());
           
             ps.executeUpdate();
             System.out.println("medicament ajoutée !!");
@@ -111,7 +112,28 @@ public class ServiceMedicament implements IService <Medicament> {
     }     
  
     
-    
+         public ObservableList<Medicament> DisplayByFiche(int id) 
+    {
+        ObservableList<Medicament> oblist = FXCollections.observableArrayList();
+        //List <Challenge> list = new ArrayList<>();
+        try
+        {
+            String req = "SELECT * FROM medicament where fiche_id="+id;
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                oblist.add(new Medicament(rs.getInt(1),rs.getString(2), rs.getString(3),rs.getString(4)));
+                
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+        return oblist;
+    }     
+ 
     
     
 }

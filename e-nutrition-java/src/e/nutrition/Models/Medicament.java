@@ -15,20 +15,46 @@ public class Medicament {
   private String nom;
   private String quantite;
   private String duree;
+  private FicheConsultation ficheConsultation;
+  private int fiche;
 
-    public Medicament(int id, String nom, String quantite, String duree) {
+    public int getFiche() {
+        return fiche;
+    }
+
+    public void setFiche(int fiche) {
+        this.fiche = fiche;
+    }
+
+    public Medicament(String nom, String quantite, String duree, int fiche) {
+        this.nom = nom;
+        this.quantite = quantite;
+        this.duree = duree;
+        this.fiche = fiche;
+    }
+
+    public Medicament(int id, String nom, String quantite, String duree, int fiche) {
         this.id = id;
         this.nom = nom;
         this.quantite = quantite;
         this.duree = duree;
+        this.fiche = fiche;
+    }
+    
+    
+    
+
+   
+
+    public FicheConsultation getFicheConsultation() {
+        return ficheConsultation;
     }
 
-    public Medicament(String nom, String quantite, String duree) {
-        this.nom = nom;
-        this.quantite = quantite;
-        this.duree = duree;
+    public void setFicheConsultation(FicheConsultation ficheConsultation) {
+        this.ficheConsultation = ficheConsultation;
     }
 
+    
   
     public int getId() {
         return id;
@@ -61,6 +87,23 @@ public class Medicament {
     public void setDuree(String duree) {
         this.duree = duree;
     }
+
+    public Medicament(int id, String nom, String quantite, String duree) {
+        this.id = id;
+        this.nom = nom;
+        this.quantite = quantite;
+        this.duree = duree;
+       
+    }
+
+    public Medicament(String nom, String quantite, String duree) {
+        this.nom = nom;
+        this.quantite = quantite;
+        this.duree = duree;
+       
+    }
+    
+    
 
     @Override
     public String toString() {

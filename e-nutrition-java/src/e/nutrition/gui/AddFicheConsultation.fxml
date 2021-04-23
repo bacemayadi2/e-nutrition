@@ -26,18 +26,17 @@
       <Label layoutX="25.0" layoutY="161.0" text="Taille" />
       <TextField fx:id="ficheSymptome" layoutX="179.0" layoutY="196.0" prefHeight="70.0" prefWidth="176.0" />
       <Label layoutX="26.0" layoutY="214.0" text="Symptome" />
-      <TextArea fx:id="ficheDescription" layoutX="179.0" layoutY="387.0" prefHeight="136.0" prefWidth="176.0" promptText="Saisir la description de la fiche" />
+      <TextArea fx:id="ficheDescription" layoutX="179.0" layoutY="387.0" prefHeight="159.0" prefWidth="176.0" promptText="Saisir la description de la fiche" />
       <Label layoutX="25.0" layoutY="453.0" text="Decription" />
       <TextField fx:id="ficheApetit" layoutX="179.0" layoutY="280.0" prefHeight="31.0" prefWidth="176.0" />
       <Label layoutX="28.0" layoutY="290.0" text="Apetit" />
       <ComboBox fx:id="fichePatientAffectation" layoutX="179.0" layoutY="333.0" onAction="#fichePatientAffectation" prefHeight="25.0" prefWidth="176.0" />
       <Label layoutX="28.0" layoutY="337.0" prefHeight="17.0" prefWidth="47.0" text="Patient" />
-      <Button layoutX="421.0" layoutY="531.0" mnemonicParsing="false" onAction="#btn_modifier_fiche" prefHeight="31.0" prefWidth="121.0" text="Modifier" />
-      <Button layoutX="565.0" layoutY="531.0" mnemonicParsing="false" onAction="#btn_supprimer_fiche" prefHeight="31.0" prefWidth="121.0" text="Supprimer" />
-      <Button layoutX="78.0" layoutY="536.0" mnemonicParsing="false" onAction="#btn_ajouter_fiche" prefHeight="31.0" prefWidth="121.0" text="Ajouter" />
-      <TableView fx:id="tableview_fiche" layoutX="369.0" layoutY="57.0" prefHeight="348.0" prefWidth="749.0">
+      <Button layoutX="376.0" layoutY="307.0" mnemonicParsing="false" onAction="#btn_supprimer_fiche" prefHeight="31.0" prefWidth="121.0" text="Supprimer Fiche" />
+      <Button layoutX="78.0" layoutY="555.0" mnemonicParsing="false" onAction="#btn_ajouter_fiche" prefHeight="31.0" prefWidth="121.0" text="Ajouter" />
+      <TableView fx:id="tableview_fiche" layoutX="369.0" layoutY="57.0" prefHeight="244.0" prefWidth="749.0">
         <columns>
-          <TableColumn fx:id="table_idd" prefWidth="51.0" text="id" />
+          <TableColumn fx:id="table_idd" prefWidth="51.0" text="id" visible="false" />
           <TableColumn fx:id="table_date_creation" prefWidth="117.0" text="date de création" />
             <TableColumn fx:id="table_poids" prefWidth="73.0" text="Poids" />
             <TableColumn fx:id="table_taille" prefWidth="68.0" text="Taille" />
@@ -46,5 +45,15 @@
             <TableColumn fx:id="table_description" prefWidth="265.0" text="Description" />
         </columns>
       </TableView>
+      <TableView fx:id="tableview_medicaments" layoutX="376.0" layoutY="346.0" prefHeight="200.0" prefWidth="736.0">
+        <columns>
+          <TableColumn fx:id="table_id2" prefWidth="75.0" text="id" visible="false" />
+          <TableColumn fx:id="table_nom2" prefWidth="75.0" text="nom" />
+            <TableColumn fx:id="table_quantite2" prefWidth="75.0" text="Quantité" />
+            <TableColumn fx:id="table_duree2" prefWidth="75.0" text="Durée" />
+        </columns>
+      </TableView>
+      <Button layoutX="515.0" layoutY="307.0" mnemonicParsing="false" onAction="#AfficherMed" prefHeight="31.0" prefWidth="111.0" text="Get medicament" />
+      <Button layoutX="383.0" layoutY="555.0" mnemonicParsing="false" onAction="#btn_supprimer_medicaments" prefHeight="31.0" prefWidth="143.0" text="Supprimer medicament" />
    </children>
 </AnchorPane>

@@ -6,6 +6,8 @@
 package e.nutrition.Models;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,7 +22,7 @@ public class FicheConsultation {
     private String apetit;
       private String description;
  
-   
+   private List <Medicament> medicaments = new ArrayList();
 
     public FicheConsultation(int id, Date creation_date, float poids, float taille, String symptome, String apetit, String description) {
         this.id = id;
@@ -30,7 +32,6 @@ public class FicheConsultation {
         this.symptome = symptome;
         this.apetit = apetit;
         this.description = description;
-        
     }
 
     public FicheConsultation(Date creation_date, float poids, float taille, String symptome, String apetit, String description) {
@@ -40,11 +41,17 @@ public class FicheConsultation {
         this.symptome = symptome;
         this.apetit = apetit;
         this.description = description;
-        
     }
     
     
+    public List<Medicament> getMedicaments() {
+        return medicaments;
+    }
 
+    public void setMedicaments(List<Medicament> medicaments) {
+        this.medicaments = medicaments;
+    }
+    
     public int getId() {
         return id;
     }

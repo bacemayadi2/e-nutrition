@@ -5,31 +5,26 @@
  */
 package e.nutrition.tests;
 
-import static javafx.application.Application.launch;
-
 import java.io.IOException;
 import javafx.application.Application;
-
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-
 import javafx.stage.Stage;
 
 /**
  *
  * @author Admin
  */
-
-    
-public class MedicamentGui extends Application {
+public class StatGui extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
     
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AddMedicament.fxml"));
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Statistique.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        primaryStage.setTitle("Ajouter un médicament");
+        primaryStage.setTitle("Statistiques");
         primaryStage.setScene(scene);
         primaryStage.show();
 }
@@ -40,4 +35,6 @@ public class MedicamentGui extends Application {
     {
         launch(args);
     }
-}
+} 
+    
+

@@ -13,6 +13,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -25,7 +28,9 @@ import javafx.collections.ObservableList;
 public class ServiceFicheConsultation implements IService <FicheConsultation> {
     
      Connection cnx = DataSource.getInstance().getCnx();
-    
+        private Statement ste;
+    private PreparedStatement pst ;
+    private ResultSet res ;
     @Override
         public void Add(FicheConsultation t) 
     {
@@ -75,7 +80,26 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
             System.err.println(e.getMessage());
         } 
     }
-
+    public ObservableList<String> DisplayDate() 
+    {
+        ObservableList<String> oblist = FXCollections.observableArrayList();
+        //List <Challenge> list = new ArrayList<>();
+        try
+        {
+            String req = "select DISTINCT SUBSTRING(creation_date,1,7) from fiche_consultation";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                oblist.add(rs.getString(1));   
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+        return oblist;
+    }
       @Override
     public ObservableList<FicheConsultation> Display() 
     {
@@ -119,12 +143,40 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
+       public FicheConsultation getByDesc(String desc) {
+          FicheConsultation a = null;
+         String requete = " select* from fiche_consultation  where description='"+desc+"'" ;
+        try {
+           
+            ste = cnx.createStatement();
+            res=ste.executeQuery(requete);
+            if (res.next())
+            {a=new FicheConsultation(res.getInt(1), res.getDate(2), res.getFloat(3), res.getFloat(4),res.getString(5), res.getString(6),res.getString(7));}
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceFicheConsultation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return a ;
+        
+    }
+        private Connection con;
+
+       public int calculer(String date) {
+          int l = 0 ;
+         String requete = "select COUNT(id) from fiche_consultation where  year(creation_date) = '"+date.substring(0,4)+"' and month(creation_date) = '"+date.substring(5,7)+"'";
+        try {
+           
+            ste = cnx.createStatement();
+           ResultSet rs=ste.executeQuery(requete);
+           if (rs.next()){
+          String chaine = String.valueOf(rs.getString(1));
+           l=Integer.parseInt(chaine);
+            System.out.println(l);}
+        } catch (SQLException ex) {
+            Logger.getLogger(ServiceFicheConsultation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+      return l ;
+    }
+        
+
 }
