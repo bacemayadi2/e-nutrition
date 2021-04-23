@@ -29,7 +29,7 @@
                         <Font name="System Bold" size="16.0" />
                      </font>
                      <graphic>
-                        <FontAwesomeIcon fill="#f2f2f2" selectionStart="1" size="1.70em" text="" translateX="10.0" wrappingWidth="22.857142448425293" />
+                        <FontAwesomeIcon fill="#f2f2f2" size="1.70em" text="" translateX="10.0" wrappingWidth="22.857142448425293" />
                      </graphic>
                   </Button>
                   <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="43.0" prefWidth="281.0" style="-fx-background-color: #a6c550;" text="        Gestion utilisateurs" textFill="WHITE">
