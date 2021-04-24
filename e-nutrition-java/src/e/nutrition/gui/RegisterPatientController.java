@@ -1,5 +1,6 @@
 package e.nutrition.gui;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextArea;
 import e.nutrition.Models.Patient;
@@ -7,6 +8,8 @@ import e.nutrition.Services.ServicePatient;
 import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,7 +36,7 @@ public class RegisterPatientController implements Initializable {
     @FXML
     private TextField patient_prenom;
     @FXML
-    private TextField patient_sexe;
+    private JFXComboBox<String> patient_sexe;
     @FXML
     private DatePicker patient_dateNaiss;
     @FXML
@@ -54,7 +57,10 @@ public class RegisterPatientController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        ObservableList<String> sexe = FXCollections.observableArrayList();
+        sexe.add("Homme");
+        sexe.add("Femme");
+        patient_sexe.getItems().addAll(sexe);
     }    
 
     @FXML
@@ -87,7 +93,7 @@ public class RegisterPatientController implements Initializable {
     {
         ServicePatient sp = new ServicePatient();
                 
-        sp.Add(new Patient(patient_nom.getText(), patient_prenom.getText(), patient_sexe.getText(),
+        sp.Add(new Patient(patient_nom.getText(), patient_prenom.getText(), patient_sexe.getValue(),
                 Date.valueOf(patient_dateNaiss.getValue()), patient_email.getText(), Integer.parseInt(patient_tel.getText()),
                 patient_ville.getText(), patient_adresse.getText(), patient_style.getText(), false));
                 

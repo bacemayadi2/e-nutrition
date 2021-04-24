@@ -41,10 +41,18 @@ public class ServiceNutritionniste implements IService <Nutritionniste>
             ps.setString(12, "00000000");
             ps.executeUpdate();
             
-//            req = "";
-//            ps = cnx.prepareStatement(req);
-//            
-//            ps.executeUpdate();
+            int id=0;
+            ps = cnx.prepareStatement("SELECT MAX(id) FROM utilisateur");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                id = rs.getInt(1);
+            }
+            
+            ps = cnx.prepareStatement("INSERT INTO nutritionniste (id) VALUES (?)");
+            ps.setInt(1, id);
+            
+            ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Nutritionniste ajouté !!");
         }
         catch(SQLException e)

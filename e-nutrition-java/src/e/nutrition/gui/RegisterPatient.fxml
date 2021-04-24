@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.Button?>
@@ -36,7 +37,7 @@
             <TextField fx:id="patient_email" layoutX="251.0" layoutY="50.0" prefHeight="31.0" prefWidth="218.0" />
             <TextField fx:id="patient_nom" layoutX="251.0" layoutY="100.0" prefHeight="31.0" prefWidth="218.0" />
             <TextField fx:id="patient_prenom" layoutX="251.0" layoutY="150.0" prefHeight="31.0" prefWidth="218.0" />
-            <TextField fx:id="patient_sexe" layoutX="251.0" layoutY="200.0" prefHeight="31.0" prefWidth="218.0" />
+            <JFXComboBox fx:id="patient_sexe" layoutX="251.0" layoutY="200.0" prefHeight="31.0" prefWidth="218.0" style="-fx-background-color: #fff;" />
             <DatePicker fx:id="patient_dateNaiss" layoutX="251.0" layoutY="250.0" />
             <TextField fx:id="patient_tel" layoutX="251.0" layoutY="300.0" prefHeight="31.0" prefWidth="218.0" />
             <TextField fx:id="patient_ville" layoutX="251.0" layoutY="350.0" prefHeight="31.0" prefWidth="218.0" />
@@ -60,6 +61,7 @@
                   <Font size="36.0" />
                </font>
             </Button>
+            
             
          </children>
       </Pane>

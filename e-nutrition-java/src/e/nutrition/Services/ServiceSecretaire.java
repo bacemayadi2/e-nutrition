@@ -39,9 +39,8 @@ public class ServiceSecretaire implements IService<Secretaire>
             ps.setString(12, "00000000");
             ps.executeUpdate();
                        
-            ps.executeUpdate();
-            req = "SELECT MAX(id) FROM utilisateur";
             
+            req = "SELECT MAX(id) FROM utilisateur";
             ps = cnx.prepareStatement(req);
             
             int id=0;
@@ -57,7 +56,7 @@ public class ServiceSecretaire implements IService<Secretaire>
             req = "INSERT INTO secretaire (id, nutritionniste_id) VALUES (?,?)";
             ps = cnx.prepareStatement(req);
             ps.setInt(1, id);
-            ps.setInt(2, t.getNutritionniste());
+            ps.setObject(2, null);
             ps.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Secretaire ajouté !!!");

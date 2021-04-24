@@ -1,14 +1,18 @@
 package e.nutrition.gui;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import e.nutrition.Models.Nutritionniste;
 import e.nutrition.Models.Secretaire;
 import e.nutrition.Services.ServiceNutritionniste;
-import e.nutrition.Services.ServicePatient;
 import e.nutrition.Services.ServiceSecretaire;
-import java.awt.Frame;
+import e.nutrition.Utils.DataSource;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -17,14 +21,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
-import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javax.swing.JFrame;
 import org.controlsfx.control.CheckComboBox;
 
 /**
@@ -41,7 +44,7 @@ public class RegisterDoctorController implements Initializable {
     @FXML
     private TextField doctor_prenom;
     @FXML
-    private TextField doctor_sexe;
+    private JFXComboBox<String> doctor_sexe;
     @FXML
     private DatePicker doctor_dateNaiss;
     @FXML
@@ -51,7 +54,7 @@ public class RegisterDoctorController implements Initializable {
     @FXML
     private TextField doctor_adresse;
     @FXML
-    private CheckComboBox<Secretaire> liste_secretaires;
+    private ComboBox<String> liste_secretaires;
     @FXML
     private JFXPasswordField doctor_pass;
     @FXML
@@ -65,20 +68,25 @@ public class RegisterDoctorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-        ObservableList<Secretaire> list = FXCollections.observableArrayList();
+        ObservableList<String> sexe = FXCollections.observableArrayList();
+        sexe.add("Homme");
+        sexe.add("Femme");
+        doctor_sexe.getItems().addAll(sexe);
+        
+        ObservableList<String> list = FXCollections.observableArrayList();
+        
         ServiceSecretaire ss = new ServiceSecretaire();
         
         int i =0;
         while ( i < ss.Display().size() ) 
         {
-            list.add(ss.Display().get(i));
-            System.out.println("nom: " + ss.Display().get(i));
+            list.add(ss.Display().get(i).getEmail());
             i++;
         }
         liste_secretaires.getItems().addAll(list);
         
-        ServicePatient sp = new ServicePatient();
-        System.out.println("patients:  " + sp.Display());
+        ServiceNutritionniste sn = new ServiceNutritionniste();
+        System.out.println("nutri: " + sn.Display());
     }    
 
     @FXML
@@ -99,20 +107,7 @@ public class RegisterDoctorController implements Initializable {
     {
         doctor_adresse.getScene().setCursor(Cursor.HAND);
     }
-
-    @FXML
-    private void btn_RegisterDoctor(ActionEvent event) 
-    {
-        ServiceNutritionniste sn = new ServiceNutritionniste();
-        sn.Add(new Nutritionniste(doctor_nom.getText(), doctor_prenom.getText(), doctor_sexe.getText(),
-                Date.valueOf(doctor_dateNaiss.getValue()), doctor_email.getText(), Integer.parseInt(doctor_tel.getText()),
-                doctor_ville.getText(), doctor_adresse.getText()));
-        //last parameter of constructor:  liste_secretaires.getCheckModel().getCheckedItems()
-        
-        List list = liste_secretaires.getItems();
-        System.out.println("listaa: " + list);
-    }
-
+    
     @FXML
     private void disable_styles(MouseEvent event) 
     {
@@ -120,4 +115,25 @@ public class RegisterDoctorController implements Initializable {
         btn_close_registerDoctor.setStyle("-fx-background-color: none;");
     }
     
+    @FXML
+    private void btn_RegisterDoctor(ActionEvent event) throws SQLException 
+    {
+        Connection cnx = DataSource.getInstance().getCnx();
+        PreparedStatement ps = cnx.prepareStatement("SELECT id FROM utilisateur WHERE email=?");
+        ps.setString(1, liste_secretaires.getValue());
+        int id=0;
+        ResultSet rs = ps.executeQuery();
+        while(rs.next())
+        {
+            id = rs.getInt(1);
+        }
+        
+        ServiceNutritionniste sn = new ServiceNutritionniste();
+        sn.Add(new Nutritionniste(doctor_nom.getText(), doctor_prenom.getText(), doctor_sexe.getValue(),
+                Date.valueOf(doctor_dateNaiss.getValue()), doctor_email.getText(), Integer.parseInt(doctor_tel.getText()),
+                doctor_ville.getText(), doctor_adresse.getText(), id));
+        //last parameter of constructor:  liste_secretaires.getCheckModel().getCheckedItems()
+        
+        List list = liste_secretaires.getItems();
+    }
 }

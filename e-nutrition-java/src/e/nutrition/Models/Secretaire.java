@@ -22,6 +22,12 @@ public class Secretaire extends User
             String adresse, int nutritionniste) {
         super(nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
     }
+
+    public Secretaire(String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville, String adresse) {
+        super(nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
+    }
+    
+    
     
     public int getNutritionniste() {
         return nutritionniste;
