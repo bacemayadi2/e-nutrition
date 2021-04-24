@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="543.0" prefWidth="1012.0" style="-fx-background-color: #373836;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="e.nutrition.gui.LoginController">
+   <children>
+      <AnchorPane layoutX="599.0" layoutY="51.0" prefHeight="447.0" prefWidth="376.0" style="-fx-background-color: #b1bfaa;">
+         <children>
+            <JFXTextField focusColor="#f5f5f5" layoutX="49.0" layoutY="67.0" prefHeight="49.0" prefWidth="285.0" promptText="E-mail" unFocusColor="#b7e0a2" />
+            <JFXTextField focusColor="WHITE" layoutX="47.0" layoutY="149.0" prefHeight="49.0" prefWidth="285.0" promptText="Mot de passe" unFocusColor="#b7e0a2" />
+            <JFXButton layoutX="51.0" layoutY="294.0" onMouseClicked="#btn_login" onMouseEntered="#btn_handMouse_Enable" onMouseExited="#btn_handMouse_Disable" prefHeight="49.0" prefWidth="285.0" style="-fx-background-color: #b7e0a2;" text="Se Connecté" />
+            <Label layoutX="110.0" layoutY="384.0" text="Mot de pase oublié ?" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="550.0" fitWidth="503.0" layoutX="-1.0" layoutY="-1.0" opacity="0.16" pickOnBounds="true">
+         <image>
+            <Image url="@../../../Images/login.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="3.0" layoutY="52.0" prefHeight="191.0" prefWidth="485.0" text="Bienvenu à l'application&#10; E-Nutrition" textFill="#fcfcfc">
+         <font>
+            <Font size="46.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="26.0" layoutY="243.0" onMouseClicked="#btn_registerDoctor" onMouseEntered="#btn_handMouse_Enable" onMouseExited="#btn_handMouse_Disable" prefHeight="49.0" prefWidth="234.0" style="-fx-background-color: #b7e0a2;" text="Créer un Compte Nutritionniste" />
+      <Label fx:id="btn_exit" layoutX="989.0" onMouseClicked="#btn_exit" onMouseEntered="#btn_close_enableStyle" onMouseExited="#btn_close_disableStyle" prefHeight="41.0" prefWidth="18.0" text="X" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="btn_minimise" layoutX="966.0" layoutY="-4.0" onMouseEntered="#btn_minimise_style" onMouseExited="#btn_close_disableStyle" prefHeight="41.0" prefWidth="18.0" text="_" textFill="WHITE">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="26.0" layoutY="307.0" onMouseClicked="#btn_registerPatient" onMouseEntered="#btn_handMouse_Enable" onMouseExited="#btn_handMouse_Disable" prefHeight="49.0" prefWidth="234.0" style="-fx-background-color: #b7e0a2;" text="Créer un Compte Patient" />
+      <JFXButton layoutX="26.0" layoutY="371.0" onMouseClicked="#btn_registerSecretaire" onMouseEntered="#btn_handMouse_Enable" onMouseExited="#btn_handMouse_Disable" prefHeight="49.0" prefWidth="234.0" style="-fx-background-color: #b7e0a2;" text="Créer un Compte Secrétaire" />
+   </children>
+</AnchorPane>

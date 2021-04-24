@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package e.nutrition.Models;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  *
@@ -13,27 +9,25 @@ import java.sql.Date;
  */
 public class Secretaire extends User
 {
-    private Nutritionniste nutritionniste;
+    private int nutritionniste;
 
-    public Secretaire(Nutritionniste nutritionniste, int id, String nom, String prenom, String sexe, Date dateNaiss,
-            String email, String tel, String ville, String adresse) 
+    public Secretaire(int id, String nom, String prenom, String sexe, Date dateNaiss,
+            String email, int tel, String ville, String adresse, int nutritionniste) 
     {
         super(id, nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
         this.nutritionniste = nutritionniste;
     }
 
-    public Secretaire(Nutritionniste nutritionniste, String nom, String prenom, String sexe, Date dateNaiss,
-            String email, String tel, String ville, String adresse) 
-    {
+    public Secretaire(String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville,
+            String adresse, int nutritionniste) {
         super(nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
-        this.nutritionniste = nutritionniste;
     }
-
-    public Nutritionniste getNutritionniste() {
+    
+    public int getNutritionniste() {
         return nutritionniste;
     }
 
-    public void setNutritionniste(Nutritionniste nutritionniste) {
+    public void setNutritionniste(int nutritionniste) {
         this.nutritionniste = nutritionniste;
     }
 

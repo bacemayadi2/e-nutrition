@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package e.nutrition.gui;
 
 import e.nutrition.Models.Challenge;
@@ -62,11 +57,14 @@ public class AddChallengeController implements Initializable
     private TableColumn<Challenge, String> table_datefin;
     @FXML
     private TableView<Challenge> tableview_challenge;
+    @FXML
+    private javafx.scene.control.TextField search_field;
     
     private ServiceChallenge sc = new ServiceChallenge();
    
     
     private int challenge_Id;
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -103,7 +101,6 @@ public class AddChallengeController implements Initializable
     private void btn_get_challenge(ActionEvent event) 
     {
         Challenge challenge = tableview_challenge.getSelectionModel().getSelectedItem();
-        challenge_Id = challenge.getId();
         challengeTitre.setText(challenge.getTitre());
         challengeDescription.setText(challenge.getDescription());
         challengeCategorie.setText(challenge.getCategorie());
@@ -122,9 +119,29 @@ public class AddChallengeController implements Initializable
         refreshTableView();
     }
     
+     @FXML
+    private void btn_search(ActionEvent event) 
+    {
+        if(search_field.getText().isEmpty())
+        {
+            refreshTableView();
+        }
+        else
+        {
+            table_id.setCellValueFactory(new PropertyValueFactory("id"));
+        table_titre.setCellValueFactory(new PropertyValueFactory("titre"));
+        table_desc.setCellValueFactory(new PropertyValueFactory("description"));
+        table_cat.setCellValueFactory(new PropertyValueFactory("categorie"));
+        table_datedeb.setCellValueFactory(new PropertyValueFactory("dateDebut"));
+        table_datefin.setCellValueFactory(new PropertyValueFactory("dateFin"));
+        
+        tableview_challenge.setItems(sc.Search(search_field.getText()));
+        }
+        
+    }
+    
     private void refreshTableView()
-    {        
-        table_id.setCellValueFactory(new PropertyValueFactory("id"));
+    {
         table_titre.setCellValueFactory(new PropertyValueFactory("titre"));
         table_desc.setCellValueFactory(new PropertyValueFactory("description"));
         table_cat.setCellValueFactory(new PropertyValueFactory("categorie"));
@@ -156,4 +173,6 @@ public class AddChallengeController implements Initializable
         }
         return true;
     }
+
+   
 }

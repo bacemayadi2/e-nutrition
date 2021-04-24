@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package e.nutrition.Models;
 
 import java.sql.Date;
@@ -15,18 +10,19 @@ public class Patient extends User
 {
     private String styleDeVie;
 
-    public Patient(int id, String nom, String prenom, String sexe, Date dateNaiss, String email, String tel, String ville,
-            String adresse, String styleDeVie) {
+    public Patient(int id, String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville,
+            String adresse, String styleDeVie, boolean isVerified) {
+        
         super(id, nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
         this.styleDeVie = styleDeVie;
     }
 
-    public Patient(String nom, String prenom, String sexe, Date dateNaiss, String email, String tel, String ville, 
-            String adresse, String styleDeVie) {
+    public Patient(String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville, 
+            String adresse, String styleDeVie, boolean isVerified) {
         super(nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
         this.styleDeVie = styleDeVie;
     }
-
+    
     public String getStyleDeVie() 
     {
         return styleDeVie;
@@ -40,6 +36,6 @@ public class Patient extends User
     @Override
     public String toString() 
     {
-        return "Patient{" + "styleDeVie=" + styleDeVie + '}';
+        return "Patient: " + super.toString() + "styleDeVie=" + styleDeVie + "\n";
     }
 }

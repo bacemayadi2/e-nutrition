@@ -52,14 +52,6 @@ class NutritionnisteType extends AbstractType
 //            )
             ->add('secretaire' )
 
-//            ->add('secretaire', EntityType::class,
-//            ['class'=>Secretaire::class,
-//                'choice_label'=> 'nom',
-//                'by_reference' => false,
-//                'mapped' => false,
-//
-//            ])
-
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller

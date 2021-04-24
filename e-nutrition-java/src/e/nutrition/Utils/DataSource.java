@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import com.mysql.cj.jdbc.Driver;
+import javax.swing.JOptionPane;
 /**
  *
  * @author ALADIN
@@ -30,8 +31,8 @@ public class DataSource
         }
         catch (SQLException ex)
         {
-            System.out.println("Connection failed with the database !!!");
-            System.out.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Connection failed with the database !!!");
+            JOptionPane.showMessageDialog(null, "Error !!" + ex.getMessage());
         }
     }
     

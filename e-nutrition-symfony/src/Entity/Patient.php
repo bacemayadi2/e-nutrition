@@ -210,13 +210,4 @@ class Patient extends Utilisateur
         return $this;
     }
 
-
-
-
-
-
-
-
-
-
 }

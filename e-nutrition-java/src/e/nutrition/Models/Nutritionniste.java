@@ -1,7 +1,9 @@
 package e.nutrition.Models;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONArray;
 
 /**
  *
@@ -9,39 +11,47 @@ import java.util.List;
  */
 public class Nutritionniste extends User
 {
-    private List<Secretaire> secretaires;
+    private JSONArray secretaires;
 
     public Nutritionniste(int id) {
         super(id);
     }
     
-    public Nutritionniste(int id, String nom, String prenom, String sexe, Date dateNaiss, String email, String tel,
+    public Nutritionniste(int id, String nom, String prenom, String sexe, Date dateNaiss, String email, int tel,
             String ville, String adresse)
     {
         super(id, nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
-        //this.secretaires = secretaires;
+        this.secretaires = new JSONArray();
     }
 
-    public Nutritionniste(String nom, String prenom, String sexe, Date dateNaiss, String email, String tel, String ville,
-            String adresse, List<Secretaire> secretaires) 
+    public Nutritionniste(String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville,
+            String adresse) 
     {
         super(nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
-        this.secretaires = secretaires;
+        this.secretaires = new JSONArray();
     }
 
-    public List<Secretaire> getSecretaires() {
+    public JSONArray getSecretaires() {
         return secretaires;
     }
 
-    public void setSecretaires(List<Secretaire> secretaires) {
+    public void setSecretaires(JSONArray secretaires) {
         this.secretaires = secretaires;
     }
 
+    public void AddSecretaire(Secretaire secretaire)
+    {
+        this.secretaires.put(secretaire.getId());
+    }
+    
+    public void RemoveSecretaire(Secretaire secretaire)
+    {
+        // TODO: 
+    }
+    
     @Override
     public String toString() 
     {
-        return "Nutritionniste{" + "secretaires=" + secretaires + '}';
+        return "Nutritionniste: " + "secretaires:" + secretaires;
     }
-    
-  
 }

@@ -1,6 +1,10 @@
 package e.nutrition.Models;
 
+import java.sql.Array;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
 
 /**
  *
@@ -14,16 +18,20 @@ public class User
     protected String sexe;
     protected Date dateNaiss;
     protected String email;
-    protected String tel;
+    protected int tel;
     protected String ville;
     protected String adresse;
-
+    protected boolean isVerified = false;
+    protected JSONArray roles ;
+    
     public User(int id) 
     {
         this.id = id;
     }
-    
-    public User(int id, String nom, String prenom, String sexe, Date dateNaiss, String email, String tel, String ville, String adresse) {
+
+    public User(int id, String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville,
+            String adresse) 
+    {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -33,9 +41,11 @@ public class User
         this.tel = tel;
         this.ville = ville;
         this.adresse = adresse;
+        this.roles = new JSONArray();
+        this.roles.put("ROLE_USER");
     }
 
-    public User(String nom, String prenom, String sexe, Date dateNaiss, String email, String tel, String ville, String adresse) {
+    public User(String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville, String adresse ) {
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
@@ -44,6 +54,8 @@ public class User
         this.tel = tel;
         this.ville = ville;
         this.adresse = adresse;
+        this.roles = new JSONArray();
+        this.roles.put("ROLE_USER");
     }
 
     public int getId() {
@@ -94,11 +106,11 @@ public class User
         this.email = email;
     }
 
-    public String getTel() {
+    public int getTel() {
         return tel;
     }
 
-    public void setTel(String tel) {
+    public void setTel(int tel) {
         this.tel = tel;
     }
 
@@ -118,9 +130,29 @@ public class User
         this.adresse = adresse;
     }
 
+    public boolean isIsVerified() {
+        return isVerified;
+    }
+
+    public void setIsVerified(boolean isVerified) {
+        this.isVerified = isVerified;
+    }
+
+    public JSONArray getRoles() {
+        return roles;
+    }
+
+    public void setRoles(JSONArray roles) {
+        this.roles = roles;
+    }
+
+    
+    
+    
+
     @Override
     public String toString() 
     {
-        return "User{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", dateNaiss=" + dateNaiss + ", email=" + email + ", tel=" + tel + ", ville=" + ville + ", adresse=" + adresse + '}';
+        return "User: " + "nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", dateNaiss=" + dateNaiss + ", email=" + email + ", tel=" + tel + ", ville=" + ville + ", adresse=" + adresse + ", isVerified=" + isVerified + " || ";
     }
 }

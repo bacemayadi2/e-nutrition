@@ -33,9 +33,8 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <TableView fx:id="tableview_challenge" layoutX="497.0" layoutY="223.0" prefHeight="418.0" prefWidth="801.0">
+      <TableView fx:id="tableview_challenge" layoutX="494.0" layoutY="168.0" prefHeight="418.0" prefWidth="801.0">
         <columns>
-          <TableColumn fx:id="table_id" prefWidth="75.0" text="id" />
             <TableColumn fx:id="table_titre" prefWidth="75.0" text="Titre" />
             <TableColumn fx:id="table_desc" prefWidth="100.0" text="Description" />
             <TableColumn fx:id="table_cat" prefWidth="82.0" text="Catégorie" />
@@ -43,8 +42,11 @@
             <TableColumn fx:id="table_datefin" prefWidth="108.0" text="Date de  fin" />
         </columns>
       </TableView>
-      <Button layoutX="614.0" layoutY="128.0" mnemonicParsing="false" onAction="#btn_get_challenge" prefHeight="53.0" prefWidth="87.0" text="Modifier" />
-      <Button layoutX="796.0" layoutY="128.0" mnemonicParsing="false" onAction="#btn_delete_challenge" prefHeight="53.0" prefWidth="120.0" text="Supprimer" />
+      <Button layoutX="641.0" layoutY="637.0" mnemonicParsing="false" onAction="#btn_get_challenge" prefHeight="53.0" prefWidth="142.0" text="Modifier" />
+      <Button layoutX="997.0" layoutY="637.0" mnemonicParsing="false" onAction="#btn_delete_challenge" prefHeight="53.0" prefWidth="120.0" text="Supprimer" />
       <Button layoutX="224.0" layoutY="676.0" mnemonicParsing="false" onAction="#btn_update_challenge" prefHeight="44.0" prefWidth="120.0" text="Modifier" />
+      <TextField fx:id="search_field" layoutX="641.0" layoutY="93.0" prefHeight="44.0" prefWidth="519.0" />
+      <Label layoutX="505.0" layoutY="111.0" text="Rechercher un défi" />
+      <Button layoutX="1177.0" layoutY="93.0" mnemonicParsing="false" onAction="#btn_search" prefHeight="44.0" prefWidth="120.0" text="Rechercher" />
    </children>
 </AnchorPane>

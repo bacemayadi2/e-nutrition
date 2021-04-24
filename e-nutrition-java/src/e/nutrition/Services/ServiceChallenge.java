@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -75,12 +76,12 @@ public class ServiceChallenge implements IService<Challenge>
             ps.setDate(5, t.getDateFin()); 
             ps.setInt(6, t.getId());
             ps.executeUpdate();
-            System.out.println("Success update !!");
+            JOptionPane.showMessageDialog(null, "Mise a jour réussi");
         }
         catch (SQLException e)
         {
-            System.out.println("Updated failed !!!");
-            System.err.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Echec de mise à jour !!!");
+            JOptionPane.showMessageDialog(null, "Error !!" + e.getMessage());
         }
     }
 
@@ -88,11 +89,34 @@ public class ServiceChallenge implements IService<Challenge>
     public ObservableList<Challenge> Display() 
     {
         ObservableList<Challenge> oblist = FXCollections.observableArrayList();
-        //List <Challenge> list = new ArrayList<>();
         try
         {
             String req = "SELECT * FROM challenge";
             PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                oblist.add(new Challenge(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getDate(5), rs.getDate(6)));
+                
+            }
+        }
+        catch (SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, "Error !!" + e.getMessage());
+        }
+        return oblist;
+    }
+   
+     public ObservableList<Challenge> Search(String value) 
+    {
+        ObservableList<Challenge> oblist = FXCollections.observableArrayList();
+        //List <Challenge> list = new ArrayList<>();
+        try
+        {
+            String req = "SELECT * FROM challenge where titre=?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, value);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
@@ -106,5 +130,4 @@ public class ServiceChallenge implements IService<Challenge>
         }
         return oblist;
     }
-    
 }
