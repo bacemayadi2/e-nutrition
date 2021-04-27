@@ -11,14 +11,16 @@ import e.nutrition.Models.ContenuMultimedia;
  *
  * @author bacem
  */
-public class TagSuccesStory extends Tag{
+public class TagSuccessStory extends Tag{
 
-    public TagSuccesStory(int id, ContenuMultimedia contenuMultimedia) {
+    public TagSuccessStory(int id, ContenuMultimedia contenuMultimedia) {
         super(id, contenuMultimedia);
     }
 
-    public TagSuccesStory(ContenuMultimedia contenuMultimedia) {
+    public TagSuccessStory(ContenuMultimedia contenuMultimedia) {
         super(contenuMultimedia);
     }
+    
+    
     
 }

@@ -15,12 +15,14 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\File ;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use function Symfony\Component\String\u;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 
 /**
  * @ORM\Entity(repositoryClass=ContenuMultimediaRepository::class)
  * @ORM\InheritanceType("JOINED")
  * @Vich\Uploadable()
+ * @ApiResource()
  */
 class ContenuMultimedia
 {

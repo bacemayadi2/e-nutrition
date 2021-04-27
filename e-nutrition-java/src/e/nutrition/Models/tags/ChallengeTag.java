@@ -6,6 +6,7 @@
 package e.nutrition.Models.tags;
 
 import e.nutrition.Models.ContenuMultimedia;
+import e.nutrition.Models.User;
 
 /**
  *
@@ -13,14 +14,23 @@ import e.nutrition.Models.ContenuMultimedia;
  */
 public class ChallengeTag extends Tag{
 
-    public ChallengeTag(int id, ContenuMultimedia contenuMultimedia) {
+    public ChallengeTag(int id, ContenuMultimedia contenuMultimedia,int user_id) {
         super(id, contenuMultimedia);
     }
 
-    public ChallengeTag(ContenuMultimedia contenuMultimedia) {
+    public ChallengeTag(ContenuMultimedia contenuMultimedia,int user_id) {
         super(contenuMultimedia);
     }
     
+    private int user_id ;
 
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
     
+        
 }

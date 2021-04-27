@@ -40,5 +40,3 @@ services:
         tags:
             - { name: kernel.event_listener, event: vich_uploader.pre_remove }
             - { name: kernel.event_listener, event: vich_uploader.post_upload}
-
-

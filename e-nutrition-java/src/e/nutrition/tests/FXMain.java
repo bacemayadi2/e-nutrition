@@ -3,7 +3,7 @@
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
 */
-/*
+
 package e.nutrition.tests;
 
 import e.nutrition.Models.SuccessStory;
@@ -28,7 +28,7 @@ import javafx.stage.Stage;
  *
  * @author Abdelhamid
  */
-/*
+
 public class FXMain extends Application {
     
     
@@ -41,7 +41,7 @@ public class FXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+       /* FXMLLoader loader = new FXMLLoader();
         URL url = getClass().getResource(ADD_RENDEZ_VOUS_GUI);
         loader.setLocation(url);
         Parent root = loader.load();
@@ -49,7 +49,7 @@ public class FXMain extends Application {
         primaryStage.setTitle("Add Rendez-vous");
         primaryStage.setScene(scene);
         primaryStage.show();
-        
+   */     
        /* FXMLLoader loader = new FXMLLoader();
         URL url = getClass().getResource(ADD_COMMENT_GUI);
         loader.setLocation(url);
@@ -57,35 +57,35 @@ public class FXMain extends Application {
         Scene scene = new Scene(root);
         primaryStage.setTitle("Add comment");
         primaryStage.setScene(scene);
-        primaryStage.show();*/
-        
-        /*FXMLLoader loader = new FXMLLoader();
+        primaryStage.show();
+        */
+        FXMLLoader loader = new FXMLLoader();
         URL url = getClass().getResource(ADD_Success_GUI);
         loader.setLocation(url);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setTitle("Add success story");
         primaryStage.setScene(scene);
-        primaryStage.show();*/
+        primaryStage.show();
         
-        
-        /*FXMLLoader loader = new FXMLLoader();
+        /*
+        FXMLLoader loader = new FXMLLoader();
         URL url = getClass().getResource(DELETE_RENDEZ_VOUS_GUI);
         loader.setLocation(url);
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setTitle("Delete Rendez vous");    
         primaryStage.setScene(scene);
-        primaryStage.show();
+        primaryStage.show();*/
       
-    }*/
+    }
     
     /**
      * @param args the command line arguments
      */
-/*
+
     public static void main(String[] args) {
         launch(args);
     }
     
-}*/
+}

@@ -6,6 +6,7 @@
 package e.nutrition.Models.tags;
 
 import e.nutrition.Models.ContenuMultimedia;
+import e.nutrition.Models.User;
 
 /**
  *
@@ -19,6 +20,21 @@ public class TagUtilisateur extends Tag{
 
     public TagUtilisateur(ContenuMultimedia contenuMultimedia) {
         super(contenuMultimedia);
+    }
+    
+    private boolean photo_de_profile=false;
+     
+    public void setPhotoDeProfile()
+    {
+        photo_de_profile=true;
+    }
+    public void unSetPhotoDeProfile()
+    {
+        photo_de_profile=false;
+    }
+
+    public boolean is_photo_de_profile() {
+        return photo_de_profile;
     }
     
 }

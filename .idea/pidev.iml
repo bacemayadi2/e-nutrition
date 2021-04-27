@@ -7,11 +7,13 @@
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-java" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-mobile" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/alchemy/binary-driver" />
+      <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/api-platform/core" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/blackknight467/star-rating-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/doctrine/deprecations" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/dompdf/dompdf" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/egulias/email-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/fig/link-util" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/friendsofsymfony/ckeditor-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/jms/metadata" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/knplabs/knp-components" />
@@ -20,6 +22,7 @@
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/laminas/laminas-eventmanager" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/laminas/laminas-zendframework-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/nelmio/cors-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/neutron/temporary-filesystem" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/phenx/php-font-lib" />
@@ -115,6 +118,7 @@
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/twig/twig" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/vich/uploader-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/e-nutrition-symfony/vendor/willdurand/negotiation" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

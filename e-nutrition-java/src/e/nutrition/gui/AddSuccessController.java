@@ -3,22 +3,21 @@
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
 */
-/*
+
 package e.nutrition.gui;
 
 import e.nutrition.Models.ContenuMultimedia;
 import e.nutrition.Models.SuccessStory;
-import e.nutrition.Models.Tag;
-import e.nutrition.Models.TagSuccessStory;
-import e.nutrition.Services.ContenuMultimediaService;
+import e.nutrition.Models.tags.TagNourriture;
+import e.nutrition.Models.tags.TagSuccessStory;
+import e.nutrition.Services.ServiceTag;
 import e.nutrition.Services.SuccessStoryService;
-import e.nutrition.Services.TagService;
-import e.nutrition.Services.TagSuccessStoryService;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -35,7 +34,7 @@ import javafx.stage.Stage;
  *
  * @author Abdelhamid
  */
-/*
+
 public class AddSuccessController implements Initializable {
     
     @FXML
@@ -58,28 +57,30 @@ public class AddSuccessController implements Initializable {
     /**
      * Initializes the controller class.
      */
-/*
+    private List <File> selectedFiles = new ArrayList();
+    ServiceTag sTag = new ServiceTag();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    /*
+    
     @FXML
     private void openFileChooser(ActionEvent event) {
         Scene scene = ssavant.getScene();
         Stage primaryStage = (Stage) scene.getWindow();
         FileChooser fileChooser = new FileChooser();
         ssavant.setOnAction(e -> {
-            File selectedFile = fileChooser.showOpenDialog(primaryStage);
-            avantfile.setText(selectedFile.getPath());
+            selectedFiles.add( fileChooser.showOpenDialog(primaryStage));
+            avantfile.setText(selectedFiles.get(0).getPath());
         });
         ssapres.setOnAction(e -> {
-            File selectedFile = fileChooser.showOpenDialog(primaryStage);
-            apresfile.setText(selectedFile.getPath());
+            selectedFiles.add(fileChooser.showOpenDialog(primaryStage));
+            apresfile.setText(selectedFiles.get(1).getPath());
         });
         ssvideo.setOnAction(e -> {
-            File selectedFile = fileChooser.showOpenDialog(primaryStage);
-            videofile.setText(selectedFile.getPath());
+            selectedFiles.add( fileChooser.showOpenDialog(primaryStage));
+            videofile.setText(selectedFiles.get(2).getPath());
         });
     }
     
@@ -96,33 +97,17 @@ public class AddSuccessController implements Initializable {
         int successStoryId = successStoryService.addAndGet(successStory);
         successStory.setId(successStoryId);
         
-        addContenuMultimediaToStory(apresfile, successStory);        
-        addContenuMultimediaToStory(avantfile, successStory);        
-        addContenuMultimediaToStory(videofile, successStory);
-
+        // tag starting 
+        selectedFiles.forEach((file)-> {
+        ContenuMultimedia contenuMultimedia=new ContenuMultimedia("",file);
+        TagSuccessStory tagsuccess =new TagSuccessStory(contenuMultimedia);
+        sTag.Add(tagsuccess, successStoryId);
+        successStory.ajoutertag(tagsuccess);
+                });
+        
+        
+               
     }
 
-    private void addContenuMultimediaToStory(TextField file, SuccessStory successStory) {
-        //Contenu Multimédia
-        TagSuccessStory tagSuccessStory = new TagSuccessStory();
-        Tag tag = new Tag();
-        ContenuMultimedia contenuMultimedia = new ContenuMultimedia() ;
-        contenuMultimedia.setDtype("contenumultimedia");
-        contenuMultimedia.setNomFile(file.getText());
-        contenuMultimedia.setUpdatedAt(new Date());
-        ContenuMultimediaService contenuMultimediaService = new ContenuMultimediaService();
-        Integer multimediaId = contenuMultimediaService.addAndGetId(contenuMultimedia);
-        contenuMultimedia.setId(multimediaId);
-        tag.setContenuMultimediaId(contenuMultimedia);
-        tag.setDtype("contenumultimedia");
-        TagService tagService = new TagService();
-        tag.setId(tagService.addAndGet(tag));
-        tagSuccessStory.setId(tag.getId());
-        tagSuccessStory.setTag(tag);
-        tagSuccessStory.setSuccessStoryId(successStory);
-        TagSuccessStoryService tagSuccessStoryService = new TagSuccessStoryService();
-        tagSuccessStoryService.addAndGet(tagSuccessStory);
-    }
     
 }
-*/

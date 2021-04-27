@@ -128,6 +128,10 @@
       <path value="$PROJECT_DIR$/e-nutrition-symfony/vendor/blackknight467/star-rating-bundle" />
       <path value="$PROJECT_DIR$/e-nutrition-symfony/vendor/doctrine/deprecations" />
       <path value="$PROJECT_DIR$/e-nutrition-symfony/vendor/friendsofsymfony/ckeditor-bundle" />
+      <path value="$PROJECT_DIR$/e-nutrition-symfony/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/e-nutrition-symfony/vendor/api-platform/core" />
+      <path value="$PROJECT_DIR$/e-nutrition-symfony/vendor/fig/link-util" />
+      <path value="$PROJECT_DIR$/e-nutrition-symfony/vendor/nelmio/cors-bundle" />
     </include_path>
   </component>
   <component name="PhpInterpreters">

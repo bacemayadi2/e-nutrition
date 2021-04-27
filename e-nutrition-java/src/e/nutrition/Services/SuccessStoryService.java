@@ -3,7 +3,7 @@
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
 */
-/*
+
 package e.nutrition.Services;
 
 import e.nutrition.Models.SuccessStory;
@@ -18,12 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author Abdelhamid
  */
-/*
+
 public class SuccessStoryService implements IService<SuccessStory>{
     
     private static final String INSERT_STATEMENT = "Insert into pidev3a.success_story(titre, text, date_creation) values (?,?,?)";
@@ -34,21 +36,7 @@ public class SuccessStoryService implements IService<SuccessStory>{
     private static final String SELECT_STATEMENT_BY_TITRE = "SELECT * FROM pidev3a.success_story where titre = ?";
     private final Connection cnx = DataSource.getInstance().getCnx();
     
-    @Override
-    public List<SuccessStory> display(){
-        List<SuccessStory> successStories = new ArrayList<SuccessStory>();
-        try {
-            PreparedStatement pre = cnx.prepareStatement(SELECT_STATEMENT);
-            ResultSet rs = pre.executeQuery();
-            while(rs.next()) {
-                SuccessStory success = new SuccessStory(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getInt(5));
-                successStories.add(success);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(SuccessStoryService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return successStories;
-    }
+
     
     public SuccessStory getById(Integer id){
         try {
@@ -76,7 +64,7 @@ public class SuccessStoryService implements IService<SuccessStory>{
     }
 
     
-    public int addAndGet(final SuccessStory t) {
+    public int addAndGet( SuccessStory t) {
         try {
             PreparedStatement pre = cnx.prepareStatement(INSERT_STATEMENT, Statement.RETURN_GENERATED_KEYS);
             pre.setString(1, t.getTitre());
@@ -94,8 +82,10 @@ public class SuccessStoryService implements IService<SuccessStory>{
         return -1;
     }
     
+
+
     @Override
-    public void add(final SuccessStory t) {
+    public void Add(SuccessStory t) {
         try {
             PreparedStatement pre = cnx.prepareStatement(INSERT_STATEMENT);
             pre.setString(1, t.getTitre());
@@ -107,9 +97,9 @@ public class SuccessStoryService implements IService<SuccessStory>{
             Logger.getLogger(SuccessStoryService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @Override
-    public void delete(final SuccessStory t) {
+    public void Delete(SuccessStory t) {
         try {
             PreparedStatement pre = cnx.prepareStatement(DELETE_STATEMENT);
             pre.setInt(1, t.getId());
@@ -119,10 +109,10 @@ public class SuccessStoryService implements IService<SuccessStory>{
             Logger.getLogger(SuccessStoryService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     @Override
-    public void update(final SuccessStory t) {
-        try {
+    public void Update(SuccessStory t) {
+       try {
             PreparedStatement pre = cnx.prepareStatement(UPDATE_STATEMENT);
             pre.setString(1, t.getTitre());
             pre.setString(2, t.getText());
@@ -135,6 +125,22 @@ public class SuccessStoryService implements IService<SuccessStory>{
             Logger.getLogger(SuccessStoryService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @Override
+    public ObservableList<SuccessStory> Display() {
+      ObservableList<SuccessStory> successStories = FXCollections.observableArrayList();
+        try {
+            PreparedStatement pre = cnx.prepareStatement(SELECT_STATEMENT);
+            ResultSet rs = pre.executeQuery();
+            while(rs.next()) {
+                SuccessStory success = new SuccessStory(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getInt(5));
+                successStories.add(success);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SuccessStoryService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return successStories;
+    }
+
 }
 
-*/

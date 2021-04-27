@@ -1,20 +1,24 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
+
+ /* To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*
+
 package e.nutrition.Models;
 
+import e.nutrition.Models.tags.TagNourriture;
+import e.nutrition.Models.tags.TagSuccessStory;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author Abdelhamid
  */
-/*
+
 public class SuccessStory implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -24,9 +28,25 @@ public class SuccessStory implements Serializable {
     private String text;
     private Date dateCreation;
     private Integer likeStory;
+    
     private Collection<Comments> commentsCollection;
-    private Collection<TagSuccessStory> tagSuccessStoryCollection;
+    private List <TagSuccessStory> tags = new ArrayList();
 
+    
+    public void ajoutertag(TagSuccessStory t) {
+      if (t != null)
+      {
+          tags.add(t);
+      }
+    }
+
+    public void supprimertag(TagSuccessStory t) {
+     if (t!=null)
+      {
+          tags.remove(t);
+      }
+    }
+    
     public SuccessStory() {
     }
 
@@ -109,13 +129,15 @@ public class SuccessStory implements Serializable {
         this.commentsCollection = commentsCollection;
     }
 
-    public Collection<TagSuccessStory> getTagSuccessStoryCollection() {
-        return tagSuccessStoryCollection;
+    public List<TagSuccessStory> getTags() {
+        return tags;
     }
 
-    public void setTagSuccessStoryCollection(Collection<TagSuccessStory> tagSuccessStoryCollection) {
-        this.tagSuccessStoryCollection = tagSuccessStoryCollection;
+    public void setTags(List<TagSuccessStory> tags) {
+        this.tags = tags;
     }
+
+   
 
     @Override
     public int hashCode() {
@@ -143,4 +165,3 @@ public class SuccessStory implements Serializable {
     }
     
 }
-*/

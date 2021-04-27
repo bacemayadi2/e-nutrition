@@ -6,6 +6,13 @@
 package e.nutrition.Models;
 
 import e.nutrition.Models.tags.Tag;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -22,6 +29,7 @@ public class ContenuMultimedia
     public final String dtype="contenumultimedia";
     private String Description;
     private Date updatedAt;
+    private File file;
     private List<Tag> tags =new ArrayList() ;
 
     public ContenuMultimedia(int id, String nomFile, String Description, Date updatedAt) {
@@ -31,10 +39,13 @@ public class ContenuMultimedia
         this.updatedAt = updatedAt;
     }
 
-    public ContenuMultimedia(String nomFile, String Description, Date updatedAt) {
-        this.nomFile = nomFile;
+    public ContenuMultimedia( String Description,File file) {
         this.Description = Description;
-        this.updatedAt = updatedAt;
+        this.sendFileToHTTP(file);
+        
+    }
+
+    public ContenuMultimedia() {
     }
 
 
@@ -88,6 +99,55 @@ public class ContenuMultimedia
         {
             tags.remove(t);
         }
+    }
+    
+         public int sendFileToHTTP(File file) {
+        int responseCode = 0;
+        try {
+            System.out.println(file);
+            URL url = new URL("http://127.0.0.1:8000/ajouterfichier");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection(); 
+            //Set Request Type to POST
+            conn.setRequestMethod("POST");
+            //Send text data
+            conn.setRequestProperty("Content-Type", "text/plain");
+
+            //Replace the file-path with your local file-path
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            StringBuffer data = new StringBuffer();
+            String tempLine;
+            while ((tempLine = br.readLine()) != null) {
+                data.append(tempLine);
+            }
+            br.close();
+
+            // Send post request
+            conn.setDoOutput(true);
+            DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
+            wr.writeBytes(data.toString());
+            wr.flush();
+            wr.close();
+
+            //Fetch Response Code
+            responseCode = conn.getResponseCode();
+
+            //Read the response
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(conn.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        //Return the response code
+             System.out.println(responseCode);
+        return responseCode;
     }
 
     
