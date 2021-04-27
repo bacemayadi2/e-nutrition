@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="1065.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
+   <children>
+      <ImageView fitHeight="174.0" fitWidth="1170.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../../e-nutrition-symfony/public/front/images/backgrounds/background-12-1920x900.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="241.0" fitWidth="419.0" layoutX="636.0" layoutY="224.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../../../e-nutrition-symfony/public/front/images/backgrounds/background-14-1920x900.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="258.0" layoutY="183.0" text="Bienvenue!">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="160.0" layoutY="183.0" prefHeight="250.0" prefWidth="350.0" text="Je suis un coach de santé certifié, axé sur la santé des femmes, vous apportant un soutien super pratique pour vous aider à vous sentir bien, à prendre soin de votre corps et à profiter du processus. Je ne dis pas à mes clients quoi faire, je leur apprends quoi faire." textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="160.0" layoutY="405.0" prefHeight="100.0" prefWidth="350.0" text="A fresh &amp; fun approach to your lifehealth and happiness in your life." textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="78.0" fitWidth="95.0" layoutX="953.0" layoutY="505.0">
+         <image>
+            <Image url="@../../../../../../../clock.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="78.0" fitWidth="95.0" layoutX="123.0" layoutY="505.0">
+         <image>
+            <Image url="@../../../../../../../cup.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="78.0" fitWidth="95.0" layoutX="549.0" layoutY="505.0" onMouseDragEntered="#ffffffffffff">
+         <image>
+            <Image url="@../../../../../../../ball.PNG" />
+         </image>
+      </ImageView>
+      <Label layoutX="911.0" layoutY="593.0" prefWidth="200.0" text="Programme de routine" textAlignment="CENTER" textFill="#a76ec7" wrapText="true">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="506.0" layoutY="593.0" prefWidth="200.0" text="Programme d'exercice" textAlignment="CENTER" textFill="#a76ec7" wrapText="true">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="82.0" layoutY="593.0" prefWidth="200.0" text="Stratégie nutritionnelle" textAlignment="CENTER" textFill="#a76ec7" wrapText="true">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="label1" layoutX="82.0" layoutY="606.0" onMouseDragEntered="#transition" prefHeight="100.0" prefWidth="200.0" text="Obtenez une modification simple et faisable de vos habitudes, qui fera de vous une version saine et dynamique de vous-même." textAlignment="CENTER" wrapText="true" />
+      <Label layoutX="497.0" layoutY="606.0" prefHeight="100.0" prefWidth="200.0" text="Obtenez votre programme d'exercices individuel qui répondra à vos besoins particuliers compte tenu de votre objectif final." textAlignment="CENTER" wrapText="true" />
+      <Label layoutX="900.0" layoutY="606.0" prefHeight="100.0" prefWidth="200.0" text="Notre programme se distingue en ce qu'il adopte une approche holistique du coaching de santé en fonction de votre emploi du temps." textAlignment="CENTER" wrapText="true" />
+      <Pane layoutY="707.0" prefHeight="39.0" prefWidth="1170.0" style="-fx-background-color: #A6C550;">
+         <children>
+            <Label alignment="BASELINE_CENTER" layoutX="18.0" layoutY="7.0" text="tel:99331490" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <Label layoutX="440.0" layoutY="4.0" text="Email: GoodLife@e-nutrition.tn" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="990.0" layoutY="4.0" text="Adresse: ariana , tunisie" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
