@@ -46,7 +46,7 @@ public class AlimentGui extends Application{
         }
     });*/
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/Aliment.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/displayplat.fxml"));
         Parent root = loader.load();
                 
         Scene scene = new Scene(root);

@@ -250,10 +250,15 @@ public class ServiceTag {
                     if(type=="tagnourriture") 
                         tag=new TagNourriture(rs.getInt("id"), sCM.rechercher(rs.getInt("contenu_multimedia_id")));
                     else if (type=="tagutilisateur")   
-                        System.out.println("implement tag l 63");
+                        tag=new TagUtilisateur(rs.getInt("id"), sCM.rechercher(rs.getInt("contenu_multimedia_id")));
                     else if (type=="tagficheconsultation")
-                        System.out.println("implement tag l 63");
-                     else 
+                        tag=new TagFicheConsultation(rs.getInt("id"), sCM.rechercher(rs.getInt("contenu_multimedia_id")));
+                    else if (type =="tagsuccessstory")
+                        tag=new TagSuccessStory(rs.getInt("id"), sCM.rechercher(rs.getInt("contenu_multimedia_id")));
+                    else if (type == "tagblogpost")
+                        tag=new TagBlogPost(rs.getInt("id"), sCM.rechercher(rs.getInt("contenu_multimedia_id")));
+
+                    else 
                         System.err.println("type de tag (string) non conforme voir serviceTag pour info");
                    oblist.add(tag);
                 }
