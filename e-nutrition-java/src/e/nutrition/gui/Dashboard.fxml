@@ -68,7 +68,7 @@
                         <FontAwesomeIcon fill="#fcfcfc" size="1.25em" text="" translateX="10.0" />
                      </graphic>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="44.0" prefWidth="283.0" style="-fx-background-color: #a6c550;" text="         Success Stories" textFill="WHITE">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#callSuccess" prefHeight="44.0" prefWidth="283.0" style="-fx-background-color: #a6c550;" text="         Success Stories" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

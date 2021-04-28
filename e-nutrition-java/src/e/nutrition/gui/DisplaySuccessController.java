@@ -1,14 +1,28 @@
-
+package e.nutrition.gui;
 import e.nutrition.Models.SuccessStory;
 import e.nutrition.Services.SuccessStoryService;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import static java.util.Arrays.stream;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -37,6 +51,9 @@ import javafx.scene.image.ImageView;
 
 public class DisplaySuccessController implements Initializable {
 
+    @FXML
+    private Text txtx;
+
 
     /**
      * Initializes the controller class.
@@ -47,11 +64,62 @@ public class DisplaySuccessController implements Initializable {
                 
         SuccessStoryService successStoryService = new SuccessStoryService();
         List<SuccessStory> stories = successStoryService.Display();
+        Scene scene = txtx.getScene();
+        
         
         for(SuccessStory story : stories){
+            txtx.setText(story.getTitre());
+           
+                
             
-            
+      
+            try {
+                if (!story.getTags().isEmpty()){
+                InputStream stream1 , stream2 = null;
+                //creating the image object
+                stream1 = new FileInputStream(story.getTags().get(0).getUrl());
+                Image image1 = new Image("file:"+stream1);
+                System.out.println(story.getTags().get(0).getUrl());
+                stream2 = new FileInputStream(story.getTags().get(1).getUrl());
+                Image image2 = new Image("file:"+stream2);
+                //Creating the image view
+                ImageView imageView1 = new ImageView(image1);
+                //Setting the image view parameters
+                imageView1.setX(250);
+                imageView1.setY(250);
+                imageView1.setFitWidth(200);
+                imageView1.setPreserveRatio(true);
+                ImageView imageView2 = new ImageView(image2);
+                //Setting the image view parameters
+                imageView2.setX(500);
+                imageView2.setY(250);
+                imageView2.setFitWidth(350);
+                imageView2.setPreserveRatio(true);
+                //Setting the view port
+                Rectangle2D rect2 = new Rectangle2D(45, 30, 250, 250);
+                imageView2.setViewport(rect2);
+                
+               
+                    //Setting the Scene object
+                    Parent root = txtx.getScene().getRoot();
+                    root.getChildrenUnmodifiable().add(imageView1);
+                    root.getChildrenUnmodifiable().add(imageView2);
+                stream1.close();
+                stream2.close();
+                }
+                
+                
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(DisplaySuccessController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(DisplaySuccessController.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+            }
         }
-    }    
+   }
+            
+            
+        
     
-}
+    
+

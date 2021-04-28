@@ -51,6 +51,7 @@ public class DashboardController implements Initializable {
         
 
        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("home.fxml"));
+       home.getChildren().clear();
        home.getChildren().add(newLoadedPane);
         
     }
@@ -59,6 +60,13 @@ public class DashboardController implements Initializable {
     private void addRendezVous(ActionEvent event)throws IOException  {
         
         Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("AddRendezVous.fxml"));
+        home.getChildren().clear();
+        home.getChildren().add(newLoadedPane);
+    }
+
+    @FXML
+    private void callSuccess(ActionEvent event) throws IOException {
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("DisplaySuccess.fxml"));
         home.getChildren().clear();
         home.getChildren().add(newLoadedPane);
     }
