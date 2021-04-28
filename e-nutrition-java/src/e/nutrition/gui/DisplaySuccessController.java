@@ -45,10 +45,7 @@ public class DisplaySuccessController implements Initializable {
 
     @FXML
     private Text txtx;
-    @FXML
     private ListView<String> listSuccess;
-    @FXML
-    private Button successbtn;
 
 
     /**
@@ -116,15 +113,7 @@ public class DisplaySuccessController implements Initializable {
             }
         }
 
-    @FXML
-    private void deleteSuccess(ActionEvent event) {
-         int selected = listSuccess.getSelectionModel().getSelectedIndex();
-        listSuccess.getItems().remove(selected);
-        String selectedItem = listSuccess.getSelectionModel().getSelectedItem();
-        Integer indexToDelete = Integer.valueOf(selectedItem.substring(17, 19));
-        RendezVousService rendezVousService = new RendezVousService();
-        rendezVousService.deleteById(selected);
-    }
+    
    }
             
             
