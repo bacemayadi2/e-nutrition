@@ -26,8 +26,6 @@ public class ServicePatient implements IService<Patient>
     {
         try
         {
-            System.out.println(t.toString());
-            
             String req = "INSERT INTO utilisateur (email, nom, prenom, sexe, date_naiss, tel, ville, adresse, dtype, roles, is_verified, password) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cnx.prepareStatement(req);
             
@@ -77,15 +75,11 @@ public class ServicePatient implements IService<Patient>
     public void Delete(Patient t)
     {
         try
-        {
+        {        
             String req = "DELETE FROM utilisateur WHERE id=?";
-            String req1 = "DELETE FROM patient WHERE id=?";
             PreparedStatement ps = cnx.prepareStatement(req);
-            PreparedStatement ps1 = cnx.prepareStatement(req1);
             ps.setInt(1, t.getId());
-            ps1.setInt(1, t.getId());
             ps.executeUpdate();
-            ps1.executeUpdate();
             
             JOptionPane.showMessageDialog(null, "Patient supprimé !!");
         }
@@ -135,16 +129,16 @@ public class ServicePatient implements IService<Patient>
             ObservableList<Patient> oblist = FXCollections.observableArrayList();
             try
             {
-                String req = "SELECT t1.nom as nom , t1.prenom as prenom, t1.sexe as sexe, t1.date_naiss as date_naiss ,\n" +
-                            "t1.email as email, t1.tel as tel , t1.ville as ville , t1.adresse as adresse, t0.style_de_vie as style, \n" +
-                            "t1.is_verified as isverified FROM patient t0 INNER JOIN utilisateur t1 ON t0.id = t1.id";
+                String req = "SELECT t1.id, t1.email, t1.nom , t1.prenom, t1.sexe, t1.date_naiss, t1.tel, t1.ville , t1.adresse, t0.style_de_vie,\n" +
+                             "t1.is_verified, t1.roles FROM patient t0 INNER JOIN utilisateur t1 ON t0.id = t1.id";
                 
                 PreparedStatement ps = cnx.prepareStatement(req);
                 ResultSet rs = ps.executeQuery();
                 while(rs.next())
                 {
-                    oblist.add(new Patient(rs.getString(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getString(5),
-                            rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getBoolean(10)));
+                    oblist.add(new Patient(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                            rs.getDate(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11),
+                            rs.getObject(12).toString()));
                 }
             }
             catch (SQLException e)
@@ -152,6 +146,33 @@ public class ServicePatient implements IService<Patient>
                 JOptionPane.showMessageDialog(null, "Error !!" + e.getMessage());
             }
             return oblist;
+    }
+    
+    public ObservableList<Patient> Search(String value) 
+    {
+        ObservableList<Patient> oblist = FXCollections.observableArrayList();
+        try
+        {
+            String req1 = "SELECT * FROM Patient where id=?";
+            
+            String req= "SELECT t1.email, t1.nom , t1.prenom, t1.sexe, t1.date_naiss, t1.tel, t1.ville , t1.adresse, t0.style_de_vie,\n" +
+                             "t1.is_verified, t1.roles FROM patient t0 INNER JOIN utilisateur t1 ON t0.id = t1.id and t1.email =?";
+            
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, value);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                oblist.add(new Patient(rs.getInt(1), rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                            rs.getDate(5), rs.getInt(6), rs.getString(7), rs.getString(8), rs.getString(9), 
+                            rs.getBoolean(10), rs.getObject(11).toString()));
+            }
+        }
+        catch (SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, "Error !!" + e.getMessage());
+        }
+        return oblist;
     }
     
       public Patient getById(int id) {

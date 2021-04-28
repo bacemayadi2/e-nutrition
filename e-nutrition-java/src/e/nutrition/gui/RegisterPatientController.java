@@ -19,7 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
+import org.json.JSONArray;
 
 /**
  * FXML Controller class
@@ -54,6 +54,8 @@ public class RegisterPatientController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -93,9 +95,13 @@ public class RegisterPatientController implements Initializable {
     {
         ServicePatient sp = new ServicePatient();
                 
-        sp.Add(new Patient(patient_nom.getText(), patient_prenom.getText(), patient_sexe.getValue(),
-                Date.valueOf(patient_dateNaiss.getValue()), patient_email.getText(), Integer.parseInt(patient_tel.getText()),
-                patient_ville.getText(), patient_adresse.getText(), patient_style.getText(), false));
+        JSONArray array = new JSONArray();
+        array.put("ROLE_USER");
+        array.put("ROLE_PATIENT");
+        
+        sp.Add(new Patient( patient_email.getText(), patient_nom.getText(), patient_prenom.getText(), patient_sexe.getValue(),
+                Date.valueOf(patient_dateNaiss.getValue()), Integer.parseInt(patient_tel.getText()),
+                patient_ville.getText(), patient_adresse.getText(), false, array, patient_style.getText()));
                 
     }
 }

@@ -67,18 +67,20 @@ public class ServiceNutritionniste implements IService <Nutritionniste>
     @Override
     public void Delete(Nutritionniste t) 
     {
-        try
+        try 
         {
-            String req = "DELETE FROM nutritionniste WHERE id=?";
-            PreparedStatement ps = cnx.prepareStatement(req);
+            PreparedStatement ps = cnx.prepareStatement("DELETE FROM nutritionniste WHERE id=?");
             ps.setInt(1, t.getId());
             ps.executeUpdate();
-            System.out.println("Personne supprimé !!");
+            ps = cnx.prepareStatement("DELETE FROM utilisateur WHERE id=?");
+            ps.setInt(1, t.getId());
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Docteur supprimé !!");
         }
         catch(SQLException e)
         {
-            System.err.println("echec de l'operation!!");
-            System.err.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "echec de la suppression!!");
+            JOptionPane.showMessageDialog(null, "Error !!!" + e.getMessage());
         }
     }
 
@@ -112,20 +114,19 @@ public class ServiceNutritionniste implements IService <Nutritionniste>
         ObservableList<Nutritionniste> oblist = FXCollections.observableArrayList();
         try
         {
-            String req = "SELECT t1.id as id, t1.nom as nom , t1.prenom as prenom, t1.sexe as sexe, t1.date_naiss as date_naiss ,\n" +
-"t1.email as email, t1.tel as tel , t1.ville as ville , t1.adresse as adresse, t1.is_verified as isverified\n" +
-"FROM nutritionniste t0 INNER JOIN utilisateur t1 ON t0.id = t1.id";
+            String req = "SELECT * FROM nutritionniste t0 INNER JOIN utilisateur t1 ON t0.id = t1.id";
             PreparedStatement ps = cnx.prepareStatement(req);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
-            {                
-                oblist.add(new Nutritionniste(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getDate(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9)));
+            {    
+                oblist.add(new Nutritionniste(rs.getInt(1), rs.getString(7), rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getDate(6), rs.getInt(8), rs.getString(10), rs.getString(11), rs.getBoolean(13),
+                        rs.getObject(14).toString(), rs.getInt(2)));
             }
         }
         catch (SQLException e)
         {
-            System.err.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error !!!" + e.getMessage());
         }
         return oblist;
     }
@@ -141,8 +142,9 @@ public class ServiceNutritionniste implements IService <Nutritionniste>
                 ResultSet rs = ps.executeQuery();
             if (rs.next())
             {
-                a=new Nutritionniste(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                        rs.getDate(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9));}
+                a = new Nutritionniste(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                        rs.getDate(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getBoolean(10));
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ServiceNutritionniste.class.getName()).log(Level.SEVERE, null, ex);
         }

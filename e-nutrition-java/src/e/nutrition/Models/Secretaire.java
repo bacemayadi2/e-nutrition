@@ -1,7 +1,7 @@
 package e.nutrition.Models;
 
 import java.sql.Date;
-import java.util.List;
+import org.json.JSONArray;
 
 /**
  *
@@ -11,23 +11,25 @@ public class Secretaire extends User
 {
     private int nutritionniste;
 
-    public Secretaire(int id, String nom, String prenom, String sexe, Date dateNaiss,
-            String email, int tel, String ville, String adresse, int nutritionniste) 
-    {
-        super(id, nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
+    //Display Secretaire without id
+    public Secretaire(String email, String nom, String prenom, String sexe, Date dateNaiss, int tel, String ville,
+            String adresse, boolean isVerified, String stringRoles, int nutritionniste) {
+        super(email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified, stringRoles);
+        this.nutritionniste = nutritionniste;
+    }
+    
+    //Display Secretaire with id
+    public Secretaire(int id, String email, String nom, String prenom, String sexe, Date dateNaiss, int tel, String ville,
+            String adresse, boolean isVerified, String stringRoles, int nutritionniste) {
+        super(id, email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified, stringRoles);
         this.nutritionniste = nutritionniste;
     }
 
-    public Secretaire(String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville,
-            String adresse, int nutritionniste) {
-        super(nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
-    }
-
-    public Secretaire(String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville, String adresse) {
-        super(nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
-    }
-    
-    
+    public Secretaire(String email, String nom, String prenom, String sexe, Date dateNaiss, int tel, String ville,
+            String adresse, boolean isVerified, JSONArray roles, int nutritionniste) {
+        super(email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified, roles);
+        this.nutritionniste = nutritionniste;
+    }    
     
     public int getNutritionniste() {
         return nutritionniste;
@@ -42,7 +44,4 @@ public class Secretaire extends User
     {
         return "Secretaire{" + "nutritionniste=" + nutritionniste + '}';
     }
-    
-    
-    
 }

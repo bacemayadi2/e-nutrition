@@ -6,8 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
@@ -108,10 +106,9 @@ public class ServiceChallenge implements IService<Challenge>
         return oblist;
     }
    
-     public ObservableList<Challenge> Search(String value) 
+    public ObservableList<Challenge> Search(String value) 
     {
         ObservableList<Challenge> oblist = FXCollections.observableArrayList();
-        //List <Challenge> list = new ArrayList<>();
         try
         {
             String req = "SELECT * FROM challenge where titre=?";

@@ -2,18 +2,11 @@ package e.nutrition.gui;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
-import e.nutrition.Models.Nutritionniste;
 import e.nutrition.Models.Secretaire;
-import e.nutrition.Services.ServiceNutritionniste;
 import e.nutrition.Services.ServiceSecretaire;
-import e.nutrition.Utils.DataSource;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.json.JSONArray;
 
 /**
  * FXML Controller class
@@ -59,6 +53,8 @@ public class RegisterSecretaireController implements Initializable
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -67,6 +63,9 @@ public class RegisterSecretaireController implements Initializable
         sexe.add("Femme");
         
         Secretaire_sexe.getItems().addAll(sexe);
+        
+        ServiceSecretaire ss = new ServiceSecretaire();
+        System.out.println("Secrétaire: " + ss.Display());
     }
 
     @FXML
@@ -97,9 +96,15 @@ public class RegisterSecretaireController implements Initializable
     @FXML
     private void btn_RegisterSecretaire(ActionEvent event) throws SQLException 
     {
+        JSONArray array = new JSONArray();
+        array.put("ROLE_USER");
+        array.put("ROLE_SECRETAIRE");
+        
         ServiceSecretaire ss = new ServiceSecretaire();
-        ss.Add(new Secretaire(Secretaire_nom.getText(), Secretaire_prenom.getText(), Secretaire_sexe.getValue(),
-                Date.valueOf(Secretaire_dateNaiss.getValue()), Secretaire_email.getText(), Integer.parseInt(Secretaire_tel.getText()),
-                Secretaire_ville.getText(), Secretaire_adresse.getText()));
+        
+        ss.Add(new Secretaire(Secretaire_email.getText(), Secretaire_nom.getText(), Secretaire_prenom.getText(),
+                Secretaire_sexe.getValue(), Date.valueOf(Secretaire_dateNaiss.getValue()),
+                Integer.parseInt(Secretaire_tel.getText()), Secretaire_ville.getText(), Secretaire_adresse.getText(),
+                false, array, 0));
     }
 }

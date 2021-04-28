@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  *
@@ -20,10 +19,12 @@ public class MainGUI extends Application
         Parent root = FXMLLoader.load(getClass().getResource("../gui/Login.fxml"));
 
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AddChallenge.fxml"));
-//        Parent root = FXMLLoader.load(getClass().getResource("../gui/AddNutritionniste.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("../gui/GestionUsers.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("../gui/GestionPatients.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("../gui/GestionDoctors.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("../gui/GestionSecretaires.fxml"));
+//        primaryStage.initStyle(StageStyle.UNDECORATED);
 
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();

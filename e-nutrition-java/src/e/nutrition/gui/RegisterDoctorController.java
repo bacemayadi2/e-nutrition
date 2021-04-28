@@ -3,7 +3,6 @@ package e.nutrition.gui;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import e.nutrition.Models.Nutritionniste;
-import e.nutrition.Models.Secretaire;
 import e.nutrition.Services.ServiceNutritionniste;
 import e.nutrition.Services.ServiceSecretaire;
 import e.nutrition.Utils.DataSource;
@@ -28,7 +27,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.controlsfx.control.CheckComboBox;
 
 /**
  * FXML Controller class
@@ -64,6 +62,8 @@ public class RegisterDoctorController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -129,9 +129,10 @@ public class RegisterDoctorController implements Initializable {
         }
         
         ServiceNutritionniste sn = new ServiceNutritionniste();
-        sn.Add(new Nutritionniste(doctor_nom.getText(), doctor_prenom.getText(), doctor_sexe.getValue(),
-                Date.valueOf(doctor_dateNaiss.getValue()), doctor_email.getText(), Integer.parseInt(doctor_tel.getText()),
-                doctor_ville.getText(), doctor_adresse.getText(), id));
+        sn.Add(new Nutritionniste(doctor_email.getText(), doctor_nom.getText(), doctor_prenom.getText(),
+                doctor_sexe.getValue(), Date.valueOf(doctor_dateNaiss.getValue()), Integer.parseInt(doctor_tel.getText()),
+                doctor_ville.getText(), doctor_adresse.getText(), false, id));
+        
         //last parameter of constructor:  liste_secretaires.getCheckModel().getCheckedItems()
         
         List list = liste_secretaires.getItems();

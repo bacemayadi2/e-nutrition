@@ -74,16 +74,16 @@ public class ServiceSecretaire implements IService<Secretaire>
     {
         try
         {
-            String req = "DELETE FROM secretaire WHERE id=?";
+            String req = "DELETE FROM utilisateur WHERE id=?";
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, t.getId());
             ps.executeUpdate();
-            System.out.println("Secretaire supprimé !!!");
+            JOptionPane.showMessageDialog(null, "Secrétaire supprimé !!");
         }
         catch(SQLException e)
         {
-            System.err.println("Echec de la suppression !!!");
-            System.err.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "echec de la suppression!!");
+            JOptionPane.showMessageDialog(null, "Error !!!" + e.getMessage());
         }
     }
 
@@ -120,17 +120,18 @@ public class ServiceSecretaire implements IService<Secretaire>
         ObservableList<Secretaire> oblist = FXCollections.observableArrayList();
         try
         {
-            String req = "SELECT t1.id as id, t1.nom as nom , t1.prenom as prenom, t1.sexe as sexe, t1.date_naiss as date_naiss , t1.email as email, t1.tel as tel , t1.ville as ville , t1.adresse as adresse, t0.nutritionniste_id as nutritionniste_id  FROM secretaire t0 INNER JOIN utilisateur t1 ON t0.id = t1.id";
+            String req = "SELECT * FROM secretaire t0 INNER JOIN utilisateur t1 ON t0.id = t1.id";
             PreparedStatement ps = cnx.prepareStatement(req);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
-            {
-                oblist.add(new Secretaire(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5),
-                        rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getInt(10)));
+            {                                
+                oblist.add(new Secretaire(rs.getInt(1), rs.getString(8), rs.getString(4), rs.getString(5), rs.getString(6),
+                        rs.getDate(7), rs.getInt(9), rs.getString(11), rs.getString(12), rs.getBoolean(14),
+                        rs.getObject(15).toString(), rs.getInt(2)));
             }
         }
         catch (SQLException e)
-        {
+        { 
             JOptionPane.showMessageDialog(null, "Error !!!" + e.getMessage());
         }
         return oblist;

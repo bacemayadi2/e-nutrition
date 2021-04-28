@@ -3,6 +3,7 @@ package e.nutrition.Models;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import org.json.JSONArray;
 
 /**
  *
@@ -16,25 +17,31 @@ public class Nutritionniste extends User
     public Nutritionniste(int id) {
         super(id);
     }
-    
-    public Nutritionniste(int id, String nom, String prenom, String sexe, Date dateNaiss, String email, int tel,
-            String ville, String adresse, int secretaire)
-    {
-        super(id, nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
+
+    public Nutritionniste(String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville, String adresse, boolean isVerified, JSONArray roles, int secretaire) {
+        super(email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified, roles);
         this.secretaire = secretaire;
     }
 
-    public Nutritionniste(int id, String nom, String prenom, String sexe, Date dateNaiss, String email, int tel,
-            String ville, String adresse)
-    {
-        super(id, nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
-    }
-    
-    public Nutritionniste(String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville,
-            String adresse, int secretaire) 
-    {
-        super(nom, prenom, sexe, dateNaiss, email, tel, ville, adresse);
+    //Display doctors with id
+    public Nutritionniste(int id, String email, String nom, String prenom, String sexe, Date dateNaiss, int tel, String ville, String adresse, boolean isVerified, String stringRoles, int secretaire) {
+        super(id, email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified, stringRoles);
         this.secretaire = secretaire;
+    }
+    //Display doctors without id
+    public Nutritionniste(String email, String nom, String prenom, String sexe, Date dateNaiss, int tel, String ville, String adresse, boolean isVerified, String stringRoles, int secretaire) {
+        super(email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified, stringRoles);
+        this.secretaire = secretaire;
+    }
+
+    public Nutritionniste(String email, String nom, String prenom, String sexe, Date dateNaiss, int tel, String ville, String adresse, boolean isVerified, int secretaire) {
+        super(email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified);
+        this.secretaire = secretaire;
+    }
+
+    public Nutritionniste(int id, String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville, String adresse, boolean isVerified) 
+    {
+        super(id, nom, prenom, sexe, dateNaiss, email, tel, ville, adresse, isVerified);
     }
 
     public int getSecretaire() {
@@ -52,8 +59,8 @@ public class Nutritionniste extends User
     public void setFiches(List<FicheConsultation> fiches) {
         this.fiches = fiches;
     }
-    
-    
+
+
     @Override
     public String toString() 
     {
