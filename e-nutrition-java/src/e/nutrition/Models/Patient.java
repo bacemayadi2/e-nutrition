@@ -1,6 +1,8 @@
 package e.nutrition.Models;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -9,7 +11,7 @@ import java.sql.Date;
 public class Patient extends User
 {
     private String styleDeVie;
-
+ private List <FicheConsultation> fiches = new ArrayList();
     public Patient(int id, String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville,
             String adresse, String styleDeVie, boolean isVerified) {
         

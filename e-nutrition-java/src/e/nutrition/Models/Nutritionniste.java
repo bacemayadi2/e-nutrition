@@ -1,6 +1,8 @@
 package e.nutrition.Models;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -9,6 +11,7 @@ import java.sql.Date;
 public class Nutritionniste extends User
 {
     private int secretaire;
+     private List <FicheConsultation> fiches = new ArrayList();
 
     public Nutritionniste(int id) {
         super(id);
@@ -41,6 +44,15 @@ public class Nutritionniste extends User
     public void setSecretaire(int secretaire) {
         this.secretaire = secretaire;
     }
+
+    public List<FicheConsultation> getFiches() {
+        return fiches;
+    }
+
+    public void setFiches(List<FicheConsultation> fiches) {
+        this.fiches = fiches;
+    }
+    
     
     @Override
     public String toString() 

@@ -1,11 +1,14 @@
 package e.nutrition.Services;
 
+import e.nutrition.Models.FicheConsultation;
 import e.nutrition.Models.Patient;
 import e.nutrition.Utils.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javax.swing.JOptionPane;
@@ -149,5 +152,25 @@ public class ServicePatient implements IService<Patient>
                 JOptionPane.showMessageDialog(null, "Error !!" + e.getMessage());
             }
             return oblist;
+    }
+    
+      public Patient getById(int id) {
+          Patient a = null;
+         String requete = "     SELECT t1.id, t1.nom as nom , t1.prenom as prenom, t1.sexe as sexe, t1.date_naiss as date_naiss"
+                 + " ,t1.email as email, t1.tel as tel , t1.ville as ville , t1.adresse as adresse, t0.style_de_vie as style,"
+                 + " t1.is_verified as isverified FROM patient t0  INNER JOIN utilisateur t1 ON t0.id = t1.id where t1.id='"+id+"'" ;
+        try {
+           
+                PreparedStatement ps = cnx.prepareStatement(requete);
+                ResultSet rs = ps.executeQuery();
+            if (rs.next())
+            {
+                a=new Patient(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5), rs.getString(6),
+                            rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11));}
+        } catch (SQLException ex) {
+            Logger.getLogger(FicheConsultation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return a ;
+        
     }
 }

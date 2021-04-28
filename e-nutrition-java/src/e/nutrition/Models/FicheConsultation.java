@@ -5,6 +5,7 @@
  */
 package e.nutrition.Models;
 
+import e.nutrition.Models.tags.TagFicheConsultation;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +22,94 @@ public class FicheConsultation {
     private String symptome;
     private String apetit;
       private String description;
+      private int patient;
+      private String nompatient;
+   private int nutritionniste;
+   private String nomnutritionniste;
+     private List <TagFicheConsultation> tags = new ArrayList();
+ 
+    public void ajoutertag(TagFicheConsultation t) {
+      if (t != null)
+      {
+          tags.add(t);
+      }
+    }
+
+    public void supprimertag(TagFicheConsultation t) {
+     if (t!=null)
+      {
+          tags.remove(t);
+      }
+    }
+
+    public List<TagFicheConsultation> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<TagFicheConsultation> tags) {
+        this.tags = tags;
+    }
+        
+    
+    
+    
+
+    public String getNompatient() {
+        return nompatient;
+    }
+
+    public void setNompatient(String nompatient) {
+        this.nompatient = nompatient;
+    }
+
+    public String getNomnutritionniste() {
+        return nomnutritionniste;
+    }
+
+    public void setNomnutritionniste(String nomnutritionniste) {
+        this.nomnutritionniste = nomnutritionniste;
+    }
+   
+    
  
    private List <Medicament> medicaments = new ArrayList();
 
+    public FicheConsultation(int id, Date creation_date, float poids, float taille, String symptome, String apetit, String description,int patient,int nutritionniste) {
+        this.id = id;
+        this.creation_date = creation_date;
+        this.poids = poids;
+        this.taille = taille;
+        this.symptome = symptome;
+        this.apetit = apetit;
+        this.description = description;
+        this.patient=patient;
+          this.nutritionniste=nutritionniste;
+   
+    }
+
+    public FicheConsultation(Date creation_date, float poids, float taille, String symptome, String apetit, String description,int patient,int nutritionniste) {
+        this.creation_date = creation_date;
+        this.poids = poids;
+        this.taille = taille;
+        this.symptome = symptome;
+        this.apetit = apetit;
+        this.description = description;
+        this.patient=patient;
+         this.nutritionniste=nutritionniste;
+        
+    }
+        public FicheConsultation(Date creation_date, float poids, float taille, String symptome, String apetit, String description,int nutritionniste) {
+        this.creation_date = creation_date;
+        this.poids = poids;
+        this.taille = taille;
+        this.symptome = symptome;
+        this.apetit = apetit;
+        this.description = description;
+         this.nutritionniste=nutritionniste;
+        
+    }
+    
+    
     public FicheConsultation(int id, Date creation_date, float poids, float taille, String symptome, String apetit, String description) {
         this.id = id;
         this.creation_date = creation_date;
@@ -32,6 +118,7 @@ public class FicheConsultation {
         this.symptome = symptome;
         this.apetit = apetit;
         this.description = description;
+       
     }
 
     public FicheConsultation(Date creation_date, float poids, float taille, String symptome, String apetit, String description) {
@@ -41,6 +128,7 @@ public class FicheConsultation {
         this.symptome = symptome;
         this.apetit = apetit;
         this.description = description;
+       
     }
     
     
@@ -106,6 +194,27 @@ public class FicheConsultation {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getPatient() {
+        return patient;
+    }
+
+    public void setPatient(int patient) {
+        this.patient = patient;
+    }
+
+    public int getNutritionniste() {
+        return nutritionniste;
+    }
+
+    public void setNutritionniste(int nutritionniste) {
+        this.nutritionniste = nutritionniste;
+    }
+
+  public float getCalculerImc()
+    {
+        return (this.getPoids()/this.getTaille());
     }
 
     @Override

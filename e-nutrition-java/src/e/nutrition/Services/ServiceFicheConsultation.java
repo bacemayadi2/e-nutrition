@@ -7,6 +7,9 @@ package e.nutrition.Services;
 
 import e.nutrition.Models.FicheConsultation;
 import e.nutrition.Models.FicheConsultation;
+import e.nutrition.Models.Nutritionniste;
+import e.nutrition.Models.Patient;
+import e.nutrition.Models.tags.TagFicheConsultation;
 import e.nutrition.Utils.DataSource;
 import java.sql.Array;
 import java.sql.Connection;
@@ -28,6 +31,7 @@ import javafx.collections.ObservableList;
 public class ServiceFicheConsultation implements IService <FicheConsultation> {
     
      Connection cnx = DataSource.getInstance().getCnx();
+     ServiceTag sT = new ServiceTag();
         private Statement ste;
     private PreparedStatement pst ;
     private ResultSet res ;
@@ -36,15 +40,17 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
     {
         try
         {
-            String req = "INSERT INTO fiche_consultation (creation_date, poids, taille, symptome, apetit, description) VALUES "
-                    + "(?,?,?,?,?,?)             ";
+            String req = "INSERT INTO fiche_consultation (creation_date, poids, taille, symptome, apetit,patient_id, description,nutritionniste_id) VALUES "
+                    + "(?,?,?,?,?,?,?,?)             ";
             PreparedStatement ps = cnx.prepareStatement(req);
             ps.setDate(1, t.getCreation_date());
             ps.setFloat(2, t.getPoids());
             ps.setFloat(3, t.getTaille());
             ps.setString(4, t.getSymptome());
             ps.setString(5, t.getApetit());
-            ps.setString(6, t.getDescription());
+              ps.setInt(6,t.getPatient());
+              ps.setString(7, t.getDescription());
+                ps.setInt(8,t.getNutritionniste());
             ps.executeUpdate();
             System.out.println("Fiche ajoutée !!");
         }
@@ -57,19 +63,21 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
 
     
     @Override
-    public void Update(FicheConsultation t) {
+    public void Update(FicheConsultation f) {
      
           try
         {
-            String req = "UPDATE fiche_consultation SET creation_date=?, poids=?, taille=?, symptome=?, apetit=?, description=? WHERE id=?";
+            String req = "UPDATE fiche_consultation SET creation_date=?, poids=?, taille=?, symptome=?, apetit=?, patient_id=? description=?,nutritionniste_id=? WHERE id=?";
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setInt(1, t.getId());
-            ps.setDate(2, t.getCreation_date());
-            ps.setFloat(3, t.getPoids());
-            ps.setFloat(4, t.getTaille());
-            ps.setString(5, t.getSymptome());
-            ps.setString(6, t.getApetit());
-            ps.setString(7, t.getDescription());
+            ps.setInt(1, f.getId());
+            ps.setDate(2, f.getCreation_date());
+            ps.setFloat(3, f.getPoids());
+            ps.setFloat(4, f.getTaille());
+            ps.setString(5, f.getSymptome());
+            ps.setString(6, f.getApetit());
+            ps.setInt(7,f.getPatient());
+            ps.setString(8, f.getDescription());
+            ps.setInt(9,f.getNutritionniste());
             ps.executeUpdate();
     
             System.out.println("Success update !!");
@@ -107,12 +115,45 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
         //List <Challenge> list = new ArrayList<>();
         try
         {
-            String req = "SELECT * FROM fiche_consultation";
+            String req = "SELECT * FROM fiche_consultation ";
             PreparedStatement ps = cnx.prepareStatement(req);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
             {
                 oblist.add(new FicheConsultation(rs.getInt(1), rs.getDate(2), rs.getFloat(3), rs.getFloat(4),rs.getString(5), rs.getString(6),rs.getString(7)));
+                
+            }
+        } 
+        catch (SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+        return oblist;
+    }
+    
+    
+       
+    
+
+        public ObservableList<FicheConsultation> DisplayAll() 
+    {
+        ObservableList<FicheConsultation> oblist = FXCollections.observableArrayList();
+        //List <Challenge> list = new ArrayList<>();
+        try
+        {
+            String req = "SELECT * FROM fiche_consultation";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                FicheConsultation f =new FicheConsultation(rs.getInt(1), rs.getDate(2), rs.getFloat(3), rs.getFloat(4),rs.getString(5), rs.getString(6),rs.getString(7));
+                ServicePatient sp = new ServicePatient();
+                ServiceNutritionniste sn = new ServiceNutritionniste();
+                Patient p = sp.getById(rs.getInt("patient_id"));
+                f.setNompatient(p.getNom());
+                Nutritionniste nut= sn.getById(rs.getInt("nutritionniste_id"));
+                f.setNomnutritionniste(nut.getNom());
+                oblist.add(f);
                 
             }
         }
@@ -122,7 +163,71 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
         }
         return oblist;
     }
-
+        
+        
+            public ObservableList<FicheConsultation> DisplayAll2(int id) 
+    {
+        ObservableList<FicheConsultation> oblist = FXCollections.observableArrayList();
+        //List <Challenge> list = new ArrayList<>();
+        try
+        {
+            String req = "SELECT * FROM fiche_consultation where nutritionniste_id=?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                FicheConsultation f =new FicheConsultation(rs.getInt(1), rs.getDate(2), rs.getFloat(3), rs.getFloat(4),rs.getString(5), rs.getString(6),rs.getString(7));
+                ServicePatient sp = new ServicePatient();
+                ServiceNutritionniste sn = new ServiceNutritionniste();
+                Patient p = sp.getById(rs.getInt("patient_id"));
+                f.setNompatient(p.getNom());
+                Nutritionniste nut= sn.getById(rs.getInt("nutritionniste_id"));
+                f.setNomnutritionniste(nut.getNom());
+                oblist.add(f);
+                
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+        return oblist;
+    }
+        
+           public ObservableList<FicheConsultation> DisplayAllPatient(int id) 
+    {
+        ObservableList<FicheConsultation> oblist = FXCollections.observableArrayList();
+        //List <Challenge> list = new ArrayList<>();
+        try
+        {
+            String req = "SELECT * FROM fiche_consultation where patient_id=?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1,id );
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                FicheConsultation f =new FicheConsultation(rs.getInt(1), rs.getDate(2), rs.getFloat(3), rs.getFloat(4),rs.getString(5), rs.getString(6),rs.getString(7));
+                ServicePatient sp = new ServicePatient();
+                ServiceNutritionniste sn = new ServiceNutritionniste();
+                Patient p = sp.getById(rs.getInt("patient_id"));
+                f.setNompatient(p.getNom());
+                Nutritionniste nut= sn.getById(rs.getInt("nutritionniste_id"));
+                f.setNomnutritionniste(nut.getNom());
+                   sT.Display("tagficheconsultation", f.getId()).forEach((tag)-> {
+               f.ajoutertag((TagFicheConsultation)tag);
+                });
+                oblist.add(f);
+                
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+        return oblist;
+    } 
+       
       @Override
     public void Delete(FicheConsultation t) 
     {
@@ -178,5 +283,22 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
       return l ;
     }
         
+    public FicheConsultation FindById(int id) throws SQLException {
+        String req = "select * from fiche_consultation where id  = ?";
+        FicheConsultation fiche = null;
+        try {
+            PreparedStatement ps = con.prepareStatement(req);
+            ps.setInt(1, id);
+            ResultSet resultSet = ps.executeQuery();
+            if (resultSet.next()) {
 
+                fiche = new FicheConsultation(resultSet.getDate(1), resultSet.getFloat(2),resultSet.getFloat(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(7));
+                System.out.println(fiche);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return fiche;
+    
+    }  
 }
