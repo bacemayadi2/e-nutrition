@@ -1,9 +1,11 @@
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*
 package e.nutrition.gui;
 
 import e.nutrition.Models.Comments;
@@ -32,7 +34,7 @@ import javax.swing.JOptionPane;
  *
  * @author Abdelhamid
  */
-/*
+
 public class AddCommentController implements Initializable {
 
     @FXML
@@ -51,11 +53,11 @@ public class AddCommentController implements Initializable {
     /**
      * Initializes the controller class.
      */
-/*
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         SuccessStoryService successStoryService = new SuccessStoryService();
-        List<SuccessStory> allStories = successStoryService.display();
+        List<SuccessStory> allStories = successStoryService.Display();
         for(SuccessStory story: allStories){
             successStoryChoice.getItems().add(story.getTitre());
         }
@@ -68,7 +70,7 @@ public class AddCommentController implements Initializable {
         SuccessStoryService successStroyService = new SuccessStoryService();
         SuccessStory selectedStory = successStroyService.getByTitle(successStoryChoice.getValue().toString());
         newComment.setSuccessId(selectedStory);
-        commentsService.add(newComment);
+        commentsService.Add(newComment);
         comment.setText("");
         mailComment.setText("");
         nomComment.setText("");
@@ -83,4 +85,3 @@ public class AddCommentController implements Initializable {
     }
     
 }
-*/

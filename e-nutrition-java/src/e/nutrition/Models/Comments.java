@@ -54,6 +54,9 @@ public class Comments implements Serializable {
         this.dateAt = dateAt;
         this.rgpd = rgpd;
     }
+
+        
+    
     
     public Integer getId() {
         return id;

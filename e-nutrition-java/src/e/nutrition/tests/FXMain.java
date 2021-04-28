@@ -41,7 +41,7 @@ public class FXMain extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
+       /* FXMLLoader loader = new FXMLLoader();
         URL url = getClass().getResource(ADD_RENDEZ_VOUS_GUI);
         loader.setLocation(url);
         Parent root = loader.load();
@@ -77,6 +77,8 @@ public class FXMain extends Application {
         primaryStage.setTitle("Delete Rendez vous");    
         primaryStage.setScene(scene);
         primaryStage.show();*/
+       
+        
       
     }
     

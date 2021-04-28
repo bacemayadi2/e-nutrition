@@ -5,23 +5,27 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="e.nutrition.gui.DashboardController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="e.nutrition.gui.DashboardController">
    <children>
-      <BorderPane layoutX="301.0" layoutY="14.0" prefHeight="747.0" prefWidth="1065.0" />
+      <BorderPane layoutX="301.0" layoutY="14.0" prefHeight="747.0" prefWidth="1065.0">
+         <center>
+            <Pane fx:id="home" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="1293.0" BorderPane.alignment="CENTER" />
+         </center></BorderPane>
       <BorderPane layoutX="14.0" layoutY="14.0" prefHeight="569.0" prefWidth="281.0">
          <top>
-            <VBox prefHeight="757.0" prefWidth="310.0" style="-fx-background-color: #a6c550;" BorderPane.alignment="CENTER">
+            <VBox prefHeight="758.0" prefWidth="281.0" style="-fx-background-color: #a6c550;" BorderPane.alignment="CENTER">
                <children>
                   <Circle centerX="10.0" centerY="10.0" fill="DODGERBLUE" layoutX="10.0" layoutY="10.0" radius="29.0" stroke="BLACK" strokeType="INSIDE">
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
                   </Circle>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="47.0" prefWidth="281.0" style="-fx-background-color: #a6c550;" text="       Home" textFill="WHITE">
+                  <Button fx:id="homebtn" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#callhome" prefHeight="47.0" prefWidth="281.0" style="-fx-background-color: #a6c550;" text="       Home" textFill="WHITE">
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
@@ -40,7 +44,7 @@
                         <FontAwesomeIcon fill="WHITE" glyphName="" glyphStyle="HOME" size="1.25em" text="" translateX="10.0" wrappingWidth="21.0" />
                      </graphic>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="41.0" prefWidth="281.0" style="-fx-background-color: #a6c550;" text="      Rendez-vous" textFill="WHITE">
+                  <Button fx:id="RDV" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#addRendezVous" prefHeight="41.0" prefWidth="281.0" style="-fx-background-color: #a6c550;" text="      Rendez-vous" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
