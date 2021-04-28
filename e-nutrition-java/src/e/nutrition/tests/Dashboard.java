@@ -5,7 +5,10 @@
  */
 package e.nutrition.tests;
 
+import e.nutrition.Models.ContenuMultimedia;
+import e.nutrition.Services.ServiceContenuMultimedia;
 import java.net.URL;
+import java.sql.Date;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,6 +23,13 @@ public class Dashboard extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        
+        
+       
+        
+        
+        
+        
         
         FXMLLoader loader = new FXMLLoader();
         URL url = getClass().getResource("../gui/Dashboard.fxml");

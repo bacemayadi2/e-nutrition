@@ -104,7 +104,17 @@ public class SuccessStoryService implements IService<SuccessStory>{
             PreparedStatement pre = cnx.prepareStatement(DELETE_STATEMENT);
             pre.setInt(1, t.getId());
             pre.executeUpdate();
-            System.out.println("SuccessStory supprimée !");
+            System.out.println("SuccessStory supprimée !: "+t.getId());
+        } catch (SQLException ex) {
+            Logger.getLogger(SuccessStoryService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void deleteById(int t) {
+        try {
+            PreparedStatement pre = cnx.prepareStatement(DELETE_STATEMENT);
+            pre.setInt(1, t);
+            pre.executeUpdate();
+            System.out.println("SuccessStory supprimée !: "+t);
         } catch (SQLException ex) {
             Logger.getLogger(SuccessStoryService.class.getName()).log(Level.SEVERE, null, ex);
         }

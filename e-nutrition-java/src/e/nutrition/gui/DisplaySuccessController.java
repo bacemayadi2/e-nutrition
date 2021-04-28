@@ -1,5 +1,7 @@
 package e.nutrition.gui;
+import e.nutrition.Models.RendezVous;
 import e.nutrition.Models.SuccessStory;
+import e.nutrition.Services.RendezVousService;
 import e.nutrition.Services.SuccessStoryService;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,12 +13,15 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -29,19 +34,6 @@ import javafx.scene.text.Text;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*
-package e.nutrition.gui;
-
-import e.nutrition.Models.SuccessStory;
-import e.nutrition.Services.SuccessStoryService;
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 
 /**
  * FXML Controller class
@@ -53,6 +45,10 @@ public class DisplaySuccessController implements Initializable {
 
     @FXML
     private Text txtx;
+    @FXML
+    private ListView<String> listSuccess;
+    @FXML
+    private Button successbtn;
 
 
     /**
@@ -64,16 +60,19 @@ public class DisplaySuccessController implements Initializable {
                 
         SuccessStoryService successStoryService = new SuccessStoryService();
         List<SuccessStory> stories = successStoryService.Display();
-        Scene scene = txtx.getScene();
+        for(SuccessStory succ : stories){
+            listSuccess.getItems().add(succ.toString());
+        }
+        
         
         
         for(SuccessStory story : stories){
             txtx.setText(story.getTitre());
            
                 
-            
+           
       
-            try {
+           /* try {
                 if (!story.getTags().isEmpty()){
                 InputStream stream1 , stream2 = null;
                 //creating the image object
@@ -113,9 +112,19 @@ public class DisplaySuccessController implements Initializable {
                 Logger.getLogger(DisplaySuccessController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(DisplaySuccessController.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            } */
             }
         }
+
+    @FXML
+    private void deleteSuccess(ActionEvent event) {
+         int selected = listSuccess.getSelectionModel().getSelectedIndex();
+        listSuccess.getItems().remove(selected);
+        String selectedItem = listSuccess.getSelectionModel().getSelectedItem();
+        Integer indexToDelete = Integer.valueOf(selectedItem.substring(17, 19));
+        RendezVousService rendezVousService = new RendezVousService();
+        rendezVousService.deleteById(selected);
+    }
    }
             
             

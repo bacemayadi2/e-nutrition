@@ -37,7 +37,7 @@ public class FXMain extends Application {
     private static final String ADD_Success_GUI = "../gui/AddSuccess.fxml";
     private static final String DISPLAY_Success_GUI = "../gui/DisplaySuccess.fxml";
     private static final String DELETE_RENDEZ_VOUS_GUI = "../gui/DeleteRDV.fxml";
-    
+    private static final String DELETE_SUCCESS_STORY_GUI = "../gui/DeleteSuccess.fxml";
     
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -49,7 +49,7 @@ public class FXMain extends Application {
         primaryStage.setTitle("Add Rendez-vous");
         primaryStage.setScene(scene);
         primaryStage.show();
-   */     
+   /*     
        /* FXMLLoader loader = new FXMLLoader();
         URL url = getClass().getResource(ADD_COMMENT_GUI);
         loader.setLocation(url);
@@ -58,7 +58,7 @@ public class FXMain extends Application {
         primaryStage.setTitle("Add comment");
         primaryStage.setScene(scene);
         primaryStage.show();
-        */
+        *//*
         FXMLLoader loader = new FXMLLoader();
         URL url = getClass().getResource(ADD_Success_GUI);
         loader.setLocation(url);
@@ -77,6 +77,17 @@ public class FXMain extends Application {
         primaryStage.setTitle("Delete Rendez vous");    
         primaryStage.setScene(scene);
         primaryStage.show();*/
+        
+        FXMLLoader loader = new FXMLLoader();
+        URL url = getClass().getResource(DELETE_SUCCESS_STORY_GUI);
+        loader.setLocation(url);
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        primaryStage.setTitle("Delete SuccessStory");    
+        primaryStage.setScene(scene);
+        primaryStage.show();
+       
+        
       
     }
     
