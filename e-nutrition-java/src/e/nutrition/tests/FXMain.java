@@ -49,7 +49,7 @@ public class FXMain extends Application {
         primaryStage.setTitle("Add Rendez-vous");
         primaryStage.setScene(scene);
         primaryStage.show();
-   /*     
+   */     
        /* FXMLLoader loader = new FXMLLoader();
         URL url = getClass().getResource(ADD_COMMENT_GUI);
         loader.setLocation(url);
@@ -58,7 +58,7 @@ public class FXMain extends Application {
         primaryStage.setTitle("Add comment");
         primaryStage.setScene(scene);
         primaryStage.show();
-        *//*
+        */
         FXMLLoader loader = new FXMLLoader();
         URL url = getClass().getResource(ADD_Success_GUI);
         loader.setLocation(url);
@@ -77,8 +77,6 @@ public class FXMain extends Application {
         primaryStage.setTitle("Delete Rendez vous");    
         primaryStage.setScene(scene);
         primaryStage.show();*/
-       
-        
       
     }
     

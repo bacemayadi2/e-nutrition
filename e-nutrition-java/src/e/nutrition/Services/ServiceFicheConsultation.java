@@ -58,6 +58,7 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
         {
             System.out.println("Fiche non ajoutée !!");
             System.out.println(e.getMessage());
+            System.out.println(t.getPatient());
         }
     }
 

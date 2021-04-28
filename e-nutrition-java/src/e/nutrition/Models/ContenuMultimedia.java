@@ -17,6 +17,12 @@ import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
 
 /**
  *
@@ -39,9 +45,8 @@ public class ContenuMultimedia
         this.updatedAt = updatedAt;
     }
 
-    public ContenuMultimedia( String Description,File file) {
+    public  ContenuMultimedia( String Description,File file) {
         this.Description = Description;
-        this.sendFileToHTTP(file);
         
     }
 
@@ -103,9 +108,39 @@ public class ContenuMultimedia
     
          public int sendFileToHTTP(File file) {
         int responseCode = 0;
-        try {
+        String idMultimedi = null;
+        System.setProperty("webdriver.chrome.driver","../Ressources/chromedriver.exe");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        WebDriver driver =new ChromeDriver(options);
+             WebElement fileInput;
+             WebElement buttonAjouter;
+             WebElement fileid;
+
+             
+
+        driver.get("http://localhost:8000/ajouterfichier");
+        String actualTitle = driver.getTitle();
+           if (actualTitle.contentEquals("Hello")){
+            System.out.println("Test Passed!");
+            fileInput = driver.findElement(By.id("contenu_multimedia_fileMultimedia_file"));
+            fileInput.sendKeys(file.getPath());
+            buttonAjouter =driver.findElement(By.id("contenu_multimedia_Ajouter"));
+            buttonAjouter.click();
+            fileid = driver.findElement(By.id("fileid"));
+              idMultimedi = fileid.getText();
+
+         //   fileInput.click();
+        } else {
+            System.out.println("Test Failed");
+        }
+           
+                 driver.close();
+
+        
+   /*     try {
             System.out.println(file);
-            URL url = new URL("http://127.0.0.1:8000/ajouterfichier");
+            URL url = new URL("http://127.0.0.1:8000/api/ajouterfichier");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection(); 
             //Set Request Type to POST
             conn.setRequestMethod("POST");
@@ -128,6 +163,7 @@ public class ContenuMultimedia
             wr.flush();
             wr.close();
 
+            System.out.println(conn.getResponseMessage());
             //Fetch Response Code
             responseCode = conn.getResponseCode();
 
@@ -147,11 +183,61 @@ public class ContenuMultimedia
         }
         //Return the response code
              System.out.println(responseCode);
-        return responseCode;
+        return responseCode;*/
+   return Integer.parseInt(idMultimedi);
     }
 
+ public void deleteMultimedia(int id )
+ {   
+     int responseCode = 0;
+        try {
+            System.out.println(file);
+            URL url = new URL("http://127.0.0.1:8000/deletemultimedia");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection(); 
+            //Set Request Type to POST
+            conn.setRequestMethod("POST");
+            //Send text data
+            conn.setRequestProperty("Content-Type", "text/plain");
+
+            //Replace the file-path with your local file-path
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            StringBuffer data = new StringBuffer();
+            String tempLine;
+            while ((tempLine = br.readLine()) != null) {
+                data.append(tempLine);
+            }
+            br.close();
+
+            // Send post request
+            conn.setDoOutput(true);
+            DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
+            wr.writeBytes(data.toString());
+            wr.flush();
+            wr.close();
+
+            System.out.println(conn.getResponseMessage());
+            //Fetch Response Code
+            responseCode = conn.getResponseCode();
+
+            //Read the response
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(conn.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     
-    
+            //Return the response code
+             System.out.println(responseCode);
+    }
+
     
             
 }

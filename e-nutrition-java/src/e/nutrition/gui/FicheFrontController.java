@@ -110,13 +110,13 @@ public class FicheFrontController implements Initializable {
 //                img.setFitHeight(10);
 //                img.setFitWidth(20);
      
-       /* c.setStroke(Color.SEAGREEN);
+        c.setStroke(Color.SEAGREEN);
             System.out.println(listComp.get(i).getId());
              System.out.println(listComp.get(i).getTags());
         c.setFill(new ImagePattern(new Image(listComp.get(i).getTags().get(0).getUrl())));
         c.setEffect(new DropShadow(+25d , 0d, +2d, Color.DARKSEAGREEN));
 
-         */
+         
 
             VBoxComp.getChildren().add(c);
 

@@ -42,17 +42,16 @@ public class ServiceTag {
         return type;
     }
     
-    public void Add(Tag t ,int idElmentOftheTag ) {
+    public void Add(Tag t ,int idElmentOftheTag, int id_multimedia ) {
         try
         {
             //determin tag type 
             String type =this.type(t);  
              
-            int generatedID= sCM.Add(t.getContenuMultimedia());
             //tag mere
             String reqTagMere ="INSERT INTO tag (contenu_multimedia_id, dtype) VALUES (?, ?)";
             PreparedStatement psTagMere=cnx.prepareStatement(reqTagMere, Statement.RETURN_GENERATED_KEYS);
-            psTagMere.setInt(1, generatedID);
+            psTagMere.setInt(1, id_multimedia);
             int idmere=0;
             String reqfille=null;
             PreparedStatement psTagFille=null;
