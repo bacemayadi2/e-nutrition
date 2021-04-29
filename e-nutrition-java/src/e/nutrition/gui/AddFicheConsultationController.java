@@ -148,6 +148,13 @@ public class AddFicheConsultationController implements Initializable {
         sf.Delete(FicheConsultation);
         refreshTableView();
         RechercheAV();
+                  String title = "succes ";
+        String message = "fiche syprimée avec succes";
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndWait();
     }
 
     @FXML
@@ -170,6 +177,13 @@ public class AddFicheConsultationController implements Initializable {
         
         refreshTableView();    
         RechercheAV();  
+            String title = "succes ";
+        String message = "fiche ajouté avec succes";
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndWait();
     }
     
     
@@ -292,6 +306,14 @@ public class AddFicheConsultationController implements Initializable {
         sm.Delete(medicament);
       
          AfficherMed(event); 
+                    
+            String title = "succes ";
+        String message = "medicament supprimé avec succes";
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndWait();
     }
 
     @FXML

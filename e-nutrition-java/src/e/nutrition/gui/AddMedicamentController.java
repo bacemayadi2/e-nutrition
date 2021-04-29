@@ -30,6 +30,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javax.swing.JOptionPane;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -104,7 +106,14 @@ public class AddMedicamentController implements Initializable {
         System.out.println(medicamentQuantite.getText());
         System.out.println(medicamentDuree.getText());
         JOptionPane.showMessageDialog(null, "confirmation d'ajout"); 
-        refreshTableVieww();               
+        refreshTableVieww(); 
+             String title = "succes ";
+        String message = "medicament ajouté avec succes";
+         TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndWait();
         
     }
     
@@ -125,6 +134,14 @@ public class AddMedicamentController implements Initializable {
          Medicament medicament = tableview_medicament.getSelectionModel().getSelectedItem();
         sm.Delete(medicament);
         refreshTableVieww(); 
+        String title = "succes ";
+        String message = "medicament supprimé avec succes";
+         TrayNotification tray = new TrayNotification();
+        tray.setTitle(title);
+        tray.setMessage(message);
+        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.showAndWait();
+        
         
         
     }
