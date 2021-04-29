@@ -58,8 +58,8 @@ public class FXMain extends Application {
         primaryStage.setTitle("Add comment");
         primaryStage.setScene(scene);
         primaryStage.show();
-        *//*
-        FXMLLoader loader = new FXMLLoader();
+        */
+        /*FXMLLoader loader = new FXMLLoader();
         URL url = getClass().getResource(ADD_Success_GUI);
         loader.setLocation(url);
         Parent root = loader.load();
@@ -68,8 +68,8 @@ public class FXMain extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         
-        /*
-        FXMLLoader loader = new FXMLLoader();
+        
+        /*FXMLLoader loader = new FXMLLoader();
         URL url = getClass().getResource(DELETE_RENDEZ_VOUS_GUI);
         loader.setLocation(url);
         Parent root = loader.load();

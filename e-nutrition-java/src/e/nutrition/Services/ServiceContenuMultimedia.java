@@ -64,7 +64,7 @@ public class ServiceContenuMultimedia {
     {
            try 
       {
-        String req = "DElETE from Contenu_multimedia  WHERE id = ?"    ;
+        String req = "DELETE FROM pidev3a.contenu_multimedia  WHERE id = ?"    ;
         PreparedStatement   ps= cnx.prepareStatement(req);
         ps.setInt(1, c.getId());
         ps.executeUpdate();

@@ -94,16 +94,16 @@ public class AddSuccessController implements Initializable {
         successStory.setDateCreation(new Date());
         
         SuccessStoryService successStoryService = new SuccessStoryService();
-        int successStoryId = 38 ;//successStoryService.addAndGet(successStory);
-        successStory.setId(successStoryId);
+        
         
         // tag starting 
         selectedFiles.forEach((file)-> {
         ContenuMultimedia contenuMultimedia=new ContenuMultimedia("",file);
         TagSuccessStory tagsuccess =new TagSuccessStory(contenuMultimedia);
-        sTag.Add(tagsuccess, successStoryId,contenuMultimedia.sendFileToHTTP(file));
-        successStory.ajoutertag(tagsuccess);
+        
+        
                });
+        successStoryService.Add(successStory);
         
         
                

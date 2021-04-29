@@ -6,8 +6,12 @@
 
 package e.nutrition.Services;
 
+import e.nutrition.Models.ContenuMultimedia;
 import e.nutrition.Models.SuccessStory;
+import e.nutrition.Models.tags.Tag;
+import e.nutrition.Models.tags.TagSuccessStory;
 import e.nutrition.Utils.DataSource;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -31,7 +35,8 @@ public class SuccessStoryService implements IService<SuccessStory>{
     private static final String INSERT_STATEMENT = "Insert into pidev3a.success_story(titre, text, date_creation) values (?,?,?)";
     private static final String DELETE_STATEMENT = "DELETE FROM pidev3a.success_story WHERE id = ? ";
     private static final String UPDATE_STATEMENT = "UPDATE pidev3a.success_story SET titre = ?, text = ?, date_creation = ?, like_story = ?  WHERE id = ? ";
-    private static final String SELECT_STATEMENT = "SELECT * FROM pidev3a.success_story";
+    private static final String SELECT_STATEMENT = "SELECT story.* , cm.* FROM pidev3a.success_story story left join pidev3a.tag_success_story ss ON story.id = ss.success_story_id "+
+            "left join pidev3a.tag t ON t.id = ss.id left join pidev3a.contenu_multimedia cm ON t.contenu_multimedia_id = cm.id";
     private static final String SELECT_STATEMENT_BY_ID = "SELECT * FROM pidev3a.success_story where id = ?";
     private static final String SELECT_STATEMENT_BY_TITRE = "SELECT * FROM pidev3a.success_story where titre = ?";
     private final Connection cnx = DataSource.getInstance().getCnx();
@@ -143,7 +148,16 @@ public class SuccessStoryService implements IService<SuccessStory>{
             PreparedStatement pre = cnx.prepareStatement(SELECT_STATEMENT);
             ResultSet rs = pre.executeQuery();
             while(rs.next()) {
-                SuccessStory success = new SuccessStory(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getInt(5));
+                TagSuccessStory t = null;
+                if(rs.getInt(6)!=0){
+                    
+                
+                ContenuMultimedia contenu = new ContenuMultimedia(rs.getInt(6), rs.getString(9), rs.getString(9), rs.getDate(7) , new File(rs.getString(9)) );
+                 t = new TagSuccessStory(contenu);
+             
+                }
+               SuccessStory success = new SuccessStory(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getInt(5));
+                success.getTags().add(t);
                 successStories.add(success);
             }
         } catch (SQLException ex) {
