@@ -11,7 +11,7 @@
          <children>
             <ScrollPane prefHeight="688.0" prefWidth="974.0">
                <content>
-                  <FlowPane fx:id="ficheContainer" prefHeight="270.0" prefWidth="237.0" />
+                  <FlowPane fx:id="ficheContainer" prefHeight="270.0" prefWidth="254.0" />
                </content>
             </ScrollPane>
          </children>

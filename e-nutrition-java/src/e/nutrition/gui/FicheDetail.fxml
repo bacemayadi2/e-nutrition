@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="100.0" prefWidth="493.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="e.nutrition.gui.FicheDetailController">
+   <children>
+      <Label fx:id="label_id" text="40" visible="false" />
+      <FlowPane fx:id="FlowPaneSport" layoutX="7.0" prefHeight="300.0" prefWidth="500.0">
+         <children>
+            <ScrollPane prefHeight="298.0" prefWidth="496.0">
+               <content>
+                  <FlowPane fx:id="ficheContainer" prefHeight="294.0" prefWidth="492.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </FlowPane>
+   </children>
+</AnchorPane>

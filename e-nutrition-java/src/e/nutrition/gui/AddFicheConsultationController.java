@@ -89,7 +89,8 @@ public class AddFicheConsultationController implements Initializable {
     private TableView<FicheConsultation> tableview_fiche;
    private ServiceFicheConsultation sf = new ServiceFicheConsultation();
    ServicePatient sp = new ServicePatient();
-   
+    
+         
     private int fiche_Id;
     @FXML
     private TableView<Medicament> tableview_medicaments;
@@ -151,9 +152,10 @@ public class AddFicheConsultationController implements Initializable {
 
     @FXML
     private void btn_ajouter_fiche(ActionEvent event) {
-        fichePatientAffectation.getValue();
-        
-     sf.Add(new FicheConsultation(Date.valueOf(ficheDateCreation.getValue()),(Float.valueOf(fichePoids.getText())),(Float.valueOf(ficheTaille.getText())),ficheSymptome.getText(),ficheApetit.getText(),ficheDescription.getText(),64));
+     ServicePatient sp = new ServicePatient();
+     Patient p = sp.getBynom(fichePatientAffectation.getSelectionModel().getSelectedIndex());
+                 
+     sf.Add(new FicheConsultation(Date.valueOf(ficheDateCreation.getValue()),(Float.valueOf(fichePoids.getText())),(Float.valueOf(ficheTaille.getText())),ficheSymptome.getText(),ficheApetit.getText(),ficheDescription.getText(),p.getId(),64));
         System.out.println(Date.valueOf(ficheDateCreation.getValue()));
         System.out.println(fichePoids.getText());
     

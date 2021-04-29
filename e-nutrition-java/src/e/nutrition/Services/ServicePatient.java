@@ -194,4 +194,24 @@ public class ServicePatient implements IService<Patient>
         return a ;
         
     }
+      
+       public Patient getBynom(int id) {
+          Patient a = null;
+         String requete = "SELECT t0.id, t1.nom as nom , t1.prenom as prenom, t1.sexe as sexe, t1.date_naiss as date_naiss , t1.email as email, t1.tel as tel , t1.ville as ville ,"
+                 + " t1.adresse as adresse, t0.style_de_vie as style, t1.is_verified as isverified FROM patient t0 "
+                 + "INNER JOIN utilisateur t1 ON t0.id = t1.id ORDER BY t0.id ASC LIMIT "+id+", 1" ;
+        try {
+           
+                PreparedStatement ps = cnx.prepareStatement(requete);
+                ResultSet rs = ps.executeQuery();
+            if (rs.next())
+            {
+                a=new Patient(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getDate(5), rs.getString(6),
+                            rs.getInt(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getBoolean(11));}
+        } catch (SQLException ex) {
+            Logger.getLogger(FicheConsultation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return a ;
+        
+    }
 }

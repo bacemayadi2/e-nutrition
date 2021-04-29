@@ -116,7 +116,7 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
         //List <Challenge> list = new ArrayList<>();
         try
         {
-            String req = "SELECT * FROM fiche_consultation ";
+            String req = "SELECT * FROM fiche_consultation";
             PreparedStatement ps = cnx.prepareStatement(req);
             ResultSet rs = ps.executeQuery();
             while(rs.next())
@@ -131,11 +131,7 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
         }
         return oblist;
     }
-    
-    
-       
-    
-
+ 
         public ObservableList<FicheConsultation> DisplayAll() 
     {
         ObservableList<FicheConsultation> oblist = FXCollections.observableArrayList();
@@ -229,6 +225,38 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
         return oblist;
     } 
        
+                      public ObservableList<FicheConsultation> DisplayAllPatientDetail(int id) 
+    {
+        ObservableList<FicheConsultation> oblist = FXCollections.observableArrayList();
+        //List <Challenge> list = new ArrayList<>();
+        try
+        {
+            String req = "SELECT * FROM fiche_consultation where id=?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1,id );
+            ResultSet rs = ps.executeQuery();
+            while(rs.next())
+            {
+                FicheConsultation f =new FicheConsultation(rs.getInt(1), rs.getDate(2), rs.getFloat(3), rs.getFloat(4),rs.getString(5), rs.getString(6),rs.getString(7));
+                ServicePatient sp = new ServicePatient();
+                ServiceNutritionniste sn = new ServiceNutritionniste();
+                Patient p = sp.getById(rs.getInt("patient_id"));
+                f.setNompatient(p.getNom());
+                Nutritionniste nut= sn.getById(rs.getInt("nutritionniste_id"));
+                f.setNomnutritionniste(nut.getNom());
+                   sT.Display("tagficheconsultation", f.getId()).forEach((tag)-> {
+               f.ajoutertag((TagFicheConsultation)tag);
+                });
+                oblist.add(f);
+                
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+        return oblist;
+    } 
       @Override
     public void Delete(FicheConsultation t) 
     {
@@ -236,8 +264,9 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
         {
             String req = "DELETE FROM fiche_consultation WHERE id=?";
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setInt(1, t.getId());
+            ps.setInt(1,t.getId());
             ps.executeUpdate();
+             
             System.out.println("fiche supprimée !!");
         }
         catch(SQLException e)
@@ -288,12 +317,12 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
         String req = "select * from fiche_consultation where id  = ?";
         FicheConsultation fiche = null;
         try {
-            PreparedStatement ps = con.prepareStatement(req);
+            PreparedStatement ps = cnx.prepareStatement(req);
             ps.setInt(1, id);
             ResultSet resultSet = ps.executeQuery();
             if (resultSet.next()) {
 
-                fiche = new FicheConsultation(resultSet.getDate(1), resultSet.getFloat(2),resultSet.getFloat(3), resultSet.getString(4), resultSet.getString(5), resultSet.getString(7));
+                fiche = new FicheConsultation(resultSet.getDate(2), resultSet.getFloat(3),resultSet.getFloat(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
                 System.out.println(fiche);
             }
         } catch (Exception e) {

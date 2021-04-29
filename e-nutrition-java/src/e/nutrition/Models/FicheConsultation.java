@@ -87,7 +87,7 @@ public class FicheConsultation {
    
     }
 
-    public FicheConsultation(Date creation_date, float poids, float taille, String symptome, String apetit, String description,int patient,int nutritionniste) {
+     public FicheConsultation(Date creation_date, float poids, float taille, String symptome, String apetit, String description,int patient,int nutritionniste) {
         this.creation_date = creation_date;
         this.poids = poids;
         this.taille = taille;
@@ -98,18 +98,7 @@ public class FicheConsultation {
          this.nutritionniste=nutritionniste;
         
     }
-        public FicheConsultation(Date creation_date, float poids, float taille, String symptome, String apetit, String description,int nutritionniste) {
-        this.creation_date = creation_date;
-        this.poids = poids;
-        this.taille = taille;
-        this.symptome = symptome;
-        this.apetit = apetit;
-        this.description = description;
-         this.nutritionniste=nutritionniste;
-        
-    }
-    
-    
+ 
     public FicheConsultation(int id, Date creation_date, float poids, float taille, String symptome, String apetit, String description) {
         this.id = id;
         this.creation_date = creation_date;

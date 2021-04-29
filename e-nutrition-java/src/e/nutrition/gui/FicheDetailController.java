@@ -6,7 +6,10 @@
 package e.nutrition.gui;
 
 import e.nutrition.Models.FicheConsultation;
+import e.nutrition.Models.Medicament;
+import e.nutrition.Models.Patient;
 import e.nutrition.Services.ServiceFicheConsultation;
+import e.nutrition.Services.ServiceMedicament;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,10 +18,13 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -38,6 +44,7 @@ import javafx.scene.control.OverrunStyle;
 import javafx.scene.control.Separator;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
@@ -53,31 +60,40 @@ import javafx.stage.Stage;
  *
  * @author Admin
  */
-public class FicheFrontController implements Initializable {
+public class FicheDetailController implements Initializable {
 
     @FXML
     private FlowPane ficheContainer;
     @FXML
     private FlowPane FlowPaneSport;
+    @FXML
+    private Label label_id;
    
+    ServiceMedicament sm = new ServiceMedicament();
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
-        try {
+        label_id.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+               try {
             aff();
         } catch (SQLException ex) {
             Logger.getLogger(FicheFrontController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
+            }
+        });
+       
+
           
     }    
     
     void aff() throws SQLException {
                 ServiceFicheConsultation ser = new ServiceFicheConsultation();
               
-        ObservableList<FicheConsultation> listComp = FXCollections.observableArrayList(ser.DisplayAllPatient(67));
+        ObservableList<FicheConsultation> listComp = FXCollections.observableArrayList(ser.DisplayAllPatientDetail(Integer.valueOf(label_id.getText())));
 
         System.out.println("We're right here for now ");
         ArrayList<Separator> as = new ArrayList<>();
@@ -85,7 +101,7 @@ public class FicheFrontController implements Initializable {
         ArrayList<HBox> btnP = new ArrayList<>();
 
         System.out.println(listComp.size());
-        for (int i = 0; i <listComp.size(); i++) {
+        for (int i = 0; i <1; i++) {
 
             Separator h = new Separator(Orientation.VERTICAL);
             h.setPrefWidth(20);
@@ -98,8 +114,8 @@ public class FicheFrontController implements Initializable {
         VBoxComp.setStyle("-fx-background-color : #FFFFFF;");    
     VBoxComp.setStyle("-fx-border-color : #EAE9FC;");
             VBoxComp.setAlignment(Pos.CENTER);
-            VBoxComp.setPrefHeight(265);
-            VBoxComp.setPrefWidth(270);
+            VBoxComp.setPrefHeight(500);
+            VBoxComp.setPrefWidth(495);
             HBox panne = new HBox();
               panne.setSpacing(5);
              panne.setStyle("-fx-background-color : #FFFFFF;");
@@ -107,9 +123,9 @@ public class FicheFrontController implements Initializable {
            
          //   VBoxComp.setStyle("-fx-border-color : #2B48E8;");
             panne.setAlignment(Pos.CENTER);
-            panne.setPrefHeight(30);
-            panne.setPrefWidth(80);
-                    Circle c = new Circle(60);
+            panne.setPrefHeight(-10);
+            panne.setPrefWidth(90);
+                    Circle c = new Circle(90);
 
 //                ImageView img = new ImageView(new Image(new FileInputStream("C:\\Users\\loume78\\Desktop\\Mon_cv\\loume.png")));
 //                img.setFitHeight(10);
@@ -132,13 +148,26 @@ public class FicheFrontController implements Initializable {
             Label participant = new Label("Date: " + listComp.get(i).getCreation_date());
               Label sym = new Label("symptome: " + listComp.get(i).getSymptome());
               Label apetit = new Label("apetit: " + listComp.get(i).getApetit());
+                Label description = new Label("description: " + listComp.get(i).getDescription());
       
-
+              
   
             VBoxComp.getChildren().add(taille);
             VBoxComp.getChildren().add(category2);
             VBoxComp.getChildren().add(participant);
-              VBoxComp.getChildren().add(sym);
+            VBoxComp.getChildren().add(sym);
+            
+           
+              List<Medicament> lista =  sm.DisplayByFiche(Integer.valueOf(label_id.getText()));
+              
+                      for (Medicament aux : lista)
+                {
+                    Label nommed =new Label("Nom med :"+aux.getNom());
+                    Label quantite =new Label("Quantité :"+aux.getQuantite());
+                      Label duree =new Label("Duree :"+aux.getDuree());
+            VBoxComp.getChildren().add(nommed);
+            VBoxComp.getChildren().add(quantite);
+                }
 
 
             vbx.add(VBoxComp);
@@ -160,7 +189,7 @@ public class FicheFrontController implements Initializable {
             
               int idFiche = listComp.get(i).getId();
             FicheConsultation f = ser.FindById(idFiche);
-          Button btnDetail = new Button("voir plus");
+          Button btnDetail = new Button("retour");
               panne.getChildren().add(btnDetail);
             VBoxComp.getChildren().add(panne);
             System.out.println(listComp.get(i));
@@ -174,17 +203,12 @@ public class FicheFrontController implements Initializable {
                    // category.setText(s1.getCategorie());
                     apetit.setText(f.getApetit());
                   //  date.setValue(s1.getDate_start().toLocalDate());
-        
                                       try {
                 FXMLLoader Loader = new FXMLLoader();
-                Loader.setLocation(getClass().getResource("FicheDetail.fxml"));
+                Loader.setLocation(getClass().getResource("FicheFront.fxml"));
                 Parent parent = Loader.load();
-
-                FicheDetailController c = Loader.getController();
-                c.setid(idFiche);
-
                 Scene scene = new Scene(parent);
-                Stage window = (Stage) FlowPaneSport.getScene().getWindow();
+                Stage window = (Stage) ficheContainer.getScene().getWindow();
                 window.setScene(scene);
                 window.show();
 
@@ -213,4 +237,11 @@ public class FicheFrontController implements Initializable {
         
 
     }
+
+    void setid(int id) {
+        label_id.setText(String.valueOf(id));
+        System.out.println(label_id);
+    }
+
 }
+

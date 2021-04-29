@@ -17,11 +17,11 @@ import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+//import org.openqa.selenium.By;
+//import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.WebElement;
+//import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.chrome.ChromeOptions;
 
 
 /**
@@ -110,7 +110,7 @@ public class ContenuMultimedia
         int responseCode = 0;
         String idMultimedi = null;
         System.setProperty("webdriver.chrome.driver","../Ressources/chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
+     /*   ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         WebDriver driver =new ChromeDriver(options);
              WebElement fileInput;
