@@ -25,9 +25,11 @@ public class Secretaire extends User
         this.nutritionniste = nutritionniste;
     }
 
+    
+    //register
     public Secretaire(String email, String nom, String prenom, String sexe, Date dateNaiss, int tel, String ville,
-            String adresse, boolean isVerified, JSONArray roles, int nutritionniste) {
-        super(email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified, roles);
+            String adresse, boolean isVerified, JSONArray roles, String password, int nutritionniste) {
+        super(email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified, roles, password);
         this.nutritionniste = nutritionniste;
     }    
     

@@ -97,7 +97,6 @@ public class RegisterSecretaireController implements Initializable
     private void btn_RegisterSecretaire(ActionEvent event) throws SQLException 
     {
         JSONArray array = new JSONArray();
-        array.put("ROLE_USER");
         array.put("ROLE_SECRETAIRE");
         
         ServiceSecretaire ss = new ServiceSecretaire();
@@ -105,6 +104,6 @@ public class RegisterSecretaireController implements Initializable
         ss.Add(new Secretaire(Secretaire_email.getText(), Secretaire_nom.getText(), Secretaire_prenom.getText(),
                 Secretaire_sexe.getValue(), Date.valueOf(Secretaire_dateNaiss.getValue()),
                 Integer.parseInt(Secretaire_tel.getText()), Secretaire_ville.getText(), Secretaire_adresse.getText(),
-                false, array, 0));
+                false, array, Secretaire_pass.getText(), 0));
     }
 }

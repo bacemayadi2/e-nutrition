@@ -14,7 +14,6 @@ public class Patient extends User
     public Patient(int id, String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville,
             String adresse, String styleDeVie, boolean isVerified) 
     {
-        
         super(id, nom, prenom, sexe, dateNaiss, email, tel, ville, adresse, isVerified);
         this.styleDeVie = styleDeVie;
     }
@@ -28,10 +27,10 @@ public class Patient extends User
     }
     
     public Patient(String email, String nom, String prenom, String sexe, Date dateNaiss, int tel, String ville,
-            String adresse, boolean isVerified, JSONArray roles, String styleDeVie) 
+            String adresse, boolean isVerified, JSONArray roles, String password, String styleDeVie) 
     {
         
-        super(email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified, roles);
+        super(email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified, roles, password);
         this.styleDeVie = styleDeVie;
     }
 

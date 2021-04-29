@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -12,14 +13,15 @@
    <children>
       <AnchorPane layoutX="599.0" layoutY="51.0" prefHeight="447.0" prefWidth="376.0" style="-fx-background-color: #b1bfaa;">
          <children>
-            <JFXTextField focusColor="#f5f5f5" layoutX="49.0" layoutY="67.0" prefHeight="49.0" prefWidth="285.0" promptText="E-mail" unFocusColor="#b7e0a2" />
-            <JFXTextField focusColor="WHITE" layoutX="47.0" layoutY="149.0" prefHeight="49.0" prefWidth="285.0" promptText="Mot de passe" unFocusColor="#b7e0a2" />
-            <JFXButton layoutX="51.0" layoutY="294.0" onMouseClicked="#btn_login" onMouseEntered="#btn_handMouse_Enable" onMouseExited="#btn_handMouse_Disable" prefHeight="49.0" prefWidth="285.0" style="-fx-background-color: #b7e0a2;" text="Se Connecté" />
+            <JFXTextField fx:id="login_email" layoutX="49.0" layoutY="67.0" prefHeight="49.0" prefWidth="285.0" promptText="E-mail" unFocusColor="#b7e0a2" />
+            <JFXPasswordField fx:id="login_password" layoutX="47.0" layoutY="149.0" prefHeight="49.0" prefWidth="285.0" promptText="Mot de passe" unFocusColor="#b7e0a2" />
+            <JFXButton layoutX="51.0" layoutY="294.0" onAction="#btn_login" onMouseEntered="#btn_handMouse_Enable" onMouseExited="#btn_handMouse_Disable" prefHeight="49.0" prefWidth="285.0" style="-fx-background-color: #b7e0a2;" text="Se Connecté" />
             <Label layoutX="110.0" layoutY="384.0" text="Mot de pase oublié ?" textFill="WHITE" underline="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
+            
          </children>
       </AnchorPane>
       <ImageView fitHeight="550.0" fitWidth="503.0" layoutX="-1.0" layoutY="-1.0" opacity="0.16" pickOnBounds="true">

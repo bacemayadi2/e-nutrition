@@ -18,10 +18,10 @@ public class Nutritionniste extends User
         super(id);
     }
 
-    public Nutritionniste(String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville, String adresse, boolean isVerified, JSONArray roles, int secretaire) {
-        super(email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified, roles);
-        this.secretaire = secretaire;
-    }
+//    public Nutritionniste(String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville, String adresse, boolean isVerified, JSONArray roles, int secretaire) {
+//        super(email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified, roles);
+//        this.secretaire = secretaire;
+//    }
 
     //Display doctors with id
     public Nutritionniste(int id, String email, String nom, String prenom, String sexe, Date dateNaiss, int tel, String ville, String adresse, boolean isVerified, String stringRoles, int secretaire) {
@@ -34,8 +34,12 @@ public class Nutritionniste extends User
         this.secretaire = secretaire;
     }
 
-    public Nutritionniste(String email, String nom, String prenom, String sexe, Date dateNaiss, int tel, String ville, String adresse, boolean isVerified, int secretaire) {
-        super(email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified);
+    
+    //register
+    public Nutritionniste(String email, String nom, String prenom, String sexe, Date dateNaiss, int tel,
+            String ville, String adresse, boolean isVerified, JSONArray roles, String password, int secretaire)
+    {
+        super(email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified, roles, password);
         this.secretaire = secretaire;
     }
 

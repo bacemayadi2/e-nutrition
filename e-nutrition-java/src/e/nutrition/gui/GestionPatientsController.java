@@ -3,8 +3,14 @@ package e.nutrition.gui;
 import e.nutrition.Models.Patient;
 import e.nutrition.Models.User;
 import e.nutrition.Services.ServicePatient;
+import e.nutrition.Utils.DataSource;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,6 +20,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javax.swing.JOptionPane;
+import org.json.JSONArray;
 
 /**
  * FXML Controller class
@@ -68,6 +75,37 @@ public class GestionPatientsController implements Initializable {
         {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
+        
+        Connection cnx = DataSource.getInstance().getCnx();
+        try
+        {
+            PreparedStatement ps = cnx.prepareStatement("SELECT roles FROM utilisateur ");
+            ResultSet rs = ps.executeQuery();
+            List<String> list = new ArrayList<>();
+            
+            while(rs.next())
+            {
+                list.add(rs.getObject(1).toString());
+            }
+            
+             for(String i : list)
+            {
+                System.out.println("role " + i);
+                if(i.contains("ROLE_ADMIN"))
+                {
+                    System.out.println("admiin");
+                }
+            }
+            
+            
+        }
+        catch(SQLException e)
+        {
+            System.out.println("error !!" + e.getMessage());
+        }
+        
+       
+        
     }    
 
     @FXML

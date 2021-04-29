@@ -28,6 +28,12 @@ public class User
     protected boolean isVerified = false;
     protected JSONArray roles;
     protected String stringRoles;
+    protected String password;
+    
+    public User() 
+    {
+        //Empty contructor
+    }
     
     public User(int id) 
     {
@@ -49,8 +55,9 @@ public class User
         this.roles = new JSONArray();
     }
 
+    //register
     public User(String email, String nom, String prenom, String sexe, Date dateNaiss, int tel, String ville,
-            String adresse, boolean isVerified, JSONArray roles) {
+            String adresse, boolean isVerified, JSONArray roles, String password) {
         this.nom = nom;
         this.prenom = prenom;
         this.sexe = sexe;
@@ -60,6 +67,7 @@ public class User
         this.ville = ville;
         this.adresse = adresse;
         this.roles = new JSONArray();
+        this.password = password;
     }
 
     //display users with id
@@ -195,7 +203,7 @@ public class User
     {
         this.roles = roles;
     }
-
+    
     public String getStringRoles() {
         return stringRoles;
     }
@@ -204,6 +212,14 @@ public class User
         this.stringRoles = stringRoles;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     @Override
     public String toString() 
     {

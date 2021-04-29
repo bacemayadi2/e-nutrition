@@ -27,6 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.json.JSONArray;
 
 /**
  * FXML Controller class
@@ -129,9 +130,13 @@ public class RegisterDoctorController implements Initializable {
         }
         
         ServiceNutritionniste sn = new ServiceNutritionniste();
+        
+        JSONArray array = new JSONArray();
+        array.put("ROLE_DOCTOR");
+        
         sn.Add(new Nutritionniste(doctor_email.getText(), doctor_nom.getText(), doctor_prenom.getText(),
                 doctor_sexe.getValue(), Date.valueOf(doctor_dateNaiss.getValue()), Integer.parseInt(doctor_tel.getText()),
-                doctor_ville.getText(), doctor_adresse.getText(), false, id));
+                doctor_ville.getText(), doctor_adresse.getText(), false, array, doctor_pass.getText(), id));
         
         //last parameter of constructor:  liste_secretaires.getCheckModel().getCheckedItems()
         

@@ -41,7 +41,7 @@ public class ServicePatient implements IService<Patient>
             ps.setString(9, "patient");
             ps.setString(10, t.getRoles().toString());
             ps.setBoolean(11, t.isIsVerified());
-            ps.setString(12, "00000000");
+            ps.setString(12, t.getPassword());
                                    
             ps.executeUpdate();
             req = "SELECT MAX(id) FROM utilisateur";

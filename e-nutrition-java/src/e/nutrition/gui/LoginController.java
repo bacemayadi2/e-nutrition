@@ -1,7 +1,12 @@
 package e.nutrition.gui;
 
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
+import e.nutrition.Services.UserSession;
+import e.nutrition.Utils.Methods;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,12 +16,11 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -29,10 +33,16 @@ public class LoginController implements Initializable {
     private Label btn_exit;
     @FXML
     private Label btn_minimise;
+    @FXML
+    private JFXTextField login_email;
+    @FXML
+    private JFXPasswordField login_password;
 
     
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -46,9 +56,22 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void btn_login(MouseEvent event)
+    private void btn_login(ActionEvent event) throws SQLException, IOException 
     {
-        
+//        if(CheckFields())
+//        {
+            if(UserSession.login(login_email.getText(), login_password.getText()))
+            {
+                Parent root = FXMLLoader.load(getClass().getResource("ProfileUser.fxml"));
+
+                Stage stage = new Stage();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.initStyle(StageStyle.UNDECORATED);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+            }
+//        }
     }
 
     @FXML
@@ -122,6 +145,22 @@ public class LoginController implements Initializable {
     {
         btn_minimise.getScene().setCursor(Cursor.HAND);
         btn_minimise.setStyle("-fx-background-color: blue;");
+    }
+
+    public boolean CheckFields()
+    {
+        if( !Methods.isValid(login_email.getText()) )
+        {
+            JOptionPane.showMessageDialog(null, "Vérifier E-Mail SVP !!!");
+            return false;
+        }
+        
+        if(login_password.getText().isEmpty() || login_password.getText().length() < 8)
+        {
+            JOptionPane.showMessageDialog(null, "Mot de passe invalide !!!");
+            return false;
+        }
+       return true;
     }
 
 
