@@ -64,18 +64,21 @@ public class DashboardController implements Initializable {
         home.getChildren().add(newLoadedPane);
     }
 
+    @FXML
     private void callSuccess(ActionEvent event) throws IOException {
         Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("DisplaySuccess.fxml"));
         home.getChildren().clear();
         home.getChildren().add(newLoadedPane);
     }
 
+    @FXML
     private void blog(ActionEvent event) throws IOException {
         Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("List_Blog_Posts_.fxml"));
         home.getChildren().clear();
         home.getChildren().add(newLoadedPane);
     }
 
+    @FXML
     private void mesure(ActionEvent event) throws IOException {
         Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("Mesure_List_.fxml"));
         home.getChildren().clear();

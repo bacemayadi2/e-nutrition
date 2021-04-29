@@ -42,6 +42,10 @@ public class Nourriture implements ITag<TagNourriture>{
     public List<TagNourriture> getTags() {
         return tags;
     }
+
+    public Nourriture(String nom) {
+        this.nom = nom;
+    }
     
 
 

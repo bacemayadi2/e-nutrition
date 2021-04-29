@@ -205,7 +205,7 @@ public class FicheDetailController implements Initializable {
                   //  date.setValue(s1.getDate_start().toLocalDate());
                                       try {
                 FXMLLoader Loader = new FXMLLoader();
-                Loader.setLocation(getClass().getResource("FicheFront.fxml"));
+                Loader.setLocation(getClass().getResource("Dashboard.fxml"));
                 Parent parent = Loader.load();
                 Scene scene = new Scene(parent);
                 Stage window = (Stage) ficheContainer.getScene().getWindow();

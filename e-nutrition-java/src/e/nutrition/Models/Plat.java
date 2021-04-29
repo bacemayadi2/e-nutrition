@@ -19,6 +19,10 @@ public class Plat extends Nourriture {
    private List <EtapeDePreparation> etapesDePreparation = new ArrayList();
    private List <Composition> compostions = new ArrayList();
 
+    public Plat(String nom) {
+        super(nom);
+    }
+
    
      public void ajouterEtapeDePreparation(EtapeDePreparation e)
   {

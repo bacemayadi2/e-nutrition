@@ -100,7 +100,7 @@ public class AddSuccessController implements Initializable {
         selectedFiles.forEach((file)-> {
         ContenuMultimedia contenuMultimedia=new ContenuMultimedia("",file);
         TagSuccessStory tagsuccess =new TagSuccessStory(contenuMultimedia);
-        
+        contenuMultimedia.sendFileToHTTP(file);
         
                });
         successStoryService.Add(successStory);

@@ -212,4 +212,26 @@ public Aliment rechercherExactAlimentId(int id ) {
         }
         return a;    }    
     
+
+
+public Aliment rechercherExactAlimentparnom (String nom ) {
+     Aliment a=null;
+
+        try
+        {
+            String req = "SELECT t1.id as id, t1.nom as nom, t1.lipides as lipides, t1.glucides as glucides, t1.proteines as proteines, t1.poid as poid, t0.code_abarre as code_abarre , t1.nutritionniste_id as nutritionniste_id  FROM aliment t0 INNER JOIN nourriture t1 ON t0.id = t1.id where t1.nom =?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setString(1, nom);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next())
+            {
+               a=new Aliment(rs.getInt("id"),rs.getString("nom"), rs.getFloat("lipides"), rs.getFloat("glucides"), rs.getFloat("proteines"), rs.getFloat("poid"),rs.getString("code_abarre"), rs.getInt("nutritionniste_id"));
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+        return a;    }    
+    
 }
