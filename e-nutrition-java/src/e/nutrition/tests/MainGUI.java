@@ -17,7 +17,7 @@ public class MainGUI extends Application
     @Override
     public void start(Stage primaryStage) throws IOException 
     {
-        Parent root = FXMLLoader.load(getClass().getResource("../gui/Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../gui/Dashboard.fxml"));
 
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("../gui/AddChallenge.fxml"));
 //        Parent root = FXMLLoader.load(getClass().getResource("../gui/GestionUsers.fxml"));

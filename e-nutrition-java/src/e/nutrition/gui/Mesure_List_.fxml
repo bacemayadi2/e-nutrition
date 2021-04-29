@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefWidth="${AnchorPane.parent.width}" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="e.nutrition.gui.Mesure_List_Controller">
+   <children>
+      <JFXTextField fx:id="tfsearch" alignment="CENTER" layoutX="113.0" layoutY="50.0" prefHeight="44.0" prefWidth="739.0" promptText="Tapez ici pour chercher des Mesures..">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </JFXTextField>
+      <ScrollPane fx:id="scroll" fitToWidth="true" maxWidth="${scroll.parent.parent.width}" prefWidth="${scroll.parent.parent.width}" maxHeight="${scroll.parent.parent.height}" layoutY="126.0">
+         <content>
+            <VBox fx:id="vBox" alignment="CENTER" />
+         </content>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+      </ScrollPane>
+      <JFXButton fx:id="btnAdd" layoutX="896.0" layoutY="38.0" onAction="#Add" prefHeight="44.0" prefWidth="91.0" style="-fx-background-color: black;" text="Add " textFill="#d7c7c7" />
+   </children>
+</AnchorPane>

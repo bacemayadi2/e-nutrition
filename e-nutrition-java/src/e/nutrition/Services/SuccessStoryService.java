@@ -152,8 +152,9 @@ public class SuccessStoryService implements IService<SuccessStory>{
                 if(rs.getInt(6)!=0){
                     
                 
-                ContenuMultimedia contenu = new ContenuMultimedia(rs.getInt(6), rs.getString(9), rs.getString(9), rs.getDate(7) , new File(rs.getString(9)) );
-                 t = new TagSuccessStory(contenu);
+                //ContenuMultimedia contenu = new ContenuMultimedia(rs.getInt(6), rs.getString(9), rs.getString(9), rs.getDate(7) , new File(rs.getString(9)) );
+                 //t = new TagSuccessStory(contenu);
+                 // throws compilation error...
              
                 }
                SuccessStory success = new SuccessStory(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDate(4), rs.getInt(5));
