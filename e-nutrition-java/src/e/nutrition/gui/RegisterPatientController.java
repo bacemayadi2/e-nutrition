@@ -96,7 +96,7 @@ public class RegisterPatientController implements Initializable {
         ServicePatient sp = new ServicePatient();
                 
         JSONArray array = new JSONArray();
-        array.put("ROLE_PATIENT");
+        array.put("[ROLE_PATIENT]");
         
         sp.Add(new Patient( patient_email.getText(), patient_nom.getText(), patient_prenom.getText(), patient_sexe.getValue(),
                 Date.valueOf(patient_dateNaiss.getValue()), Integer.parseInt(patient_tel.getText()),

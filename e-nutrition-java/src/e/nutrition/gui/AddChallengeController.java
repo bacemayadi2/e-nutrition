@@ -23,21 +23,32 @@ import javax.swing.JOptionPane;
  */
 public class AddChallengeController implements Initializable
 {
+    @FXML
     private javafx.scene.control.TextField challengeTitre;
+    @FXML
     private javafx.scene.control.TextField challengeCategorie;
+    @FXML
     private DatePicker challengeDateDebut;
+    @FXML
     private DatePicker challengeDateFin;
+    @FXML
     private javafx.scene.control.TextArea challengeDescription;
     
-    private Button btn_add_challenge;
+    //private Button btn_add_challenge;
 
 //_______________________________________________________________________________________________________________________
     private TableColumn<Challenge, String> table_id;
+    @FXML
     private TableColumn<Challenge, String> table_titre;
+    @FXML
     private TableColumn<Challenge, String> table_desc;
+    @FXML
     private TableColumn<Challenge, String> table_cat;
+    @FXML
     private TableColumn<Challenge, String> table_datedeb;
+    @FXML
     private TableColumn<Challenge, String> table_datefin;
+    @FXML
     private TableView<Challenge> tableview_challenge;
     @FXML
     private javafx.scene.control.TextField search_field;
@@ -52,6 +63,7 @@ public class AddChallengeController implements Initializable
         refreshTableView();
     }
 
+    @FXML
     private void btn_add_challenge(ActionEvent event) 
     {
         if( checkFields() )
@@ -64,6 +76,7 @@ public class AddChallengeController implements Initializable
         }
     }
 
+    @FXML
     private void btn_update_challenge(ActionEvent event) 
     {
         if( checkFields() )

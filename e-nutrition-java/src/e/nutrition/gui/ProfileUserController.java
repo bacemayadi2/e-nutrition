@@ -2,8 +2,15 @@ package e.nutrition.gui;
 
 import e.nutrition.Models.User;
 import e.nutrition.Services.UserSession;
+import e.nutrition.Utils.DataSource;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -32,8 +39,14 @@ public class ProfileUserController implements Initializable {
     private Label profile_ville;
     @FXML
     private Label profile_sexe;
-
-    User user;
+    @FXML
+    private Label profile_style_title;
+    @FXML
+    private Label profile_style;
+    
+    private User user;
+    
+    Connection cnx = DataSource.getInstance().getCnx();
     
     /**
      * Initializes the controller class.
@@ -51,6 +64,29 @@ public class ProfileUserController implements Initializable {
         profile_adresse.setText(user.getAdresse());
         profile_ville.setText(user.getVille());
         profile_sexe.setText(user.getSexe());
+        if(user.getStringRoles().contains("ROLE_PATIENT"))
+        {
+            try 
+            {
+                String style="";
+                PreparedStatement ps = cnx.prepareStatement("SELECT style_de_vie FROM patient WHERE id=?");
+                ps.setInt(1, user.getId());
+                ResultSet rs = ps.executeQuery();
+                while(rs.next())
+                {
+                    style = rs.getString(1);
+                }
+                profile_style_title.setVisible(true);
+                profile_style.setVisible(true);
+                profile_style.setText(style);
+            } 
+            catch (SQLException ex) 
+            {
+                Logger.getLogger(ProfileUserController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+        }
     }
     
 }

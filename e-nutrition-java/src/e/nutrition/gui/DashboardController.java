@@ -140,6 +140,14 @@ public class DashboardController implements Initializable {
     @FXML
     private void callajoutplat(ActionEvent event) {
     }
+
+    @FXML
+    private void AddChallenge(ActionEvent event) throws IOException 
+    {
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("AddChallenge.fxml"));
+        home.getChildren().clear();
+        home.getChildren().add(newLoadedPane);
+    }
     
     
     

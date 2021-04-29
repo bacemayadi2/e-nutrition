@@ -7,8 +7,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="543.0" prefWidth="1012.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="e.nutrition.gui.ProfileUserController">
+<AnchorPane id="AnchorPane" prefHeight="543.0" prefWidth="1012.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="e.nutrition.gui.ProfileUserController">
    <children>
       <ImageView fx:id="profile_image" fitHeight="173.0" fitWidth="210.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="profile_nomPrenom" layoutX="261.0" layoutY="14.0" prefHeight="43.0" prefWidth="685.0" text="Nom et prénom" wrapText="true">
@@ -79,5 +78,15 @@
       <Line endX="19.0" endY="19.0" layoutX="216.0" layoutY="214.0" startX="19.0" startY="-199.0" />
       <JFXButton layoutX="17.0" layoutY="185.0" prefHeight="43.0" prefWidth="188.0" style="-fx-background-color: #30A487;" text="Modifier Mon Compte" textFill="WHITE" />
       <JFXButton layoutX="17.0" layoutY="234.0" prefHeight="43.0" prefWidth="188.0" style="-fx-background-color: #30A487;" text="Gallerie" textFill="WHITE" />
+      <Label fx:id="profile_style_title" layoutX="675.0" layoutY="153.0" text="Style de vie: " visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="profile_style" layoutX="782.0" layoutY="153.0" text="style" visible="false">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

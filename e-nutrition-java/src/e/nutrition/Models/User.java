@@ -105,7 +105,7 @@ public class User
         this.tel = tel;
         this.ville = ville;
         this.adresse = adresse;
-        this.roles = new JSONArray();
+        this.roles = roles;
         this.password = password;
     }
 
