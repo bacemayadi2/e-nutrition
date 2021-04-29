@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="1065.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="e.nutrition.gui.frontplats">
+   <children>
+      <Pane fx:id="specifique" prefHeight="747.0" prefWidth="1186.0">
+   <children>
+      <Pane layoutX="8.0" layoutY="70.0" prefHeight="246.0" prefWidth="1186.0">
+         <children>
+            <ImageView fx:id="image" fitHeight="224.0" fitWidth="426.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="453.0" layoutY="43.0" prefHeight="17.0" prefWidth="105.0" text="NBR PORTION" />
+            <Label fx:id="nbportion" layoutX="488.0" layoutY="60.0" prefHeight="17.0" prefWidth="22.0" />
+            <Label layoutX="444.0" layoutY="98.0" prefHeight="17.0" prefWidth="111.0" text="CALORIE/PORTION" />
+            <Label fx:id="calorie" layoutX="473.0" layoutY="125.0" prefHeight="17.0" prefWidth="74.0" />
+            <Label fx:id="nom_nutritionniste" layoutX="860.0" layoutY="215.0" prefHeight="36.0" prefWidth="145.0" />
+                  <Label fx:id="description" layoutX="593.0" layoutY="34.0" prefHeight="155.0" prefWidth="592.0" wrapText="true" />
+         </children>
+      </Pane>
+      <Label fx:id="nom" alignment="CENTER" layoutX="14.0" prefHeight="66.0" prefWidth="1173.0" text="plats">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+      <Circle fx:id="avatar_nutritionniste" fill="DODGERBLUE" layoutX="1138.0" layoutY="692.0" radius="41.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="1090.0" layoutY="612.0" text="by">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <FlowPane layoutX="8.0" layoutY="306.0" prefHeight="218.0" prefWidth="837.0">
+               <children>
+                  <ScrollPane fx:id="flowpanealiment" prefHeight="218.0" prefWidth="922.0">
+                     <content>
+                        <FlowPane fx:id="aliment" prefHeight="34.0" prefWidth="920.0" />
+                     </content>
+                  </ScrollPane>
+               </children></FlowPane>
+            <FlowPane fx:id="flowpanetape" layoutX="8.0" layoutY="524.0" prefHeight="210.0" prefWidth="1034.0">
+               <children>
+                  <ScrollPane prefHeight="210.0" prefWidth="1078.0">
+                     <content>
+                        <FlowPane fx:id="etape" prefHeight="70.0" prefWidth="1074.0" />
+                     </content>
+                  </ScrollPane>
+               </children></FlowPane>
+            <TitledPane animated="false" layoutX="934.0" layoutY="306.0" prefHeight="207.0" prefWidth="250.0" text="valeur nutritif">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="181.0" prefWidth="215.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="37.0" prefHeight="18.0" prefWidth="54.0" text="Proteins:" />
+                        <Label fx:id="proteine" layoutX="121.0" layoutY="37.0" prefHeight="18.0" prefWidth="124.0" text="Label" />
+                        <Label layoutX="14.0" layoutY="60.0" text="Glucides:" />
+                        <Label fx:id="glucide" layoutX="121.0" layoutY="60.0" prefHeight="18.0" prefWidth="127.0" text="Label" />
+                        <Label layoutX="14.0" layoutY="84.0" text="lipides :" />
+                        <Label fx:id="lipide" layoutX="121.0" layoutY="84.0" prefHeight="18.0" prefWidth="127.0" text="Label" />
+                        <Label layoutX="15.0" layoutY="116.0" prefHeight="18.0" prefWidth="42.0" text="KCAL:" />
+                        <Label fx:id="kcal" layoutX="121.0" layoutY="117.0" prefHeight="18.0" prefWidth="127.0" text="Label" />
+                        <Label layoutX="16.0" layoutY="144.0" prefHeight="18.0" prefWidth="105.0" text="KCAL/portion:" />
+                        <Label fx:id="kcal_portion" layoutX="122.0" layoutY="144.0" prefHeight="18.0" prefWidth="126.0" text="Label" />
+                        <Label layoutX="14.0" layoutY="14.0" text="portion:" />
+                        <Label fx:id="portion2" layoutX="121.0" layoutY="14.0" prefHeight="18.0" prefWidth="127.0" text="Label" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </TitledPane>
+   </children>        
+    </Pane>
+      <Pane fx:id="home" prefHeight="760.0" prefWidth="1198.0" visible="false">
+         <children>
+            <FlowPane fx:id="FlowPaneSport" prefHeight="695.0" prefWidth="982.0">
+               <children>
+                  <ScrollPane prefHeight="739.0" prefWidth="1140.0">
+                     <content>
+                        <FlowPane fx:id="platContainer" prefHeight="270.0" prefWidth="237.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </FlowPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

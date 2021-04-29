@@ -161,5 +161,54 @@ public class ServicePlat implements IService<Plat>{
           return oblist;   
       }    
 
+    public ObservableList<Plat> find(int id) {
+    ObservableList<Plat> oblist = FXCollections.observableArrayList();
+
+    try
+          {
+              String req = " SELECT t1.id AS id, t1.nom AS nom, t1.lipides AS lipides, t1.glucides AS glucides, t1.proteines AS proteines, t1.poid AS poid, t0.description AS description, t0.nbrportion AS nbrportion, t1.nutritionniste_id AS nutritionniste_id, t1.dtype FROM plat t0 INNER JOIN nourriture t1 ON t0.id = t1.id where t0.id=? "    ;
+              PreparedStatement ps = cnx.prepareStatement(req);
+              ps.setInt(1, id);
+              ResultSet rs = ps.executeQuery();
+
+              while(rs.next())
+              {
+                Plat p=new Plat(rs.getString("description"), rs.getInt("nbrportion"),rs.getInt("id"), rs.getString("nom"), rs.getFloat("lipides"), rs.getFloat("glucides"), rs.getFloat("proteines"), rs.getFloat("poid"), rs.getInt("nutritionniste_id"));
+                String reqetape = "SELECT t0.id AS id, t0.ordre AS ordre, t0.duree AS duree, t0.description AS description, t0.plat_id AS plat_id FROM etape_de_preparation t0 WHERE t0.plat_id = ?"    ;
+                PreparedStatement etapeStatement = cnx.prepareStatement(reqetape);
+                etapeStatement.setInt(1, p.getId());
+                ResultSet rsetape = etapeStatement.executeQuery();
+
+                while(rsetape.next())
+                {
+                    p.ajouterEtapeDePreparation(new EtapeDePreparation(rsetape.getInt("id"), rsetape.getInt("ordre"), rsetape.getInt("duree"), rsetape.getString("description")));
+                }
+                
+                String reqcompostion = "SELECT t0.id AS id, t0.poid AS poid, t0.aliment_id AS aliment_id, t0.plat_id AS plat_id FROM composition t0 WHERE t0.plat_id = ? "    ;
+                PreparedStatement pscompostion = cnx.prepareStatement(reqcompostion);
+                pscompostion.setInt(1, p.getId());
+                ResultSet rsCompostion = pscompostion.executeQuery();
+                   while(rsCompostion.next())
+                {
+                  {
+                      p.ajouterCompostions(new Composition(rsCompostion.getInt("id"),sA.rechercherExactAlimentId(rsCompostion.getInt("aliment_id")) ,p )); //new Plat(rsplat.getInt("id"), rsplat.getString("description"), rsplat.getString("nbrportion"))
+                  }
+                }
+              sT.Display("tagnourriture", p.getId()).forEach((tag)-> {
+               p.ajoutertag((TagNourriture)tag);
+                });
+              
+              oblist.add(p);
+
+              }
+          }
+          catch (SQLException e)
+          {
+              System.out.println("error");
+              System.err.println(e.getMessage());
+          }
+          return oblist;   
+      }    
+
 
 }

@@ -1,5 +1,6 @@
 package e.nutrition.Models;
 
+import e.nutrition.Models.tags.TagUtilisateur;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +15,11 @@ public class Nutritionniste extends User
     private int secretaire;
      private List <FicheConsultation> fiches = new ArrayList();
 
+    
     public Nutritionniste(int id) {
         super(id);
     }
+    
 
 //    public Nutritionniste(String nom, String prenom, String sexe, Date dateNaiss, String email, int tel, String ville, String adresse, boolean isVerified, JSONArray roles, int secretaire) {
 //        super(email, nom, prenom, sexe, dateNaiss, tel, ville, adresse, isVerified, roles);

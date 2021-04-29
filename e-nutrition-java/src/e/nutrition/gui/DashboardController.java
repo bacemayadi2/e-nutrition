@@ -37,10 +37,6 @@ public class DashboardController implements Initializable {
     private Pane home;
     @FXML
     private Button RDV;
-    @FXML
-    private Button button_blog;
-    @FXML
-    private Button button_mesure;
 
     /**
      * Initializes the controller class.
@@ -68,21 +64,18 @@ public class DashboardController implements Initializable {
         home.getChildren().add(newLoadedPane);
     }
 
-    @FXML
     private void callSuccess(ActionEvent event) throws IOException {
         Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("DisplaySuccess.fxml"));
         home.getChildren().clear();
         home.getChildren().add(newLoadedPane);
     }
 
-    @FXML
     private void blog(ActionEvent event) throws IOException {
         Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("List_Blog_Posts_.fxml"));
         home.getChildren().clear();
         home.getChildren().add(newLoadedPane);
     }
 
-    @FXML
     private void mesure(ActionEvent event) throws IOException {
         Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("Mesure_List_.fxml"));
         home.getChildren().clear();
@@ -122,6 +115,30 @@ public class DashboardController implements Initializable {
         home.getChildren().clear();
         home.getChildren().add(newLoadedPane);      
         
+    }
+     @FXML 
+    private void callNutrition(ActionEvent event) throws IOException{
+        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("frontplats.fxml"));
+        home.getChildren().clear();
+        home.getChildren().add(newLoadedPane);
+    }
+
+    @FXML
+    private void callaliment(ActionEvent event) throws IOException {
+              Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("Aliment.fxml"));
+        home.getChildren().clear();
+        home.getChildren().add(newLoadedPane);
+    }
+
+    @FXML
+    private void callcategorie(ActionEvent event) throws IOException {
+              Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("AddCategorieAliment.fxml"));
+        home.getChildren().clear();
+        home.getChildren().add(newLoadedPane);
+    }
+
+    @FXML
+    private void callajoutplat(ActionEvent event) {
     }
     
     

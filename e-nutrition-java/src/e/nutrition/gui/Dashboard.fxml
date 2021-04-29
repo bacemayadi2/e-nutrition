@@ -60,14 +60,7 @@
                         <FontAwesomeIcon fill="#fcfcfc" size="1.25em" text="" translateX="10.0" />
                      </graphic>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="281.0" style="-fx-background-color: #a6c550;" text="         Nutrition" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                     <graphic>
-                        <FontAwesomeIcon fill="#fcfcfc" size="1.25em" text="" translateX="10.0" />
-                     </graphic>
-                  </Button>
+                  
                   <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="44.0" prefWidth="283.0" style="-fx-background-color: #a6c550;" text="         Success Stories" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
@@ -122,6 +115,38 @@
                      </font>
                      <graphic>
                         <FontAwesomeIcon fill="#fcfcfc" size="1.25em" text="" translateX="10.0" />
+                     </graphic>
+                  </Button>
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="281.0" style="-fx-background-color: #a6c550;"  onAction="#callNutrition"  text="         plat" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="#fcfcfc" size="1.25em" text="" translateX="10.0" />
+                     </graphic>
+                  </Button>
+                   <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="281.0" style="-fx-background-color: #a6c550;"  onAction="#callaliment"  text="         aliment" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="#fcfcfc" size="1.25em" text="" translateX="10.0" />
+                     </graphic>
+                  </Button>
+                   <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="281.0" style="-fx-background-color: #a6c550;"  onAction="#callcategorie"  text="         categorie" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="#fcfcfc" size="1.25em" text="" translateX="10.0" />
+                     </graphic>
+                  </Button>
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="45.0" prefWidth="281.0" style="-fx-background-color: #a6c550;"  onAction="#callajoutplat"  text="         ajouterplat" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <graphic>
+                        <FontAwesomeIcon fill="#fcfcfc" size="1.25em" text="" translateX="10.0" />
                      </graphic>
                   </Button>
                </children>

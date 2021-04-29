@@ -2,6 +2,8 @@ package e.nutrition.Services;
 
 import e.nutrition.Utils.DataSource;
 import e.nutrition.Models.Nutritionniste;
+import e.nutrition.Models.tags.TagNourriture;
+import e.nutrition.Models.tags.TagUtilisateur;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,6 +21,8 @@ import javax.swing.JOptionPane;
 public class ServiceNutritionniste implements IService <Nutritionniste>
 {
     Connection cnx = DataSource.getInstance().getCnx();
+    ServiceTag sT=new ServiceTag();
+
     
     @Override
     public void Add(Nutritionniste t) 
@@ -122,6 +126,7 @@ public class ServiceNutritionniste implements IService <Nutritionniste>
                 oblist.add(new Nutritionniste(rs.getInt(1), rs.getString(7), rs.getString(3), rs.getString(4), rs.getString(5),
                         rs.getDate(6), rs.getInt(8), rs.getString(10), rs.getString(11), rs.getBoolean(13),
                         rs.getObject(14).toString(), rs.getInt(2)));
+                
             }
         }
         catch (SQLException e)
@@ -132,7 +137,7 @@ public class ServiceNutritionniste implements IService <Nutritionniste>
     }
     
           public Nutritionniste getById(int id) {
-          Nutritionniste a = null;
+          // Nutritionniste a = null;
          String requete = "SELECT t1.id as id, t1.nom as nom , t1.prenom as prenom, t1.sexe as sexe, "
                  + "t1.date_naiss as date_naiss ,t1.email as email, t1.tel as tel , t1.ville as ville , t1.adresse as adresse, t1.is_verified as isverified "
                  + "FROM nutritionniste t0 INNER JOIN utilisateur t1 ON t0.id = t1.id where t1.id='"+id+"'" ;
@@ -142,13 +147,22 @@ public class ServiceNutritionniste implements IService <Nutritionniste>
                 ResultSet rs = ps.executeQuery();
             if (rs.next())
             {
-                a = new Nutritionniste(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+                Nutritionniste a = new Nutritionniste(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
                         rs.getDate(5), rs.getString(6), rs.getInt(7), rs.getString(8), rs.getString(9), rs.getBoolean(10));
+                  
+                sT.Display("tagutilisateur", a.getId()).forEach( (tag)-> {
+               a.ajoutertag((TagUtilisateur)tag);
+
+                });
+                        return a ;
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(ServiceNutritionniste.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return a ;
+        
+       
+        return null ;
         
     }
 }

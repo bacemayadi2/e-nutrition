@@ -5,6 +5,9 @@
  */
 package e.nutrition.gui;
 
+import e.nutrition.Models.Nutritionniste;
+import e.nutrition.Models.Plat;
+import e.nutrition.Services.ServiceNutritionniste;
 import e.nutrition.Services.ServicePlat;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,6 +24,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 
+
 /**
  *
  * @author bacem
@@ -36,6 +40,8 @@ public class displayPlatController implements Initializable{
      @FXML
      private TextArea description;
          ServicePlat sp =new ServicePlat();
+                  ServiceNutritionniste sN= new ServiceNutritionniste();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -44,12 +50,20 @@ public class displayPlatController implements Initializable{
     
     public void refrechplat()
     {
-        image.setImage(new Image(sp.Display().get(0).getTags().get(0).getUrl()));
-                System.out.println(sp.Display().get(0).getTags().get(0).getUrl());
+        Plat plat=sp.find(69).get(0);
+        image.setImage(new Image(plat.getTags().get(0).getUrl()));
+                System.out.println(plat.getTags().get(0).getUrl());
         nom_plat.setText(sp.Display().get(0).getNom());
+        Nutritionniste nutritioniste= sN.getById(plat.getUser());
+        System.out.println(plat.getUser() +"by " + nutritioniste );
+        if (nutritioniste.getPhotoDeProfile() != null)
+        {
         avatar_nutritionniste.setStroke(Color.SEAGREEN);
-        avatar_nutritionniste.setFill(new ImagePattern(new Image(sp.Display().get(0).getTags().get(0).getUrl())));
+        avatar_nutritionniste.setFill(new ImagePattern(new Image(nutritioniste.getPhotoDeProfile().getUrl())));
+            System.out.println(nutritioniste.getPhotoDeProfile().getUrl());
         avatar_nutritionniste.setEffect(new DropShadow(+25d , 0d, +2d, Color.DARKSEAGREEN));
+        }
+      
         
 
     }

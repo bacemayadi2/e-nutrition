@@ -1,11 +1,15 @@
 package e.nutrition.Models;
 
+import e.nutrition.Models.tags.TagUtilisateur;
 import e.nutrition.Utils.DataSource;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.json.JSONArray;
@@ -29,6 +33,41 @@ public class User
     protected JSONArray roles;
     protected String stringRoles;
     protected String password;
+         private List<TagUtilisateur> tags = new ArrayList();
+
+    public TagUtilisateur getPhotoDeProfile()
+    {
+        Iterator<TagUtilisateur>  i= tags.iterator();
+        while(i.hasNext())
+        {    
+            TagUtilisateur t= i.next();
+             if ( t.is_photo_de_profile() )
+                 return t;
+        }
+        
+      return null;
+    }    
+    public void ajoutertag(TagUtilisateur t) {
+      if (t != null)
+      {
+          tags.add(t);
+      }
+    }
+
+    public void supprimertag(TagUtilisateur t) {
+     if (t!=null)
+      {
+          tags.remove(t);
+      }
+    }
+
+    public List<TagUtilisateur> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<TagUtilisateur> tags) {
+        this.tags = tags;
+    }
     
     public User() 
     {

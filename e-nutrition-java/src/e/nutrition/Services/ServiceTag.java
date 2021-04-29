@@ -222,15 +222,16 @@ public class ServiceTag {
     public ObservableList<Tag> Display(String type,int id ) {
                ObservableList<Tag> oblist = FXCollections.observableArrayList();
         Tag tag=null;
+        System.out.println("");
         try
         {
             String req=null;
                if(type=="tagnourriture")
                          req = "SELECT t1.id AS id, t1.contenu_multimedia_id AS contenu_multimedia_id, t0.nourriture_id AS nourriture_id, t1.dtype FROM tag_nourriture t0 INNER JOIN tag t1 ON t0.id = t1.id WHERE t0.nourriture_id = ?";
                else if (type=="tagutilisateur")    
-                         req = " SELECT t1.id AS id, t0.is_photo_de_profile AS is_photo_de_profile, t1.contenu_multimedia_id AS contenu_multimedia, t0.utilisateur_id AS utilisateur, t1.dtype FROM tag_utilisateur t0 INNER JOIN tag t1 ON t0.id = t1.id WHERE t0.utilisateur_id = ? ";
+                         req = "SELECT t1.id AS id, t0.is_photo_de_profile AS is_photo_de_profile, t1.contenu_multimedia_id AS contenu_multimedia_id, t0.utilisateur_id AS utilisateur, t1.dtype FROM tag_utilisateur t0 INNER JOIN tag t1 ON t0.id = t1.id WHERE t0.utilisateur_id = ? ";
                else if (type=="tagficheconsultation")
-                        req =" SELECT t1.id AS id, t1.contenu_multimedia_id AS contenu_multimedia_id, t0.fiche_consultation_id AS fiche_consultation_id, t1.dtype FROM tag_fiche_consultation t0 INNER JOIN tag t1 ON t0.id = t1.id WHERE t0.fiche_consultation_id = ?";
+                        req ="SELECT t1.id AS id, t1.contenu_multimedia_id AS contenu_multimedia_id, t0.fiche_consultation_id AS fiche_consultation_id, t1.dtype FROM tag_fiche_consultation t0 INNER JOIN tag t1 ON t0.id = t1.id WHERE t0.fiche_consultation_id = ?";
                else if (type=="challengetag")
                         req="SELECT t1.id AS id, t1.contenu_multimedia_id AS contenu_multimedia_id, t0.challenge_id AS challenge_id, t0.user_id AS user_id, t1.dtype FROM challenge_tag t0 INNER JOIN tag t1 ON t0.id = t1.id WHERE t0.challenge_id = ?";
                else if (type =="tagsuccessstory")
@@ -249,7 +250,11 @@ public class ServiceTag {
                     if(type=="tagnourriture") 
                         tag=new TagNourriture(rs.getInt("id"), sCM.rechercher(rs.getInt("contenu_multimedia_id")));
                     else if (type=="tagutilisateur")   
+                    {
                         tag=new TagUtilisateur(rs.getInt("id"), sCM.rechercher(rs.getInt("contenu_multimedia_id")));
+                        if (rs.getBoolean("is_photo_de_profile") ) 
+                            ((TagUtilisateur) tag).setPhotoDeProfile();
+                    }
                     else if (type=="tagficheconsultation")
                         tag=new TagFicheConsultation(rs.getInt("id"), sCM.rechercher(rs.getInt("contenu_multimedia_id")));
                     else if (type =="tagsuccessstory")
