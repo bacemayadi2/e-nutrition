@@ -62,7 +62,7 @@ public class LoginController implements Initializable {
 //        {
             if(UserSession.login(login_email.getText(), login_password.getText()))
             {
-                Parent root = FXMLLoader.load(getClass().getResource("ProfileUser.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
 
                 Stage stage = new Stage();
                 Scene scene = new Scene(root);
