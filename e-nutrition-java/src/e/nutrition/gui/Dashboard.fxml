@@ -69,7 +69,7 @@
                         <FontAwesomeIcon fill="#fcfcfc" size="1.25em" text="" translateX="10.0" />
                      </graphic>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="43.0" prefWidth="281.0" style="-fx-background-color: #a6c550;" text="         Blog" textFill="WHITE">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="43.0" prefWidth="281.0" style="-fx-background-color: #a6c550;" onAction="#blog" text="         Blog" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -77,7 +77,7 @@
                         <FontAwesomeIcon fill="#fcfcfc" size="1.25em" text="" translateX="10.0" />
                      </graphic>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="43.0" prefWidth="281.0" style="-fx-background-color: #a6c550;" text="           Mesure" textFill="WHITE">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="43.0" prefWidth="281.0" style="-fx-background-color: #a6c550;" onAction="#mesure" text="           Mesure" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
