@@ -93,7 +93,7 @@
                         <FontAwesomeIcon fill="#fcfcfc" size="1.25em" text="" translateX="10.0" />
                      </graphic>
                   </Button>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#addMedicaments" prefHeight="44.0" prefWidth="281.0" style="-fx-background-color: #a6c550;" text="          Medicaments" textFill="#f8f8f8">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#addMedicaments" prefHeight="44.0" prefWidth="281.0" style="-fx-background-color: #a6c550;" text="           Medicaments" textFill="#f8f8f8">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

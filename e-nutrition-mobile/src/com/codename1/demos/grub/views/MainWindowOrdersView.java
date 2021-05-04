@@ -37,6 +37,9 @@ import com.codename1.ui.plaf.Style;
 
 import static com.codename1.ui.CN.convertToPixels;
 import static com.codename1.ui.util.Resources.getGlobalResources;
+import static com.codename1.ui.CN.convertToPixels;
+import static com.codename1.ui.CN.convertToPixels;
+import static com.codename1.ui.CN.convertToPixels;
 
 public class MainWindowOrdersView extends AbstractEntityView {
 
