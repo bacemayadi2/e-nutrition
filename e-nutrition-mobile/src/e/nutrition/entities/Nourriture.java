@@ -18,9 +18,9 @@ public class Nourriture {
     protected int id;
     protected String nom;
     protected float lipidies,glucides,proteines,poid;
-    protected int userId;
+    protected Nutritionniste nutritionniste;
     private List <TagNourriture> tags = new ArrayList();
-  
+    
     public void ajoutertag(TagNourriture t) {
       if (t != null)
       {
@@ -56,23 +56,23 @@ public class Nourriture {
     public Nourriture() {
     }
 
-    public Nourriture(int id, String nom, float lipidies, float glucides, float proteines, float poid, int userId) {
+    public Nourriture(int id, String nom, float lipidies, float glucides, float proteines, float poid, Nutritionniste n) {
         this.id = id;
         this.nom = nom;
         this.lipidies = lipidies;
         this.glucides = glucides;
         this.proteines = proteines;
         this.poid = poid;
-        this.userId = userId;
+        this.nutritionniste = n;
     }
 
-    public Nourriture(String nom, float lipidies, float glucides, float proteines, float poid, int userId) {
+    public Nourriture(String nom, float lipidies, float glucides, float proteines, float poid, Nutritionniste nutritionniste) {
         this.nom = nom;
         this.lipidies = lipidies;
         this.glucides = glucides;
         this.proteines = proteines;
         this.poid = poid;
-        this.userId = userId;
+        this.nutritionniste = nutritionniste;
     }
 
 
@@ -148,13 +148,7 @@ public class Nourriture {
         this.poid = poid;
     }
 
-    public int getUser() {
-        return userId;
-    }
 
-    public void setUser(int userId) {
-        this.userId = userId;
-    }
 
     public int getId() {
         return id;
@@ -164,9 +158,15 @@ public class Nourriture {
     public String toString() {
         return  "nom=" + nom + ", poid=" + poid + ", lipidies=" + lipidies + ", glucides=" + glucides + ", proteines=" + proteines + '}';
     }
-        public int getUserId() {
-        return userId;
+
+    public Nutritionniste getNutritionniste() {
+        return nutritionniste;
     }
+
+    public void setNutritionniste(Nutritionniste nutritionniste) {
+        this.nutritionniste = nutritionniste;
+    }
+
     
         public String getDType()
     {

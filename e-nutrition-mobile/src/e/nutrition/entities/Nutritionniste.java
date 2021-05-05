@@ -73,4 +73,9 @@ public class Nutritionniste extends User
     {
         return super.toString() + "secretaire:" + secretaire + "\n";
     }
+
+    public Nutritionniste(String nom, String prenom) {
+        super(nom, prenom);
+    }
+    
 }

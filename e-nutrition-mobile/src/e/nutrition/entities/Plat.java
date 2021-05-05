@@ -84,14 +84,14 @@ public class Plat extends Nourriture {
         this.nbrportion = nbrportion;
     }
 
-    public Plat(String description, int nbrportion, int id, String nom, float lipidies, float glucides, float proteines, float poid, int userId) {
-        super(id, nom, lipidies, glucides, proteines, poid, userId);
+    public Plat(String description, int nbrportion, int id, String nom, float lipidies, float glucides, float proteines, float poid, Nutritionniste n) {
+        super(id, nom, lipidies, glucides, proteines, poid, n);
         this.description = description;
         this.nbrportion = nbrportion;
     }
 
-    public Plat(String description, int nbrportion, String nom, float lipidies, float glucides, float proteines, float poid, int userId) {
-        super(nom, lipidies, glucides, proteines, poid, userId);
+    public Plat(String description, int nbrportion, String nom, float lipidies, float glucides, float proteines, float poid, Nutritionniste n) {
+        super(nom, lipidies, glucides, proteines, poid, n);
         this.description = description;
         this.nbrportion = nbrportion;
     }

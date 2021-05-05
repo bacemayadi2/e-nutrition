@@ -33,6 +33,7 @@ import com.codename1.ui.layouts.BorderLayout;
 
 import static com.codename1.ui.CN.convertToPixels;
 import static com.codename1.ui.util.Resources.getGlobalResources;
+import e.nutrition.views.PlatView;
 
 public class MainWindowView extends AbstractEntityView {
 
@@ -40,6 +41,7 @@ public class MainWindowView extends AbstractEntityView {
     MainWindowOrdersView ordersView;
     HomeView homeView;
     Tabs mainWindowContainer;
+    PlatView platView;
     private static final int TABS_ICON_SIZE = convertToPixels(4);
     private static final int TABS_ICON_SELECTED_SIZE = convertToPixels(6);
 
@@ -59,6 +61,14 @@ public class MainWindowView extends AbstractEntityView {
                                     getGlobalResources().getImage("main-window-favorite.png").scaled(TABS_ICON_SIZE, TABS_ICON_SIZE),
                                     getGlobalResources().getImage("main-window-favorite-selected.png").scaled(TABS_ICON_SELECTED_SIZE, TABS_ICON_SELECTED_SIZE),
                                     homeView);
+        
+          platView = new PlatView(mainWindowEntity, homeViewNode);
+
+           mainWindowContainer.addTab("plat",
+                                    getGlobalResources().getImage("main-window-favorite.png").scaled(TABS_ICON_SIZE, TABS_ICON_SIZE),
+                                    getGlobalResources().getImage("main-window-favorite-selected.png").scaled(TABS_ICON_SELECTED_SIZE, TABS_ICON_SELECTED_SIZE),
+                                    platView);
+        
 
         favoriteView = new FavoriteRestaurantsView((Entity)mainWindowEntity.get(MainWindow.profile), homeViewNode);
         mainWindowContainer.addTab("FAVORITE",
@@ -76,12 +86,7 @@ public class MainWindowView extends AbstractEntityView {
                                     getGlobalResources().getImage("main-window-profile.png").scaled(TABS_ICON_SIZE, TABS_ICON_SIZE),
                                     getGlobalResources().getImage("main-window-profile-selected.png").scaled(TABS_ICON_SELECTED_SIZE, TABS_ICON_SELECTED_SIZE),
                                     new ProfileView(mainWindowEntity.getEntity(MainWindow.profile), profileNode, appNode));
-
-           mainWindowContainer.addTab("plat",
-                                    getGlobalResources().getImage("main-window-favorite.png").scaled(TABS_ICON_SIZE, TABS_ICON_SIZE),
-                                    getGlobalResources().getImage("main-window-favorite-selected.png").scaled(TABS_ICON_SELECTED_SIZE, TABS_ICON_SELECTED_SIZE),
-                                    homeView);
-        
+      
         add(BorderLayout.CENTER, mainWindowContainer);
         
     }

@@ -261,6 +261,11 @@ public class User
     {
         return "User: " + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", dateNaiss=" + dateNaiss + ", email=" + email + ", tel=" + tel + ", ville=" + ville + ", adresse=" + adresse + ", isVerified=" + isVerified + " || ";
     }
+
+    public User(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
+    }
     
 
 }

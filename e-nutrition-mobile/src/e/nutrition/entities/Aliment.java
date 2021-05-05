@@ -94,16 +94,16 @@ public class Aliment extends Nourriture   {
         return "Aliment{" +super.toString() + ", categories=" + getCategorieString()+ '}';
     }
 
-    public Aliment(int id, String nom, float lipidies, float glucides, float proteines, float poid ,String codeABarre, int userId) {
-        super(id, nom, lipidies, glucides, proteines, poid, userId);
+    public Aliment(int id, String nom, float lipidies, float glucides, float proteines, float poid ,String codeABarre, Nutritionniste n) {
+        super(id, nom, lipidies, glucides, proteines, poid, n);
         this.codeABarre=codeABarre;
     }
 
     public Aliment() {
     }
 
-    public Aliment(String nom, float lipidies, float glucides, float proteines, float poid,String codeABarre, int userId) {
-        super(nom, lipidies, glucides, proteines, poid, userId);
+    public Aliment(String nom, float lipidies, float glucides, float proteines, float poid,String codeABarre, Nutritionniste n) {
+        super(nom, lipidies, glucides, proteines, poid, n);
         this.codeABarre=codeABarre;
     }
     

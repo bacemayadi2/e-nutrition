@@ -30,6 +30,7 @@ import com.codename1.demos.grub.interfaces.MainWindow;
 import com.codename1.demos.grub.interfaces.Restaurant;
 import com.codename1.demos.grub.models.AccountModel;
 import com.codename1.demos.grub.models.FilterModel;
+import com.codename1.demos.grub.views.RestaurantPreview;
 import com.codename1.rad.models.Entity;
 import com.codename1.rad.models.EntityList;
 import com.codename1.rad.models.Property;
@@ -49,7 +50,7 @@ import static com.codename1.ui.CN.convertToPixels;
 import static com.codename1.ui.CN.isTablet;
 import static com.codename1.ui.util.Resources.getGlobalResources;
 
-public class Plat extends AbstractEntityView {
+public class PlatView extends AbstractEntityView {
 
     Node viewNode;
     Property restaurantsProp, accountProp, filterProp;
@@ -63,7 +64,7 @@ public class Plat extends AbstractEntityView {
     public static final ActionNode.Category ENTER_FILTER = new ActionNode.Category();
     public static final ActionNode.Category ENTER_SEARCH = new ActionNode.Category();
 
-    public Plat(Entity appEntity, Node viewNode) {
+    public PlatView(Entity appEntity, Node viewNode) {
         super(appEntity);
         this.viewNode = viewNode;
         this.appEntity = appEntity;
@@ -131,9 +132,9 @@ public class Plat extends AbstractEntityView {
         };
         filterButton.addActionListener(evt -> {
             evt.consume();
-            ActionNode action = viewNode.getInheritedAction(HomeView.ENTER_FILTER);
+            ActionNode action = viewNode.getInheritedAction(PlatView.ENTER_FILTER);
             if (action != null) {
-                action.fireEvent(appEntity, HomeView.this);
+                action.fireEvent(appEntity, PlatView.this);
             }
         });
 
@@ -154,9 +155,9 @@ public class Plat extends AbstractEntityView {
             Entity filter = appEntity.getEntity(filterProp);
             if (filter instanceof FilterModel){
                 ((FilterModel) filter).setFreeText(searchField.getText());
-                ActionNode action = viewNode.getInheritedAction(HomeView.ENTER_SEARCH);
+                ActionNode action = viewNode.getInheritedAction(PlatView.ENTER_SEARCH);
                 if (action != null) {
-                    action.fireEvent(appEntity, HomeView.this);
+                    action.fireEvent(appEntity, PlatView.this);
                 }
             }
         });
@@ -186,129 +187,13 @@ public class Plat extends AbstractEntityView {
         topView.add(topViewLabelsCnt);
         add(topView);
 
-        Container categoryRiceButton = createCategoryButton("Rice", "rice-icon.png", evt -> {
-            updateFilter(Restaurant.CATEGORY_RICE);
-            evt.consume();
-            ActionNode action = viewNode.getInheritedAction(HomeView.ENTER_SEARCH);
-            if (action != null) {
-                action.fireEvent(appEntity, HomeView.this);
-            }
-        });
+       
 
-        Container categoryRiceButton1 = createCategoryButton("Pizza", "pizza-icon.png", evt -> {
-            updateFilter(Restaurant.CATEGORY_PIZZA);
-            evt.consume();
-            ActionNode action = viewNode.getInheritedAction(HomeView.ENTER_SEARCH);
-            if (action != null) {
-                action.fireEvent(appEntity, HomeView.this);
-            }
-        });
-
-        Container categoryRiceButton2 = createCategoryButton("Donut", "donut-icon.png", evt -> {
-            updateFilter(Restaurant.CATEGORY_DONUT);
-            evt.consume();
-            ActionNode action = viewNode.getInheritedAction(HomeView.ENTER_SEARCH);
-            if (action != null) {
-                action.fireEvent(appEntity, HomeView.this);
-            }
-        });
-
-        Container categoryRiceButton3 = createCategoryButton("Chicken", "chicken-icon.png", evt -> {
-            updateFilter(Restaurant.CATEGORY_CHICKEN);
-            evt.consume();
-            ActionNode action = viewNode.getInheritedAction(HomeView.ENTER_SEARCH);
-            if (action != null) {
-                action.fireEvent(appEntity, HomeView.this);
-            }
-        });
-
-        Container categoryRiceButton4 = createCategoryButton("Steak", "steak-icon.png", evt -> {
-            updateFilter(Restaurant.CATEGORY_STEAK);
-            evt.consume();
-            ActionNode action = viewNode.getInheritedAction(HomeView.ENTER_SEARCH);
-            if (action != null) {
-                action.fireEvent(appEntity, HomeView.this);
-            }
-        });
-
-        Container categoryRiceButton5 = createCategoryButton("Meal", "meal-icon.png", evt -> {
-            updateFilter(Restaurant.CATEGORY_MEAL);
-            evt.consume();
-            ActionNode action = viewNode.getInheritedAction(HomeView.ENTER_SEARCH);
-            if (action != null) {
-                action.fireEvent(appEntity, HomeView.this);
-            }
-        });
-
-        Container categoryRiceButton6 = createCategoryButton("Kebab", "kebab-icon.png", evt -> {
-            updateFilter(Restaurant.CATEGORY_KEBAB);
-            evt.consume();
-            ActionNode action = viewNode.getInheritedAction(HomeView.ENTER_SEARCH);
-            if (action != null) {
-                action.fireEvent(appEntity, HomeView.this);
-            }
-        });
-
-        Container categoryRiceButton7 = createCategoryButton("All", "all-icon.png", evt -> {
-            updateFilter(Restaurant.CATEGORY_ALL);
-            evt.consume();
-            ActionNode action = viewNode.getInheritedAction(HomeView.ENTER_SEARCH);
-            if (action != null) {
-                action.fireEvent(appEntity, HomeView.this);
-            }
-        });
-        Container categoryContainer;
-        if (isTablet()){
-            categoryContainer = new Container(new GridLayout(1, 8));
-        }else{
-            categoryContainer = new Container(new GridLayout(2, 4));
-        }
-        categoryContainer.setUIID("CategoryContainer");
-        categoryContainer.addAll(categoryRiceButton,
-                categoryRiceButton1,
-                categoryRiceButton2,
-                categoryRiceButton3,
-                categoryRiceButton5,
-                categoryRiceButton4,
-                categoryRiceButton6,
-                categoryRiceButton7
-        );
-        add(categoryContainer);
-
-        Container popularCnt = new Container(new BorderLayout());
-        popularCnt.setUIID("PopularCnt");
-        Label popularLabel = new Label("Popular Near You", "CategoryHeader");
-        Button popularExploreButton = new Button("EXPLORE >", "ExploreButton");
-        popularCnt.add(BorderLayout.NORTH, BorderLayout.centerEastWest(null, popularExploreButton, popularLabel));
-        popularCnt.add(BorderLayout.CENTER, createPopularCnt(appEntity.getEntityList(restaurantsProp)));
-        popularExploreButton.addActionListener(evt -> {
-            evt.consume();
-            ActionNode action = viewNode.getInheritedAction(HomeView.ENTER_SEARCH);
-            if (action != null) {
-                action.fireEvent(appEntity, HomeView.this);
-            }
-
-        });
-        add(popularCnt);
-
-        Container recommendCnt = new Container(new BorderLayout());
-        recommendCnt.setUIID("RecommendCnt");
-        Label recommendedLabel = new Label("We Recommended", "CategoryHeader");
-        Button recommendedExploreButton = new Button("EXPLORE >", "ExploreButton");
-        recommendedExploreButton.addActionListener(evt -> {
-            evt.consume();
-            ActionNode action = viewNode.getInheritedAction(HomeView.ENTER_SEARCH);
-            if (action != null) {
-                action.fireEvent(appEntity, HomeView.this);
-            }
-        });
-
-        recommendCnt.add(BorderLayout.NORTH, BorderLayout.centerEastWest(null, recommendedExploreButton, recommendedLabel));
-        recommendCnt.add(BorderLayout.CENTER, createRecommendedCnt(appEntity.getEntityList(restaurantsProp)));
-        add(recommendCnt);
+        
+      
 
         Container allRestaurantsCnt = new Container(new BorderLayout());
-        allRestaurantsCnt.setUIID("AllRestaurantsCnt");
+        allRestaurantsCnt.setUIID("AllPlat");
         Label allRestaurantsLabel = new Label("All Restaurants", "CategoryHeader");
         allRestaurantsCnt.add(BorderLayout.NORTH, allRestaurantsLabel);
         allRestaurantsCnt.add(BorderLayout.CENTER, createAllRestaurantsCnt(appEntity.getEntityList(restaurantsProp)));
@@ -344,51 +229,7 @@ public class Plat extends AbstractEntityView {
         return viewNode;
     }
 
-    private Container createCategoryButton(String name, String icon, ActionListener action) {
-        Container categoryButton = new Container(new BorderLayout());
-        categoryButton.setUIID("HomeCategoryButton");
-
-        Image categoryButtonImage = getGlobalResources().getImage(icon);
-        ScaleImageLabel categoryIcon = new ScaleImageLabel(categoryButtonImage) {
-            @Override
-            public Dimension getPreferredSize() {
-                if(CN.isTablet()){
-                    return new Dimension(convertToPixels(8), convertToPixels(8));
-                }else{
-                    return new Dimension(convertToPixels(6), convertToPixels(6));
-                }
-            }
-        };
-        categoryIcon.setUIID("CategoryIconLabel");
-        Container iconWrapper = BorderLayout.centerCenter(categoryIcon);
-        iconWrapper.setUIID("CategoryIconWrapper");
-
-        Button categoryName = new Button(name, "CategoryNameLabel");
-        categoryName.addActionListener(action);
-        categoryButton.add(BorderLayout.CENTER, iconWrapper);
-        categoryButton.add(BorderLayout.SOUTH, categoryName);
-        categoryButton.setLeadComponent(categoryName);
-        return categoryButton;
-    }
-
-    private Container createPopularCnt(EntityList<Entity> restaurants) {
-        Container popularCnt = new Container(new BoxLayout(BoxLayout.X_AXIS));
-        popularCnt.setScrollableX(true);
-        for (Entity rest : restaurants) {
-            popularCnt.add(new RestaurantPreview(rest, viewNode));
-        }
-        return popularCnt;
-    }
-
-    private Container createRecommendedCnt(EntityList<Entity> restaurants) {
-        Container recommendedCnt = new Container(new BoxLayout(BoxLayout.X_AXIS));
-        recommendedCnt.setScrollableX(true);
-        for (Entity rest : restaurants) {
-            recommendedCnt.add(new RestaurantPreview(rest, viewNode));
-        }
-        return recommendedCnt;
-    }
-
+  
     private Container createAllRestaurantsCnt(EntityList<Entity> restaurants) {
         final int restsCount = restaurants.size();
         final int landscapeRows = restsCount % 2 == 0 ? restsCount / 2 : restsCount / 2 + 1;
@@ -400,7 +241,7 @@ public class Plat extends AbstractEntityView {
         }
 
         for (Entity rest : restaurants) {
-            allRestsCnt.add(new RestaurantPreview(rest, viewNode));
+            allRestsCnt.add(new AllPlatView(rest, viewNode));
         }
 
         return allRestsCnt;

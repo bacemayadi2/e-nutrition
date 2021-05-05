@@ -19,36 +19,42 @@ class Nourriture
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups ("aliments")
+     * @Groups ("plat:read")
      */
     Protected $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups ("aliments")
+     * @Groups ("plat:read")
      */
     Protected $nom;
 
     /**
      * @ORM\Column(type="float")
      * @Groups ("aliments")
+     * @Groups ("plat:read")
      */
     Protected $lipides;
 
     /**
      * @ORM\Column(type="float")
      * @Groups ("aliments")
+     * @Groups ("plat:read")
      */
     Protected $glucides;
 
     /**
      * @ORM\Column(type="float")
      * @Groups ("aliments")
+     * @Groups ("plat:read")
      */
     Protected $proteines;
 
     /**
      * @ORM\Column(type="float")
      * @Groups ("aliments")
+     * @Groups ("plat:read")
      */
     Protected $poid;
 
