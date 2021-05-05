@@ -111,8 +111,8 @@ public class ContenuMultimedia
             tags.remove(t);
         }
     }
-    
-     /*    public int sendFileToHTTP(File file) {
+    /*
+         public int sendFileToHTTP(File file) {
         int responseCode = 0;
         String idMultimedi = null;
         System.setProperty("webdriver.chrome.driver","../Ressources/chromedriver.exe");

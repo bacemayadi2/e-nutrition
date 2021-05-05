@@ -5,10 +5,14 @@
  */
 package e.nutrition.entities.tags;
 
+import com.codename1.util.StringUtil;
 import e.nutrition.entities.ContenuMultimedia;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.lang.String;
+import org.apache.commons.exec.util.StringUtils;
+
 
 
 /**
@@ -45,11 +49,12 @@ public class Tag {
         public String getExtension()
     {
         String url=this.contenuMultimedia.getNomFile();
-       /* if (url != null)
+        
+        if (url != null)
         {
-            return url.split(".")[1];
+           return StringUtils.split(url, ".")[1];
 
-        }*/
+        }
         return "null";
     }
         
@@ -62,19 +67,16 @@ public class Tag {
     
     public boolean isImage()
     {
-       /* String[] extensions = { "jpg", "png", "JPG" ,"PNG"};
-        return Arrays.stream(extensions).anyMatch(extensions::equals);    // Do some stuff.
-    */ //redo without stream
-       return true;
+        String[] extensions = { "jpg", "png", "JPG" ,"PNG"};
+    return (Arrays.asList(extensions).contains(this.getExtension()));
+      //redo without stream
+       
     }
     public boolean isVideo()
     {
-       /* String[] extensions = { "mp4","mkv","mpg","avi","mov","MOV"};
-        return Arrays.stream(extensions).anyMatch(extensions::equals);    // Do some stuff.
-*/   return true;
+        String[] extensions = { "mp4","mkv","mpg","avi","mov","MOV"};
+            return (Arrays.asList(extensions).contains(this.getExtension()));
     }
     
-    
-  
     
 }
