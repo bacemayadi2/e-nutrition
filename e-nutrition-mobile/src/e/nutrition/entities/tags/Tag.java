@@ -5,10 +5,11 @@
  */
 package e.nutrition.entities.tags;
 
-import e.nutrition.Models.ContenuMultimedia;
+import e.nutrition.entities.ContenuMultimedia;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 
 /**
  *
@@ -44,11 +45,11 @@ public class Tag {
         public String getExtension()
     {
         String url=this.contenuMultimedia.getNomFile();
-        if (url != null)
+       /* if (url != null)
         {
             return url.split(".")[1];
 
-        }
+        }*/
         return "null";
     }
         
@@ -61,16 +62,16 @@ public class Tag {
     
     public boolean isImage()
     {
-        String[] extensions = { "jpg", "png", "JPG" ,"PNG"};
+       /* String[] extensions = { "jpg", "png", "JPG" ,"PNG"};
         return Arrays.stream(extensions).anyMatch(extensions::equals);    // Do some stuff.
-    
-       
+    */ //redo without stream
+       return true;
     }
     public boolean isVideo()
     {
-        String[] extensions = { "mp4","mkv","mpg","avi","mov","MOV"};
+       /* String[] extensions = { "mp4","mkv","mpg","avi","mov","MOV"};
         return Arrays.stream(extensions).anyMatch(extensions::equals);    // Do some stuff.
-
+*/   return true;
     }
     
     

@@ -5,8 +5,8 @@
  */
 package e.nutrition.entities.tags;
 
-import e.nutrition.Models.ContenuMultimedia;
-import e.nutrition.Models.User;
+import e.nutrition.entities.ContenuMultimedia;
+import e.nutrition.entities.User;
 
 /**
  *

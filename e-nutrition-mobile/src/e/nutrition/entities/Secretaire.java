@@ -1,6 +1,6 @@
 package e.nutrition.entities;
 
-import java.sql.Date;
+import java.util.Date;
 import org.json.JSONArray;
 
 /**

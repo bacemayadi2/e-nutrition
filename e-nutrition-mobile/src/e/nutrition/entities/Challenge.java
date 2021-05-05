@@ -1,7 +1,6 @@
 package e.nutrition.entities;
 
-import java.sql.Date;
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  *

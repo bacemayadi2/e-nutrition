@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class Tag {
     private int id ;
+  
     private ContenuMultimedia contenuMultimedia;
 
 

@@ -6,8 +6,8 @@
 package e.nutrition.entities;
 
 import e.nutrition.entities.tags.TagFicheConsultation;
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**

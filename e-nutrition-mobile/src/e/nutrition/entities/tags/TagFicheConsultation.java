@@ -5,7 +5,7 @@
  */
 package e.nutrition.entities.tags;
 
-import e.nutrition.Models.ContenuMultimedia;
+import e.nutrition.entities.ContenuMultimedia;
 
 /**
  *
