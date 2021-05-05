@@ -92,7 +92,7 @@ public class DashboardController implements Initializable {
         home.getChildren().clear();
         home.getChildren().add(newLoadedPane);   
     }
-
+    @FXML
     private void addMedicaments(ActionEvent event) throws IOException {
         
           Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("AddMedicament.fxml"));
@@ -100,7 +100,7 @@ public class DashboardController implements Initializable {
         home.getChildren().add(newLoadedPane);   
         
     }
-
+    @FXML
     private void addStat(ActionEvent event) throws IOException {
         
        Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("Statistique.fxml"));
@@ -109,7 +109,8 @@ public class DashboardController implements Initializable {
         
         
     }
-
+    
+    @FXML
     private void FicheFront(ActionEvent event) throws IOException {
               Pane newLoadedPane =  FXMLLoader.load(getClass().getResource("FicheFront.fxml"));
         home.getChildren().clear();

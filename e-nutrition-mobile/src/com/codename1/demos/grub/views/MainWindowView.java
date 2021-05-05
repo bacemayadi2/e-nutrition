@@ -77,7 +77,9 @@ public class MainWindowView extends AbstractEntityView {
                                     getGlobalResources().getImage("main-window-profile-selected.png").scaled(TABS_ICON_SELECTED_SIZE, TABS_ICON_SELECTED_SIZE),
                                     new ProfileView(mainWindowEntity.getEntity(MainWindow.profile), profileNode, appNode));
 
+        
         add(BorderLayout.CENTER, mainWindowContainer);
+        
     }
 
     @Override

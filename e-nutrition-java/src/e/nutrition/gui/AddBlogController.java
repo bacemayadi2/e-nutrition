@@ -53,8 +53,11 @@ public class AddBlogController implements Initializable {
             blog.setBody(body.getText());
             blog.setDate(Date.valueOf(date.getValue()));
             service.Add_Blog_Post(blog);
+            this.finalize();
         } catch (SQLException ex) {
             ex.getMessage();
+        } catch (Throwable ex) {
+            Logger.getLogger(AddBlogController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

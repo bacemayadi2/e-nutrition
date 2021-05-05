@@ -8,10 +8,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use PhpParser\Node\Scalar\String_;
 use Symfony\Component\Serializer\Annotation\Groups as Groups;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 
 /**
  * @ORM\Entity(repositoryClass=AlimentRepository::class)
+ * @ApiResource()
  */
 class Aliment extends Nourriture
 {
