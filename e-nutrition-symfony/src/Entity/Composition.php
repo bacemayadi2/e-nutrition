@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CompositionRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups as Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CompositionRepository::class)
@@ -19,11 +20,13 @@ class Composition
 
     /**
      * @ORM\Column(type="float")
+     * @Groups ("plat:read")
      */
     private $poid;
 
     /**
      * @ORM\ManyToOne(targetEntity=Aliment::class, inversedBy="compositions" , cascade={"persist"})
+     * @Groups ("plat:read")
      */
     private $aliment;
 

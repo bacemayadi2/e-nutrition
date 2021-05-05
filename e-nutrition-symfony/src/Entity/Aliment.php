@@ -39,6 +39,7 @@ class Aliment extends Nourriture
 
     /**
      * @Groups ("aliments")
+     * @Groups ("plat:read")
      */
     private $calories;
 
@@ -69,7 +70,7 @@ class Aliment extends Nourriture
      */
     public function setNumberofplat(): void
     {
-        $this->numberofplat = $this->setNumberofplat();
+        $this->numberofplat = $this->getnbrOFTimeUsed();
     }
 
 

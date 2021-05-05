@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Null_;
 use PhpParser\Node\Scalar\String_;
+use Symfony\Component\Serializer\Annotation\Groups as Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=PlatRepository::class)
@@ -18,21 +20,25 @@ class Plat extends Nourriture
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Groups ("plat:read")
      */
     private $description;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups ("plat:read")
      */
     private $nbrportion;
 
     /**
      * @ORM\OneToMany(targetEntity=EtapeDePreparation::class, mappedBy="plat",cascade={"all"},orphanRemoval=true)
+     * @Groups ("plat:read")
      */
     private $etapeDePreparation;
 
     /**
      * @ORM\OneToMany(targetEntity=Composition::class, mappedBy="plat", cascade={"all"},orphanRemoval=true)
+     * @Groups ("plat:read")
      */
     private $compostions;
 

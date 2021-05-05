@@ -54,11 +54,13 @@ class Nourriture
 
     /**
      * @ORM\OneToMany(targetEntity=TagNourriture::class, mappedBy="nourriture", cascade={"all"},orphanRemoval=true)
+     * @Groups ("plat:read")
      */
     protected $tagNourriture;
 
     /**
      * @ORM\ManyToOne(targetEntity=Utilisateur::class, inversedBy="nourritures")
+     * @Groups ("plat:read")
      */
     private $nutritionniste;
 

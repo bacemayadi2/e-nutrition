@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\EtapeDePreparationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups as Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=EtapeDePreparationRepository::class)
@@ -19,16 +21,19 @@ class EtapeDePreparation
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups ("plat:read")
      */
     private $ordre;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups ("plat:read")
      */
     private $duree;
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Groups ("plat:read")
      */
     private $description;
 

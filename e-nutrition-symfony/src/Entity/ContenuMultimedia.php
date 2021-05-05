@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\File\File ;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use function Symfony\Component\String\u;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups as Groups;
+
 
 
 /**
@@ -56,6 +58,7 @@ class ContenuMultimedia
     /**
      * @ORM\Column(type="string", length=1000)
      *  @var string|null
+     * @Groups ("plat:read")
      */
     private $nomFile;
 

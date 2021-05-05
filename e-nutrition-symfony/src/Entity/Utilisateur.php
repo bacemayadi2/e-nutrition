@@ -30,6 +30,7 @@ class Utilisateur implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Saisir votre nom svp !!!")
      * @Groups ("doctors")
+     * @Groups ("plat:read")
      */
     protected $nom;
 
@@ -37,6 +38,7 @@ class Utilisateur implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Saisir votre prénom svp !!!")
      * @Groups ("doctors")
+     * @Groups ("plat:read")
      */
     protected $prenom;
 
@@ -100,6 +102,7 @@ class Utilisateur implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=TagUtilisateur::class, mappedBy="utilisateur", cascade={"all"},orphanRemoval=true)
+     * @Groups ("plat:read")
      */
     protected $tagUtilisateur;
 

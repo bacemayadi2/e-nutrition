@@ -17,7 +17,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class PlatController extends AbstractController
 {
@@ -213,5 +216,30 @@ class PlatController extends AbstractController
 
     }
 
+
+    //api
+    /**
+     * @param PlatRepository $repo
+     * @Route ("api/afficherplatfrontall",name="api_afficherplatfrontall")
+     */
+    public function afficherfrontallapi(PlatRepository $repo,PaginatorInterface $paginator,Request $request, SerializerInterface $serializerInterface)
+    {
+        // $plats=$repo->findAll();
+        // $plat=$repo->find($id);
+        $donnees=$repo->findAll();
+
+
+        $jsonContent = $serializerInterface->serialize($donnees, 'json', ['groups'=>'plat:read']);
+        //dump($jsonContent);
+        // On instancie la réponse
+
+        $response = new Response($jsonContent);
+
+        // On ajoute l'entête HTTP
+        $response->headers->set('Content-Type', 'application/json');
+
+        // On envoie la réponse
+        return $response;
+    }
 
 }

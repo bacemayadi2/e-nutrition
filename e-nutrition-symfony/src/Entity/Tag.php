@@ -8,6 +8,8 @@ use phpDocumentor\Reflection\Types\Boolean;
 use phpDocumentor\Reflection\Types\Null_;
 use phpDocumentor\Reflection\Types\String_;
 use function Symfony\Component\String\u;
+use Symfony\Component\Serializer\Annotation\Groups as Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=TagRepository::class)
@@ -25,6 +27,7 @@ class Tag
     /**
      * @ORM\ManyToOne(targetEntity=ContenuMultimedia::class, inversedBy="tag",cascade={"all"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups ("plat:read")
      */
     private $contenuMultimedia;
 
