@@ -277,6 +277,24 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
     }
     
     
+     public void Delete(FicheConsultation t) 
+    {
+        try
+        {
+            String req = "DELETE FROM fiche_consultation WHERE id=?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1,t.getId());
+            ps.executeUpdate();
+             
+            System.out.println("fiche supprimée !!");
+        }
+        catch(SQLException e)
+        {
+            System.err.println("echec de la suppression!!");
+            System.err.println(e.getMessage());
+        }
+    }
+    
     
        public FicheConsultation getByDesc(String desc) {
           FicheConsultation a = null;
@@ -325,6 +343,7 @@ public class ServiceFicheConsultation implements IService <FicheConsultation> {
                 fiche = new FicheConsultation(resultSet.getDate(2), resultSet.getFloat(3),resultSet.getFloat(4), resultSet.getString(5), resultSet.getString(6), resultSet.getString(7));
                 System.out.println(fiche);
             }
+            else return null;
         } catch (Exception e) {
             e.printStackTrace();
         }
