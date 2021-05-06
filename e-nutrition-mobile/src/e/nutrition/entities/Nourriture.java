@@ -5,6 +5,7 @@
  */
 package e.nutrition.entities;
 
+import com.codename1.rad.models.Entity;
 import e.nutrition.entities.tags.TagNourriture;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import java.util.Objects;
  *
  * @author bacem
  */
-public class Nourriture {
+public class Nourriture extends Entity {
     protected int id;
     protected String nom;
     protected float lipidies,glucides,proteines,poid;

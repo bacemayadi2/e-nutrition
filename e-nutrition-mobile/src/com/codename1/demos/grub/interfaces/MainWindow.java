@@ -29,4 +29,5 @@ public interface MainWindow {
     Tag profile = new Tag("profile");
     Tag filter = new Tag("filter");
     Tag restaurants = new Tag("restaurants");
+   
 }

@@ -12,6 +12,7 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.events.ActionListener;
 import e.nutrition.entities.Composition;
+import e.nutrition.entities.EtapeDePreparation;
 import e.nutrition.entities.Nutritionniste;
 import e.nutrition.entities.Plat;
 import e.nutrition.utils.Statics;
@@ -28,8 +29,12 @@ import java.util.Map;
  */
 public class ServicePlat {
     public boolean resultOK;
-    private ConnectionRequest req ;
+    private ConnectionRequest req;
     ArrayList <Plat> plats = new ArrayList();
+
+    public ServicePlat() {
+        req=new ConnectionRequest();
+    }
 
     public ArrayList<Plat> parsePlat(String jsonText){
         {
@@ -46,6 +51,7 @@ public class ServicePlat {
                         else 
                             n =new Nutritionniste(0);
                         Plat p =new Plat(obj.get("description").toString(), (int)Float.parseFloat(obj.get("nbrportion").toString()),(int)Float.parseFloat(obj.get("id").toString()) ,obj.get("nom").toString() ,Float.parseFloat(obj.get("lipides").toString()),Float.parseFloat(obj.get("glucides").toString()) , Float.parseFloat(obj.get("proteines").toString()),Float.parseFloat(obj.get("poid").toString()) , n);
+                        System.out.println();
                         plats.add(p);
                     }
                 } catch (IOException ex) {
@@ -56,6 +62,7 @@ public class ServicePlat {
     
     public ArrayList<Plat> getAllPlats(){
         String url =Statics.BASE_URL+"/api/afficherplatfrontall";
+        System.out.println(url);
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

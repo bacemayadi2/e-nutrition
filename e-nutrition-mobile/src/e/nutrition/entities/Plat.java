@@ -18,6 +18,7 @@ public class Plat extends Nourriture {
    private int nbrportion;
    private List <EtapeDePreparation> etapesDePreparation = new ArrayList();
    private List <Composition> compostions = new ArrayList();
+   private float duree;
 
     public Plat(String nom) {
         super(nom);
@@ -29,15 +30,33 @@ public class Plat extends Nourriture {
       if (e != null)
       {
           etapesDePreparation.add(e);
+          this.calculerduree();
+
       }
   } 
+    
+  public void calculerduree()
+  {
+      this.duree=0;
+      for (int i=0;i<etapesDePreparation.size();i++)
+      {
+              duree+=etapesDePreparation.get(i).getDuree()      ;
+    
+      }
+   
+  }
   public void supprimerEtapeDePreparation (EtapeDePreparation e)
   {
       if (e != null)
       {
           etapesDePreparation.remove(e);
+          this.calculerduree();
       }
   }
+
+    public float getDuree() {
+        return duree;
+    }
   
        public void ajouterCompostions(Composition c)
   {

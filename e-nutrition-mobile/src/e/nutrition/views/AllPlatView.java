@@ -6,10 +6,8 @@
 package e.nutrition.views;
 
 import com.codename1.components.ScaleImageButton;
-import com.codename1.demos.grub.interfaces.Restaurant;
 import com.codename1.demos.grub.views.HomeView;
 import com.codename1.rad.models.Entity;
-import com.codename1.rad.models.Property;
 import com.codename1.rad.nodes.ActionNode;
 import com.codename1.rad.nodes.Node;
 import com.codename1.rad.ui.AbstractEntityView;
@@ -24,6 +22,9 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
 import static com.codename1.ui.util.Resources.getGlobalResources;
+import e.nutrition.entities.Plat;
+import java.io.IOException;
+
 /*
 
 package com.codename1.demos.grub.views;
@@ -54,26 +55,36 @@ import static com.codename1.ui.util.Resources.getGlobalResources;
  */
 public class AllPlatView extends AbstractEntityView {
 
-    Property nameProp, categoryProp, ratingProp, deliveryTimeProp, pictureProp, distanceProp;
+    String namePlat, calorie, nbrPortion, duree, pictureProp, user;
     Node viewNode;
 
     private static EncodedImage placeHolder = EncodedImage.createFromImage(getGlobalResources().getImage("placeholder.png"), false);
 
+
+
+
     public AllPlatView(Entity entity, Node viewNode){
-        super(entity);
+               super(entity);
+        this.viewNode = viewNode;
+        Plat p =(Plat) entity;
         setLayout(new BorderLayout());
         setUIID("RestaurantPreview");
         this.viewNode = viewNode;
 
-        nameProp = entity.findProperty(Restaurant.name);
-        categoryProp = entity.findProperty(Restaurant.category);
-        ratingProp = entity.findProperty(Restaurant.rating);
-        deliveryTimeProp = entity.findProperty(Restaurant.estimatedDeliveryTime);
-        distanceProp = entity.findProperty(Restaurant.distance);
+        namePlat = p.getNom(); 
+        calorie = String.valueOf(p.getCalculerCalorie());
+        nbrPortion = String.valueOf(p.getNbrportion());
+        duree = String.valueOf(p.getDuree());
+        user = ("salah");
 
-        pictureProp = entity.findProperty(Restaurant.picture);
 
-        Image restImage = entity.createImageToStorage(pictureProp, placeHolder);
+        Image restImage=placeHolder;
+        try {
+            if (p.getTags().size() != 0)
+            restImage = Image.createImage(p.getTags().get(0).getUrl()); //entity.createImageToStorage(pictureProp, placeHolder);
+        } catch (IOException ex) {
+            System.out.println("error");
+        }
 
         ScaleImageButton restImageButton = new ScaleImageButton(restImage);
         restImageButton.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED);
@@ -82,14 +93,14 @@ public class AllPlatView extends AbstractEntityView {
             evt.consume();
             ActionNode action = viewNode.getInheritedAction(HomeView.ENTER_REST);
             if (action != null) {
-                action.fireEvent(entity, AllPlatView.this);
+                action.fireEvent(p, AllPlatView.this);
             }
         });
 
         setLeadComponent(restImageButton);
 
-        Label restNameLabel = new Label(entity.getText(nameProp), "RestPreviewNameLabel");
-        Label restCategoryLabel = new Label(entity.getText(categoryProp), "RestPreviewCategoryLabel");
+        Label restNameLabel = new Label(namePlat, "RestPreviewNameLabel");
+        Label restCategoryLabel = new Label(calorie, "RestPreviewCategoryLabel");
 
         Container restTopView = new Container(new LayeredLayout());
         restTopView.add(restImageButton);
@@ -100,15 +111,15 @@ public class AllPlatView extends AbstractEntityView {
         nameAndCategoryCnt.add(BorderLayout.SOUTH, restDetails);
         nameAndCategoryCnt.setUIID("BottomShadowContainer");
         restTopView.add(nameAndCategoryCnt);
-
-        Label estimatedDeliveryTimeLabel = new Label(" " + entity.getInt(deliveryTimeProp) + " mins", "RestPreviewDeliveryTime");
+        
+        Label estimatedDeliveryTimeLabel = new Label(" " + duree + " mins", "RestPreviewDeliveryTime");
         estimatedDeliveryTimeLabel.setIcon(getGlobalResources().getImage("delivery-time-icon.png").scaled(convertToPixels(4), convertToPixels(4)));
-        Label ratingLabel = new Label(" " + entity.getDouble(ratingProp) + "/5", "RestPreviewRating");
-        ratingLabel.setIcon(getGlobalResources().getImage("rating-icon.png").scaled(convertToPixels(4), convertToPixels(4)));
-        Label distanceLabel = new Label(" " + entity.getDouble(distanceProp) + "km", "RestPreviewDistance");
-        distanceLabel.setIcon(getGlobalResources().getImage("distance-icon.png").scaled(convertToPixels(4), convertToPixels(4)));
+        Label calories = new Label(" " + calorie + "Kcal", "RestPreviewRating");
+        calories.setIcon(getGlobalResources().getImage("rating-icon.png").scaled(convertToPixels(4), convertToPixels(4)));
+        Label nbrportion = new Label(" " + nbrPortion + "portion", "RestPreviewDistance");
+        nbrportion.setIcon(getGlobalResources().getImage("distance-icon.png").scaled(convertToPixels(4), convertToPixels(4)));
 
-        add(BorderLayout.SOUTH, FlowLayout.encloseCenter(estimatedDeliveryTimeLabel, ratingLabel, distanceLabel));
+        add(BorderLayout.SOUTH, FlowLayout.encloseCenter(estimatedDeliveryTimeLabel, calories, nbrportion));
         add(BorderLayout.CENTER, restTopView);
 
     }
