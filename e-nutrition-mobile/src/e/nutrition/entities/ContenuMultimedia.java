@@ -42,6 +42,10 @@ public class ContenuMultimedia
         this.updatedAt = updatedAt;
     }
 
+    public ContenuMultimedia(String nomFile) {
+        this.nomFile = nomFile;
+    }
+
     public ContenuMultimedia(int id, String nomFile, String Description, Date updatedAt, File file) {
         this.id = id;
         this.nomFile = nomFile;

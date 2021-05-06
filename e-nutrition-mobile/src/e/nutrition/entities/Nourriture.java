@@ -117,6 +117,10 @@ public class Nourriture extends Entity {
         this.nom = nom;
     }
 
+    public void setTags(List<TagNourriture> tags) {
+        this.tags = tags;
+    }
+
     public float getLipidies() {
         return lipidies;
     }
