@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups as Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ChallengeRepository::class)
@@ -23,28 +24,33 @@ class Challenge
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Saisir le titre !!!")
+     * @Groups ("challenges:read")
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Saisir la description !!!")
+     * @Groups ("challenges:read")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Saisir la categorie !!!")
+     * @Groups ("challenges:read")
      */
     private $categorie;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups ("challenges:read")
      */
     private $dateDebut;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups ("challenges:read")
      */
     private $dateFin;
 

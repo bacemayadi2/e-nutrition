@@ -25,6 +25,7 @@ use App\Repository\PatientRepository;
 use App\Repository\SecretaireRepository;
 use App\Repository\StudentRepository;
 use App\Repository\UserRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -34,6 +35,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/user", name="user_")
@@ -367,5 +369,25 @@ class UserController extends AbstractController
         }
 
         return $this->render("front/challenges/challengeDetails.html.twig",['challenge'=>$challenge,'form'=>$form->createView()]);
+    }
+
+    /**
+     * @Route ("/api/displayCallenges",name="api_displayCallenges")
+     */
+    public function afficherfrontallapi(ChallengeRepository $repo,PaginatorInterface $paginator,Request $request, SerializerInterface $serializerInterface)
+    {
+        $challenges=$repo->findAll();
+
+        $jsonContent = $serializerInterface->serialize($challenges, 'json', ['groups'=>'challenges:read']);
+        //dump($jsonContent);
+        // On instancie la réponse
+
+        $response = new Response($jsonContent);
+
+        // On ajoute l'entête HTTP
+        $response->headers->set('Content-Type', 'application/json');
+
+        // On envoie la réponse
+        return $response;
     }
 }

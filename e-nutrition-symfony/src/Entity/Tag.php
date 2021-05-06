@@ -28,6 +28,7 @@ class Tag
      * @ORM\ManyToOne(targetEntity=ContenuMultimedia::class, inversedBy="tag",cascade={"all"})
      * @ORM\JoinColumn(nullable=false)
      * @Groups ("plat:read")
+     * @Groups ("challenges:read")
      */
     private $contenuMultimedia;
 

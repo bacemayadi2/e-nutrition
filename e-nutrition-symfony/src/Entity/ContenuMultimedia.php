@@ -59,6 +59,7 @@ class ContenuMultimedia
      * @ORM\Column(type="string", length=1000)
      *  @var string|null
      * @Groups ("plat:read")
+     * @Groups ("challenges:read")
      */
     private $nomFile;
 
