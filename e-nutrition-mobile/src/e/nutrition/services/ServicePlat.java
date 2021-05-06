@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import org.apache.commons.exec.util.StringUtils;
 
 
 
@@ -54,13 +55,18 @@ public class ServicePlat {
             {
              List <TagNourriture> tags = new ArrayList();
               List<Map<String,Object>> listtags =(List<Map<String,Object>>)objtag;
-                        for (Map<String,Object> objetape :listtags )
+                        for (Map<String,Object> oobjtag :listtags )
                         {
-                           List<Map<String,Object>> contenuMultimedia =(List<Map<String,Object>>) objetape.get("contenuMultimedia");
-                            for (Map<String,Object> contenuu :contenuMultimedia )
-                            {
-                              tags.add(new TagNourriture(new ContenuMultimedia(contenuu.get("nomFile").toString())));
-                            }
+                             Object objMultimedia= oobjtag.get("contenuMultimedia");
+                             String multimedia =objMultimedia.toString();
+                                   if (multimedia != null)
+        {
+           String nom= StringUtils.split(multimedia, "=")[1];
+           nom =nom.substring(0, nom.length()-1) ;
+                             System.out.println(nom);
+            tags.add(new TagNourriture(new ContenuMultimedia(nom)));
+        }
+                       
                         }   
                         System.out.println(tags);
                         return tags;
@@ -84,7 +90,8 @@ public class ServicePlat {
                             n =new Nutritionniste(0);
                         Plat p =new Plat(obj.get("description").toString(), (int)Float.parseFloat(obj.get("nbrportion").toString()),(int)Float.parseFloat(obj.get("id").toString()) ,obj.get("nom").toString() ,Float.parseFloat(obj.get("lipides").toString()),Float.parseFloat(obj.get("glucides").toString()) , Float.parseFloat(obj.get("proteines").toString()),Float.parseFloat(obj.get("poid").toString()) , n);
                         p.setEtapesDePreparation(parseEtapeDePreparation(obj.get("etapeDePreparation")));
-                       // p.setTags(parsetag(obj.get("tagNourriture")));
+                              
+                        p.setTags(parsetag(obj.get("tagNourriture")));
                         plats.add(p);
                     }
                 } catch (IOException ex) {

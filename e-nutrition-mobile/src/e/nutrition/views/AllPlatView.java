@@ -16,6 +16,7 @@ import com.codename1.ui.Container;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
@@ -57,6 +58,7 @@ public class AllPlatView extends AbstractEntityView {
 
     String namePlat, calorie, nbrPortion, duree, pictureProp, user;
     Node viewNode;
+    String url;
 
     private static EncodedImage placeHolder = EncodedImage.createFromImage(getGlobalResources().getImage("placeholder.png"), false);
 
@@ -77,14 +79,15 @@ public class AllPlatView extends AbstractEntityView {
         duree = String.valueOf(p.getDuree());
         user = ("salah");
 
+  
 
-        Image restImage=placeHolder;
-        try {
+        EncodedImage restImage=placeHolder;
+       
             if (p.getTags().size() != 0)
-            restImage = Image.createImage(p.getTags().get(0).getUrl()); //entity.createImageToStorage(pictureProp, placeHolder);
-        } catch (IOException ex) {
-            System.out.println("error");
-        }
+                 url=p.getTags().get(0).getUrl();
+            restImage = URLImage.createToStorage(restImage, url , url,URLImage.RESIZE_SCALE);
+                 //   Image.createImage(p.getTags().get(0).getUrl()); //entity.createImageToStorage(pictureProp, placeHolder);
+        
 
         ScaleImageButton restImageButton = new ScaleImageButton(restImage);
         restImageButton.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED);
