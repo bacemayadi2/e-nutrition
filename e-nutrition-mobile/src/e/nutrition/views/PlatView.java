@@ -290,10 +290,8 @@ public class PlatView extends AbstractEntityView {
         }
 
         for (int i =0 ; i< plats.size();i++)
-         {
-            
+        {
                         allRestsCnt.add(new AllPlatView((Entity) plats.get(i), viewNode));
-
         }
  
         return allRestsCnt;

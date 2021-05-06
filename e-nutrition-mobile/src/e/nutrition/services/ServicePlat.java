@@ -57,17 +57,16 @@ public class ServicePlat {
               List<Map<String,Object>> listtags =(List<Map<String,Object>>)objtag;
                         for (Map<String,Object> oobjtag :listtags )
                         {
-                             Object objMultimedia= oobjtag.get("contenuMultimedia");
-                             String multimedia =objMultimedia.toString();
-                                   if (multimedia != null)
-        {
-           String nom= StringUtils.split(multimedia, "=")[1];
-           nom =nom.substring(0, nom.length()-1) ;
-                             System.out.println(nom);
-            tags.add(new TagNourriture(new ContenuMultimedia(nom)));
-        }
-                       
-                        }   
+                            Object objMultimedia= oobjtag.get("contenuMultimedia");
+                            String multimedia =objMultimedia.toString();
+                            if (multimedia != null)
+                            {
+                               String nom= StringUtils.split(multimedia, "=")[1];
+                               nom =nom.substring(0, nom.length()-1) ;
+                                                 System.out.println(nom);
+                                tags.add(new TagNourriture(new ContenuMultimedia(nom)));
+                            }
+                        }
                         System.out.println(tags);
                         return tags;
 
@@ -86,7 +85,7 @@ public class ServicePlat {
                         Nutritionniste n ;
                         if( (obj.get("nutritionniste").toString() ) != "null")
                             n = new Nutritionniste("static", "satic");
-                        else 
+                        else
                             n =new Nutritionniste(0);
                         Plat p =new Plat(obj.get("description").toString(), (int)Float.parseFloat(obj.get("nbrportion").toString()),(int)Float.parseFloat(obj.get("id").toString()) ,obj.get("nom").toString() ,Float.parseFloat(obj.get("lipides").toString()),Float.parseFloat(obj.get("glucides").toString()) , Float.parseFloat(obj.get("proteines").toString()),Float.parseFloat(obj.get("poid").toString()) , n);
                         p.setEtapesDePreparation(parseEtapeDePreparation(obj.get("etapeDePreparation")));
@@ -108,14 +107,13 @@ public class ServicePlat {
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                plats= parsePlat(new String(req.getResponseData()));
+                plats = parsePlat(new String(req.getResponseData()));
                 req.removeResponseListener(this);
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
+        System.out.println("les plats _____________________________________ " + plats);
         return plats;
-  
-                
         }
     
     

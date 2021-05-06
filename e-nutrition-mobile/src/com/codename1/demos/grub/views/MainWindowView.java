@@ -1,26 +1,3 @@
-/*
- * Copyright (c) 2012, Codename One and/or its affiliates. All rights reserved.
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
- * This code is free software; you can redistribute it and/or modify it
- * under the terms of the GNU General Public License version 2 only, as
- * published by the Free Software Foundation.  Codename One designates this
- * particular file as subject to the "Classpath" exception as provided
- * by Oracle in the LICENSE file that accompanied this code.
- *
- * This code is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
- * version 2 for more details (a copy is included in the LICENSE file that
- * accompanied this code).
- *
- * You should have received a copy of the GNU General Public License version
- * 2 along with this work; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
- *
- * Please contact Codename One through http://www.codenameone.com/ if you
- * need additional information or have any questions.
- */
-
 package com.codename1.demos.grub.views;
 
 import com.codename1.demos.grub.interfaces.MainWindow;
@@ -33,15 +10,20 @@ import com.codename1.ui.layouts.BorderLayout;
 
 import static com.codename1.ui.CN.convertToPixels;
 import static com.codename1.ui.util.Resources.getGlobalResources;
+import e.nutrition.views.AllChallengesView;
+import e.nutrition.views.ChallengeView;
 import e.nutrition.views.PlatView;
 
-public class MainWindowView extends AbstractEntityView {
+public class MainWindowView extends AbstractEntityView
+{
 
     FavoriteRestaurantsView favoriteView;
     MainWindowOrdersView ordersView;
     HomeView homeView;
     Tabs mainWindowContainer;
     PlatView platView;
+    AllChallengesView challengeView;
+    
     private static final int TABS_ICON_SIZE = convertToPixels(4);
     private static final int TABS_ICON_SELECTED_SIZE = convertToPixels(6);
 
@@ -56,6 +38,13 @@ public class MainWindowView extends AbstractEntityView {
         mainWindowContainer.setTabUIID("MainWindowTab");
         mainWindowContainer.getTabsContainer().setSafeArea(false);
 
+        
+//        SignInView signInView = new SignInView(mainWindowEntity, homeViewNode);
+//        mainWindowContainer.addTab("HOME",
+//                                    getGlobalResources().getImage("main-window-favorite.png").scaled(TABS_ICON_SIZE, TABS_ICON_SIZE),
+//                                    getGlobalResources().getImage("main-window-favorite-selected.png").scaled(TABS_ICON_SELECTED_SIZE, TABS_ICON_SELECTED_SIZE),
+//                                    signInView);
+
         homeView = new HomeView(mainWindowEntity, homeViewNode);
         mainWindowContainer.addTab("HOME",
                                     getGlobalResources().getImage("main-window-favorite.png").scaled(TABS_ICON_SIZE, TABS_ICON_SIZE),
@@ -69,7 +58,15 @@ public class MainWindowView extends AbstractEntityView {
                                     getGlobalResources().getImage("main-window-favorite-selected.png").scaled(TABS_ICON_SELECTED_SIZE, TABS_ICON_SELECTED_SIZE),
                                     platView);
         
+          
+            challengeView = new AllChallengesView(mainWindowEntity, homeViewNode);
 
+           mainWindowContainer.addTab("DEFIS",
+                                    getGlobalResources().getImage("main-window-favorite.png").scaled(TABS_ICON_SIZE, TABS_ICON_SIZE),
+                                    getGlobalResources().getImage("main-window-favorite-selected.png").scaled(TABS_ICON_SELECTED_SIZE, TABS_ICON_SELECTED_SIZE),
+                                    challengeView);
+           
+           
         favoriteView = new FavoriteRestaurantsView((Entity)mainWindowEntity.get(MainWindow.profile), homeViewNode);
         mainWindowContainer.addTab("FAVORITE",
                                     getGlobalResources().getImage("main-window-home.png").scaled(TABS_ICON_SIZE, TABS_ICON_SIZE),

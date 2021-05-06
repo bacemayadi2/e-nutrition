@@ -22,6 +22,10 @@ public class ChallengeTag extends Tag{
         super(contenuMultimedia);
     }
     
+    public ChallengeTag(ContenuMultimedia contenuMultimedia) {
+        super(contenuMultimedia);
+    }
+    
     private int user_id ;
 
     public int getUser_id() {

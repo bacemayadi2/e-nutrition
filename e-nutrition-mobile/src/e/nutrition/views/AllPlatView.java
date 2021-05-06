@@ -62,12 +62,10 @@ public class AllPlatView extends AbstractEntityView {
 
     private static EncodedImage placeHolder = EncodedImage.createFromImage(getGlobalResources().getImage("placeholder.png"), false);
 
-
-
-
     public AllPlatView(Entity entity, Node viewNode){
                super(entity);
         this.viewNode = viewNode;
+               
         Plat p =(Plat) entity;
         setLayout(new BorderLayout());
         setUIID("RestaurantPreview");
@@ -81,7 +79,7 @@ public class AllPlatView extends AbstractEntityView {
 
   
 
-        EncodedImage restImage=placeHolder;
+        EncodedImage restImage = placeHolder;
        
             if (p.getTags().size() != 0)
                  url=p.getTags().get(0).getUrl();

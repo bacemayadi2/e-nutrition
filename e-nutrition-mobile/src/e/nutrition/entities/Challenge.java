@@ -1,12 +1,13 @@
 package e.nutrition.entities;
 
+import com.codename1.rad.models.Entity;
 import java.util.Date;
 
 /**
  *
  * @author ALADIN
  */
-public class Challenge 
+public class Challenge extends Entity
 {
     private int id;
     private String titre;
@@ -32,9 +33,10 @@ public class Challenge
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
     }
+    
 
     public Challenge() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Empty constructor
     }
     
     public int getId() {
