@@ -15,6 +15,7 @@ import e.nutrition.entities.Composition;
 import e.nutrition.entities.EtapeDePreparation;
 import e.nutrition.entities.Nutritionniste;
 import e.nutrition.entities.Plat;
+import e.nutrition.entities.tags.TagNourriture;
 import e.nutrition.utils.Statics;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -35,6 +36,32 @@ public class ServicePlat {
     public ServicePlat() {
         req=new ConnectionRequest();
     }
+    public List<EtapeDePreparation> parseEtapeDePreparation(Object objliste)
+            {
+                List<EtapeDePreparation> etapes= new ArrayList();
+              List<Map<String,Object>> listetape =(List<Map<String,Object>>)objliste;
+                        for (Map<String,Object> objetape :listetape )
+                        {
+                            etapes.add(new EtapeDePreparation((int)Float.parseFloat(objetape.get("ordre").toString()),(int)Float.parseFloat(objetape.get("duree").toString()), objetape.get("description").toString()));
+                        }   
+                        System.out.println(etapes);
+                        return etapes;
+
+            }
+    
+        public List<TagNourriture> parsetag(Object objtag)
+            {
+             List <TagNourriture> tags = new ArrayList();
+              List<Map<String,Object>> listtags =(List<Map<String,Object>>)objtag;
+                        for (Map<String,Object> objetape :listetape )
+                        {
+                            etapes.add(new EtapeDePreparation((int)Float.parseFloat(objetape.get("ordre").toString()),(int)Float.parseFloat(objetape.get("duree").toString()), objetape.get("description").toString()));
+                        }   
+                        System.out.println(etapes);
+                        return etapes;
+
+            }
+    
 
     public ArrayList<Plat> parsePlat(String jsonText){
         {
@@ -51,7 +78,8 @@ public class ServicePlat {
                         else 
                             n =new Nutritionniste(0);
                         Plat p =new Plat(obj.get("description").toString(), (int)Float.parseFloat(obj.get("nbrportion").toString()),(int)Float.parseFloat(obj.get("id").toString()) ,obj.get("nom").toString() ,Float.parseFloat(obj.get("lipides").toString()),Float.parseFloat(obj.get("glucides").toString()) , Float.parseFloat(obj.get("proteines").toString()),Float.parseFloat(obj.get("poid").toString()) , n);
-                        System.out.println();
+                        p.setEtapesDePreparation(parseEtapeDePreparation(obj.get("etapeDePreparation")));
+                       
                         plats.add(p);
                     }
                 } catch (IOException ex) {

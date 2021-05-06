@@ -139,7 +139,10 @@ public class Plat extends Nourriture {
     }
 
     public void setEtapesDePreparation(List<EtapeDePreparation> etapesDePreparation) {
+             
         this.etapesDePreparation = etapesDePreparation;
+             this.calculerduree();
+              
     }
 
     public List<Composition> getCompostions() {

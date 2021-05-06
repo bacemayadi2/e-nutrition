@@ -55,6 +55,11 @@ public class EtapeDePreparation {
     public int getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "EtapeDePreparation{" + "id=" + id + ", order=" + order + ", duree=" + duree + ", description=" + description + '}';
+    }
     
     
 }

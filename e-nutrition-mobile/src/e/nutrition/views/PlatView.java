@@ -49,14 +49,20 @@ import java.util.List;
 import static com.codename1.ui.CN.convertToPixels;
 import static com.codename1.ui.CN.isTablet;
 import static com.codename1.ui.util.Resources.getGlobalResources;
+import e.nutrition.entities.Plat;
+import e.nutrition.services.ServicePlat;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class PlatView extends AbstractEntityView {
 
     Node viewNode;
-    Property restaurantsProp, accountProp, filterProp;
+    Property  accountProp, filterProp;
     Entity appEntity;
     Container deliverToCnt;
     Label deliverToLabel;
+    ServicePlat sP =new ServicePlat();
+    ArrayList<Plat> plat =sP.getAllPlats();
 
     public static final ActionNode.Category POPULAR_EXPLORE = new ActionNode.Category();
     public static final ActionNode.Category RECOMMENDED_EXPLORE = new ActionNode.Category();
@@ -73,7 +79,6 @@ public class PlatView extends AbstractEntityView {
         setScrollableY(true);
         setScrollVisible(false);
 
-        restaurantsProp = appEntity.findProperty(MainWindow.restaurants);
         accountProp = appEntity.findProperty(MainWindow.profile);
         filterProp = appEntity.findProperty(MainWindow.filter);
 
@@ -194,9 +199,9 @@ public class PlatView extends AbstractEntityView {
 
         Container allRestaurantsCnt = new Container(new BorderLayout());
         allRestaurantsCnt.setUIID("AllPlat");
-        Label allRestaurantsLabel = new Label("All Restaurants", "CategoryHeader");
+        Label allRestaurantsLabel = new Label("All plat", "CategoryHeader");
         allRestaurantsCnt.add(BorderLayout.NORTH, allRestaurantsLabel);
-        allRestaurantsCnt.add(BorderLayout.CENTER, createAllRestaurantsCnt(appEntity.getEntityList(restaurantsProp)));
+        allRestaurantsCnt.add(BorderLayout.CENTER, createAllRestaurantsCnt(plat));
         add(allRestaurantsCnt);
 
         Button backToTopButton = new Button("BACK TO TOP", "BackToTopButton");
@@ -229,9 +234,53 @@ public class PlatView extends AbstractEntityView {
         return viewNode;
     }
 
-  
-    private Container createAllRestaurantsCnt(EntityList<Entity> restaurants) {
-        final int restsCount = restaurants.size();
+    private Container createCategoryButton(String name, String icon, ActionListener action) {
+        Container categoryButton = new Container(new BorderLayout());
+        categoryButton.setUIID("HomeCategoryButton");
+
+        Image categoryButtonImage = getGlobalResources().getImage(icon);
+        ScaleImageLabel categoryIcon = new ScaleImageLabel(categoryButtonImage) {
+            @Override
+            public Dimension getPreferredSize() {
+                if(CN.isTablet()){
+                    return new Dimension(convertToPixels(8), convertToPixels(8));
+                }else{
+                    return new Dimension(convertToPixels(6), convertToPixels(6));
+                }
+            }
+        };
+        categoryIcon.setUIID("CategoryIconLabel");
+        Container iconWrapper = BorderLayout.centerCenter(categoryIcon);
+        iconWrapper.setUIID("CategoryIconWrapper");
+
+        Button categoryName = new Button(name, "CategoryNameLabel");
+        categoryName.addActionListener(action);
+        categoryButton.add(BorderLayout.CENTER, iconWrapper);
+        categoryButton.add(BorderLayout.SOUTH, categoryName);
+        categoryButton.setLeadComponent(categoryName);
+        return categoryButton;
+    }
+
+    private Container createPopularCnt(EntityList<Entity> restaurants) {
+        Container popularCnt = new Container(new BoxLayout(BoxLayout.X_AXIS));
+        popularCnt.setScrollableX(true);
+        for (Entity rest : restaurants) {
+            popularCnt.add(new RestaurantPreview(rest, viewNode));
+        }
+        return popularCnt;
+    }
+
+    private Container createRecommendedCnt(EntityList<Entity> restaurants) {
+        Container recommendedCnt = new Container(new BoxLayout(BoxLayout.X_AXIS));
+        recommendedCnt.setScrollableX(true);
+        for (Entity rest : restaurants) {
+            recommendedCnt.add(new RestaurantPreview(rest, viewNode));
+        }
+        return recommendedCnt;
+    }
+
+    private Container createAllRestaurantsCnt(ArrayList<Plat> plats) {
+        final int restsCount = plats.size();
         final int landscapeRows = restsCount % 2 == 0 ? restsCount / 2 : restsCount / 2 + 1;
         Container allRestsCnt;
         if (isTablet()){
@@ -240,10 +289,13 @@ public class PlatView extends AbstractEntityView {
             allRestsCnt = new Container(new GridLayout(restsCount, 1, landscapeRows, 2));
         }
 
-        for (Entity rest : restaurants) {
-            allRestsCnt.add(new AllPlatView(rest, viewNode));
-        }
+        for (int i =0 ; i< plats.size();i++)
+         {
+            
+                        allRestsCnt.add(new AllPlatView((Entity) plats.get(i), viewNode));
 
+        }
+ 
         return allRestsCnt;
 
     }
