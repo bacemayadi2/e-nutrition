@@ -371,23 +371,5 @@ class UserController extends AbstractController
         return $this->render("front/challenges/challengeDetails.html.twig",['challenge'=>$challenge,'form'=>$form->createView()]);
     }
 
-    /**
-     * @Route ("/api/displayCallenges",name="api_displayCallenges")
-     */
-    public function afficherfrontallapi(ChallengeRepository $repo,PaginatorInterface $paginator,Request $request, SerializerInterface $serializerInterface)
-    {
-        $challenges=$repo->findAll();
 
-        $jsonContent = $serializerInterface->serialize($challenges, 'json', ['groups'=>'challenges:read']);
-        //dump($jsonContent);
-        // On instancie la réponse
-
-        $response = new Response($jsonContent);
-
-        // On ajoute l'entête HTTP
-        $response->headers->set('Content-Type', 'application/json');
-
-        // On envoie la réponse
-        return $response;
-    }
 }
