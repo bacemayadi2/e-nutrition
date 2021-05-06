@@ -32,6 +32,8 @@ public class RendezVousService implements IService<RendezVous>{
     private static final String SELECT_STATEMENT = "SELECT * FROM pidev3a.rendez_vous";
     private static final String SELECT_STATEMENT_BY_ID = "SELECT * FROM pidev3a.rendez_vous where id = ?";
     private final Connection cnx = DataSource.getInstance().getCnx();
+    
+    
 
     
     public RendezVous getById(Integer id){
@@ -114,6 +116,10 @@ public class RendezVousService implements IService<RendezVous>{
             Logger.getLogger(RendezVousService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rendezVous;
+    }
+
+    public void printHello(String name) {
+        System.out.println("hello "+name); //To change body of generated methods, choose Tools | Templates.
     }
 }
 
