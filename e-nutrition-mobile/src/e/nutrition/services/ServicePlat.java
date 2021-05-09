@@ -17,7 +17,6 @@ import e.nutrition.entities.ContenuMultimedia;
 import e.nutrition.entities.EtapeDePreparation;
 import e.nutrition.entities.Nutritionniste;
 import e.nutrition.entities.Plat;
-import e.nutrition.entities.tags.TagGenrique;
 import e.nutrition.entities.tags.TagNourriture;
 import e.nutrition.utils.Statics;
 import java.io.IOException;

@@ -32,6 +32,7 @@ public class Tag {
     public Tag(ContenuMultimedia contenuMultimedia) {
         this.contenuMultimedia = contenuMultimedia;
     }
+    
 
     public ContenuMultimedia getContenuMultimedia() {
         return contenuMultimedia;
