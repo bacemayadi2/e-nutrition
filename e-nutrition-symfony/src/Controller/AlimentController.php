@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Aliment;
 use App\Entity\CategorieAliment;
+use App\Entity\TagNourriture;
 use App\Form\AlimentType;
 use App\Repository\AlimentRepository;
 use App\Repository\CategorieAlimentRepository;
@@ -39,10 +40,11 @@ class AlimentController extends AbstractController
     {
         $aliment =new Aliment();
         $aliment->setPoid(100);
+        $image=new TagNourriture();
+        $aliment->addTagNourriture($image);
         $form =$this->createForm(AlimentType::class,$aliment);
         //  $form->add("Ajouter",SubmitType::class);
         $form->handleRequest($request);//gere requette envoyer par l'utlisateur
-        if($form->isSubmitted())
 
         if($form->isSubmitted() && $form->isValid()){
             $aliment->setNutritionniste($this->getUser());
@@ -68,7 +70,8 @@ class AlimentController extends AbstractController
 
         $aliment =$repoAliment->find($id);
         //    $s =new String_() ;+
-
+        $image=new TagNourriture();
+        $aliment->addTagNourriture($image);
 
         $form =$this->createForm(AlimentType::class,$aliment);
         $form->add("modifier",SubmitType::class);

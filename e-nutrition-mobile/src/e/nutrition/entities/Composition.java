@@ -25,6 +25,13 @@ public class Composition {
    return ( (this.aliment.getCalculerCalorie()/this.aliment.getPoid())*this.poid )   ; 
    }
 
+    public Composition(int id, float poid, Aliment aliment) {
+        this.id = id;
+        this.poid = poid;
+        this.aliment = aliment;
+    }
+
+   
     public Composition(int id, float poid, Aliment aliment, Plat plat) {
         this.id = id;
         this.poid = poid;

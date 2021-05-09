@@ -49,13 +49,23 @@ public class Nourriture extends Entity {
 
 
 
-    public float getCalculerCalorie()
+    public int getCalculerCalorie()
     {
-        return this.glucides*4 + this.proteines*9 + this.lipidies*9;
+        return Math.round(this.glucides*4 + this.proteines*9 + this.lipidies*9);
     }
 
     public Nourriture() {
     }
+
+    public Nourriture(int id, String nom, float lipidies, float glucides, float proteines, float poid) {
+        this.id = id;
+        this.nom = nom;
+        this.lipidies = lipidies;
+        this.glucides = glucides;
+        this.proteines = proteines;
+        this.poid = poid;
+    }
+    
 
     public Nourriture(int id, String nom, float lipidies, float glucides, float proteines, float poid, Nutritionniste n) {
         this.id = id;

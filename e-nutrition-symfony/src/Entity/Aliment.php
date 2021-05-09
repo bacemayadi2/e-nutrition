@@ -113,6 +113,8 @@ class Aliment extends Nourriture
 
     public function __construct()
     {
+        parent::__construct();
+
         $this->categorieAliment = new ArrayCollection();
         $this->compositions = new ArrayCollection();
         $this->proportions = new ArrayCollection();

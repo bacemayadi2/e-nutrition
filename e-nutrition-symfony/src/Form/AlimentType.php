@@ -28,21 +28,13 @@ class AlimentType extends AbstractType
             ->add('poid')
             ->add('codeABarre')
 
-            ->add('categorieAliment',CollectionType::class,[
-                'entry_type' => CategorieAlimentType::class,
-                'allow_add' => true,
-                'entry_options' => ['label' => false],
-                'allow_delete' => true,
-                'by_reference' => false,
-                'block_name' => 'etape',
 
-
-
-            ])
             ->add('categorieAliment')
+            ->add('tagNourriture', CollectionType::class  ,[
+                'entry_type' => TagNourritureType::class,
 
+            ]);
 
-        ;
       /*  $builder->get('categorieAliment')
             ->addModelTransformer(new CallbackTransformer(
                 function ($categorieAliment) {

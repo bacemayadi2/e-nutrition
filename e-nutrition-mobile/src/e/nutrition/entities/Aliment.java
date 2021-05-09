@@ -106,6 +106,11 @@ public class Aliment extends Nourriture   {
         super(nom, lipidies, glucides, proteines, poid, n);
         this.codeABarre=codeABarre;
     }
+
+    public Aliment(int id, String nom, float lipidies, float glucides, float proteines, float poid) {
+        super(id, nom, lipidies, glucides, proteines, poid);
+    }
+    
     
    @Override
     public String getDType()
