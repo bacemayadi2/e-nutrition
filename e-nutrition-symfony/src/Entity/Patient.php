@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PatientRepository::class)
@@ -16,31 +17,37 @@ class Patient extends Utilisateur
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="saisir votre style de vie svp !!!")
+     * @Groups("patient")
      */
     private $styleDeVie;
 
     /**
      * @ORM\OneToMany(targetEntity=FicheConsultation::class, mappedBy="patient",cascade={"all"},orphanRemoval=true)
+     *@Groups("patient")
      */
     private $ficheConsultations;
 
     /**
      * @ORM\OneToMany(targetEntity=Evaluation::class, mappedBy="patient")
+     * Groups("patient")
      */
     private $evaluations;
 
     /**
      * @ORM\OneToMany(targetEntity=Mesure::class, mappedBy="patient", orphanRemoval=true)
+     * Groups("patient")
      */
     private $mesures;
 
     /**
      * @ORM\OneToMany(targetEntity=Proportion::class, mappedBy="patient")
+     * Groups("patient")
      */
     private $proportions;
 
     /**
      * @ORM\ManyToMany(targetEntity=Challenge::class, inversedBy="participants")
+     * Groups("patient")
      */
     private $challenges;
 

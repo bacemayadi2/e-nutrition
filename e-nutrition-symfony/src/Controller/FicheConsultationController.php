@@ -19,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use App\Form\FicheConsultationType;
 use App\Entity\FicheConsultation;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class FicheConsultationController extends AbstractController
 {
@@ -217,4 +218,24 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
         }
         return $realEntities;
     }
+
+    /**
+     * @Route("/FicheListeMobile", name="FicheListeMobile")
+     */
+    public function FicheListe(FicheConsultationRepository $repo,SerializerInterface $serializerInterface)
+    {
+     $fiches=$repo->findAll();
+     $json=$serializerInterface->serialize($fiches,'json',['groups'=>'fiche']);
+    // dump($json);
+
+        //$repo=$this->getDoctrine()->getRepository(FicheConsultation::class);
+        //$FicheListe=$repo->findAll();
+
+       // $jsonContent= $normalizer->normalize($FicheListe,'json');
+       return new Response(json_encode($json));
+    }
+
+
+
+
 }

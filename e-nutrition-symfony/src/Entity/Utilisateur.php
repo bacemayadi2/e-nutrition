@@ -23,6 +23,7 @@ class Utilisateur implements UserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups ("doctors")
+     * @Groups("fiche")
      */
     protected $id;
 

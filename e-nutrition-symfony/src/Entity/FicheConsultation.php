@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Array_;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=FicheConsultationRepository::class)
@@ -19,21 +20,25 @@ class FicheConsultation
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("fiche")
      */
     private $id;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups("fiche")
      */
     private $CreationDate;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("fiche")
      */
     private $Poids;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("fiche")
      */
     private $Taille;
 
@@ -41,21 +46,25 @@ class FicheConsultation
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("fiche")
      */
     private $Symptome;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("fiche")
      */
     private $Apetit;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("fiche")
      */
     private $Description;
 
     /**
      * @ORM\OneToMany(targetEntity=Medicament::class, mappedBy="fiche",cascade={"all"},orphanRemoval=true)
+     * @Groups("fiche")
      */
     private $medicaments;
 
@@ -66,11 +75,13 @@ class FicheConsultation
 
     /**
      * @ORM\ManyToOne(targetEntity=Patient::class, inversedBy="ficheConsultations")
+     * @Groups("fiche")
      */
     private $patient;
 
     /**
      * @ORM\ManyToOne(targetEntity=Nutritionniste::class, inversedBy="ficheConsultations")
+     * @Groups("fiche")
      */
     private $nutritionniste;
 

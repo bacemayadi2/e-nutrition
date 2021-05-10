@@ -16,24 +16,28 @@ class Medicament
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups ("medicaments")
+     * @Groups("fiche")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups ("medicaments")
+     * @Groups("fiche")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups ("medicaments")
+     * @Groups("fiche")
      */
     private $quantite;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups ("medicaments")
+     * @Groups("fiche")
      */
     private $duree;
 
