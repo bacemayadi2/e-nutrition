@@ -232,7 +232,7 @@ return $this->render('Back/fiche_consultation/ajouterFicheConsultation.html.twig
         //$FicheListe=$repo->findAll();
 
        // $jsonContent= $normalizer->normalize($FicheListe,'json');
-       return new Response(json_encode($json));
+       return new Response($json);
     }
 
 

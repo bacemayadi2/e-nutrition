@@ -15,6 +15,7 @@ class Composition
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("plat:read")
      */
     private $id;
 

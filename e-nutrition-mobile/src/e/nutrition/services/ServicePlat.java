@@ -42,12 +42,11 @@ public class ServicePlat {
     public Aliment parseAliment(Object objliste )
             {
                  Aliment a = null ;
-              List<Map<String,Object>> list =(List<Map<String,Object>>)objliste;
-                        for (Map<String,Object> objetape :list )
-                        {
-                         //    a = new Aliment(0, nom, 0, 0, 0, 0);
-                        }   
-                        System.out.println("aliment" + a);
+              Map<String,Object> map =(Map<String,Object>)objliste;
+
+                             a = new Aliment((int)Float.parseFloat(map.get("id").toString()), map.get("nom").toString(), (int)Float.parseFloat(map.get("lipides").toString()),(int)Float.parseFloat(map.get("glucides").toString()) , (int)Float.parseFloat(map.get("proteines").toString()), (int)Float.parseFloat(map.get("poid").toString()));
+                             a.setTags(parsetag(map.get("tagNourriture")));
+                             System.out.println(a.getTags());
                         return a;
 
             }
@@ -58,9 +57,8 @@ public class ServicePlat {
               List<Map<String,Object>> list =(List<Map<String,Object>>)objliste;
                         for (Map<String,Object> objetape :list )
                         {
-                          //  compositions.add(new Composition(0, aliment));
+                            compositions.add(new Composition((int)Float.parseFloat(objetape.get("id").toString()),(int)Float.parseFloat(objetape.get("poid").toString()), parseAliment(objetape.get("aliment"))));
                         }   
-                        System.out.println(compositions);
                         return compositions;
 
             }
@@ -72,7 +70,6 @@ public class ServicePlat {
               List<Map<String,Object>> listetape =(List<Map<String,Object>>)objliste;
                         for (Map<String,Object> objetape :listetape )
                         {
-                                                        System.out.println(objetape);
 
                             etapes.add(new EtapeDePreparation((int)Float.parseFloat(objetape.get("ordre").toString()),(int)Float.parseFloat(objetape.get("duree").toString()), objetape.get("description").toString()));
                         }   
@@ -117,7 +114,8 @@ public class ServicePlat {
                         Plat p =new Plat(obj.get("description").toString(), (int)Float.parseFloat(obj.get("nbrportion").toString()),(int)Float.parseFloat(obj.get("id").toString()) ,obj.get("nom").toString() ,Float.parseFloat(obj.get("lipides").toString()),Float.parseFloat(obj.get("glucides").toString()) , Float.parseFloat(obj.get("proteines").toString()),Float.parseFloat(obj.get("poid").toString()) , n);
                         p.setEtapesDePreparation(parseEtapeDePreparation(obj.get("etapeDePreparation")));
                         p.setCompostions(parseCompostion(obj.get("compostions")));
-                        p.setTags(parsetag((List<TagNourriture>)obj.get("tagNourriture")));
+                        p.setTags(parsetag(obj.get("tagNourriture")));
+                       
                         plats.add(p);
                     }
                 } catch (IOException ex) {
