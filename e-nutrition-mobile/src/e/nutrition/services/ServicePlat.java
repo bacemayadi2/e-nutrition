@@ -39,6 +39,15 @@ public class ServicePlat {
     public ServicePlat() {
         req=new ConnectionRequest();
     }
+     public int  parseNutritioniste(Object objliste )
+            {
+              Map<String,Object> map =(Map<String,Object>)objliste;
+
+
+                        return (int)Float.parseFloat(map.get("id").toString());
+
+            }
+    
     public Aliment parseAliment(Object objliste )
             {
                  Aliment a = null ;

@@ -12,7 +12,7 @@ import static com.codename1.ui.CN.convertToPixels;
 import static com.codename1.ui.util.Resources.getGlobalResources;
 import e.nutrition.views.AllChallengesView;
 import e.nutrition.views.ChallengeView;
-import e.nutrition.views.PlatView;
+import e.nutrition.views.PlatsView;
 
 public class MainWindowView extends AbstractEntityView
 {
@@ -21,7 +21,7 @@ public class MainWindowView extends AbstractEntityView
     MainWindowOrdersView ordersView;
     HomeView homeView;
     Tabs mainWindowContainer;
-    PlatView platView;
+    PlatsView platView;
     AllChallengesView challengeView;
     
     private static final int TABS_ICON_SIZE = convertToPixels(4);
@@ -51,7 +51,7 @@ public class MainWindowView extends AbstractEntityView
                                     getGlobalResources().getImage("main-window-favorite-selected.png").scaled(TABS_ICON_SELECTED_SIZE, TABS_ICON_SELECTED_SIZE),
                                     homeView);
         
-          platView = new PlatView(mainWindowEntity, homeViewNode);
+          platView = new PlatsView(mainWindowEntity, homeViewNode);
 
            mainWindowContainer.addTab("plat",
                                     getGlobalResources().getImage("main-window-favorite.png").scaled(TABS_ICON_SIZE, TABS_ICON_SIZE),

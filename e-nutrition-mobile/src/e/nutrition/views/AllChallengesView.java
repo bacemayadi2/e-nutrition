@@ -131,7 +131,7 @@ public class AllChallengesView extends AbstractEntityView
         };
         filterButton.addActionListener(evt -> {
             evt.consume();
-            ActionNode action = viewNode.getInheritedAction(PlatView.ENTER_FILTER);
+            ActionNode action = viewNode.getInheritedAction(PlatsView.ENTER_FILTER);
             if (action != null) {
                 action.fireEvent(appEntity, AllChallengesView.this);
             }
@@ -154,7 +154,7 @@ public class AllChallengesView extends AbstractEntityView
             Entity filter = appEntity.getEntity(filterProp);
             if (filter instanceof FilterModel){
                 ((FilterModel) filter).setFreeText(searchField.getText());
-                ActionNode action = viewNode.getInheritedAction(PlatView.ENTER_SEARCH);
+                ActionNode action = viewNode.getInheritedAction(PlatsView.ENTER_SEARCH);
                 if (action != null) {
                     action.fireEvent(appEntity, AllChallengesView.this);
                 }
