@@ -29,6 +29,7 @@ class Tag
      * @ORM\JoinColumn(nullable=false)
      * @Groups ("plat:read")
      * @Groups ("challenges:read")
+     * @Groups("fiche")
      */
     private $contenuMultimedia;
 

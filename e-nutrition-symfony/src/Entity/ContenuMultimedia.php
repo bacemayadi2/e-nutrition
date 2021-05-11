@@ -60,6 +60,7 @@ class ContenuMultimedia
      *  @var string|null
      * @Groups ("plat:read")
      * @Groups ("challenges:read")
+     * @Groups("fiche")
      */
     private $nomFile;
 

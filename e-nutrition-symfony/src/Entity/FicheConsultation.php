@@ -70,6 +70,7 @@ class FicheConsultation
 
     /**
      * @ORM\OneToMany(targetEntity=TagFicheConsultation::class, mappedBy="ficheConsultation",cascade={"all"},orphanRemoval=true)
+     * @Groups("fiche")
      */
     private $tagFicheConsultation;
 

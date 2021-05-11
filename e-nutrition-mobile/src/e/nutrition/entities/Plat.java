@@ -16,6 +16,7 @@ import java.util.List;
 public class Plat extends Nourriture {
    private String description;
    private int nbrportion;
+  
    private List <EtapeDePreparation> etapesDePreparation = new ArrayList();
    private List <Composition> compostions = new ArrayList();
    private float duree;

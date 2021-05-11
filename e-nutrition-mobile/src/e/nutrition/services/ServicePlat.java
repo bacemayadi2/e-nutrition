@@ -120,7 +120,7 @@ public class ServicePlat {
                             n = new Nutritionniste("static", "satic");
                         else 
                             n =new Nutritionniste(0);
-                        Plat p =new Plat(obj.get("description").toString(), (int)Float.parseFloat(obj.get("nbrportion").toString()),(int)Float.parseFloat(obj.get("id").toString()) ,obj.get("nom").toString() ,Float.parseFloat(obj.get("lipides").toString()),Float.parseFloat(obj.get("glucides").toString()) , Float.parseFloat(obj.get("proteines").toString()),Float.parseFloat(obj.get("poid").toString()) , n);
+                        Plat p =new Plat(obj.get("description").toString(), (int)Float.parseFloat(obj.get("nbrportion").toString()),(int)Float.parseFloat(obj.get("id").toString()) ,obj.get("nom").toString() ,Float.parseFloat(obj.get("lipides").toString()),Float.parseFloat(obj.get("glucides").toString()) , Float.parseFloat(obj.get("proteines").toString()),Float.parseFloat(obj.get("poid").toString()) , n );
                         p.setEtapesDePreparation(parseEtapeDePreparation(obj.get("etapeDePreparation")));
                         p.setCompostions(parseCompostion(obj.get("compostions")));
                         p.setTags(parsetag(obj.get("tagNourriture")));
@@ -135,7 +135,6 @@ public class ServicePlat {
     
     public ArrayList<Plat> getAllPlats(){
         String url =Statics.BASE_URL+"/api/afficherplatfrontall";
-        System.out.println(url);
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -146,6 +145,7 @@ public class ServicePlat {
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
+        System.out.println(plats);
         return plats;
   
                 

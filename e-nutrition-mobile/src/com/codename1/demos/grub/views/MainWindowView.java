@@ -57,6 +57,8 @@ public class MainWindowView extends AbstractEntityView
                                     getGlobalResources().getImage("main-window-favorite.png").scaled(TABS_ICON_SIZE, TABS_ICON_SIZE),
                                     getGlobalResources().getImage("main-window-favorite-selected.png").scaled(TABS_ICON_SELECTED_SIZE, TABS_ICON_SELECTED_SIZE),
                                     platView);
+    
+           
         
           
             challengeView = new AllChallengesView(mainWindowEntity, homeViewNode);
