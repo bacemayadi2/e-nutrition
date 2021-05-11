@@ -86,7 +86,7 @@ public class ServiceChallenge
                                     obj.get("description").toString(),
                                     new SimpleDateFormat("yyyy-MM-dd").parse(obj.get("dateDebut").toString().substring(0, 10)),
                                     new SimpleDateFormat("yyyy-MM-dd").parse(obj.get("dateFin").toString().substring(0, 10)));
-                                    
+                                    challenge.setTags(parsetag(obj.get("tagChallenge")));
                         challenges.add(challenge);
                     }
                 } catch (IOException ex) {

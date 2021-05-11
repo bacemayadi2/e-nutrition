@@ -61,6 +61,7 @@ class Challenge
 
     /**
      * @ORM\OneToMany(targetEntity=ChallengeTag::class, mappedBy="challenge",cascade={"all"},orphanRemoval=true)
+     * @Groups ("challenges:read")
      */
     private $tagChallenge;
 

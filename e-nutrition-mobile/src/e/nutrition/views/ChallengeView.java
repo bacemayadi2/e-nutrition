@@ -19,6 +19,7 @@ import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.Style;
 import static com.codename1.ui.util.Resources.getGlobalResources;
 import e.nutrition.entities.Challenge;
+import java.io.IOException;
 
 /**
  *
@@ -31,7 +32,7 @@ public class ChallengeView extends AbstractEntityView
     Node viewNode;
     String url;
     
-    private static final EncodedImage placeHolder = EncodedImage.createFromImage(getGlobalResources().getImage("placeholder.png"), false);
+    private static EncodedImage placeHolder = EncodedImage.createFromImage(getGlobalResources().getImage("placeholder.png"), false);
 
     public ChallengeView(Node viewNode, Entity entity) 
     {
@@ -49,23 +50,13 @@ public class ChallengeView extends AbstractEntityView
         dateDebut = String.valueOf(challenge.getDateDebut());
         dateFin = String.valueOf(challenge.getDateFin());
 
-        Image restImage=placeHolder;
-//        try {
-//            if (challenge.getTags().size() != 0)
-//            restImage = Image.createImage(challenge.getTags().get(0).getUrl()); //entity.createImageToStorage(pictureProp, placeHolder);
-//        } catch (IOException ex) {
-//            System.out.println("error");
-//        }
+        EncodedImage restImage = placeHolder;
+        
+            if (challenge.getTags().size() != 0)
+                 url=challenge.getTags().get(0).getUrl();
+            restImage = URLImage.createToStorage(restImage, url , url,URLImage.RESIZE_SCALE);
             
-//            EncodedImage restImage = placeHolder;
-//       
-//            if (challenge.getTags().size() != 0)
-//                 url=challenge.getTags().get(0).getUrl();
-//            restImage = URLImage.createToStorage(restImage, url , url,URLImage.RESIZE_SCALE);
-//                 //   Image.createImage(p.getTags().get(0).getUrl()); //entity.createImageToStorage(pictureProp, placeHolder);
-//        
-
-
+           
         ScaleImageButton restImageButton = new ScaleImageButton(restImage);
         restImageButton.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED);
 

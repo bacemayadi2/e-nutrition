@@ -1,7 +1,10 @@
 package e.nutrition.entities;
 
 import com.codename1.rad.models.Entity;
+import e.nutrition.entities.tags.ChallengeTag;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -15,6 +18,7 @@ public class Challenge extends Entity
     private String categorie;
     private Date dateDebut;
     private Date dateFin;
+    private List <ChallengeTag> tags = new ArrayList();
     
     public Challenge(int id, String titre, String description, String categorie, Date dateDebut, Date dateFin) 
     {
@@ -85,6 +89,30 @@ public class Challenge extends Entity
 
     public void setDateFin(Date dateFin) {
         this.dateFin = dateFin;
+    }
+    
+    
+    
+    public void ajoutertag(ChallengeTag t) {
+      if (t != null)
+      {
+          tags.add(t);
+      }
+    }
+
+    public List<ChallengeTag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<ChallengeTag> tags) {
+        this.tags = tags;
+    }
+
+    public void supprimertag(ChallengeTag t) {
+     if (t!=null)
+      {
+          tags.remove(t);
+      }
     }
 
     @Override
