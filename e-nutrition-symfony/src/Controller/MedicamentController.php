@@ -13,6 +13,7 @@ use App\Repository\MedicamentRepository;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class MedicamentController extends AbstractController
 {
@@ -166,6 +167,37 @@ class MedicamentController extends AbstractController
         $retour =json_encode($jsonContent);
         return new Response($retour);
     }
+
+
+
+
+
+
+
+    /**
+     * @Route("/FicheListeMobile", name="FicheListeMobile")
+     */
+    public function FicheListe(FicheConsultationRepository $repo,SerializerInterface $serializerInterface)
+    {
+        $fiches=$repo->findAll();
+        $json=$serializerInterface->serialize($fiches,'json',['groups'=>'fiche']);
+        // dump($json);
+
+        //$repo=$this->getDoctrine()->getRepository(FicheConsultation::class);
+        //$FicheListe=$repo->findAll();
+
+        // $jsonContent= $normalizer->normalize($FicheListe,'json');
+        return new Response($json);
+    }
+
+
+
+
+
+
+
+
+
 
 
 }

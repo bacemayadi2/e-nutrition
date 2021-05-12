@@ -11,6 +11,8 @@ import com.codename1.ui.layouts.BorderLayout;
 import static com.codename1.ui.CN.convertToPixels;
 import static com.codename1.ui.util.Resources.getGlobalResources;
 import e.nutrition.views.AllChallengesView;
+import e.nutrition.views.AllFicheview;
+import e.nutrition.views.FicheView;
 import e.nutrition.views.ChallengeView;
 import e.nutrition.views.PlatsView;
 
@@ -22,8 +24,10 @@ public class MainWindowView extends AbstractEntityView
     HomeView homeView;
     Tabs mainWindowContainer;
     PlatsView platView;
+
     AllChallengesView challengeView;
-    
+    AllFicheview ficheView;
+
     private static final int TABS_ICON_SIZE = convertToPixels(4);
     private static final int TABS_ICON_SELECTED_SIZE = convertToPixels(6);
 
@@ -68,7 +72,13 @@ public class MainWindowView extends AbstractEntityView
                                     getGlobalResources().getImage("main-window-favorite-selected.png").scaled(TABS_ICON_SELECTED_SIZE, TABS_ICON_SELECTED_SIZE),
                                     challengeView);
            
-           
+                ficheView = new AllFicheview(mainWindowEntity, homeViewNode);
+
+          mainWindowContainer.addTab("Fiches",
+                                    getGlobalResources().getImage("main-window-favorite.png").scaled(TABS_ICON_SIZE, TABS_ICON_SIZE),
+                                    getGlobalResources().getImage("main-window-favorite-selected.png").scaled(TABS_ICON_SELECTED_SIZE, TABS_ICON_SELECTED_SIZE),
+                                    ficheView);
+
         favoriteView = new FavoriteRestaurantsView((Entity)mainWindowEntity.get(MainWindow.profile), homeViewNode);
         mainWindowContainer.addTab("FAVORITE",
                                     getGlobalResources().getImage("main-window-home.png").scaled(TABS_ICON_SIZE, TABS_ICON_SIZE),
