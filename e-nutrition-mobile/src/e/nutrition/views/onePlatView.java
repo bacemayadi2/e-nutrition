@@ -82,8 +82,10 @@ public class onePlatView extends AbstractEntityView {
         EncodedImage restImage = placeHolder;
        
             if (p.getTags().size() != 0)
+            {
                  url=p.getTags().get(0).getUrl();
-            restImage = URLImage.createToStorage(restImage, url , url,URLImage.RESIZE_SCALE);
+                 restImage = URLImage.createToStorage(restImage, url , url,URLImage.RESIZE_SCALE);
+            }
                  //   Image.createImage(p.getTags().get(0).getUrl()); //entity.createImageToStorage(pictureProp, placeHolder);
         
 

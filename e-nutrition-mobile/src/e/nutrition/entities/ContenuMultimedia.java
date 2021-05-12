@@ -115,7 +115,7 @@ public class ContenuMultimedia
             tags.remove(t);
         }
     }
-    /*
+   /*
          public int sendFileToHTTP(File file) {
         int responseCode = 0;
         String idMultimedi = null;
