@@ -66,7 +66,7 @@ public class ServicePlat {
               List<Map<String,Object>> list =(List<Map<String,Object>>)objliste;
                         for (Map<String,Object> objetape :list )
                         {
-                            compositions.add(new Composition((int)Float.parseFloat(objetape.get("id").toString()),(int)Float.parseFloat(objetape.get("poid").toString()), parseAliment(objetape.get("aliment"))));
+                            compositions.add(new Composition((int)Float.parseFloat(objetape.get("id").toString()),Float.parseFloat(objetape.get("poid").toString()), parseAliment(objetape.get("aliment"))));
                         }   
                         return compositions;
 

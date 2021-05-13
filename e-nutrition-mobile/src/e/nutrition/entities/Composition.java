@@ -5,11 +5,13 @@
  */
 package e.nutrition.entities;
 
+import com.codename1.rad.models.Entity;
+
 /**
  *
  * @author bacem
  */
-public class Composition {
+public class Composition extends Entity {
    private int id;
    private float poid;
    private Aliment aliment;

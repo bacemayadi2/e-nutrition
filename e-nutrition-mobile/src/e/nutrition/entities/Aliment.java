@@ -17,7 +17,19 @@ public class Aliment extends Nourriture   {
    private String codeABarre=null;
    private List <CategorieAliment> categories = new ArrayList();
    private List <Composition> compostions = new ArrayList();
+   private boolean Selected=false;
     //private List <Proportion> proportions = new ArrayList();
+
+    public boolean isSelected() {
+        return Selected;
+    }
+
+    public void setSelected(boolean Selected) {
+        this.Selected = Selected;
+    }
+
+    
+   
    public String getCategorieString() 
    {
        String nomCategories="";

@@ -6,14 +6,23 @@
 package e.nutrition.views;
 
 import com.codename1.components.ScaleImageButton;
+import static com.codename1.demos.grub.controllers.DishController.addOnSelected;
+import com.codename1.demos.grub.views.DishAddOnView;
+import com.codename1.demos.grub.views.DishView;
 import com.codename1.demos.grub.views.HomeView;
+import e.nutrition.views.PlatDetailView;
 import com.codename1.rad.models.Entity;
+import com.codename1.rad.models.Property;
 import com.codename1.rad.nodes.ActionNode;
 import com.codename1.rad.nodes.Node;
+import com.codename1.rad.nodes.ViewNode;
 import com.codename1.rad.ui.AbstractEntityView;
+import com.codename1.rad.ui.UI;
 import static com.codename1.ui.CN.convertToPixels;
 import com.codename1.ui.Container;
+import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
+import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.URLImage;
@@ -72,7 +81,7 @@ public class onePlatView extends AbstractEntityView {
         this.viewNode = viewNode;
 
         namePlat = p.getNom(); 
-        calorie = String.valueOf(p.getCalculerCalorie());
+        calorie = String.valueOf(p.getCalculerCalorie()/p.getNbrportion());
         nbrPortion = String.valueOf(p.getNbrportion());
         duree = String.valueOf(p.getDuree());
         user = ("salah");
@@ -94,16 +103,24 @@ public class onePlatView extends AbstractEntityView {
 
         restImageButton.addActionListener(evt -> {
             evt.consume();
-            ActionNode action = viewNode.getInheritedAction(HomeView.ENTER_REST);
-            if (action != null) {
-                action.fireEvent(p, onePlatView.this);
-            }
+ 
+        Form platDetailForm =  new Form(new BorderLayout());
+        platDetailForm.getToolbar().hideToolbar();
+
+
+       ViewNode plataliments = new ViewNode(
+                UI.actions(PlatAlimentView.ADD_ON_CLICKED, addOnSelected)
+        );
+               
+        PlatDetailView platDetailView = new PlatDetailView(entity, this.viewNode,plataliments, Display.getInstance().getCurrent());
+        platDetailForm.add(BorderLayout.CENTER, platDetailView);
+        platDetailForm.show();
         });
 
         setLeadComponent(restImageButton);
 
         Label restNameLabel = new Label(namePlat, "RestPreviewNameLabel");
-        Label restCategoryLabel = new Label(calorie, "RestPreviewCategoryLabel");
+        Label restCategoryLabel = new Label("by" +p.getNutritionniste().getNom()+p.getNutritionniste().getPrenom(), "RestPreviewCategoryLabel");
 
         Container restTopView = new Container(new LayeredLayout());
         restTopView.add(restImageButton);
@@ -117,7 +134,7 @@ public class onePlatView extends AbstractEntityView {
         
         Label estimatedDeliveryTimeLabel = new Label(" " + duree + " mins", "RestPreviewDeliveryTime");
         estimatedDeliveryTimeLabel.setIcon(getGlobalResources().getImage("delivery-time-icon.png").scaled(convertToPixels(4), convertToPixels(4)));
-        Label calories = new Label(" " + calorie + "Kcal", "RestPreviewRating");
+        Label calories = new Label(" " + calorie + "Kcal/portion", "RestPreviewRating");
         calories.setIcon(getGlobalResources().getImage("rating-icon.png").scaled(convertToPixels(4), convertToPixels(4)));
         Label nbrportion = new Label(" " + nbrPortion + "portion", "RestPreviewDistance");
         nbrportion.setIcon(getGlobalResources().getImage("distance-icon.png").scaled(convertToPixels(4), convertToPixels(4)));

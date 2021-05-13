@@ -75,6 +75,31 @@ public class Plat extends Nourriture {
       }
       calculeNutritiveValue();
   }
+  public int getSelectedAlimentsCalorie()
+  {
+      float tmplipid=0;
+      float tmpprotein=0;
+      float tmpglucide=0;
+      Composition composition=null;
+
+       if (compostions.size() !=0 )
+   {
+       Iterator<Composition>  i= compostions.iterator();
+        while(i.hasNext())
+        { 
+        composition = i.next();
+        if(composition.getAliment().isSelected())
+        {
+         tmplipid+=((composition.getAliment().getLipidies())/(composition.getAliment().getPoid()))* composition.getPoid();
+         tmpglucide+=((composition.getAliment().getGlucides())/(composition.getAliment().getPoid()))* composition.getPoid();
+         tmpprotein+=((composition.getAliment().getProteines())/(composition.getAliment().getPoid()))* composition.getPoid();
+        }
+
+        }
+        
+  }
+      return Math.round((tmpglucide*4 + tmpprotein*9 +tmplipid*9)/(float)this.nbrportion);
+  }
   
   public void calculeNutritiveValue()
   {
@@ -152,6 +177,32 @@ public class Plat extends Nourriture {
 
     public void setCompostions(List<Composition> compostions) {
         this.compostions = compostions;
+    }
+    
+    public void recalculatewithNewPortion(int newNbPortion)
+    {
+    this.lipidies=0;
+    this.glucides=0;
+    this.proteines=0;
+   Composition composition=null;
+   if (compostions.size() !=0 )
+   {
+       Iterator<Composition>  i= compostions.iterator();
+        while(i.hasNext())
+        { 
+        
+        composition = i.next();
+        composition.setPoid((composition.getPoid()/this.nbrportion)*newNbPortion);
+
+         this.lipidies+=((composition.getAliment().getLipidies())/(composition.getAliment().getPoid()))* composition.getPoid();
+         this.glucides+=((composition.getAliment().getGlucides())/(composition.getAliment().getPoid()))* composition.getPoid();
+         this.proteines+=((composition.getAliment().getProteines())/(composition.getAliment().getPoid()))* composition.getPoid();
+
+        }
+                 nbrportion=newNbPortion;
+
+  }
+        
     }
   
    
