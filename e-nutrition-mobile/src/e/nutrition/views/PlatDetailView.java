@@ -164,10 +164,21 @@ public class PlatDetailView extends AbstractEntityView{
         Container descriptionCnt = BoxLayout.encloseY(dishName, dishDescription, dishQuantityAndPrice);
 
         Container dishRemarksCnt = new Container(new BorderLayout(), "DishRemarksCnt");
-        TextArea dishRemarks = new TextArea(3, 20, TextArea.ANY);
-        dishRemarks.setUIID("DishRemarksTextArea");
+        Container dishEtape = new Container(new BoxLayout(BoxLayout.Y_AXIS), "DishBody");
+
+        dishEtape.setUIID("DishRemarksTextArea");
         dishRemarksCnt.add(BorderLayout.NORTH, new Label("etape de preparation", "DishRemarksHeader"));
-        dishRemarksCnt.add(BorderLayout.CENTER, dishRemarks);
+       // dishRemarksCnt.add(BorderLayout.CENTER, dishRemarks);
+       java.util.List <SpanLabel> sp =new ArrayList() ;
+        
+        for (int i=0 ; i< p.getEtapesDePreparation().size() ; i++)
+        {
+           
+          sp.add(new SpanLabel(i+1+") "+p.getEtapesDePreparation().get(i).getDescription())) ;
+            dishEtape.add(sp.get(i));
+
+        }
+          dishRemarksCnt.add(BorderLayout.CENTER, dishEtape);
 
         Container addOnsCnt = new Container(new BorderLayout(), "AddOnsCnt");
          addOns = new Container();
@@ -218,7 +229,6 @@ public class PlatDetailView extends AbstractEntityView{
                 addOns.getComponentAt(i).remove();
                 addOns.addComponent(i, new PlatAlimentView(compostions.get(i), addOnNode,this));
         }      
-        System.out.println(p.getCalculerCalorie());
         //Display.getInstance().getCurrent().setTransitionOutAnimator(CommonTransitions.createEmpty());
         
         this.revalidateWithAnimationSafety();

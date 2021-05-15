@@ -15,6 +15,7 @@ import e.nutrition.views.AllFicheview;
 import e.nutrition.views.FicheView;
 import e.nutrition.views.ChallengeView;
 import e.nutrition.views.PlatsView;
+import e.nutrition.views.Proportion.ProportionView;
 
 public class MainWindowView extends AbstractEntityView
 {
@@ -24,6 +25,7 @@ public class MainWindowView extends AbstractEntityView
     HomeView homeView;
     Tabs mainWindowContainer;
     PlatsView platView;
+    ProportionView proportionView;
 
     AllChallengesView challengeView;
     AllFicheview ficheView;
@@ -63,7 +65,12 @@ public class MainWindowView extends AbstractEntityView
                                     platView);
     
            
-        
+        proportionView = new ProportionView(mainWindowEntity, homeViewNode);
+
+        mainWindowContainer.addTab("CALORIES",
+                getGlobalResources().getImage("main-window-favorite.png").scaled(TABS_ICON_SIZE, TABS_ICON_SIZE),
+                getGlobalResources().getImage("main-window-favorite-selected.png").scaled(TABS_ICON_SELECTED_SIZE, TABS_ICON_SELECTED_SIZE),
+                proportionView);
           
             challengeView = new AllChallengesView(mainWindowEntity, homeViewNode);
 

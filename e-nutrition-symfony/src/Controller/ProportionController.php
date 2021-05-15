@@ -4,12 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Aliment;
 use App\Entity\Proportion;
+use App\Entity\Utilisateur;
 use App\Form\PlatType;
 use App\Form\ProportionType;
 use App\Repository\AlimentRepository;
 use App\Repository\PatientRepository;
 use App\Repository\PlatRepository;
 use App\Repository\ProportionRepository;
+use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use phpDocumentor\Reflection\Types\Collection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,6 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class ProportionController extends AbstractController
 {
@@ -310,6 +313,41 @@ class ProportionController extends AbstractController
             'dates'=>json_encode($dates),
             'form'=>$form->createView()
         ]);
+    }
+
+    /**
+     * @param PlatRepository $repo
+     * @Route ("api/getProportion/{iduser}",name="api_getProportion")
+     */
+    public function ProportionMobile(AlimentRepository $repo,PaginatorInterface $paginator,Request $request,ProportionRepository  $repoP, SerializerInterface $serializerInterface,$iduser,UserRepository $repouser)
+    {
+        //$donnees=$repo->findAll();
+        $endDate = (new \DateTime());
+        $startDate = (clone $endDate)->modify('- 1 day ');
+
+        $oldproportions=$repoP->findbetwen2date($startDate,$endDate,$repouser->find($iduser));
+
+        $proportion[]=null;
+
+
+//        $aliment=$paginator->paginate(
+//            $donnees,
+//            /* query NOT result */
+//            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+//            7 /*limit per page*/
+//        );
+
+        $jsonContent = $serializerInterface->serialize($oldproportions, 'json', ['groups'=>'prportion:read']);
+        //dump($jsonContent);
+        // On instancie la réponse
+
+        $response = new Response($jsonContent);
+
+        // On ajoute l'entête HTTP
+        $response->headers->set('Content-Type', 'application/json');
+
+        // On envoie la réponse
+        return $response;
     }
 }
 

@@ -30,6 +30,7 @@ class Tag
      * @Groups ("plat:read")
      * @Groups ("challenges:read")
      * @Groups("fiche")
+     * @Groups ("aliment:read")
      */
     private $contenuMultimedia;
 

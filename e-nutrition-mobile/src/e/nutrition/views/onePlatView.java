@@ -120,7 +120,7 @@ public class onePlatView extends AbstractEntityView {
         setLeadComponent(restImageButton);
 
         Label restNameLabel = new Label(namePlat, "RestPreviewNameLabel");
-        Label restCategoryLabel = new Label("by" +p.getNutritionniste().getNom()+p.getNutritionniste().getPrenom(), "RestPreviewCategoryLabel");
+        Label restCategoryLabel = new Label("by " +p.getNutritionniste().getNom()+ " " +p.getNutritionniste().getPrenom(), "RestPreviewCategoryLabel");
 
         Container restTopView = new Container(new LayeredLayout());
         restTopView.add(restImageButton);

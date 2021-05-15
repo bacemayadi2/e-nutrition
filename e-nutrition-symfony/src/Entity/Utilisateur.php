@@ -103,7 +103,6 @@ class Utilisateur implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=TagUtilisateur::class, mappedBy="utilisateur", cascade={"all"},orphanRemoval=true)
-     * @Groups ("plat:read")
      */
     protected $tagUtilisateur;
 

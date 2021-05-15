@@ -8,6 +8,7 @@ use App\Entity\TagNourriture;
 use App\Form\AlimentType;
 use App\Repository\AlimentRepository;
 use App\Repository\CategorieAlimentRepository;
+use App\Repository\PlatRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use phpDocumentor\Reflection\Types\String_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,6 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 
 class AlimentController extends AbstractController
@@ -174,5 +176,34 @@ class AlimentController extends AbstractController
         $jsonContent = $normalizer->normalize($aliment, 'json',['groups'=>'aliments']);
         $retour =json_encode($jsonContent);
     return new Response($retour);
+    }
+    //api
+    /**
+     * @param PlatRepository $repo
+     * @Route ("api/allAliment",name="api_allAliment")
+     */
+    public function allaliment (AlimentRepository $repo,PaginatorInterface $paginator,Request $request,SerializerInterface $serializerInterface)
+    {
+        $donnees=$repo->findAll();
+
+
+//        $aliment=$paginator->paginate(
+//            $donnees,
+//            /* query NOT result */
+//            $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
+//            7 /*limit per page*/
+//        );
+
+        $jsonContent = $serializerInterface->serialize($donnees, 'json', ['groups'=>'aliment:read']);
+        //dump($jsonContent);
+        // On instancie la réponse
+
+        $response = new Response($jsonContent);
+
+        // On ajoute l'entête HTTP
+        $response->headers->set('Content-Type', 'application/json');
+
+        // On envoie la réponse
+        return $response;
     }
 }

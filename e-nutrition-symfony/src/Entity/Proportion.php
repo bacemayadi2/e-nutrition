@@ -6,6 +6,7 @@ use App\Repository\ProportionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ProportionRepository::class)
@@ -16,16 +17,19 @@ class Proportion
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ("prportion:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups ("prportion:read")
      */
     private $poid;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups ("prportion:read")
      */
     private $date;
 
@@ -39,26 +43,31 @@ class Proportion
     /**
      * @ORM\ManyToOne(targetEntity=Aliment::class, inversedBy="proportions")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups ("prportion:read")
      */
     private $aliment;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups ("prportion:read")
      */
     private $lipides;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups ("prportion:read")
      */
     private $glucides;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups ("prportion:read")
      */
     private $proteines;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups ("prportion:read")
      */
     private $calorie;
 

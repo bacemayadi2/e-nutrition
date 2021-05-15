@@ -21,13 +21,14 @@ class Aliment extends Nourriture
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
+     * @Groups ("aliment:read")
      */
 
     private $codeABarre;
 
     /**
      * @ORM\ManyToMany(targetEntity=CategorieAliment::class, inversedBy="aliments",cascade={"persist"})
+     * @Groups ("aliment:read")
      */
     private $categorieAliment;
 
@@ -39,7 +40,6 @@ class Aliment extends Nourriture
 
     /**
      * @Groups ("aliments")
-     * @Groups ("plat:read")
      */
     private $calories;
 

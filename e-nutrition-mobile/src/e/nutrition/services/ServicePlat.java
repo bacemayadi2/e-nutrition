@@ -48,17 +48,7 @@ public class ServicePlat {
 
             }
     
-    public Aliment parseAliment(Object objliste )
-            {
-                 Aliment a = null ;
-              Map<String,Object> map =(Map<String,Object>)objliste;
 
-                             a = new Aliment((int)Float.parseFloat(map.get("id").toString()), map.get("nom").toString(), (int)Float.parseFloat(map.get("lipides").toString()),(int)Float.parseFloat(map.get("glucides").toString()) , (int)Float.parseFloat(map.get("proteines").toString()), (int)Float.parseFloat(map.get("poid").toString()));
-                             a.setTags(parsetag(map.get("tagNourriture")));
-                             System.out.println(a.getTags());
-                        return a;
-
-            }
             
         public List<Composition> parseCompostion(Object objliste )
             {
@@ -66,7 +56,9 @@ public class ServicePlat {
               List<Map<String,Object>> list =(List<Map<String,Object>>)objliste;
                         for (Map<String,Object> objetape :list )
                         {
-                            compositions.add(new Composition((int)Float.parseFloat(objetape.get("id").toString()),Float.parseFloat(objetape.get("poid").toString()), parseAliment(objetape.get("aliment"))));
+                              int alimentid =(int)Float.parseFloat(objetape.get("alimentid").toString());
+                            Aliment a = ServiceAliment.getInstance().getAlimentbyid(alimentid);
+                            compositions.add(new Composition((int)Float.parseFloat(objetape.get("id").toString()),Float.parseFloat(objetape.get("poid").toString()), a));
                         }   
                         return compositions;
 
@@ -87,23 +79,36 @@ public class ServicePlat {
             }
     
 
-     public List<TagNourriture> parsetag(Object objtag)
-            {
-             List <TagNourriture> tags = new ArrayList();
-              List<Map<String,Object>> listtags =(List<Map<String,Object>>)objtag;
-                        for (Map<String,Object> oobjtag :listtags )
-                        {
-                            Object objMultimedia= oobjtag.get("contenuMultimedia");
+    public List<TagNourriture> parsetag(Object objtag) {
+        List<TagNourriture> tags = new ArrayList();
+        List<Map<String, Object>> listtags = (List<Map<String, Object>>) objtag;
+        for (Map<String, Object> oobjtag : listtags) {
+            Object objMultimedia = oobjtag.get("contenuMultimedia");
 
-                                    ServiceMultimedia sC=new ServiceMultimedia();
+            ServiceMultimedia sC = new ServiceMultimedia();
 
             tags.add(new TagNourriture(sC.parseContenuMultimedia(oobjtag.get("contenuMultimedia"))));
         }
-                       
-                           
-                        return tags;
 
-            }
+        return tags;
+
+    }
+     public Nutritionniste parseNutritionniste(Object obj)
+     {
+                         Nutritionniste n=new Nutritionniste("admin", " ");
+              Map<String,Object> map =(Map<String,Object>)obj;
+                   
+              
+                                if (map != null)
+                           n=new Nutritionniste(map.get("nom").toString(), map.get("prenom").toString());
+                           
+                     
+                            
+         return n;
+                 
+                 
+     }
+             
 
     public ArrayList<Plat> parsePlat(String jsonText){
         {
@@ -116,10 +121,10 @@ public class ServicePlat {
                     for (Map<String,Object> obj :list)
                     {
                         Nutritionniste n ;
-                        if( (obj.get("nutritionniste").toString() ) != "null")
-                            n = new Nutritionniste("static", "satic");
-                        else 
-                            n =new Nutritionniste(0);
+                        
+                            n = parseNutritionniste(obj.get("nutritionniste"));
+                         
+                            
                         Plat p =new Plat(obj.get("description").toString(), (int)Float.parseFloat(obj.get("nbrportion").toString()),(int)Float.parseFloat(obj.get("id").toString()) ,obj.get("nom").toString() ,Float.parseFloat(obj.get("lipides").toString()),Float.parseFloat(obj.get("glucides").toString()) , Float.parseFloat(obj.get("proteines").toString()),Float.parseFloat(obj.get("poid").toString()) , n );
                         p.setEtapesDePreparation(parseEtapeDePreparation(obj.get("etapeDePreparation")));
                         p.setCompostions(parseCompostion(obj.get("compostions")));
@@ -145,7 +150,7 @@ public class ServicePlat {
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
-        System.out.println(plats);
+
         return plats;
   
                 

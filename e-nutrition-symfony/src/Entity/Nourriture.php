@@ -20,6 +20,8 @@ class Nourriture
      * @ORM\Column(type="integer")
      * @Groups ("aliments")
      * @Groups ("plat:read")
+     * @Groups ("prportion:read")
+     * @Groups ("aliment:read")
      */
     Protected $id;
 
@@ -27,6 +29,7 @@ class Nourriture
      * @ORM\Column(type="string", length=255)
      * @Groups ("aliments")
      * @Groups ("plat:read")
+     * @Groups ("aliment:read")
      */
     Protected $nom;
 
@@ -34,6 +37,7 @@ class Nourriture
      * @ORM\Column(type="float")
      * @Groups ("aliments")
      * @Groups ("plat:read")
+     * @Groups ("aliment:read")
      */
     Protected $lipides;
 
@@ -41,6 +45,7 @@ class Nourriture
      * @ORM\Column(type="float")
      * @Groups ("aliments")
      * @Groups ("plat:read")
+     * @Groups ("aliment:read")
      */
     Protected $glucides;
 
@@ -48,6 +53,7 @@ class Nourriture
      * @ORM\Column(type="float")
      * @Groups ("aliments")
      * @Groups ("plat:read")
+     * @Groups ("aliment:read")
      */
     Protected $proteines;
 
@@ -55,12 +61,14 @@ class Nourriture
      * @ORM\Column(type="float")
      * @Groups ("aliments")
      * @Groups ("plat:read")
+     * @Groups ("aliment:read")
      */
     Protected $poid;
 
     /**
      * @ORM\OneToMany(targetEntity=TagNourriture::class, mappedBy="nourriture", cascade={"all"},orphanRemoval=true)
      * @Groups ("plat:read")
+     * @Groups ("aliment:read")
      */
     protected $tagNourriture;
 

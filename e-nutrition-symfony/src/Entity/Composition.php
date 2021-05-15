@@ -27,9 +27,29 @@ class Composition
 
     /**
      * @ORM\ManyToOne(targetEntity=Aliment::class, inversedBy="compositions" , cascade={"persist"})
-     * @Groups ("plat:read")
      */
     private $aliment;
+
+    /**
+     * @return mixed
+     */
+    public function getAlimentid()
+    {
+        return $this->getAliment()->getId();
+    }
+
+    /**
+     * @param mixed $alimentid
+     */
+    public function setAlimentid($alimentid): void
+    {
+        $this->alimentid = $alimentid;
+    }
+
+    /**
+     * @Groups ("plat:read")
+     */
+    private $alimentid;
 
     /**
      * @ORM\ManyToOne(targetEntity=Plat::class, inversedBy="compostions")
@@ -62,7 +82,6 @@ class Composition
     public function setAliment(?Aliment $aliment): self
     {
         $this->aliment = $aliment;
-
         return $this;
     }
 
