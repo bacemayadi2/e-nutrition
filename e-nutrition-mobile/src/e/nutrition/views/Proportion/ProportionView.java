@@ -212,7 +212,6 @@ public class ProportionView extends AbstractEntityView{
         }else{
             dishesContainer.setLayout(new GridLayout(rows, 3, landscapeRows, 6));
         }
-        System.out.println("heeeerrrrr r rr"+proportions.size());
         for (int i=0 ;i<proportions.size();i++) {
             OneProportionView p = new OneProportionView(proportions.get(i), viewNode);
             dishesContainer.add(p);
