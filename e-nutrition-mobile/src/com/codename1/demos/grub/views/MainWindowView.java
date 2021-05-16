@@ -9,6 +9,8 @@ import com.codename1.ui.Tabs;
 import com.codename1.ui.layouts.BorderLayout;
 
 import static com.codename1.ui.CN.convertToPixels;
+import com.codename1.ui.Display;
+import com.codename1.ui.Form;
 import static com.codename1.ui.util.Resources.getGlobalResources;
 import e.nutrition.views.AllChallengesView;
 import e.nutrition.views.AllFicheview;
@@ -65,7 +67,7 @@ public class MainWindowView extends AbstractEntityView
                                     platView);
     
            
-        proportionView = new ProportionView(mainWindowEntity, homeViewNode);
+        proportionView = new ProportionView(mainWindowEntity, homeViewNode,Display.getInstance().getCurrent());
 
         mainWindowContainer.addTab("CALORIES",
                 getGlobalResources().getImage("main-window-favorite.png").scaled(TABS_ICON_SIZE, TABS_ICON_SIZE),

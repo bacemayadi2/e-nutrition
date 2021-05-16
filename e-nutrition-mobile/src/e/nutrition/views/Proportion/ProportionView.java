@@ -1,5 +1,6 @@
 package e.nutrition.views.Proportion;
 
+import com.codename1.components.FloatingActionButton;
 import com.codename1.components.ScaleImageLabel;
 import com.codename1.demos.grub.interfaces.FoodCategory;
 import com.codename1.demos.grub.interfaces.Restaurant;
@@ -35,7 +36,7 @@ public class ProportionView extends AbstractEntityView{
     private Container dishesContainer ;
     private static EncodedImage placeHolder =  EncodedImage.createFromImage(getGlobalResources().getImage("placeholder.png").scaled(Display.getInstance().getDisplayWidth(), Display.getInstance().getDisplayWidth() / 2), false);
     private float totalCalories=0,totalLipides=0,totalGlucides=0,totalProteins=0;
-
+    private Form previous; 
     public static final ActionNode.Category SHOW_ORDER = new ActionNode.Category();
     public static final ActionNode.Category ADD_TO_FAVORITE = new ActionNode.Category();
     public static final ActionNode.Category REMOVE_FAVORITE = new ActionNode.Category();
@@ -52,11 +53,13 @@ public class ProportionView extends AbstractEntityView{
        
     }  
     
-    public ProportionView(Entity appEntity, Node viewNode) {
+    public ProportionView(Entity appEntity, Node viewNode,Form previous) {
         super(appEntity);
         setLayout(new BoxLayout(BoxLayout.Y_AXIS));
         setScrollableY(true);
         setScrollVisible(false);
+        this.viewNode=viewNode;
+        this.previous=previous;
 
         proportions =ServiceProportion.getInstance().getProportion(71);
 
@@ -65,6 +68,7 @@ public class ProportionView extends AbstractEntityView{
     }
 
     public void createForm(){
+
        restInfo = new Container(new LayeredLayout());
 
         Button backButton = new Button(FontImage.MATERIAL_KEYBOARD_ARROW_LEFT);
@@ -149,11 +153,23 @@ public class ProportionView extends AbstractEntityView{
         Container restDetails = new Container(new BoxLayout(BoxLayout.Y_AXIS), "RestDetails");
         Container nutritfValue = new Container(new FlowLayout(Component.CENTER), "RestTimeRatingCnt");
         nutritfValue.addAll(glucide, protein, lipide);
-        restDetails.addAll(restName, totalclaorielabel,nutritfValue);
-        restInfo.add(BorderLayout.south(restDetails));
+        
+   
+        //add(fab);
+        
+        //  fab.bindFabToContainer(getCurrentForm().getComponentForm());
+        restDetails.addAll(restName, totalclaorielabel,nutritfValue );
+       restInfo.add(BorderLayout.south(restDetails));
     //    restInfo.add(BorderLayout.centerCenterEastWest(null, FlowLayout.encloseRight(like, cart), BorderLayout.north(backButton)));
         add(restInfo);
 
+      //  add(flotingbuttons);
+   
+   
+
+
+        Container cmenu =new Container(new BoxLayout(BoxLayout.Y_AXIS));
+        cmenu.setScrollableY(true);
         Tabs menuContainer = new Tabs(Component.TOP);
         menuContainer.getTabsContainer().setUIID("RestTabContainer");
         menuContainer.setTabUIID("RestTab");
@@ -168,7 +184,25 @@ public class ProportionView extends AbstractEntityView{
                 }
             }
         }*/
-        add(menuContainer);   
+                           FloatingActionButton fab = FloatingActionButton.createFAB(FontImage.MATERIAL_ADD);
+        fab.createSubFAB(FontImage.MATERIAL_QR_CODE_SCANNER, "");
+        fab.createSubFAB(FontImage.MATERIAL_LIST, "");
+    //      fab.bindFabToContainer( previous.getContentPane());
+
+        Container c =new Container(new LayeredLayout());
+         LayeredLayout bottomleft= (LayeredLayout)c.getLayout();
+        Container root = BorderLayout.center(fab.bindFabToContainer( c));
+     fab.addActionListener(evt->{
+     
+            });
+     cmenu.add(menuContainer);
+     add( LayeredLayout.encloseIn(BorderLayout.center(cmenu),BorderLayout.south(root)));//(fab.bindFabToContainer(new Container(), Component.RIGHT, Component.BOTTOM));
+    // add(SOUTH,root);
+        setScrollableY(false);
+       
+    //  add(CENTER,menuContainer);  
+
+
     }
     
     @Override

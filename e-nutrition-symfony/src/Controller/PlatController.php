@@ -107,7 +107,7 @@ class PlatController extends AbstractController
             $request->query->getInt('page', 1), /*numero de page en cours 1 par défaut*/
             7/*limit per page*/
         );
-        return $this->render("front/plat/afficherplat.html.twig",
+        return $this->render("front/plat/afficherPlat.html.twig",
             ["platss"=>$platss,"plat"=>$plat]
 
         );
