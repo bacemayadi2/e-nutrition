@@ -61,7 +61,7 @@ public class ProportionView extends AbstractEntityView{
         this.viewNode=viewNode;
         this.previous=previous;
 
-        proportions =ServiceProportion.getInstance().getProportion(71);
+        proportions =ServiceProportion.getInstance().getProportion(75);
 
         createForm();
         update() ;
@@ -213,7 +213,7 @@ public class ProportionView extends AbstractEntityView{
             dishesContainer.getComponentAt(0).remove();
         }
                  proportions.clear();
-    proportions=ServiceProportion.getInstance().getProportion(71);
+    proportions=ServiceProportion.getInstance().getProportion(72);
             for (int i=0 ;i <proportions.size();i++) {
             OneProportionView p = new OneProportionView(proportions.get(i), viewNode);
             dishesContainer.addComponent(i,p);
@@ -237,10 +237,14 @@ public class ProportionView extends AbstractEntityView{
     private Component createProportionsView() {
         dishesContainer = new Container();
         dishesContainer.setUIID("MenuContainer");
-
+        
         int numOdDishes = proportions.size();
         int rows = (numOdDishes % 3 == 0) ? numOdDishes / 3 : numOdDishes / 3 + 1;
         int landscapeRows = (numOdDishes % 6 == 0) ? numOdDishes / 6 : numOdDishes / 6 + 1;
+        if (numOdDishes==0)
+        {
+        rows =1;landscapeRows=1;
+        }
         if (CN.isTablet()){
             dishesContainer.setLayout(new GridLayout(landscapeRows, 6));
         }else{
