@@ -14,7 +14,7 @@ public class DataSource
     private static DataSource instance;
     private Connection cnx;
                                  
-    private final String URL ="jdbc:mysql://pidev.cam6mhx2dtqf.eu-west-3.rds.amazonaws.com:8080/pidev3a";
+    private final String URL ="jdbc:mysql://adminn.cam6mhx2dtqf.eu-west-3.rds.amazonaws.com:8080/pidev3a";
     private final String LOGIN = "adminn";
     private final String PASSWORD = "19190011";
     
